@@ -1,0 +1,107 @@
+ <!DOCTYPE html>
+ <html>
+ <head>
+     <title>初审列表</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/base.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/layer.css" rel="stylesheet">
+    <link href="css/pagination.css" rel="stylesheet">
+    <link href="css/bootstrap-datetimepicker.css" rel="stylesheet">
+   
+ </head>
+ <style>
+        #loanDetail{
+            background-color: #fff;
+            margin-bottom: 15px;
+        }
+        #loanDetail p{
+            padding-left:0 ;
+            padding-right: 0;
+            margin: 6px 0 ;
+        }
+        #loanDetail .wd_60{
+            display: inline-block;
+            width: 102px;
+            text-align: right;
+            font-size: 12px;
+            font-family: "微软雅黑";
+        }
+        #loanDetail .c13 .wd_60{
+            float: left;
+            margin-top: 5px;
+        }
+        #loanDetail .c13 input{
+            float: left;
+            font-size: 12px;
+            font-family: "微软雅黑";
+        }
+        #loanDetail .col-lg-3 ,#loanDetail .c13{
+            margin:5px 0;
+            padding-left:5px;
+            padding-right: 5px;
+        }
+
+        #loanDetail select option{
+            font-size: 12px;
+            font-family: "微软雅黑";
+        }
+        .search_btn {
+            font-size: 12px;
+            background-color: #09C;
+            padding: 5px 16px;
+            margin-top: 3px;
+            margin-bottom: 5px;
+        }
+        .ta_r{
+            text-align: right;
+        }
+        .mr_25{
+            margin-right: 25px;
+        }
+        .cardSelect{
+            border: 1px solid #ddd;
+            height: 25px;
+            width: 150px;
+            font-size: 12px;
+        }
+    </style>
+ <body>
+    <div class="content1">
+        <div class="content">
+            <!--面包屑导航start-->
+            <ol class="breadcrumb">
+                <li class="active">待放款列表查询</li>
+            </ol>
+            <div id="loanDetail" class="col-lg-12 col-md-12 col-sm-12">
+                <div class="col-lg-3 col-md-3 col-sm-3"><span class="wd_60">资方状态&nbsp;&nbsp;</span><select id="capitalStatus">
+                    <option value="">请选择</option>
+                    <option value="2">已放款</option>
+                    <option value="3">已拒绝</option>
+                    <option value="4">打款失败</option>
+                </select></div>
+                <div class="col-lg-3 col-md-3 col-sm-3"><span class="wd_60">姓名&nbsp;&nbsp;</span><input type="text" id="idName"></div>
+                <div class="col-lg-3 col-md-3 col-sm-3"><span class="wd_60">手机号&nbsp;&nbsp;</span><input type="text" id="phoneNo"></div>
+                <div class="col-lg-3 col-md-3 col-sm-3"><span class="wd_60">商户&nbsp;&nbsp;</span><input type="text" id="bcName"></div>
+
+                
+                <div class="col-lg-3 col-md-3 col-sm-3"></div>
+                <div class="col-lg-3 col-md-3 col-sm-3 ta_r">
+                    <button class="btn btn-primary btn-sm search_btn" type="button" id="btn-search">查询</button>
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <button class="btn btn-primary btn-sm search_btn mr_25" type="button" id="btn-export" onclick="exportResult();">导出</button>
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div class="table-responsive">
+                <div id="lendingList_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer"><div class="top"><div class="clear"></div></div><div id="lendingList_processing" class="dataTables_processing panel panel-default" style="display: none;">处理中...</div><table id="lendingList" style="width: 100%;" class="table table-bordered table-striped table-hover bg_wt dataTable no-footer" role="grid" aria-describedby="lendingList_info">
+                    <thead style="border-bottom: 0;background-color: #fff;">
+                    <tr role="row"><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 79px;">订单编号</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 79px;">申请时间</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 44px;">渠道</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 79px;">申请金额</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 79px;">申请期限</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 62px;">期供款</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 80px;">客户姓名</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 98px;">身份证号码</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 116px;">资方放款金额</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 116px;">互动放款金额</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 80px;">资方状态</th><th class="text-center sorting_disabled" rowspan="1" colspan="1" style="width: 44px;">操作</th></tr>
+                    </thead>
+                <tbody><tr class="odd"><td valign="top" colspan="12" class="dataTables_empty">没有符合您搜索条件的信息</td></tr></tbody></table><div class="bottom"><div class="dataTables_info" id="lendingList_info" role="status" aria-live="polite">显示第 0 至 0 项结果，共 0 项</div><div class="dataTables_length" id="lendingList_length"><label> <select name="lendingList_length" aria-controls="lendingList" class="form-control input-sm"><option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select> </label></div><div class="dataTables_paginate paging_full_numbers" id="lendingList_paginate"><ul class="pagination"><li class="paginate_button first disabled" id="lendingList_first"><a href="javascript:void(0);" aria-controls="lendingList" data-dt-idx="0" tabindex="0">首页</a></li><li class="paginate_button previous disabled" id="lendingList_previous"><a href="javascript:void(0);" aria-controls="lendingList" data-dt-idx="1" tabindex="0">上页</a></li><li class="paginate_button next disabled" id="lendingList_next"><a href="javascript:void(0);" aria-controls="lendingList" data-dt-idx="2" tabindex="0">下页</a></li><li class="paginate_button last disabled" id="lendingList_last"><a href="javascript:void(0);" aria-controls="lendingList" data-dt-idx="3" tabindex="0">末页</a></li></ul></div><div class="clear"></div></div></div>
+            </div>
+            <!--正文内容end-->
+        </div>
+    </div>
+</body>
+</html>

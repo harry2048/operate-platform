@@ -1,0 +1,151 @@
+<html lang="en"><head>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <title>商户专案配置</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/base.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/layer.css" rel="stylesheet">
+    <link href="css/pagination.css" rel="stylesheet">
+    <link href="css/bootstrap-datetimepicker.css" rel="stylesheet">
+    <link href="css/dataTables.bootstrap.min.css" rel="stylesheet">
+    <link href="css/jedate.css" rel="stylesheet">
+    <style>
+        #loanDetail{
+            background-color: #fff;
+            margin-bottom: 5px;
+        }
+        #loanDetail p{
+            padding-left:0 ;
+            padding-right: 0;
+            margin: 6px 0 ;
+        }
+        #loanDetail .wd_60{
+            display: inline-block;
+            width: 102px;
+            text-align: right;
+            font-size: 12px;
+            font-family: "微软雅黑";
+        }
+        #loanDetail .c13 .wd_60{
+            float: left;
+            margin-top: 5px;
+        }
+        #loanDetail .c13 input{
+            float: left;
+            font-size: 12px;
+            font-family: "微软雅黑";
+        }
+        #loanDetail .col-lg-3 ,#loanDetail .c13{
+            margin:5px 0;
+            padding-left:5px;
+            padding-right: 5px;
+        }
+
+        #loanDetail select option{
+            font-size: 12px;
+            font-family: "微软雅黑";
+        }
+        .search_btn {
+            font-size: 12px;
+            background-color: #09C;
+            padding: 5px 16px;
+            margin-top: 3px;
+            margin-bottom: 5px;
+        }
+        .ta_r{
+            text-align: right;
+        }
+        .mr_25{
+            margin-right: 25px;
+        }
+        .pt_10{
+            padding-top: 10px;
+        }
+    </style>
+</head>
+<body><div class="hui"><img src="images/ajax-loader.gif"></div>
+<div class="content">
+    <div id="loanDetail" class="col-lg-12 col-md-12 col-sm-12 pt_10">
+        <div class="col-lg-3 col-md-3 col-sm-3"><span class="wd_60">资方名称&nbsp;&nbsp;</span>
+            <select id="capitalid">
+                <option value="">---请选择---</option>
+                
+                    <option value="bobcfc">北银消费金融有限公司</option>
+                
+                    <option value="sy">闪银</option>
+                
+                    <option value="hr">海尔消费金融有限公司</option>
+                
+                    <option value="bidu">百度</option>
+                
+                    <option value="hdfex">互动金服</option>
+                
+                    <option value="wecash3c">闪银3C分期</option>
+                
+                    <option value="alipay">蚂蚁金服</option>
+                
+                    <option value="dyzf">贷鱼租房</option>
+                
+                    <option value="dyjy">贷鱼教育</option>
+                
+                    <option value="haier_rent">海尔租房</option>
+                
+                    <option value="gmxjd">国美金融</option>
+                
+                    <option value="word">沃付分期</option>
+                
+                    <option value="91">91金融</option>
+                
+                    <option value="91online">91旺财</option>
+                
+                    <option value="jszf">晋商租房</option>
+                
+                    <option value="jsjy">晋商教育</option>
+                
+                    <option value="91zfonline">91旺财-租房</option>
+                
+                    <option value="dyhouse">贷鱼租房</option>
+                
+                    <option value="kbt">库分期</option>
+                
+                    <option value="suning">苏宁</option>
+                
+                    <option value="ymwf">医美月付</option>
+                
+            </select></div>
+        <div class="col-lg-3 col-md-3 col-sm-3"><span class="wd_60">资方专案名称&nbsp;&nbsp;</span><input type="text" id="capitalCaseName"></div>
+        <div class="col-lg-3 col-md-3 col-sm-3"><span class="wd_60">贷鱼专案名称&nbsp;&nbsp;</span><input type="text" id="caseName"></div>
+        <div class="col-lg-3 col-md-3 col-sm-3"><span class="wd_60">商户专案状态&nbsp;&nbsp;</span>
+            <select id="bizCaseStatus">
+                <option value="">---请选择---</option>
+                <option value="1">已配置</option>
+            </select></div>
+        </div>
+        <div class="col-lg-offset-3 col-md-offset-3 col-sm-offset-3 col-lg-4 col-md-4 col-sm-4 ta_r text-center pt_10">
+            <button class="btn btn-primary btn-sm search_btn" type="button" id="btn-search">查询</button>&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="btn btn-primary btn-sm search_btn mr_25" id="addBizCase" type="button">保存专案配置</button>
+        </div>
+        <div class="clear"></div>
+    </div>
+    <div class="table-responsive" style="width: 95%;margin: 0 auto;height:400px;overflow-y: scroll;">
+        <div id="bizCaseList_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer"><div class="top"><div class="clear"></div></div><div id="bizCaseList_processing" class="dataTables_processing panel panel-default" style="display: none;">处理中...</div><div class="dataTables_scroll"><div class="dataTables_scrollHead" style="overflow: hidden; position: relative; border: 0px; width: 100%;"><div class="dataTables_scrollHeadInner" style="box-sizing: content-box; width: 1200px; padding-right: 0px;"><table style="width: 1200px; overflow: auto; margin-left: 0px;" class="table table-bordered table-striped table-hover bg_wt dataTable no-footer" role="grid"><thead style="border-bottom: 0;background-color: #fff;">
+            <tr role="row"><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 19px;"><input class="allCkb" type="checkbox"></th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 155px;">专案名称</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 46px;">账管费</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 148px;">账管费名称</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 90px;">商户贴息利率</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 75px;">客户年利率</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 55px;">额度</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 90px;">还款方式名称</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 44px;">期限</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 91px;">资方专案代码</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 120px;">资方名称</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 62px;">利润来源</th></tr>
+            </thead></table></div></div><div class="dataTables_scrollBody" style="position: relative; overflow: auto; width: 100%;"><table id="bizCaseList" style="width: 1200px; overflow: auto" class="table table-bordered table-striped table-hover bg_wt dataTable no-footer" role="grid" aria-describedby="bizCaseList_info"><thead style="border-bottom: 0;background-color: #fff;">
+            <tr role="row" style="height: 0px;"><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px; width: 19px;"><div class="dataTables_sizing" style="height:0;overflow:hidden;"><input class="allCkb" type="checkbox"></div></th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px; width: 155px;"><div class="dataTables_sizing" style="height:0;overflow:hidden;">专案名称</div></th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px; width: 46px;"><div class="dataTables_sizing" style="height:0;overflow:hidden;">账管费</div></th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px; width: 148px;"><div class="dataTables_sizing" style="height:0;overflow:hidden;">账管费名称</div></th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px; width: 90px;"><div class="dataTables_sizing" style="height:0;overflow:hidden;">商户贴息利率</div></th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px; width: 75px;"><div class="dataTables_sizing" style="height:0;overflow:hidden;">客户年利率</div></th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px; width: 55px;"><div class="dataTables_sizing" style="height:0;overflow:hidden;">额度</div></th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px; width: 90px;"><div class="dataTables_sizing" style="height:0;overflow:hidden;">还款方式名称</div></th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px; width: 44px;"><div class="dataTables_sizing" style="height:0;overflow:hidden;">期限</div></th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px; width: 91px;"><div class="dataTables_sizing" style="height:0;overflow:hidden;">资方专案代码</div></th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px; width: 120px;"><div class="dataTables_sizing" style="height:0;overflow:hidden;">资方名称</div></th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px; width: 62px;"><div class="dataTables_sizing" style="height:0;overflow:hidden;">利润来源</div></th></tr>
+            </thead>
+            
+        <tbody><tr role="row" class="odd"><td><input type="checkbox" value="19" name="ids" class="ckb"></td><td>数通3期贴息4%专案</td><td>0</td><td>按总金额比例分摊到月</td><td>0.04</td><td>0</td><td>200000</td><td>等额本金</td><td>3-3</td><td>Z100227</td><td>北银消费金融公司</td><td>贴息</td></tr><tr role="row" class="even"><td><input type="checkbox" value="20" name="ids" class="ckb"></td><td>数通6期贴息4.5%专案</td><td>0</td><td>按总金额比例分摊到月</td><td>0.045</td><td>0</td><td>200000</td><td>等额本金</td><td>6-6</td><td>Z100209</td><td>北银消费金融公司</td><td>贴息</td></tr><tr role="row" class="odd"><td><input type="checkbox" value="21" name="ids" class="ckb"></td><td>数通6期贴息5%专案</td><td>0</td><td>按总金额比例分摊到月</td><td>0.05</td><td>0</td><td>200000</td><td>等额本金</td><td>6-6</td><td>Z100209</td><td>北银消费金融公司</td><td>贴息</td></tr><tr role="row" class="even"><td><input type="checkbox" value="22" name="ids" class="ckb"></td><td>数通6期贴息7%专案</td><td>0</td><td>按总金额比例分摊到月</td><td>0.07</td><td>0</td><td>200000</td><td>等额本金</td><td>6-6</td><td>Z100209</td><td>北银消费金融公司</td><td>贴息</td></tr><tr role="row" class="odd"><td><input type="checkbox" value="23" name="ids" class="ckb"></td><td>数通9期贴息5.5%专案</td><td>0</td><td>按总金额比例分摊到月</td><td>0.055</td><td>0</td><td>200000</td><td>等额本金</td><td>9-9</td><td>Z100210</td><td>北银消费金融公司</td><td>贴息</td></tr><tr role="row" class="even"><td><input type="checkbox" value="24" name="ids" class="ckb"></td><td>数通9期贴息10%专案</td><td>0</td><td>按总金额比例分摊到月</td><td>0.1</td><td>0</td><td>200000</td><td>等额本金</td><td>9-9</td><td>Z100210</td><td>北银消费金融公司</td><td>贴息</td></tr><tr role="row" class="odd"><td><input type="checkbox" value="25" name="ids" class="ckb"></td><td>数通12期贴息8%专案</td><td>0</td><td>按总金额比例分摊到月</td><td>0.08</td><td>0</td><td>200000</td><td>等额本金</td><td>12-12</td><td>Z100064</td><td>北银消费金融公司</td><td>贴息</td></tr><tr role="row" class="even"><td><input type="checkbox" value="26" name="ids" class="ckb"></td><td>数通12期贴息13%专案</td><td>0</td><td>按总金额比例分摊到月</td><td>0.13</td><td>0</td><td>200000</td><td>等额本金</td><td>12-12</td><td>Z100064</td><td>北银消费金融公司</td><td>贴息</td></tr><tr role="row" class="odd"><td><input type="checkbox" value="27" name="ids" class="ckb"></td><td>数通12期贴息6.5%专案</td><td>0</td><td>按总金额比例分摊到月</td><td>0.065</td><td>0</td><td>200000</td><td>等额本金</td><td>12-12</td><td>Z100064</td><td>北银消费金融公司</td><td>贴息</td></tr><tr role="row" class="even"><td><input type="checkbox" value="28" name="ids" class="ckb"></td><td>数通18期贴息9.5%专案</td><td>0</td><td>按总金额比例分摊到月</td><td>0.095</td><td>0</td><td>200000</td><td>等额本金</td><td>18-18</td><td>Z100211</td><td>北银消费金融公司</td><td>贴息</td></tr></tbody></table></div></div><div class="bottom"><div class="dataTables_info" id="bizCaseList_info" role="status" aria-live="polite">显示第 1 - 10 条记录，共394 条</div><div class="dataTables_length" id="bizCaseList_length"><label> <select name="bizCaseList_length" aria-controls="bizCaseList" class="form-control input-sm"><option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select> </label></div><div class="dataTables_paginate paging_full_numbers" id="bizCaseList_paginate"><ul class="pagination"><li class="paginate_button first disabled" id="bizCaseList_first"><a href="javascript:void(0);" aria-controls="bizCaseList" data-dt-idx="0" tabindex="0">首页</a></li><li class="paginate_button previous disabled" id="bizCaseList_previous"><a href="javascript:void(0);" aria-controls="bizCaseList" data-dt-idx="1" tabindex="0">上页</a></li><li class="paginate_button active"><a href="javascript:void(0);" aria-controls="bizCaseList" data-dt-idx="2" tabindex="0">1</a></li><li class="paginate_button "><a href="javascript:void(0);" aria-controls="bizCaseList" data-dt-idx="3" tabindex="0">2</a></li><li class="paginate_button "><a href="javascript:void(0);" aria-controls="bizCaseList" data-dt-idx="4" tabindex="0">3</a></li><li class="paginate_button "><a href="javascript:void(0);" aria-controls="bizCaseList" data-dt-idx="5" tabindex="0">4</a></li><li class="paginate_button "><a href="javascript:void(0);" aria-controls="bizCaseList" data-dt-idx="6" tabindex="0">5</a></li><li class="paginate_button disabled" id="bizCaseList_ellipsis"><a href="javascript:void(0);" aria-controls="bizCaseList" data-dt-idx="7" tabindex="0">…</a></li><li class="paginate_button "><a href="javascript:void(0);" aria-controls="bizCaseList" data-dt-idx="8" tabindex="0">40</a></li><li class="paginate_button next" id="bizCaseList_next"><a href="javascript:void(0);" aria-controls="bizCaseList" data-dt-idx="9" tabindex="0">下页</a></li><li class="paginate_button last" id="bizCaseList_last"><a href="javascript:void(0);" aria-controls="bizCaseList" data-dt-idx="10" tabindex="0">末页</a></li></ul></div><div class="clear"></div></div></div>
+    </div>
+    <!--正文内容end-->
+
+
+
+
+
+
+
+
+
+
+</body></html>

@@ -1,0 +1,223 @@
+<div class="content1" href="">
+
+    <meta http-equiv="content-type" content="text/html;charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <title>风险准备金管理页面</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/base.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/skin/layer.css" rel="stylesheet">
+    <link href="css/pagination.css" rel="stylesheet">
+    <link href="css/bootstrap-datetimepicker.css" rel="stylesheet">
+    <link href="css/dataTables.bootstrap.min.css" rel="stylesheet">
+    <link href="css/jedate.css" rel="stylesheet">
+    <style>
+        #loanDetail{
+            background-color: #fff;
+            margin-bottom: 15px;
+        }
+        #loanDetail p{
+            padding-left:0 ;
+            padding-right: 0;
+            margin: 6px 0 ;
+        }
+        #loanDetail .wd_60{
+            display: inline-block;
+            width: 102px;
+            text-align: right;
+            font-size: 12px;
+            font-family: "微软雅黑";
+        }
+        #loanDetail .c13 .wd_60{
+            float: left;
+            margin-top: 5px;
+        }
+        #loanDetail .c13 input{
+            float: left;
+            font-size: 12px;
+            font-family: "微软雅黑";
+        }
+        #loanDetail .col-lg-3 ,#loanDetail .c13{
+            margin:5px 0;
+            padding-left:5px;
+            padding-right: 5px;
+        }
+
+        #loanDetail select option{
+            font-size: 12px;
+            font-family: "微软雅黑";
+        }
+        .search_btn {
+            font-size: 12px;
+            background-color: #09C;
+            padding: 5px 16px;
+            margin-top: 3px;
+            margin-bottom: 5px;
+        }
+        .ta_r{
+            text-align: right;
+        }
+        .mr_25{
+            margin-right: 25px;
+        }
+        .td_align_left{
+            text-align: left;
+        }
+    </style>
+
+<div class="hui"><img src="images/ajax-loader.gif"></div>
+<div class="content">
+    <!--面包屑导航start-->
+    <ol class="breadcrumb">
+        <li class="active">风险准备金管理列表</li>
+    </ol>
+    <div id="loanDetail" class="col-lg-12 col-md-12 col-sm-12">
+        <div class="col-lg-3 col-md-3 col-sm-3"><span class="wd_60">商户名称&nbsp;&nbsp;</span><input type="text" name="name" id="name"></div>
+        <div class="col-lg-3 col-md-3 col-sm-3"><span class="wd_60">渠道维护&nbsp;&nbsp;</span><select id="channelManagerId">
+            <option value="">---请选择---</option>
+            
+                <option value="18760dec-f53b-4a6b-9bf8-2cf322da9a35">吴英骄</option>
+            
+                <option value="36d938bf-58d5-4a7e-a7e6-2ae7e28efbb7">肖俊骞</option>
+            
+                <option value="8a86bc56-55af-4957-9eea-61e34a778232">楚鹏</option>
+            
+                <option value="92c4dfed-e665-4e98-9afe-4bc01f9dc525">林燚填</option>
+            
+                <option value="931937a3-e374-469f-8977-e8373bb7ab34">张咏</option>
+            
+                <option value="bc4e53ba-a7f0-4abf-a1a3-e4e0630ab1c6">张雍昊</option>
+            
+                <option value="cfef2ca9-3805-45c3-b7aa-c1aab257294e">李家欢</option>
+            
+                <option value="f9b2f164-691b-42aa-8d0b-bb3f06478edc">李文明</option>
+            
+        </select></div>
+        <div class="col-lg-3 col-md-3 col-sm-3"><span class="wd_60">业务类型&nbsp;&nbsp;</span><select id="sourceType">
+            <option value="">---请选择---</option>
+            <option value="1">教育</option>
+            <option value="2">租房</option>
+            <option value="4">数码</option>
+            <option value="3">碧水源</option>
+        </select></div>
+        <div class="col-lg-3 col-md-3 col-sm-3"><span class="wd_60">商户状态&nbsp;&nbsp;</span><select id="status">
+            <option value="">---请选择---</option>
+            <option value="0">未启用</option>
+            <option value="1">已启用</option>
+            <option value="2">已过期</option>
+        </select></div>
+        <div class="col-lg-3 col-md-3 col-sm-3 ta_r">
+            <button class="btn btn-primary btn-sm search_btn" type="button" id="btn-search">查询</button>&nbsp;&nbsp;&nbsp;&nbsp;
+        </div>
+        <div class="clear"></div>
+    </div>
+    <div class="table-responsive">
+        <div id="bizRiskList_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer"><div class="top"><div class="clear"></div></div><div id="bizRiskList_processing" class="dataTables_processing panel panel-default" style="display: none;">处理中...</div><table id="bizRiskList" style="width: 100%;" class="table table-bordered table-striped table-hover bg_wt dataTable no-footer" role="grid" aria-describedby="bizRiskList_info">
+            <thead style="border-bottom: 0;background-color: #fff;">
+            <tr role="row"><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 360px;">商户简称</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 101px;">风险准备金</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 83px;">资金方</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 101px;">已放款金额</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 101px;">已代偿金额</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 83px;">剩余额度</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 102px;">贷款余额</th><th class="text-center sorting_disabled td_align_left" rowspan="1" colspan="1" style="width: 93px;">操作</th></tr>
+            </thead>
+        <tbody><tr role="row" class="odd"><td>郑州法商专修学院</td><td>10000</td><td>晋商教育</td><td>91700</td><td></td><td>144600</td><td>91700</td><td class=" td_align_left"><button type="button" data-id="6531783008843260929" class="btn btn-primary btn-sm " name="biz-manage">管理</button>&nbsp;&nbsp;</td></tr><tr role="row" class="even"><td>北京风驰劲速科技有限公司</td><td>0</td><td></td><td>0</td><td></td><td>0</td><td>0</td><td class=" td_align_left"><button type="button" data-id="6530978664420621313" class="btn btn-primary btn-sm " name="biz-manage">管理</button>&nbsp;&nbsp;</td></tr><tr role="row" class="odd"><td>森纵艾德(北京)教育科技股份有限公司</td><td>0</td><td></td><td>0</td><td></td><td>0</td><td>0</td><td class=" td_align_left"><button type="button" data-id="6527089187879135233" class="btn btn-primary btn-sm " name="biz-manage">管理</button>&nbsp;&nbsp;</td></tr><tr role="row" class="even"><td>成都市锦江区西基王动漫职业技能培训学校</td><td>0</td><td></td><td>0</td><td></td><td>0</td><td>0</td><td class=" td_align_left"><button type="button" data-id="6527092769237094401" class="btn btn-primary btn-sm " name="biz-manage">管理</button>&nbsp;&nbsp;</td></tr><tr role="row" class="odd"><td>北京财经专修学院</td><td>0</td><td></td><td>0</td><td></td><td>0</td><td>0</td><td class=" td_align_left"><button type="button" data-id="6514808442881638401" class="btn btn-primary btn-sm " name="biz-manage">管理</button>&nbsp;&nbsp;</td></tr><tr role="row" class="even"><td>湖南省众智职业培训学校</td><td>10000</td><td>晋商教育</td><td>77000</td><td></td><td>190000</td><td>77000</td><td class=" td_align_left"><button type="button" data-id="6514803116480564225" class="btn btn-primary btn-sm " name="biz-manage">管理</button>&nbsp;&nbsp;</td></tr><tr role="row" class="odd"><td>北京漫动者教育科技有限公司</td><td>0</td><td></td><td>0</td><td></td><td>0</td><td>0</td><td class=" td_align_left"><button type="button" data-id="6514454006374454273" class="btn btn-primary btn-sm " name="biz-manage">管理</button>&nbsp;&nbsp;</td></tr><tr role="row" class="even"><td>上海天亥信息咨询有限公司</td><td>10000</td><td>晋商教育</td><td>242269</td><td></td><td>7731</td><td>232723.5</td><td class=" td_align_left"><button type="button" data-id="6514461088641876993" class="btn btn-primary btn-sm " name="biz-manage">管理</button>&nbsp;&nbsp;</td></tr><tr role="row" class="odd"><td>河南泽睿测评技术有限公司</td><td>30000</td><td>晋商教育</td><td>342000</td><td></td><td>49200</td><td>319200</td><td class=" td_align_left"><button type="button" data-id="6468774723025935361" class="btn btn-primary btn-sm " name="biz-manage">管理</button>&nbsp;&nbsp;</td></tr><tr role="row" class="even"><td>上海谦问万答吧云计算科技有限公司</td><td>80000</td><td>晋商教育</td><td>1138666</td><td></td><td>4191.14</td><td>1107296.5</td><td class=" td_align_left"><button type="button" data-id="6512207322432108545" class="btn btn-primary btn-sm " name="biz-manage">管理</button>&nbsp;&nbsp;</td></tr></tbody></table><div class="bottom"><div class="dataTables_info" id="bizRiskList_info" role="status" aria-live="polite">显示第 1 - 10 条记录，共87 条</div><div class="dataTables_length" id="bizRiskList_length"><label> <select name="bizRiskList_length" aria-controls="bizRiskList" class="form-control input-sm"><option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select> </label></div><div class="dataTables_paginate paging_full_numbers" id="bizRiskList_paginate"><ul class="pagination"><li class="paginate_button first disabled" id="bizRiskList_first"><a href="javascript:void(0);" aria-controls="bizRiskList" data-dt-idx="0" tabindex="0">首页</a></li><li class="paginate_button previous disabled" id="bizRiskList_previous"><a href="javascript:void(0);" aria-controls="bizRiskList" data-dt-idx="1" tabindex="0">上页</a></li><li class="paginate_button active"><a href="javascript:void(0);" aria-controls="bizRiskList" data-dt-idx="2" tabindex="0">1</a></li><li class="paginate_button "><a href="javascript:void(0);" aria-controls="bizRiskList" data-dt-idx="3" tabindex="0">2</a></li><li class="paginate_button "><a href="javascript:void(0);" aria-controls="bizRiskList" data-dt-idx="4" tabindex="0">3</a></li><li class="paginate_button "><a href="javascript:void(0);" aria-controls="bizRiskList" data-dt-idx="5" tabindex="0">4</a></li><li class="paginate_button "><a href="javascript:void(0);" aria-controls="bizRiskList" data-dt-idx="6" tabindex="0">5</a></li><li class="paginate_button disabled" id="bizRiskList_ellipsis"><a href="javascript:void(0);" aria-controls="bizRiskList" data-dt-idx="7" tabindex="0">…</a></li><li class="paginate_button "><a href="javascript:void(0);" aria-controls="bizRiskList" data-dt-idx="8" tabindex="0">9</a></li><li class="paginate_button next" id="bizRiskList_next"><a href="javascript:void(0);" aria-controls="bizRiskList" data-dt-idx="9" tabindex="0">下页</a></li><li class="paginate_button last" id="bizRiskList_last"><a href="javascript:void(0);" aria-controls="bizRiskList" data-dt-idx="10" tabindex="0">末页</a></li></ul></div><div class="clear"></div></div></div>
+    </div>
+    <!--正文内容end-->
+</div>
+<script src="jedate/jedate.min.js"></script>
+<script>
+
+
+</script>
+
+<script>
+    $(function(){
+        var dt = $("#bizRiskList").dataTable({
+            "sDom":'<"top"<"clear">>rt<"bottom"ilp<"clear">>',
+            bProcessing:true,
+            searching: false, // 禁用dataTables自带的查询框
+            ordering: false, // 禁用排序
+            displayStart: 0,
+            pageLength: 10,
+            ajax: {
+                type: "POST",
+                url: "/hd/biz/bizRiskListData",
+                data:function(d) {
+                    d.name = $("#name").val();
+                    d.channelManagerId=$("#channelManagerId").val();
+                    d.sourceType=$("#sourceType").val();
+                    d.status=$("#status").val();
+                }
+            },
+            columns: [
+                {data:"name",default:''},
+                {data:"bailAmount",default:'0'},
+                {data:"fundSource",default:'' },
+                {data:"loanAmount",default:'0'},
+                {data:"compensatoryAmount",default:'0'},
+                {data:"unuseCreditAmount",default:'0'},
+                {data:"balLoanAmount",default:'0'},
+                {data: "id",className:"td_align_left", render:function(data,type,row){
+                    var operation = "<button type='button'  data-id="+data+" class='btn btn-primary btn-sm ' name='biz-manage'>管理</button>&nbsp;&nbsp;";
+                    return operation;
+                }}
+            ]
+        });
+        $("#btn-search").click(function(e){
+            dt.api().draw();
+        });
+
+        $("#bizRiskList").on("click","button[name='biz-manage']",function(e){
+            var $current = $(e.currentTarget);
+            var bizId = $current.data("id");
+            var pageIndex=dt.api().page();
+            var pageSize=dt.api().page.len();
+            pageIndex=pageIndex*pageSize;
+            conentWin.load("/hd/biz/toRiskManage?bizId="+bizId+"&pageIndex="+pageIndex+"&pageSize="+pageSize);
+        });
+    });
+
+</script>
+
+
+<script>
+    //分页方法
+    function page(n,s){
+        $("#pageNo").val(n);
+        $("#pageSize").val(s);
+        $("#searchForm").submit();
+        return false;
+    }
+
+
+</script>
+
+<script>
+    var time = 100000;
+    var interval; //调度器对象。
+    function run(){
+        interval = setInterval("fun()",time);
+    }
+    function fun(){
+        $(".hui").css("display","none");
+    }
+    $(function(){
+        $("#reviewList").delegate('tr td button','click',function(){
+            $(this).html("加载中...").attr("disabled","disabled");
+            $(".hui").css("display","block");
+            run();
+        })
+    })
+</script>
+
+<script>
+    $(document).ready(function(e) {
+        var counter = 0;
+        if (window.history && window.history.pushState) {
+            $(window).on('popstate', function () {
+                window.history.pushState('forward', null, '#');
+                window.history.forward(1);
+            });
+        }
+        window.history.pushState('forward', null, '#'); //在IE中必须得有这两行
+        window.history.forward(1);
+    });
+</script>
+
+</div>

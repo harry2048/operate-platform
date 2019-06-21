@@ -1,0 +1,478 @@
+<div class="content1" href="">
+    <meta http-equiv="content-type" content="text/html;charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <title>放款明细查询页面</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/base.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/layer.css" rel="stylesheet">
+    <link href="css/pagination.css" rel="stylesheet">
+    <link href="css/bootstrap-datetimepicker.css" rel="stylesheet">
+    <link href="css/dataTables.bootstrap.min.css" rel="stylesheet">
+    <link href="css/jedate.css" rel="stylesheet">
+    <style>
+        #loanDetail{
+            background-color: #fff;
+            margin-bottom: 15px;
+        }
+        #loanDetail p{
+            padding-left:0 ;
+            padding-right: 0;
+            margin: 6px 0 ;
+        }
+        #loanDetail .wd_60{
+            display: inline-block;
+            width: 102px;
+            text-align: right;
+            font-size: 12px;
+            font-family: "微软雅黑";
+        }
+        #loanDetail .c13 .wd_60{
+            float: left;
+            margin-top: 5px;
+        }
+        #loanDetail .c13 input{
+            float: left;
+            font-size: 12px;
+            font-family: "微软雅黑";
+        }
+        #loanDetail .col-lg-3 ,#loanDetail .c13{
+            margin:5px 0;
+            padding-left:5px;
+            padding-right: 5px;
+        }
+
+        #loanDetail select option{
+            font-size: 12px;
+            font-family: "微软雅黑";
+        }
+        .search_btn {
+            font-size: 12px;
+            background-color: #09C;
+            padding: 5px 16px;
+            margin-top: 3px;
+            margin-bottom: 5px;
+        }
+        .ta_r{
+            text-align: right;
+        }
+        .mr_25{
+            margin-right: 25px;
+        }
+        .cardSelect{
+            border: 1px solid #ddd;
+            height: 25px;
+            width: 150px;
+            font-size: 12px;
+        }
+    </style>
+
+<!-- <div class="hui"><img src="images/ajax-loader.gif"></div> -->
+        <div class="content">
+            <!--面包屑导航start-->
+            <ol class="breadcrumb">
+                <li class="active">放款明细列表查询</li>
+            </ol>
+            <div id="loanDetail" class="col-lg-12 col-md-12 col-sm-12">
+                <div class="col-lg-3 col-md-3 col-sm-3"><span class="wd_60">身份证号&nbsp;&nbsp;</span><input type="text" id="idCardNo"></div>
+                <div class="col-lg-3 col-md-3 col-sm-3"><span class="wd_60">姓名&nbsp;&nbsp;</span><input type="text" id="idName"></div>
+                <div class="col-lg-3 col-md-3 col-sm-3"><span class="wd_60">渠道名称&nbsp;&nbsp;</span><input type="text" id="bcName"></div>
+                <div class="col-lg-3 col-md-3 col-sm-3"><span class="wd_60">业务类型&nbsp;&nbsp;</span>
+                    <select id="sourceType">
+                        <option value="">---请选择---</option>
+                        <option value="1">教育</option>
+                        <option value="2">租房</option>
+                        <option value="4">数码</option>
+                        <option value="3">碧水源</option>
+                    </select>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-3"><span class="wd_60">贷款状态&nbsp;&nbsp;</span>
+                    <select id="loanStatus">
+                        <option value="">---请选择---</option>
+                        <option value="0">待审批</option>
+                        <option value="-3000">订单取消</option>
+                        <option value="9000">订单完结</option>
+                        <option value="7000" selected="">已放款</option>
+                        <option value="5000">审批通过</option>
+                        <option value="6000">已支付</option>
+                        <option value="-1000">审批拒绝</option>
+                        <option value="2000">打回修改</option>
+                        <option value="1000">互动初审通过</option>
+                        <option value="4500">互动审批通过</option>
+                        <option value="8000">提前还款</option>
+                        <option value="-9000">未提交</option>
+                    </select>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-3"><span class="wd_60">联系方式&nbsp;&nbsp;</span><input type="text" id="phoneNo"></div>
+                <div class="col-lg-3 col-md-3 col-sm-3"><span class="wd_60">放款时间(开始)&nbsp;&nbsp;</span><input type="text" id="lendingDateStart" value="" placeholder="请选择时间" readonly=""></div>
+                <div class="col-lg-3 col-md-3 col-sm-3"><span class="wd_60">放款时间(结束)&nbsp;&nbsp;</span><input type="text" id="lendingDateEnd" value="" placeholder="请选择时间" readonly=""></div>
+                <div class="col-lg-3 col-md-3 col-sm-3"><span class="wd_60">资方&nbsp;&nbsp;</span><select id="fundSource"><option value="">请选择</option><option value="1">北银</option><option value="14">91金融</option><option value="13">沃付分期</option><option value="22">医美</option><option value="30">苏宁</option><option value="100">mini循环贷</option><option value="3">海尔教育</option><option value="4">安信小贷</option><option value="5">百度</option><option value="7">海尔租房</option><option value="8">华融</option><option value="11">贷鱼教育</option><option value="15">湖北消费金融</option><option value="16">91旺财</option><option value="18">晋商租房</option><option value="17">晋商教育</option></select></div>
+                <div class="col-lg-3 col-md-3 col-sm-3 c13"><span class="wd_60">信审日期(开始)&nbsp;&nbsp;</span><input type="text" id="applyDateStart" value="2019-05-20 00:00:00" placeholder="请选择时间" readonly=""></div>
+                <div class="col-lg-3 col-md-3 col-sm-3 c13"><span class="wd_60">信审日期(结束)&nbsp;&nbsp;</span><input type="text" id="applyDateEnd" value="2019-05-20 23:59:59" placeholder="请选择时间" readonly=""></div>
+                <div class="col-lg-3 col-md-3 col-sm-3">
+
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-3 ta_r">
+                    <button class="btn btn-primary btn-sm search_btn" type="button" id="btn-search">查询</button>
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <button class="btn btn-primary btn-sm search_btn mr_25" type="button" id="btn-export" onclick="exportResult();">导出</button>
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div class="table-responsive">
+                <div id="lendingList_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer"><div class="top"><div class="clear"></div></div><div id="lendingList_processing" class="dataTables_processing panel panel-default" style="display: none;">处理中...</div><table id="lendingList" style="overflow: auto; width: 2998px;" class="table table-bordered table-striped table-hover bg_wt dataTable no-footer" role="grid" aria-describedby="lendingList_info">
+                    <thead style="border-bottom: 0;background-color: #fff;">
+                    <tr role="row"><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 61px;">业务范围</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 164px;">订单编号</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 83px;">申请时间</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 83px;">放款日期</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 234px;">渠道</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 280px;">商品名称</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 61px;">客户姓名</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 156px;">身份证号码</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 97px;">手机号</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 67px;">申请金额</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 67px;">贷款余额</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 58px;">期供款</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 61px;">申请期限</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 61px;">已还期数</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 90px;">资方放款金额</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 104px;">互动应放款金额</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 61px;">贷款状态</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 61px;">资方</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 67px;">费率互动</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 235px;">商户户名</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 308px;">商户开户行</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 166px;">商户收款账号</th></tr>
+                    </thead>
+                <tbody><tr role="row" class="odd"><td> 教育 </td><td>6536047057279386625</td><td>2019-05-20</td><td>2019-05-20</td><td>深圳市宝安区卓文教育培训中心</td><td>网络工程师</td><td>苏志鹏</td><td>431121199712221012</td><td>15220058658</td><td>14800.00</td><td>14800.00</td><td>970.22</td><td>18</td><td>0</td><td>14800.00</td><td>14800.00</td><td>已放款</td><td>晋商教育</td><td>0.000000</td><td>深圳市宝安区卓文教育培训中心</td><td>中国农业银行深圳东方支行</td><td>41021300040021932</td></tr><tr role="row" class="even"><td> 教育 </td><td>6536048788262355969</td><td>2019-05-20</td><td>2019-05-20</td><td>广东明世在线教育科技有限公司</td><td>专本套读</td><td>秦丽</td><td>411503199611014220</td><td>13145720788</td><td>9300.00</td><td>9300.00</td><td>775.00</td><td>12</td><td>0</td><td>9300.00</td><td>8639.70</td><td>已放款</td><td>晋商教育</td><td>0.071000</td><td>广东明世在线教育科技有限公司</td><td>平安银行股份有限公司广州新港中路支行</td><td>11014801655000</td></tr><tr role="row" class="odd"><td> 教育 </td><td>6536066070680175617</td><td>2019-05-20</td><td>2019-05-20</td><td>深圳市宝安区卓文教育培训中心</td><td>网络工程师</td><td>袁世贵</td><td>469002199710044911</td><td>18889393390</td><td>14800.00</td><td>14800.00</td><td>970.22</td><td>18</td><td>0</td><td>14800.00</td><td>14800.00</td><td>已放款</td><td>晋商教育</td><td>0.000000</td><td>深圳市宝安区卓文教育培训中心</td><td>中国农业银行深圳东方支行</td><td>41021300040021932</td></tr><tr role="row" class="even"><td> 教育 </td><td>6536071557894112257</td><td>2019-05-20</td><td>2019-05-20</td><td>上海海同优才教育培训有限责任公司</td><td>【零基础】人工智能+Python全栈开发课程</td><td>肖艳旭</td><td>412822199010014205</td><td>15720581969</td><td>16800.00</td><td>16800.00</td><td>868.00</td><td>24</td><td>0</td><td>16800.00</td><td>16800.00</td><td>已放款</td><td>晋商教育</td><td>0.000000</td><td>上海海同优才教育培训有限责任公司</td><td>建行张江支行</td><td>3100152321105004798</td></tr><tr role="row" class="odd"><td> 教育 </td><td>6536084463659516929</td><td>2019-05-20</td><td>2019-05-20</td><td>广东明世在线教育科技有限公司</td><td>自考本科行政管理零基础签约保障班</td><td>柳肖肖</td><td>622726199602200668</td><td>15779856918</td><td>6735.00</td><td>6735.00</td><td>561.25</td><td>12</td><td>0</td><td>6735.00</td><td>6256.81</td><td>已放款</td><td>晋商教育</td><td>0.071000</td><td>广东明世在线教育科技有限公司</td><td>平安银行股份有限公司广州新港中路支行</td><td>11014801655000</td></tr><tr role="row" class="even"><td> 教育 </td><td>6536084611329426433</td><td>2019-05-20</td><td>2019-05-20</td><td>上海育创网络科技股份有限公司</td><td>大数据分析</td><td>陈立鹏</td><td>320831199907312613</td><td>13771191051</td><td>19980.00</td><td>19980.00</td><td>1032.30</td><td>24</td><td>0</td><td>19980.00</td><td>19980.00</td><td>已放款</td><td>晋商教育</td><td>0.000000</td><td>上海育创网络科技股份有限公司</td><td>中国工商银行股份有限公司上海市联洋第二支行</td><td>101168019006746845</td></tr><tr role="row" class="odd"><td> 教育 </td><td>6536090369644299265</td><td>2019-05-20</td><td>2019-05-20</td><td>武汉远航智慧数码科技有限公司</td><td>环艺精英班</td><td>赵子康</td><td>421023200005214914</td><td>15171206548</td><td>16800.00</td><td>16800.00</td><td>868.00</td><td>24</td><td>0</td><td>16800.00</td><td>16800.00</td><td>已放款</td><td>晋商教育</td><td>0.000000</td><td>武汉远航智慧数码科技有限公司</td><td>中国农业银行武汉藏龙岛支行</td><td>17040201040003788</td></tr><tr role="row" class="even"><td> 教育 </td><td>6536093933013828609</td><td>2019-05-20</td><td>2019-05-20</td><td>上海海同优才教育培训有限责任公司</td><td>【零基础】数据分析师与大数据分析课程</td><td>王小凯</td><td>622301199106131318</td><td>18601427854</td><td>16800.00</td><td>16800.00</td><td>868.00</td><td>24</td><td>0</td><td>16800.00</td><td>16800.00</td><td>已放款</td><td>晋商教育</td><td>0.000000</td><td>上海海同优才教育培训有限责任公司</td><td>建行张江支行</td><td>3100152321105004798</td></tr><tr role="row" class="odd"><td> 教育 </td><td>6536097878051390465</td><td>2019-05-20</td><td>2019-05-20</td><td>福州咸鱼科技有限公司</td><td>数据分析与挖掘</td><td>刘亮</td><td>340302199405311017</td><td>13665609851</td><td>23800.00</td><td>23800.00</td><td>1229.67</td><td>24</td><td>0</td><td>23800.00</td><td>23800.00</td><td>已放款</td><td>晋商教育</td><td>0.000000</td><td>福州咸鱼科技有限公司</td><td>中国工商银行股份有限公司福州鼓楼支行</td><td>140202309600369012</td></tr><tr role="row" class="even"><td> 教育 </td><td>6536108849833706497</td><td>2019-05-20</td><td>2019-05-20</td><td>深圳市宝安区卓文教育培训中心</td><td>网络工程师</td><td>颜臻玲</td><td>50022719950916392X</td><td>15730404234</td><td>14800.00</td><td>14800.00</td><td>970.22</td><td>18</td><td>0</td><td>14800.00</td><td>14800.00</td><td>已放款</td><td>晋商教育</td><td>0.000000</td><td>深圳市宝安区卓文教育培训中心</td><td>中国农业银行深圳东方支行</td><td>41021300040021932</td></tr></tbody></table><div class="bottom"><div class="dataTables_info" id="lendingList_info" role="status" aria-live="polite">显示第 1 - 10 条记录，共12 条</div><div class="dataTables_length" id="lendingList_length"><label> <select name="lendingList_length" aria-controls="lendingList" class="form-control input-sm"><option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select> </label></div><div class="dataTables_paginate paging_full_numbers" id="lendingList_paginate"><ul class="pagination"><li class="paginate_button first disabled" id="lendingList_first"><a href="javascript:void(0);" aria-controls="lendingList" data-dt-idx="0" tabindex="0">首页</a></li><li class="paginate_button previous disabled" id="lendingList_previous"><a href="javascript:void(0);" aria-controls="lendingList" data-dt-idx="1" tabindex="0">上页</a></li><li class="paginate_button active"><a href="javascript:void(0);" aria-controls="lendingList" data-dt-idx="2" tabindex="0">1</a></li><li class="paginate_button "><a href="javascript:void(0);" aria-controls="lendingList" data-dt-idx="3" tabindex="0">2</a></li><li class="paginate_button next" id="lendingList_next"><a href="javascript:void(0);" aria-controls="lendingList" data-dt-idx="4" tabindex="0">下页</a></li><li class="paginate_button last" id="lendingList_last"><a href="javascript:void(0);" aria-controls="lendingList" data-dt-idx="5" tabindex="0">末页</a></li></ul></div><div class="clear"></div></div></div>
+            </div>
+            <!--正文内容end-->
+        </div>
+<script src="jedate/jedate.min.js"></script>
+
+<script>
+    //放款开始时间
+    jeDate({
+        dateCell:"#lendingDateStart", //目标元素。由于jedate.js封装了一个轻量级的选择器，因此dateCell还允许你传入class、tag这种方式 '#id .class'
+        format:"YYYY-MM-DD", //日期格式
+        minDate:"1900-01-01", //最小日期
+        maxDate:"2099-12-31", //最大日期
+        isinitVal:false, //是否初始化时间
+        isTime:true, //是否开启时间选择
+        isClear:true, //是否显示清空
+        festival:false, //是否显示节日
+        zIndex:999,  //弹出层的层级高度
+        marks:null, //给日期做标注
+        choosefun:function(val) {},  //选中日期后的回调
+        clearfun:function(val) {},   //清除日期后的回调
+        okfun:function(val) {}       //点击确定后的回调
+    });
+    //放款结束时间
+    jeDate({
+        dateCell:"#lendingDateEnd", //目标元素。由于jedate.js封装了一个轻量级的选择器，因此dateCell还允许你传入class、tag这种方式 '#id .class'
+        format:"YYYY-MM-DD", //日期格式
+        minDate:"1900-01-01", //最小日期
+        maxDate:"2099-12-31", //最大日期
+        isinitVal:false, //是否初始化时间
+        isTime:true, //是否开启时间选择
+        isClear:true, //是否显示清空
+        festival:false, //是否显示节日
+        zIndex:999,  //弹出层的层级高度
+        marks:null, //给日期做标注
+        choosefun:function(val) {},  //选中日期后的回调
+        clearfun:function(val) {},   //清除日期后的回调
+        okfun:function(val) {}       //点击确定后的回调
+    });
+    //信审开始时间
+    jeDate({
+        dateCell:"#applyDateStart", //目标元素。由于jedate.js封装了一个轻量级的选择器，因此dateCell还允许你传入class、tag这种方式 '#id .class'
+        format:"YYYY-MM-DD hh:mm:ss", //日期格式
+        minDate:"1900-01-01 00:00:00", //最小日期
+        maxDate:"2099-12-31 23:59:59", //最大日期
+        isinitVal:false, //是否初始化时间
+        isTime:true, //是否开启时间选择
+        isClear:true, //是否显示清空
+        festival:false, //是否显示节日
+        zIndex:999,  //弹出层的层级高度
+        marks:null, //给日期做标注
+        choosefun:function(val) {},  //选中日期后的回调
+        clearfun:function(val) {},   //清除日期后的回调
+        okfun:function(val) {}       //点击确定后的回调
+    });
+    //信审结束时间
+    jeDate({
+        dateCell:"#applyDateEnd", //目标元素。由于jedate.js封装了一个轻量级的选择器，因此dateCell还允许你传入class、tag这种方式 '#id .class'
+        format:"YYYY-MM-DD hh:mm:ss", //日期格式
+        minDate:"1900-01-01 00:00:00", //最小日期
+        maxDate:"2099-12-31 23:59:59", //最大日期
+        isinitVal:false, //是否初始化时间
+        isTime:true, //是否开启时间选择
+        isClear:true, //是否显示清空
+        festival:false, //是否显示节日
+        zIndex:999,  //弹出层的层级高度
+        marks:null, //给日期做标注
+        choosefun:function(val) {},  //选中日期后的回调
+        clearfun:function(val) {},   //清除日期后的回调
+        okfun:function(val) {}       //点击确定后的回调
+    });
+</script>
+
+<script>
+    var dt;
+    function refresh(){
+        dt.api(dt.api().page()).draw(false);
+    }
+     $(function(){
+       /*  $("body").delegate('#repaymentCardNo',"keyup",function(){
+             this.value =this.value.replace(/\s/g,'').replace(/(\d{4})(?=\d)/g,"$1 ");
+         });*/
+
+
+    	dt = $("#lendingList").dataTable({
+	         "sDom":'<"top"<"clear">>rt<"bottom"ilp<"clear">>', 
+	         bProcessing:true,
+	         pageLength: 10,
+	         searching: false, // 禁用dataTables自带的查询框
+	         ordering: false, // 禁用排序
+	         ajax: {
+	             type: "POST",
+	             url: "/hd/hdStatisticsReport/lendingDetaiData",
+	             data:function(d) {
+	              d.idCardNo = $("#idCardNo").val();
+	              d.idName = $("#idName").val();
+	              d.bcName = $("#bcName").val();
+	              d.sourceType = $("#sourceType").val();
+	              d.loanStatus = $("#loanStatus").val();
+                      d.phoneNo = $("#phoneNo").val();
+                      d.lendingDateStart = $("#lendingDateStart").val();
+                      d.lendingDateEnd = $("#lendingDateEnd").val();
+                      d.fundSource=$("#fundSource").val();
+                      d.applyDateStart = $("#applyDateStart").val();
+                      d.applyDateEnd = $("#applyDateEnd").val();
+	             }
+	         },
+	         columns: [
+	             {data:"businessScope",orderable:true,render: function(data, type, row) {
+                        var ss= data.split(',');
+                        var res='';
+                         for (var kk=0;kk<ss.length ;kk++ ){
+                                   if(1==ss[kk]){
+                                       res+=" 教育 ";
+                                   }
+                                     else if(2==ss[kk]){
+                                       res+=" 租房 ";
+                                   }
+                                   else if(3==ss[kk]){
+                                       res+=" 碧水源 ";
+                                   }
+                                   else if(4==ss[kk]){
+                                       res+=" 数码 ";
+                                   }
+                             }
+                         return res;
+                     /*    if(1==data){
+                             return "教育";
+                         }else if(2==data){
+                             return "租房";
+                         }else if(3==data){
+                             return "碧水源";
+                         }else if(4==data){
+                             return "数码";
+                         }*/
+	                }
+                 },
+	             {data:"applyId"},
+	             {data:"applyTime"},
+	             {data:"lendingTime" },
+	             {data:"businessName"},
+	            /* {data:"shopName"},*/
+	             {data:"commoditiesName"},
+	             {data: "userName"},
+	             {data: "idNo"},
+	             {data: "phoneNo"},
+	             {data: "applyAmount"},
+	             {data: "loanBalance"},
+	             {data: "periodAmount"},
+	             {data: "applyDuration"},
+	             {data: "alreadyApplyDuration"},
+	             {data: "loanAmount"},
+	             {data: "hdLoanAmount"},
+	             {data: "hdApplyStatus",render: function(data, type, row) {
+                         if(0==data){
+                             return "待审批";
+                         }else if(-3000==data){
+                             return "订单取消";
+                         }else if(9000==data){
+                             return "订单完结";
+                         }else if(7000==data){
+                             return "已放款";
+                         }else if(5000==data){
+                             return "审批通过";
+                         }else if(6000==data){
+                             return "已支付";
+                         }else if(-1000==data){
+                             return "审批拒绝";
+                         }else if(2000==data){
+                             return "打回修改";
+                         }else if(1000==data){
+                             return "互动初审通过";
+                         }else if(4500==data){
+                             return "互动审批通过";
+                         }
+                         else if(8000==data){
+                             return "提前还款";
+                         }else if(7500==data){
+                             return "退货处理中";
+                         }else if(8500==data){
+                             return "退货成功";
+                         }else if(-7500==data){
+                             return "退货失败";
+                         }else if(-9000==data){
+                             return "未提交";
+                         }
+                         return data;
+                     }
+                 },
+	             {data: "foundSource",orderable:true,render: function(data, type, row) {
+                     if(1==data){
+                         return "北银";
+                     }else if(2==data){
+                         return "晋城";
+                     }else if(3==data){
+                         return "海尔";
+                     }else if(4==data){
+                         return "安信小贷";
+                     }else if(5==data){
+                         return "百度";
+                     }else if(6==data){
+                         return "闪银3c";
+                     }else if(7==data){
+                         return "海尔租房";
+                     }else if(11==data){
+                         return "贷鱼教育";
+                     }else if(13==data){
+                         return "沃付分期";
+                     }else if(14==data){
+                         return "91金融";
+                     }else if(100==data){
+                         return "Mini循环贷";
+                     }else if(15==data){
+                         return "湖北消费金融";
+                     }else if(16==data){
+                         return "91旺财";
+                     }else if(17==data){
+                         return "晋商教育";
+                     }else if(18==data){
+                         return "晋商租房";
+                     }else if(19==data){
+                         return "91租房";
+                     }
+                     return data;
+	             }
+     },
+	             {data: "hdRate"},
+	             {data: "businessComName"},
+	             {data: "businessBankName"},
+	             {data: "bizBankAccountNo"}
+	         ]
+
+	     });
+    	 $("#btn-search").click(function(e){
+             var examineDateStart = $("#applyDateStart").val();
+          	 var examineDateEnd = $("#applyDateEnd").val();
+          	 var lendingDateStart = $("#lendingDateStart").val();
+          	 var lendingDateEnd = $("#lendingDateEnd").val();
+             if(examineDateStart&&examineDateEnd){
+                 if(examineDateStart >=examineDateEnd){
+                     layer.msg("信审结束日期必须大于信审开始日期!");
+                     return false;
+                 }
+             }
+             if(lendingDateStart&&lendingDateEnd){
+                 if(lendingDateStart > lendingDateEnd){
+                     layer.msg("放款结束时间必须大于放款开始时间!");
+                     return false;
+                 }
+             }
+             dt.api().draw();
+         });
+    });
+
+
+    function exportResult(){
+        layer.confirm("确定要导出结果到excel中吗？", {
+            btn: ['确认','取消'], //按钮
+            yes:function (index, layero) {
+                var phoneNo = $("#phoneNo").val();
+                var lendingDateStart = $("#lendingDateStart").val();
+                var lendingDateEnd = $("#lendingDateEnd").val();
+                var fundSource=$("#fundSource").val();
+
+               var idCardNo = $("#idCardNo").val();
+               var idName = $("#idName").val();
+               var bcName = $("#bcName").val();
+               var sourceType = $("#sourceType").val();
+               var loanStatus = $("#loanStatus").val();
+
+                if(loanStatus === undefined){
+                    loanStatus = '';
+                }
+                if(phoneNo === undefined){
+                    phoneNo = '';
+                }
+                if(lendingDateStart === undefined){
+                    lendingDateStart = '';
+                }
+                if(lendingDateEnd === undefined){
+                    lendingDateEnd = '';
+                }
+                var examineDateStart = $("#applyDateStart").val();
+                if(examineDateStart === undefined){
+                	examineDateStart = '';
+                }
+                var examineDateEnd = $("#applyDateEnd").val();
+                if(examineDateEnd === undefined){
+                	examineDateEnd = '';
+                }
+                if(fundSource === undefined){
+                	fundSource = '';
+                }
+                var url="/hd/hdStatisticsReport/LendingDetailListExport?phoneNo="+phoneNo+"&lendingDateStart="+lendingDateStart+"&applyDateEnd="+examineDateEnd
+                		+ "&applyDateStart=" + examineDateStart + "&lendingDateEnd=" + lendingDateEnd + "&fundSource=" + fundSource+"&idCardNo="+idCardNo+"&idName="+idName+"&bcName="+bcName+"&sourceType="+sourceType+"&loanStatus="+loanStatus;
+                window.open(url);
+                layer.close(index);
+            },
+            cancel:function(index){
+                //按钮【按钮二】的回调
+                layer.close(index);
+            },
+        });
+    }
+</script>
+
+
+<script>
+    //分页方法
+    function page(n,s){
+        $("#pageNo").val(n);
+        $("#pageSize").val(s);
+        $("#searchForm").submit();
+        return false;
+    }
+
+
+</script>
+
+<script>
+    var time = 100000;
+    var interval; //调度器对象。
+    function run(){
+        interval = setInterval("fun()",time);
+    }
+    function fun(){
+        $(".hui").css("display","none");
+    }
+    $(function(){
+        $("#reviewList").delegate('tr td button','click',function(){
+            $(this).html("加载中...").attr("disabled","disabled");
+            $(".hui").css("display","block");
+            run();
+        })
+    })
+</script>
+
+<script>
+    $(document).ready(function(e) {
+        var counter = 0;
+        if (window.history && window.history.pushState) {
+            $(window).on('popstate', function () {
+                window.history.pushState('forward', null, '#');
+                window.history.forward(1);
+            });
+        }
+        window.history.pushState('forward', null, '#'); //在IE中必须得有这两行
+        window.history.forward(1);
+    });
+</script>
+
+</div>

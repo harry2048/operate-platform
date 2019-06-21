@@ -1,0 +1,348 @@
+ <!DOCTYPE html>
+ <html>
+ <head>
+     <title></title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/base.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/layer.css" rel="stylesheet">
+    <link href="css/pagination.css" rel="stylesheet">
+    <link href="css/bootstrap-datetimepicker.css" rel="stylesheet">
+    <link href="css/dataTables.bootstrap.min.css" rel="stylesheet">
+    <link href="css/jedate.css" rel="stylesheet">
+ </head>
+ <body>
+	<div class="content1">
+		<div class="content zhunbeijin hidden1">
+            <!--面包屑导航start-->
+            <ol class="breadcrumb">
+                <li class="active">风险准备金管理列表</li>
+            </ol>
+            <div id="loanDetail" class="col-lg-12 col-md-12 col-sm-12">
+                <div class="col-lg-3 col-md-3 col-sm-3"><span class="wd_60">商户名称&nbsp;&nbsp;</span><input type="text" name="name" id="name"></div>
+                <div class="col-lg-3 col-md-3 col-sm-3"><span class="wd_60">渠道维护&nbsp;&nbsp;</span><select id="channelManagerId">
+                    <option value="">---请选择---</option>
+                    
+                        <option value="18760dec-f53b-4a6b-9bf8-2cf322da9a35">吴英骄</option>
+                    
+                        <option value="36d938bf-58d5-4a7e-a7e6-2ae7e28efbb7">肖俊骞</option>
+                    
+                        <option value="8a86bc56-55af-4957-9eea-61e34a778232">楚鹏</option>
+                    
+                        <option value="92c4dfed-e665-4e98-9afe-4bc01f9dc525">林燚填</option>
+                    
+                        <option value="931937a3-e374-469f-8977-e8373bb7ab34">张咏</option>
+                    
+                        <option value="bc4e53ba-a7f0-4abf-a1a3-e4e0630ab1c6">张雍昊</option>
+                    
+                        <option value="cfef2ca9-3805-45c3-b7aa-c1aab257294e">李家欢</option>
+                    
+                        <option value="f9b2f164-691b-42aa-8d0b-bb3f06478edc">李文明</option>
+                    
+                </select></div>
+                <div class="col-lg-3 col-md-3 col-sm-3"><span class="wd_60">业务类型&nbsp;&nbsp;</span><select id="sourceType">
+                    <option value="">---请选择---</option>
+                    <option value="1">教育</option>
+                    <option value="2">租房</option>
+                    <option value="4">数码</option>
+                    <option value="3">碧水源</option>
+                </select></div>
+                <div class="col-lg-3 col-md-3 col-sm-3"><span class="wd_60">商户状态&nbsp;&nbsp;</span><select id="status">
+                    <option value="">---请选择---</option>
+                    <option value="0">未启用</option>
+                    <option value="1">已启用</option>
+                    <option value="2">已过期</option>
+                </select></div>
+                <div class="col-lg-3 col-md-3 col-sm-3 ta_r">
+                    <button class="btn btn-primary btn-sm search_btn" type="button" id="btn-search">查询</button>&nbsp;&nbsp;&nbsp;&nbsp;
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div class="table-responsive">
+                <div id="bizRiskList_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer"><div class="top"><div class="clear"></div></div><div id="bizRiskList_processing" class="dataTables_processing panel panel-default" style="display: none;">处理中...</div><table id="bizRiskList" style="width: 100%;" class="table table-bordered table-striped table-hover bg_wt dataTable no-footer" role="grid" aria-describedby="bizRiskList_info">
+                    <thead style="border-bottom: 0;background-color: #fff;">
+                    <tr role="row"><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 360px;">商户简称</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 101px;">风险准备金</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 83px;">资金方</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 101px;">已放款金额</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 101px;">已代偿金额</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 83px;">剩余额度</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 102px;">贷款余额</th><th class="text-center sorting_disabled td_align_left" rowspan="1" colspan="1" style="width: 93px;">操作</th></tr>
+                    </thead>
+                <tbody><tr role="row" class="odd"><td>郑州法商专修学院</td><td>10000</td><td>晋商教育</td><td>91700</td><td></td><td>144600</td><td>91700</td><td class=" td_align_left"><button type="button" data-id="6531783008843260929" class="btn btn-primary btn-sm " name="biz-manage">管理</button>&nbsp;&nbsp;</td></tr><tr role="row" class="even"><td>北京风驰劲速科技有限公司</td><td>0</td><td></td><td>0</td><td></td><td>0</td><td>0</td><td class=" td_align_left"><button type="button" data-id="6530978664420621313" class="btn btn-primary btn-sm " name="biz-manage">管理</button>&nbsp;&nbsp;</td></tr><tr role="row" class="odd"><td>森纵艾德(北京)教育科技股份有限公司</td><td>0</td><td></td><td>0</td><td></td><td>0</td><td>0</td><td class=" td_align_left"><button type="button" data-id="6527089187879135233" class="btn btn-primary btn-sm " name="biz-manage">管理</button>&nbsp;&nbsp;</td></tr><tr role="row" class="even"><td>成都市锦江区西基王动漫职业技能培训学校</td><td>0</td><td></td><td>0</td><td></td><td>0</td><td>0</td><td class=" td_align_left"><button type="button" data-id="6527092769237094401" class="btn btn-primary btn-sm " name="biz-manage">管理</button>&nbsp;&nbsp;</td></tr><tr role="row" class="odd"><td>北京财经专修学院</td><td>0</td><td></td><td>0</td><td></td><td>0</td><td>0</td><td class=" td_align_left"><button type="button" data-id="6514808442881638401" class="btn btn-primary btn-sm " name="biz-manage">管理</button>&nbsp;&nbsp;</td></tr><tr role="row" class="even"><td>湖南省众智职业培训学校</td><td>10000</td><td>晋商教育</td><td>77000</td><td></td><td>190000</td><td>77000</td><td class=" td_align_left"><button type="button" data-id="6514803116480564225" class="btn btn-primary btn-sm " name="biz-manage">管理</button>&nbsp;&nbsp;</td></tr><tr role="row" class="odd"><td>北京漫动者教育科技有限公司</td><td>0</td><td></td><td>0</td><td></td><td>0</td><td>0</td><td class=" td_align_left"><button type="button" data-id="6514454006374454273" class="btn btn-primary btn-sm " name="biz-manage">管理</button>&nbsp;&nbsp;</td></tr><tr role="row" class="even"><td>上海天亥信息咨询有限公司</td><td>10000</td><td>晋商教育</td><td>242269</td><td></td><td>7731</td><td>232723.5</td><td class=" td_align_left"><button type="button" data-id="6514461088641876993" class="btn btn-primary btn-sm " name="biz-manage">管理</button>&nbsp;&nbsp;</td></tr><tr role="row" class="odd"><td>河南泽睿测评技术有限公司</td><td>30000</td><td>晋商教育</td><td>342000</td><td></td><td>49200</td><td>319200</td><td class=" td_align_left"><button type="button" data-id="6468774723025935361" class="btn btn-primary btn-sm " name="biz-manage">管理</button>&nbsp;&nbsp;</td></tr><tr role="row" class="even"><td>上海谦问万答吧云计算科技有限公司</td><td>80000</td><td>晋商教育</td><td>1138666</td><td></td><td>4191.14</td><td>1107296.5</td><td class=" td_align_left"><button type="button" data-id="6512207322432108545" class="btn btn-primary btn-sm " name="biz-manage">管理</button>&nbsp;&nbsp;</td></tr></tbody></table><div class="bottom"><div class="dataTables_info" id="bizRiskList_info" role="status" aria-live="polite">显示第 1 - 10 条记录，共87 条</div><div class="dataTables_length" id="bizRiskList_length"><label> <select name="bizRiskList_length" aria-controls="bizRiskList" class="form-control input-sm"><option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select> </label></div><div class="dataTables_paginate paging_full_numbers" id="bizRiskList_paginate"><ul class="pagination"><li class="paginate_button first disabled" id="bizRiskList_first"><a href="javascript:void(0);" aria-controls="bizRiskList" data-dt-idx="0" tabindex="0">首页</a></li><li class="paginate_button previous disabled" id="bizRiskList_previous"><a href="javascript:void(0);" aria-controls="bizRiskList" data-dt-idx="1" tabindex="0">上页</a></li><li class="paginate_button active"><a href="javascript:void(0);" aria-controls="bizRiskList" data-dt-idx="2" tabindex="0">1</a></li><li class="paginate_button "><a href="javascript:void(0);" aria-controls="bizRiskList" data-dt-idx="3" tabindex="0">2</a></li><li class="paginate_button "><a href="javascript:void(0);" aria-controls="bizRiskList" data-dt-idx="4" tabindex="0">3</a></li><li class="paginate_button "><a href="javascript:void(0);" aria-controls="bizRiskList" data-dt-idx="5" tabindex="0">4</a></li><li class="paginate_button "><a href="javascript:void(0);" aria-controls="bizRiskList" data-dt-idx="6" tabindex="0">5</a></li><li class="paginate_button disabled" id="bizRiskList_ellipsis"><a href="javascript:void(0);" aria-controls="bizRiskList" data-dt-idx="7" tabindex="0">…</a></li><li class="paginate_button "><a href="javascript:void(0);" aria-controls="bizRiskList" data-dt-idx="8" tabindex="0">9</a></li><li class="paginate_button next" id="bizRiskList_next"><a href="javascript:void(0);" aria-controls="bizRiskList" data-dt-idx="9" tabindex="0">下页</a></li><li class="paginate_button last" id="bizRiskList_last"><a href="javascript:void(0);" aria-controls="bizRiskList" data-dt-idx="10" tabindex="0">末页</a></li></ul></div><div class="clear"></div></div></div>
+            </div>
+            <!--正文内容end-->
+        </div>
+        <div class="content zhunbeijinguanli ">
+               <!--面包屑导航start-->
+    <ol class="breadcrumb">
+        <li class="active">风险准备金详情</li>
+    </ol>
+    <div class="content">
+        <div class="col-sm-12 col-lg-12 mt_10">
+            <div class="col-sm-12 col-lg-12 shenXin">
+                <p class="col-lg-6 col-sm-6">
+                    <span class="shenXinSpan" style="display:inline">商户简称:</span> <input type="text" class="nameIpt" readonly="readonly" id="busName" value="郑州法商专修学院">
+                </p>
+                <p class="col-lg-6 col-sm-6">
+                    <span class="shenXinSpan" style="display:inline">商户名称:</span> <input type="text" class="nameIpt" readonly="readonly" id="busDetailName" value="郑州法商专修学院">
+                </p>
+                <div class="clear"></div>
+                <p class="col-lg-6 col-sm-6">
+                    <span class="shenXinSpan" style="display:inline">风险准备金:</span> <input type="text" class="nameIpt" readonly="readonly" id="bailAmount" value="10000.00">
+                </p>
+                <p class="col-lg-6 col-sm-6">
+                    <span class="shenXinSpan" style="display:inline">已放款金额:</span> <input type="text" class="nameIpt" readonly="readonly" id="totalLoanBalance" value="112500.00">
+                </p>
+                <div class="clear"></div>
+                <p class="col-lg-6 col-sm-6">
+                    <span class="shenXinSpan" style="display:inline">剩余额度:</span> <input type="text" class="nameIpt" readonly="readonly" id="unuseCreditAmount" value="123800.00">
+                </p>
+                <p class="col-lg-6 col-sm-6">
+                    <span class="shenXinSpan" style="display:inline">已代偿金额:</span> <input type="text" class="nameIpt" readonly="readonly" id="compensatoryAmount" value="">
+                </p>
+                <div class="clear"></div>
+                <p class="col-lg-12 col-sm-12">
+                    <span class="shenXinSpan" style="display:inline">最新风险系数:</span> <input type="text" class="nameIpt" readonly="readonly" id="riskRate" value="0.0500">
+                </p>
+                <div class="clear"></div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-3"></div>
+        <div class="col-lg-3 col-md-3 col-sm-3 ta_r">
+            <button class="btn btn-primary btn-sm search_btn mr_25" id="addRisk" type="button">新增</button>
+        </div>
+        <div class="clear"></div>
+        
+        <div class="table-responsive">
+            <div id="bizRiskDetailList_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer"><div class="top"><div class="clear"></div></div><div id="bizRiskDetailList_processing" class="dataTables_processing panel panel-default" style="display: none;">处理中...</div><table id="bizRiskDetailList" style="width: 100%;" class="table table-bordered table-striped table-hover bg_wt dataTable no-footer" role="grid" aria-describedby="bizRiskDetailList_info">
+                <thead style="border-bottom: 0;background-color: #fff;">
+                <tr role="row"><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 157px;">记录时间</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 81px;">类型</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 81px;">保证金金额</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 127px;">变化前保证金金额</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 128px;">变化后保证金金额</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 66px;">风险系数</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 66px;">生效资方</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 66px;">额度变化</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 82px;">变化前额度</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 83px;">变化后额度</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 36px;">备注</th></tr>
+                </thead>
+            <tbody><tr role="row" class="odd"><td>2019-05-23 11:35:06</td><td>放款</td><td></td><td></td><td></td><td></td><td></td><td>6000</td><td>129800</td><td>123800</td><td></td></tr><tr role="row" class="even"><td>2019-05-20 17:10:05</td><td>放款</td><td></td><td></td><td></td><td></td><td></td><td>6800</td><td>136600</td><td>129800</td><td></td></tr><tr role="row" class="odd"><td>2019-05-20 16:20:04</td><td>放款</td><td></td><td></td><td></td><td></td><td></td><td>8000</td><td>144600</td><td>136600</td><td></td></tr><tr role="row" class="even"><td>2019-05-15 11:55:04</td><td>放款</td><td></td><td></td><td></td><td></td><td></td><td>18800</td><td>163400</td><td>144600</td><td></td></tr><tr role="row" class="odd"><td>2019-05-10 18:10:03</td><td>放款</td><td></td><td></td><td></td><td></td><td></td><td>17800</td><td>181200</td><td>163400</td><td></td></tr><tr role="row" class="even"><td>2019-05-10 15:39:34</td><td>新增保证金</td><td>10000</td><td>0</td><td>10000</td><td>0.05</td><td>晋商教育</td><td>200000</td><td>-18800</td><td>181200</td><td></td></tr><tr role="row" class="odd"><td>2019-05-10 14:35:07</td><td>放款</td><td></td><td></td><td></td><td></td><td></td><td>18800</td><td>0</td><td>-18800</td><td></td></tr></tbody></table><div class="bottom"><div class="dataTables_info" id="bizRiskDetailList_info" role="status" aria-live="polite">显示第 1 - 7 条记录，共7 条</div><div class="dataTables_length" id="bizRiskDetailList_length"><label> <select name="bizRiskDetailList_length" aria-controls="bizRiskDetailList" class="form-control input-sm"><option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select> </label></div><div class="dataTables_paginate paging_full_numbers" id="bizRiskDetailList_paginate"><ul class="pagination"><li class="paginate_button first disabled" id="bizRiskDetailList_first"><a href="javascript:void(0);" aria-controls="bizRiskDetailList" data-dt-idx="0" tabindex="0">首页</a></li><li class="paginate_button previous disabled" id="bizRiskDetailList_previous"><a href="javascript:void(0);" aria-controls="bizRiskDetailList" data-dt-idx="1" tabindex="0">上页</a></li><li class="paginate_button active"><a href="javascript:void(0);" aria-controls="bizRiskDetailList" data-dt-idx="2" tabindex="0">1</a></li><li class="paginate_button next disabled" id="bizRiskDetailList_next"><a href="javascript:void(0);" aria-controls="bizRiskDetailList" data-dt-idx="3" tabindex="0">下页</a></li><li class="paginate_button last disabled" id="bizRiskDetailList_last"><a href="javascript:void(0);" aria-controls="bizRiskDetailList" data-dt-idx="4" tabindex="0">末页</a></li></ul></div><div class="clear"></div></div></div>
+        </div>
+    </div>
+    <!--正文内容end-->
+        </div>
+	</div>
+ </body>
+ <script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
+ <script src="js/jedate.min.js"></script>
+ <script src="js/layer.js"></script>
+<script>
+
+
+</script>
+
+<script>
+    var formData = new FormData();
+    $(function(){
+        // var dt = $("#bizRiskDetailList").dataTable({
+        //     "sDom":'<"top"<"clear">>rt<"bottom"ilp<"clear">>',
+        //     bProcessing:true,
+        //     searching: false, // 禁用dataTables自带的查询框
+        //     ordering: false, // 禁用排序
+        //     firstIndex: 0,
+        //     pageSize: 10,
+        //     ajax: {
+        //         type: "POST",
+        //         url: "/hd/biz/bizRiskDetailList",
+        //         data:function(d) {
+        //             d.hdBussinessCustomerId = '6531783008843260929';
+        //         }
+        //     },
+        //     columns: [
+        //         {data:"operDate", default:''},
+        //         {data:"type", default:''},
+        //         {data:"bailAmount", default:'' },
+        //         {data:"beforeBailAmount", default:'' },
+        //         {data:"afterBailAmount", default:''},
+        //         {data:"riskRate", default:''},
+        //         {data:"fundSource", default:''},
+        //         {data:"creditAmount", default:''},
+        //         {data:"beforeCreditAmount", default:''},
+        //         {data:"afterCreditAmount", default:''},
+        //         {data:"remarks", default:''}
+        //     ]
+        // });
+        
+        
+        $("#addRisk").on("click",function(e){           
+             var fundSourceList = getFundSourceCheck();
+             var content='<div class="content"> <div class="panel panel-default"><ul class="list-group"> <div class="content"><div class="col-sm-12 col-lg-12 mt_10">';
+             content+='<li class="list-group-item con_title">基本信息</li>';
+             content+='<div class="col-sm-12 col-lg-12 shenXin">';
+             content+='<p class="col-lg-6 col-sm-6" ><span class="shenXinSpan" style="display:inline">风险准备金:</span><input type="text" class="nameIpt" name="thresholdAmt" id="amount" onBlur="changeAmt()"/></p>';
+             content+='<p class="col-lg-6 col-sm-6" ><span class="shenXinSpan" style="display:inline">授信额度:</span><input type="text" class="nameIpt" name="thresholdAmt" id="creditAmount" disabled/></p>';
+             content+='<div class="clear"></div>';
+             content+='<p class="col-lg-12 col-sm-12" ><span class="shenXinSpan" style="display:inline">风险准备金系数:</span><input type="text" class="nameIpt" name="thresholdAmt" id="riskRateReq" onBlur="changeAmt()"/></p>';
+             content+='<p class="col-lg-12 col-sm-12" ><span class="shenXinSpan" style="display:inline">资金方:</span>' + fundSourceList + '</p>';
+             content+='<div class="clear"></div>';
+             content+='</div>';
+             content+='</div></div>';
+             content+='<div class="clear"></div>';
+             content+='<li class="list-group-item con_title">资料</li>';
+             content+='<div class="col-sm-12 col-lg-12 otherData">';
+             content+='<div class="col-lg-3 col-sm-3 imgBox _img_box contractImgDiv">';
+             content+='<a class="addPicBtn">';
+             content+='<input id="fileUpload" type="file" class="upLoadImg" onchange="contractImg(this)" multiple="multiple">';
+             content+='</a></div></div><div class="clear"></div></ul></div></div>';
+            layer.open({
+                type: 1,
+                area: ['1200px', '600px'],
+                title: '风险准备金新增',
+                btn: ['添加','取消'],
+                yes: function (index, layero) {
+                    var amount = $("#amount").val();
+                    var id_array = new Array();  
+                    $('input[name="channelIds"]:checked').each(function(){  
+                        id_array.push($(this).val());//向数组中添加元素  
+                    });  
+                    var fundsource = id_array.join(',');//将数组元素连接起来以构建一个字符串  
+                    var creditAmount = $("#creditAmount").val();
+                    var riskRate = $("#riskRateReq").val();
+                    
+                    formData.append('amount', amount);
+                    formData.append('fundsource', fundsource);
+                    formData.append('creditAmount', creditAmount);
+                    formData.append('bizId', '6531783008843260929');
+                    formData.append('riskRateReq', riskRate);
+                    $.ajax({
+                        type: 'POST',
+                        url: '/hd/biz/saveBizRiskInfo' ,
+                        data: formData,
+                        contentType: false,
+                        processData: false,
+                        success:function(data){
+                            if("200"==data.code){
+                                layer.msg("添加风险准备金成功");
+                                dt.api(dt.api().page()).draw(false);
+                                var bizId = '6531783008843260929';
+                                var pageIndex=dt.api().page();
+                                var pageSize=dt.api().page.len();
+                                pageIndex=pageIndex*pageSize;
+                                conentWin.load("/hd/biz/toRiskManage?bizId="+bizId+"&pageIndex="+pageIndex+"&pageSize="+pageSize);
+                            }else{
+                                layer.msg("添加风险准备金失败");
+                            }
+                        }
+                    });
+                    //按钮【按钮一】的回调
+                    layer.close(index);
+                },
+                btn2: function (index, layero) {
+                    layer.close(index);
+                },
+                shadeClose: true, //点击遮罩关闭
+                content:  content
+            });
+        });
+
+    });
+    function getFundSourceCheck(){
+        var fundSourceCheck = '';
+        fundSourceCheck += '<div  class="col-lg-11 col-sm-11 panel-body" id="channelManagerDiv" style="font-size: 12px; padding-top: 5px;padding-right: 5px;">';
+        $.ajax({
+            type: 'POST',
+            url:"/hd/biz/getFundSourceList",
+            async: false,
+            success:function(data){
+                if('200'==data.code){
+                    var channelManager=data.result;
+                    // fundSourceCheck+='<label  style="width:100%;padding-left:5px;font-weight:normal;"><input style="margin-top: -4px;"  type="checkbox"    id="checkall" />&nbsp;&nbsp;全选</label>';
+                    for(var i=0;i<channelManager.length;i++){
+                        var map=channelManager[i];
+                        fundSourceCheck+='<label  style="width:23.5%;margin-top:7px;padding-left:5px;font-weight:normal;"><input style="margin-top: -4px;"  type="checkbox" value="'+map.value+'"    name="channelIds"  />&nbsp;&nbsp;'+map.name+'</label>';
+                    }
+                }else{
+                    layer.msg("加载区域内资方信息失败！");
+                }
+            }
+        });
+        fundSourceCheck += '</div>';
+        return fundSourceCheck;
+    }
+    function contractImg(files) {
+        var t_files = files.files;
+        for (var i = 0, len = t_files.length; i < len; i++) {
+            $(".contractImgDiv").before("<div class='col-lg-3 col-sm-3 imgBox'><img id= 'contractImg' class='contractImg' src="+getObjectURL(t_files[i])+"></div>");
+            formData.append('file' + i,t_files[i]);
+        }
+    }
+    
+    function getObjectURL(file) {
+        var url = null;
+        if (window.createObjectURL != undefined) { // basic
+            url = window.createObjectURL(file);
+        } else if (window.URL != undefined) { // mozilla(firefox)
+            url = window.URL.createObjectURL(file);
+        } else if (window.webkitURL != undefined) { // webkit or chrome
+            url = window.webkitURL.createObjectURL(file);
+        }
+        return url;
+    }
+    
+    function changeAmt(){
+        var amount = $("#amount").val();
+        var riskRateReq = $("#riskRateReq").val();
+        if(!isEmpty(amount) && !isEmpty(riskRateReq)){ 
+            if(!/^\d+(\.\d{1,2})?$/.test(amount)){
+                alert("风险准备金输入不正确, 请输入保留两位小数的数字！");
+                return ;
+            }
+            if(!/^0+(\.\d{1,4})?$/.test(riskRateReq)){
+                alert("风险准备金系数输入不正确");
+                return ;
+            }
+            var creditAmount = (amount / riskRateReq).toFixed(2);
+            $("#creditAmount").val(creditAmount);
+        }
+    }
+    
+    function isEmpty(data){
+        if(data == '' || data == null || data === undefined){
+            return true;
+        }
+        return false;
+    }
+</script>
+
+
+<script>
+    //分页方法
+    function page(n,s){
+        $("#pageNo").val(n);
+        $("#pageSize").val(s);
+        $("#searchForm").submit();
+        return false;
+    }
+
+
+</script>
+
+<script>
+    var time = 100000;
+    var interval; //调度器对象。
+    function run(){
+        interval = setInterval("fun()",time);
+    }
+    function fun(){
+        $(".hui").css("display","none");
+    }
+    $(function(){
+        $("#reviewList").delegate('tr td button','click',function(){
+            $(this).html("加载中...").attr("disabled","disabled");
+            $(".hui").css("display","block");
+            run();
+        })
+    })
+</script>
+
+<script>
+    $(document).ready(function(e) {
+        var counter = 0;
+        if (window.history && window.history.pushState) {
+            $(window).on('popstate', function () {
+                window.history.pushState('forward', null, '#');
+                window.history.forward(1);
+            });
+        }
+        window.history.pushState('forward', null, '#'); //在IE中必须得有这两行
+        window.history.forward(1);
+    });
+</script>
+ </html>

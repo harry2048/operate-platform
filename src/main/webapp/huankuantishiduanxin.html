@@ -1,0 +1,232 @@
+ <!DOCTYPE html>
+ <html>
+ <head>
+     <title>初审列表</title>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/base.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/layer.css" rel="stylesheet">
+    <link href="css/pagination.css" rel="stylesheet">
+    <link href="css/bootstrap-datetimepicker.css" rel="stylesheet">
+    <link href="css/jedate.css" rel="stylesheet">
+    <style>
+        #loanDetail{
+            background-color: #fff;
+            margin-bottom: 15px;
+        }
+        #loanDetail p{
+            padding-left:0 ;
+            padding-right: 0;
+            margin: 6px 0 ;
+        }
+        #loanDetail .wd_60{
+            display: inline-block;
+            width: 102px;
+            text-align: right;
+            font-size: 12px;
+            font-family: "微软雅黑";
+        }
+        #loanDetail .c13 .wd_60{
+            float: left;
+            margin-top: 5px;
+        }
+        #loanDetail .c13 input{
+            float: left;
+            font-size: 12px;
+            font-family: "微软雅黑";
+        }
+        #loanDetail .col-lg-3 ,#loanDetail .c13{
+            margin:5px 0;
+            padding-left:5px;
+            padding-right: 5px;
+        }
+
+        #loanDetail select option{
+            font-size: 12px;
+            font-family: "微软雅黑";
+        }
+        .search_btn {
+            font-size: 12px;
+            background-color: #09C;
+            padding: 5px 16px;
+            margin-top: 3px;
+            margin-bottom: 5px;
+        }
+        .ta_r{
+            text-align: right;
+        }
+        .mr_25{
+            margin-right: 25px;
+        }
+    </style>
+</head>
+<body>
+    <div class="content1" href="">
+    
+
+        <div class="hui"><img src="/hd/static/images/ajax-loader.gif"></div>
+        <div class="content">
+            <!--面包屑导航start-->
+            <ol class="breadcrumb">
+                <li class="active">还款短信提示查询</li>
+            </ol>
+            <div id="loanDetail" class="col-lg-12 col-md-12 col-sm-12">
+                <div class="col-lg-12 col-md-12 col-sm-12"><span class="wd_60">日期&nbsp;&nbsp;</span><input type="text" id="applyDateStart2" value="2019-05-22" placeholder="请选择时间" readonly=""></div>
+
+                <div class="col-lg-3 col-md-3 col-sm-3"></div>
+                <div class="col-lg-3 col-md-3 col-sm-3 ta_r">
+                    <button class="btn btn-primary btn-sm search_btn" type="button" id="btn-search">查询</button>
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <button class="btn btn-primary btn-sm search_btn mr_25" type="button" id="btn-export" onclick="sendMsg();">发短信</button>
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div class="table-responsive">
+                <div id="repayMsgList_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer"><div class="top"><div class="clear"></div></div><div id="repayMsgList_processing" class="dataTables_processing panel panel-default" style="display: none;">处理中...</div><table id="repayMsgList" style="width: 100%;" class="table table-bordered table-striped table-hover bg_wt dataTable no-footer" role="grid" aria-describedby="repayMsgList_info">
+                    <thead style="border-bottom: 0;background-color: #fff;">
+                    <tr role="row"><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 227px;">订单号</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 68px;">姓名</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 216px;">证件号</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 137px;">手机号</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 49px;">期数</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 119px;">扣款日</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 119px;">发送时间</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 89px;">发送状态</th></tr>
+                    </thead>
+                <tbody><tr role="row" class="odd"><td>6394884487371555841</td><td>李梦飞</td><td>370103199501249322</td><td>15069191551</td><td>13</td><td>2019-05-23</td><td>2019-05-22</td><td>已发送</td></tr><tr role="row" class="even"><td>6395138867242992641</td><td>李庆祥</td><td>370404198009280035</td><td>13465315237</td><td>13</td><td>2019-05-23</td><td>2019-05-22</td><td>已发送</td></tr><tr role="row" class="odd"><td>6405766627544007681</td><td>谭静</td><td>370102197311224524</td><td>15820010285</td><td>12</td><td>2019-05-23</td><td>2019-05-22</td><td>已发送</td></tr><tr role="row" class="even"><td>6406078508278219777</td><td>董方华</td><td>370123199711172947</td><td>13708920107</td><td>12</td><td>2019-05-23</td><td>2019-05-22</td><td>已发送</td></tr><tr role="row" class="odd"><td>6405384862042162177</td><td>王强</td><td>371326197906114415</td><td>18615182267</td><td>12</td><td>2019-05-23</td><td>2019-05-22</td><td>已发送</td></tr><tr role="row" class="even"><td>6427052093638444033</td><td>陈政严</td><td>511623199610093996</td><td>15881306860</td><td>10</td><td>2019-05-23</td><td>2019-05-22</td><td>已发送</td></tr><tr role="row" class="odd"><td>6427016638630986753</td><td>及文倩</td><td>131122198904142264</td><td>18911259666</td><td>10</td><td>2019-05-23</td><td>2019-05-22</td><td>已发送</td></tr><tr role="row" class="even"><td>6427755259014153217</td><td>张科举</td><td>370681198711080627</td><td>18500138787</td><td>10</td><td>2019-05-23</td><td>2019-05-22</td><td>已发送</td></tr><tr role="row" class="odd"><td>6428079306686071809</td><td>孙佳星</td><td>432524199307061926</td><td>18873807277</td><td>10</td><td>2019-05-23</td><td>2019-05-22</td><td>已发送</td></tr><tr role="row" class="even"><td>6437902952377091073</td><td>陈林锐</td><td>44058219970206723X</td><td>13518898378</td><td>9</td><td>2019-05-23</td><td>2019-05-22</td><td>已发送</td></tr></tbody></table><div class="bottom"><div class="dataTables_info" id="repayMsgList_info" role="status" aria-live="polite">显示第 1 - 10 条记录，共1,193 条</div><div class="dataTables_length" id="repayMsgList_length"><label> <select name="repayMsgList_length" aria-controls="repayMsgList" class="form-control input-sm"><option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select> </label></div><div class="dataTables_paginate paging_full_numbers" id="repayMsgList_paginate"><ul class="pagination"><li class="paginate_button first disabled" id="repayMsgList_first"><a href="javascript:void(0);" aria-controls="repayMsgList" data-dt-idx="0" tabindex="0">首页</a></li><li class="paginate_button previous disabled" id="repayMsgList_previous"><a href="javascript:void(0);" aria-controls="repayMsgList" data-dt-idx="1" tabindex="0">上页</a></li><li class="paginate_button active"><a href="javascript:void(0);" aria-controls="repayMsgList" data-dt-idx="2" tabindex="0">1</a></li><li class="paginate_button "><a href="javascript:void(0);" aria-controls="repayMsgList" data-dt-idx="3" tabindex="0">2</a></li><li class="paginate_button "><a href="javascript:void(0);" aria-controls="repayMsgList" data-dt-idx="4" tabindex="0">3</a></li><li class="paginate_button "><a href="javascript:void(0);" aria-controls="repayMsgList" data-dt-idx="5" tabindex="0">4</a></li><li class="paginate_button "><a href="javascript:void(0);" aria-controls="repayMsgList" data-dt-idx="6" tabindex="0">5</a></li><li class="paginate_button disabled" id="repayMsgList_ellipsis"><a href="javascript:void(0);" aria-controls="repayMsgList" data-dt-idx="7" tabindex="0">…</a></li><li class="paginate_button "><a href="javascript:void(0);" aria-controls="repayMsgList" data-dt-idx="8" tabindex="0">120</a></li><li class="paginate_button next" id="repayMsgList_next"><a href="javascript:void(0);" aria-controls="repayMsgList" data-dt-idx="9" tabindex="0">下页</a></li><li class="paginate_button last" id="repayMsgList_last"><a href="javascript:void(0);" aria-controls="repayMsgList" data-dt-idx="10" tabindex="0">末页</a></li></ul></div><div class="clear"></div></div></div>
+            </div>
+            <!--正文内容end-->
+        </div>
+        <script src="js/jquery-2.1.1.min.js"></script>
+        <script src="js/jedate.min.js"></script>
+<script>
+    jeDate({
+        dateCell:"#applyDateStart2", //目标元素。由于jedate.js封装了一个轻量级的选择器，因此dateCell还允许你传入class、tag这种方式 '#id .class'
+        format:"YYYY-MM-DD", //日期格式
+        minDate:"1900-01-01", //最小日期
+        maxDate:"2099-12-31", //最大日期
+        isinitVal:false, //是否初始化时间
+        isTime:true, //是否开启时间选择
+        isClear:true, //是否显示清空
+        festival:false, //是否显示节日
+        zIndex:999,  //弹出层的层级高度
+        marks:null, //给日期做标注
+        choosefun:function(val) {},  //选中日期后的回调
+        clearfun:function(val) {},   //清除日期后的回调
+        okfun:function(val) {}       //点击确定后的回调
+    });
+
+</script>
+
+<script>
+    $(function(){
+
+        var dt = $("#repayMsgList").dataTable({
+             "sDom":'<"top"<"clear">>rt<"bottom"ilp<"clear">>', 
+             bProcessing:true,
+             pageLength: 10,
+             searching: false, // 禁用dataTables自带的查询框
+             ordering: false, // 禁用排序
+             ajax: {
+                 type: "POST",
+                 url: "/hd/repay/getRepayMsgData",
+                 data:function(d) {
+                  d.sendTime = $("#applyDateStart2").val();
+                 }
+             },
+             columns: [
+                 {data:"orderId"},
+                 {data:"userName"},
+                 {data:"idNo" },
+                 {data:"phoneNo"},
+                 {data:"duration"},
+                 {data:"psDueDt"},
+                 {data: "sendTime"},
+//               {data: "msg"},
+                 {data: "sendStatus",render:function(data,type,row){
+                     if("1"==data){
+                         return "已发送";
+                     }else {
+                         return "未发送";
+                     }
+                 }}
+             ]
+
+         });
+
+         $("#btn-search").click(function(e){
+             dt.api().draw();
+         });
+    });
+
+    function sendMsg(){
+         layer.confirm("确定要发短信吗？", {
+             btn: ['确认','取消'], //按钮
+             yes:function (index, layero) {
+                 $.ajax({
+                     type: 'POST',
+                     url: "/hd/repay/sendRepayRemind" ,
+                     async: true,
+                     success:function(data){
+                         if('200'==data.code){
+                             layer.msg(data.msg);
+                             dt.api().draw();
+                         }else{
+                             layer.msg("短信发送失败");
+                             $($current).removeattr("disabled");
+                         }
+                     }
+                 });
+                 layer.close(index);
+             },
+             cancel:function(index){
+                 //按钮【按钮二】的回调
+                 layer.close(index);
+             },
+         });
+     }
+</script>
+
+
+<script>
+    //分页方法
+    function page(n,s){
+        $("#pageNo").val(n);
+        $("#pageSize").val(s);
+        $("#searchForm").submit();
+        return false;
+    }
+
+
+</script>
+
+<script>
+    var time = 100000;
+    var interval; //调度器对象。
+    function run(){
+        interval = setInterval("fun()",time);
+    }
+    function fun(){
+        $(".hui").css("display","none");
+    }
+    $(function(){
+        $("#reviewList").delegate('tr td button','click',function(){
+            $(this).html("加载中...").attr("disabled","disabled");
+            $(".hui").css("display","block");
+            run();
+        })
+    })
+</script>
+
+<script>
+    $(document).ready(function(e) {
+        var counter = 0;
+        if (window.history && window.history.pushState) {
+            $(window).on('popstate', function () {
+                window.history.pushState('forward', null, '#');
+                window.history.forward(1);
+            });
+        }
+        window.history.pushState('forward', null, '#'); //在IE中必须得有这两行
+        window.history.forward(1);
+    });
+</script>
+
+</div>
+</body>
+</html>

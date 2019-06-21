@@ -1,0 +1,215 @@
+ <!DOCTYPE html>
+ <html>
+ <head>
+     <title></title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/base.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/layer.css" rel="stylesheet">
+    <link href="css/pagination.css" rel="stylesheet">
+    <link href="css/bootstrap-datetimepicker.css" rel="stylesheet">
+    <link href="css/dataTables.bootstrap.min.css" rel="stylesheet">
+     <style>
+        #auditList_length label{
+            padding-left: 3px;
+            width: 180px;
+            text-align: right;
+            font-weight: normal;
+        }
+        #auditList_length label select{
+            width: 100px;
+        }
+    </style>
+
+ </head>
+ <body>
+	<div class="content1">
+<!-- <div class="hui"><img src="/hd/static/images/ajax-loader.gif"></div> -->
+        <div class="content">
+            <!--面包屑导航start-->
+            <ol class="breadcrumb">
+                <li class="active">复审列表</li>
+            </ol>
+            <!--面包屑导航end-->
+            <!--正文内容start-->
+            <div class="col-lg-2 col-md-2 col-sm-2 btn_examine">
+                <button id="piliang" type="button" class="btn btn-primary">批量审批通过</button>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-3 searchArea">
+                    <div class="input-group">
+                            <i class="searchPic"></i>
+                            <input type="text" class="form-control" id="searchName" name="searchName" placeholder="请输入搜索内容">
+                            <span class="input-group-btn">
+                            <button class="btn btn-primary search_btn" type="button" id="btn-search">查询</button>
+                            </span>
+
+                    </div>
+            </div>
+            <div class="col-lg-7 col-md-7 col-sm-7"></div>
+            <div class="table-responsive">
+                <div id="reviewList1_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer"><div class="top"><div class="clear"></div></div><div id="reviewList1_processing" class="dataTables_processing panel panel-default" style="display: none;">处理中...</div><table id="reviewList1" style="width: 100%;" class="table table-bordered table-striped table-hover bg_wt dataTable no-footer" role="grid" aria-describedby="reviewList1_info">
+                    <thead style="border-bottom: 0;background-color: #fff;">
+                    <tr role="row"><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" aria-label="编号" style="width: 42px;">编号</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" aria-label="" style="width: 26px;"><input class="allCkb" type="checkbox"></th><th class="text-center fs_13 sorting" tabindex="0" aria-controls="reviewList1" rowspan="1" colspan="1" aria-label="电核: activate to sort column ascending" style="width: 52px;">电核</th><th class="text-center fs_13 sorting" tabindex="0" aria-controls="reviewList1" rowspan="1" colspan="1" aria-label="反馈意见: activate to sort column ascending" style="width: 87px;">反馈意见</th><th class="text-center fs_13 sorting" tabindex="0" aria-controls="reviewList1" rowspan="1" colspan="1" aria-label="同盾: activate to sort column ascending" style="width: 53px;">同盾</th><th class="text-center fs_13 sorting" tabindex="0" aria-controls="reviewList1" rowspan="1" colspan="1" aria-label="资金方: activate to sort column ascending" style="width: 70px;">资金方</th><th class="text-center fs_13 sorting" tabindex="0" aria-controls="reviewList1" rowspan="1" colspan="1" aria-label="渠道商: activate to sort column ascending" style="width: 70px;">渠道商</th><th class="text-center fs_13 sorting" tabindex="0" aria-controls="reviewList1" rowspan="1" colspan="1" aria-label="姓名: activate to sort column ascending" style="width: 53px;">姓名</th><th class="text-center fs_13 sorting" tabindex="0" aria-controls="reviewList1" rowspan="1" colspan="1" aria-label="申请金额: activate to sort column ascending" style="width: 88px;">申请金额</th><th class="text-center fs_13 sorting_desc" tabindex="0" aria-controls="reviewList1" rowspan="1" colspan="1" aria-sort="descending" aria-label="期数: activate to sort column ascending" style="width: 53px;">期数</th><th class="text-center fs_13 sorting" tabindex="0" aria-controls="reviewList1" rowspan="1" colspan="1" aria-label="进件时间: activate to sort column ascending" style="width: 88px;">进件时间</th><th class="text-center fs_13 sorting" tabindex="0" aria-controls="reviewList1" rowspan="1" colspan="1" aria-label="操作: activate to sort column ascending" style="width: 54px;">操作</th></tr>
+                    </thead>
+                    <tbody>
+        			 	<tr class="odd"><td valign="top" colspan="12" class="dataTables_empty">没有符合您搜索条件的信息</td></tr>
+        			 </tbody>
+                </table>
+                <div class="bottom"><div class="dataTables_info" id="reviewList1_info" role="status" aria-live="polite">显示第 0 至 0 项结果，共 0 项</div><div class="dataTables_length" id="reviewList1_length"><label> <select name="reviewList1_length" aria-controls="reviewList1" class="form-control input-sm"><option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select> </label></div><div class="dataTables_paginate paging_full_numbers" id="reviewList1_paginate"><ul class="pagination"><li class="paginate_button first disabled" id="reviewList1_first"><a href="javascript:void(0);" aria-controls="reviewList1" data-dt-idx="0" tabindex="0">首页</a></li><li class="paginate_button previous disabled" id="reviewList1_previous"><a href="javascript:void(0);" aria-controls="reviewList1" data-dt-idx="1" tabindex="0">上页</a></li><li class="paginate_button next disabled" id="reviewList1_next"><a href="javascript:void(0);" aria-controls="reviewList1" data-dt-idx="2" tabindex="0">下页</a></li><li class="paginate_button last disabled" id="reviewList1_last"><a href="javascript:void(0);" aria-controls="reviewList1" data-dt-idx="3" tabindex="0">末页</a></li></ul></div><div class="clear"></div></div></div>
+            </div>
+            <!--正文内容end-->
+        </div>
+	</div>
+</body>
+<script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
+<script>
+    var dt;
+    $(function(){
+        $("#searchName").on("blur",function(){
+            $(this).val($(this).val().trim());
+        });
+
+        
+        $("#btn-search").click(function(e){
+            dt.api().draw();
+        });
+
+        $("#reviewList1").on("click","button[name='loan-detail']",function(e){
+            var $current = $(e.currentTarget);
+            var applyId = $current.data("id");
+            var pageIndex=dt.api().page();
+            var pageSize=dt.api().page.len();
+            pageIndex=pageIndex*pageSize;
+            conentWin.load("/hd/loan/reviewAudit?id="+applyId+"&pageIndex="+pageIndex+"&pageSize="+pageSize);
+        })
+
+
+
+
+
+    });
+
+</script>
+<script>
+    $(function () {
+        $('.allCkb').click(function () {
+            $("input[name='ids']").prop("checked", this.checked);
+        });''
+        $("[name=items]:checkbox").click(function () {
+            var p = $("[name=items]:checkbox");
+            if (p.filter(':checked').length == p.length) {
+                $(".allCkb").prop("checked", true);
+            } else {
+                $(".allCkb").prop("checked", false);
+            }
+        });
+
+        $(".content").delegate('.callStatus','click',function(){
+            var index=$(this).parent("td").parent("tr").index();
+            var clz=$(this).attr("class");
+            var status=$(this).attr("datavalue")==1?0:1;
+            var id=$(this).attr("data-id");
+          
+        });
+
+    });
+</script>
+<!--按钮弹出层-->
+<script>
+    //询问框
+    $("#piliang").on("click",function(){
+        var ids=new Array();
+        $(".ckb:checkbox:checked").each(function(){
+            ids.push($(this).val());
+        });
+        if(ids.length==0){
+            layer.msg('没有可批量审批的数据');
+            return;
+        }
+        layer.confirm('确定批量通过您选择的？', {
+            btn: ['确定','取消'] //按钮
+        }, function(){
+            var searchName=$("#searchName").val();
+            $.ajax({
+                type: 'POST',
+                url: "/hd/loan/batchReviewAudit" ,
+                data: {ids:ids.toString()} ,
+                async: true,
+                success:function(data){
+                	 if("0"==data.code){
+                         layer.msg("批量更新成功");
+                         conentWin.load("/hd/loan/reviewList?searchName="+searchName);
+
+                     }else{
+                         layer.msg("批量更新失败,原因为：" + data.message);
+                     }
+                }
+            });
+        }, function(){
+            layer.msg('取消成功');
+        });
+    });
+
+
+</script>
+<script>
+    //分页方法
+    function page(n,s){
+        $("#pageNo").val(n);
+        $("#pageSize").val(s);
+        $("#searchForm").submit();
+        return false;
+    }
+
+    function toAuditDetail(id){
+        conentWin.load("/hd/loan/reviewAudit?id="+id);
+    }
+</script>
+
+<script>
+    var time = 100000;
+    var interval; //调度器对象。
+    function run(){
+        interval = setInterval("fun()",time);
+    }
+    function fun(){
+        $(".hui").css("display","none");
+    }
+    $(function(){
+        $("#reviewList").delegate('tr td button','click',function(){
+            $(this).html("加载中...").attr("disabled","disabled");
+            $(".hui").css("display","block");
+            run();
+        });
+    });
+</script>
+
+<script>
+    $(document).ready(function(e) {
+        var counter = 0;
+        if (window.history && window.history.pushState) {
+            $(window).on('popstate', function () {
+                window.history.pushState('forward', null, '#');
+                window.history.forward(1);
+            });
+        }
+        window.history.pushState('forward', null, '#'); //在IE中必须得有这两行
+        window.history.forward(1);
+    });
+</script>
+<script>
+    $(function () {
+        $(".content").delegate(' .paginate_button a', 'click', function () {
+            $(".content1").scrollTop(50);
+        })
+    });
+</script>
+<script>
+    $(function () {
+        $(".content1").scrollTop(0);
+    })
+</script>
+
+
+
+ </html>

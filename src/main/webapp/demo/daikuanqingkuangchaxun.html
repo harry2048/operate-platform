@@ -1,0 +1,711 @@
+<div class="content1" href="">
+
+
+
+
+
+
+
+
+
+
+
+    <meta http-equiv="content-type" content="text/html;charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <title>贷款情况查询页面</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/base.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/layer.css" rel="stylesheet">
+    <link href="css/pagination.css" rel="stylesheet">
+    <link href="css/bootstrap-datetimepicker.css" rel="stylesheet">
+    <link href="css/dataTables.bootstrap.min.css" rel="stylesheet">
+    <link href="css/jedate.css" rel="stylesheet">
+    <style>
+        #loanDetail{
+            background-color: #fff;
+            margin-bottom: 15px;
+        }
+        #loanDetail p{
+            padding-left:0 ;
+            padding-right: 0;
+            margin: 6px 0 ;
+        }
+        #loanDetail .wd_60{
+            display: inline-block;
+            width: 102px;
+            text-align: right;
+            font-size: 12px;
+            font-family: "微软雅黑";
+        }
+        #loanDetail .c13 .wd_60{
+            float: left;
+            margin-top: 5px;
+        }
+        #loanDetail .c13 input{
+            float: left;
+            font-size: 12px;
+            font-family: "微软雅黑";
+        }
+        #loanDetail .col-lg-3 ,#loanDetail .c13{
+            margin:5px 0;
+            padding-left:5px;
+            padding-right: 5px;
+        }
+
+        #loanDetail select option{
+            font-size: 12px;
+            font-family: "微软雅黑";
+        }
+        .search_btn {
+            font-size: 12px;
+            background-color: #09C;
+            padding: 5px 16px;
+            margin-top: 3px;
+            margin-bottom: 5px;
+        }
+        .cardSelect{
+            border: 1px solid #ddd;
+            height: 25px;
+            width: 150px;
+            font-size: 12px;
+        }
+
+    </style>
+
+<div class="hui"><img src="images/ajax-loader.gif"></div>
+        <div class="content">
+            <!--面包屑导航start-->
+            <ol class="breadcrumb">
+                <li class="active">贷款情况查询</li>
+            </ol>
+            <div id="loanDetail" class="col-lg-12 col-md-12 col-sm-12">
+                <div class="col-lg-3 col-md-3 col-sm-3"><span class="wd_60">身份证号&nbsp;&nbsp;</span><input type="text" id="idNo"></div>
+                <div class="col-lg-3 col-md-3 col-sm-3"><span class="wd_60">姓名&nbsp;&nbsp;</span><input type="text" id="idName"></div>
+                <div class="col-lg-3 col-md-3 col-sm-3"><span class="wd_60">联系电话&nbsp;&nbsp;</span><input type="text" id="phoneNo"></div>
+                <div class="col-lg-3 col-md-3 col-sm-3"><span class="wd_60">商户&nbsp;&nbsp;</span><input type="text" id="bcName"></div>
+                <div class="col-lg-3 col-md-3 col-sm-3"><span class="wd_60">资方&nbsp;&nbsp;</span><select id="fundSource"><option value="">请选择</option><option value="1">北银</option><option value="14">91金融</option><option value="13">沃付分期</option><option value="22">医美</option><option value="30">苏宁</option><option value="100">mini循环贷</option><option value="3">海尔教育</option><option value="4">安信小贷</option><option value="5">百度</option><option value="7">海尔租房</option><option value="8">华融</option><option value="11">贷鱼教育</option><option value="15">湖北消费金融</option><option value="16">91旺财</option><option value="18">晋商租房</option><option value="17">晋商教育</option></select></div>
+                <div class="col-lg-3 col-md-3 col-sm-3"><span class="wd_60">贷鱼贷款状态&nbsp;&nbsp;</span><select id="hdStatus"><option value="">请选择</option><option value="in(0,1000)">审批中</option><option value=">=4500">通过</option><option value="=2000">已打回</option><option value="=-3000">已取消</option><option value="=-1000">已拒绝</option><option value=">=7000">已放款</option><option value="=9000">已完结</option><option value="=8000">提前结清</option></select></div>
+                <div class="col-lg-3 col-md-3 col-sm-3"><span class="wd_60">推送状态&nbsp;&nbsp;</span><select id="pushStatus"><option value="">请选择</option><option value="0">未推送</option><option value="1">推送成功</option><option value="2">推送失败</option><option value="3">待推送</option></select></div>
+                <div class="col-lg-3 col-md-3 col-sm-3"><span class="wd_60">进件渠道&nbsp;&nbsp;</span><select id="sourceType"><option value="">请选择</option><option value="1">app进件</option><option value="2">代客下单</option><option value="3">excel导入</option><option value="4">闪银接口</option><option value="5">新氧</option><option value="6">App2.0进件</option><option value="8">会分期进件</option><option value="9">优谈进件</option><option value="11">晋城银行</option></select></div>
+                <div class="col-lg-3 col-md-3 col-sm-3 cl3"><span class="wd_60">进件时间(开始)&nbsp;&nbsp;</span><input type="text" id="applyDateStart1" placeholder="请选择时间" readonly=""></div>
+                <div class="col-lg-3 col-md-3 col-sm-3 c13"><span class="wd_60">进件时间(结束)&nbsp;&nbsp;</span><input type="text" id="applyDateStart2" placeholder="请选择时间" readonly=""></div>
+                <div class="col-lg-3 col-md-3 col-sm-3 c13"><span class="wd_60">信审日期(开始)&nbsp;&nbsp;</span><input type="text" id="applyDateStart3" value="2019-05-20 00:00:00" placeholder="请选择时间" readonly=""></div>
+                <div class="col-lg-3 col-md-3 col-sm-3 c13"><span class="wd_60">信审日期(结束)&nbsp;&nbsp;</span><input type="text" id="applyDateStart4" value="2019-05-20 23:59:59" placeholder="请选择时间" readonly=""></div>
+                <div class="col-lg-3 col-md-3 col-sm-3"><span class="wd_60">资方申请编号&nbsp;&nbsp;</span><input type="text" id="bobApplyCode"></div>
+                <div class="col-lg-3 col-md-3 col-sm-3"><span class="wd_60">签章状态&nbsp;&nbsp;</span><select id="siginStatus"><option value="">请选择</option><option value="0">未签章</option><option value="1">已签章</option></select></div>
+                <div class="col-lg-6 col-md-6 col-sm-6"><button class="btn btn-primary btn-sm search_btn" type="button" id="btn-search">查询</button>&nbsp;&nbsp;
+
+                  
+                
+                <div class="clear"></div>
+            </div>
+            <div class="table-responsive">
+                <div id="reviewList_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer"><div class="top"><div class="clear"></div></div><div id="reviewList_processing" class="dataTables_processing panel panel-default" style="display: none;">处理中...</div><div class="dataTables_scroll"><div class="dataTables_scrollHead" style="overflow: hidden; position: relative; border: 0px; width: 100%;"><div class="dataTables_scrollHeadInner" style="box-sizing: content-box; width: 1654px; padding-right: 0px;"><table style="width: 1654px; margin-left: 0px;" class="table table-bordered table-striped table-hover bg_wt dataTable no-footer" role="grid"><thead style="border-bottom: 0;background-color: #fff;">
+                    <tr role="row"><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 111px;">商户</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 111px;">姓名</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 139px;">身份证</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 111px;">金额</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 111px;">进件时间</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 111px;">期限</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 111px;">审批时间</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 111px;">资方申请编号</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 111px;">贷鱼状态</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 111px;">电话</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 111px;">推送状态</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 111px;">签章状态</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 111px;">尚德合同推送状态</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 112px;">操作</th></tr>
+                    </thead></table></div></div><div class="dataTables_scrollBody" style="position: relative; overflow: auto; width: 100%;"><table id="reviewList" style="width: 100%;" class="table table-bordered table-striped table-hover bg_wt dataTable no-footer" role="grid" aria-describedby="reviewList_info"><thead style="border-bottom: 0;background-color: #fff;">
+                    <tr role="row" style="height: 0px;"><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 111px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;"><div class="dataTables_sizing" style="height:0;overflow:hidden;">商户</div></th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 111px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;"><div class="dataTables_sizing" style="height:0;overflow:hidden;">姓名</div></th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 139px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;"><div class="dataTables_sizing" style="height:0;overflow:hidden;">身份证</div></th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 111px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;"><div class="dataTables_sizing" style="height:0;overflow:hidden;">金额</div></th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 111px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;"><div class="dataTables_sizing" style="height:0;overflow:hidden;">进件时间</div></th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 111px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;"><div class="dataTables_sizing" style="height:0;overflow:hidden;">期限</div></th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 111px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;"><div class="dataTables_sizing" style="height:0;overflow:hidden;">审批时间</div></th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 111px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;"><div class="dataTables_sizing" style="height:0;overflow:hidden;">资方申请编号</div></th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 111px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;"><div class="dataTables_sizing" style="height:0;overflow:hidden;">贷鱼状态</div></th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 111px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;"><div class="dataTables_sizing" style="height:0;overflow:hidden;">电话</div></th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 111px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;"><div class="dataTables_sizing" style="height:0;overflow:hidden;">推送状态</div></th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 111px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;"><div class="dataTables_sizing" style="height:0;overflow:hidden;">签章状态</div></th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 111px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;"><div class="dataTables_sizing" style="height:0;overflow:hidden;">尚德合同推送状态</div></th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 112px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;"><div class="dataTables_sizing" style="height:0;overflow:hidden;">操作</div></th></tr>
+                    </thead>
+                    
+                <tbody><tr role="row" class="odd"><td>广东明世在线教育科技有限公司</td><td>刘敏</td><td>421023199304052462</td><td>11520.00</td><td>2019-05-20 13:38:13</td><td>12</td><td>2019-05-20 13:45:58</td><td></td><td>打回修改</td><td>15872126326</td><td></td><td>未签章</td><td>未推送</td><td><button type="button" data-id="6536112662741255169" class="btn btn-primary btn-sm" name="cancelOrder">订单取消</button>&nbsp;&nbsp;&nbsp;&nbsp;<button type="button" data-id="6536112662741255169" data-source="17" data-cust-id="6535105607097505793" data-cust-name="刘敏" class="btn btn-primary btn-sm mt_3" name="modify_card">变更银行卡</button></td></tr><tr role="row" class="even"><td>广东明世在线教育科技有限公司</td><td>刘贤海</td><td>36073119970222171X</td><td>11960.00</td><td>2019-05-20 13:32:39</td><td>12</td><td>2019-05-20 13:40:59</td><td>13361480</td><td>打回修改</td><td>13197966357</td><td>推送成功</td><td>已签章</td><td>未推送</td><td><button type="button" data-id="6535437731610231809" data-source="17" data-cust-id="6532824835220853761" data-cust-name="刘贤海" class="btn btn-primary btn-sm mt_3" name="modify_card">变更银行卡</button></td></tr><tr role="row" class="odd"><td>深圳市宝安区卓文教育培训中心</td><td>颜臻玲</td><td>50022719950916392X</td><td>14800.00</td><td>2019-05-20 13:23:04</td><td>18</td><td>2019-05-20 13:35:51</td><td>13398038</td><td>已放款</td><td>15730404234</td><td>推送成功</td><td>已签章</td><td>未推送</td><td><button type="button" data-id="6536108849833706497" data-source="17" data-cust-id="6536071272872159233" data-cust-name="颜臻玲" class="btn btn-primary btn-sm mt_3" name="modify_card">变更银行卡</button></td></tr><tr role="row" class="even"><td>福州咸鱼科技有限公司</td><td>刘亮</td><td>340302199405311017</td><td>23800.00</td><td>2019-05-20 12:58:07</td><td>24</td><td>2019-05-20 13:02:03</td><td>13397210</td><td>已放款</td><td>13665609851</td><td>推送成功</td><td>已签章</td><td>未推送</td><td><button type="button" data-id="6536097878051390465" data-source="17" data-cust-id="6536078060425440257" data-cust-name="刘亮" class="btn btn-primary btn-sm mt_3" name="modify_card">变更银行卡</button></td></tr><tr role="row" class="odd"><td>广东明世在线教育科技有限公司</td><td>张雷</td><td>230204198706230234</td><td>7980.00</td><td>2019-05-20 12:55:20</td><td>12</td><td>2019-05-20 12:58:01</td><td></td><td>审批拒绝</td><td>18566874234</td><td></td><td>未签章</td><td>未推送</td><td><button type="button" data-id="6536101869173867521" class="btn btn-primary btn-sm" name="cancelOrder">订单取消</button>&nbsp;&nbsp;&nbsp;&nbsp;</td></tr><tr role="row" class="even"><td>广东明世在线教育科技有限公司</td><td>徐灿灿</td><td>411524199909282748</td><td>6215.00</td><td>2019-05-20 12:39:25</td><td>12</td><td>2019-05-20 12:48:44</td><td>13396777</td><td>已放款</td><td>17629981815</td><td>推送成功</td><td>已签章</td><td>未推送</td><td><button type="button" data-id="6535879419711456257" data-source="17" data-cust-id="6535871355449105409" data-cust-name="徐灿灿" class="btn btn-primary btn-sm mt_3" name="modify_card">变更银行卡</button></td></tr><tr role="row" class="odd"><td>上海海同优才教育培训有限责任公司</td><td>王小凯</td><td>622301199106131318</td><td>16800.00</td><td>2019-05-20 12:23:48</td><td>24</td><td>2019-05-20 12:41:43</td><td>13396597</td><td>已放款</td><td>18601427854</td><td>推送成功</td><td>已签章</td><td>未推送</td><td><button type="button" data-id="6536093933013828609" data-source="17" data-cust-id="6536086795783649281" data-cust-name="王小凯" class="btn btn-primary btn-sm mt_3" name="modify_card">变更银行卡</button></td></tr><tr role="row" class="even"><td>武汉远航智慧数码科技有限公司</td><td>赵子康</td><td>421023200005214914</td><td>16800.00</td><td>2019-05-20 12:09:38</td><td>24</td><td>2019-05-20 12:35:38</td><td>13396421</td><td>已放款</td><td>15171206548</td><td>推送成功</td><td>已签章</td><td>未推送</td><td><button type="button" data-id="6536090369644299265" data-source="17" data-cust-id="6536084344928620545" data-cust-name="赵子康" class="btn btn-primary btn-sm mt_3" name="modify_card">变更银行卡</button></td></tr><tr role="row" class="odd"><td>福州咸鱼科技有限公司</td><td>刘亮</td><td>340302199405311017</td><td>23800.00</td><td>2019-05-20 11:56:00</td><td>24</td><td>2019-05-20 12:12:56</td><td></td><td>订单取消</td><td>13665609851</td><td></td><td>未签章</td><td>未推送</td><td></td></tr><tr role="row" class="even"><td>上海育创网络科技股份有限公司</td><td>陈立鹏</td><td>320831199907312613</td><td>19980.00</td><td>2019-05-20 11:46:45</td><td>24</td><td>2019-05-20 11:52:07</td><td>13395222</td><td>已放款</td><td>13771191051</td><td>推送成功</td><td>已签章</td><td>未推送</td><td><button type="button" data-id="6536084611329426433" data-source="17" data-cust-id="6536078376271883265" data-cust-name="陈立鹏" class="btn btn-primary btn-sm mt_3" name="modify_card">变更银行卡</button></td></tr></tbody></table></div></div><div class="bottom"><div class="dataTables_info" id="reviewList_info" role="status" aria-live="polite">显示第 1 - 10 条记录，共23 条</div><div class="dataTables_length" id="reviewList_length"><label> <select name="reviewList_length" aria-controls="reviewList" class="form-control input-sm"><option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select> </label></div><div class="dataTables_paginate paging_full_numbers" id="reviewList_paginate"><ul class="pagination"><li class="paginate_button first disabled" id="reviewList_first"><a href="javascript:void(0);" aria-controls="reviewList" data-dt-idx="0" tabindex="0">首页</a></li><li class="paginate_button previous disabled" id="reviewList_previous"><a href="javascript:void(0);" aria-controls="reviewList" data-dt-idx="1" tabindex="0">上页</a></li><li class="paginate_button active"><a href="javascript:void(0);" aria-controls="reviewList" data-dt-idx="2" tabindex="0">1</a></li><li class="paginate_button "><a href="javascript:void(0);" aria-controls="reviewList" data-dt-idx="3" tabindex="0">2</a></li><li class="paginate_button "><a href="javascript:void(0);" aria-controls="reviewList" data-dt-idx="4" tabindex="0">3</a></li><li class="paginate_button next" id="reviewList_next"><a href="javascript:void(0);" aria-controls="reviewList" data-dt-idx="5" tabindex="0">下页</a></li><li class="paginate_button last" id="reviewList_last"><a href="javascript:void(0);" aria-controls="reviewList" data-dt-idx="6" tabindex="0">末页</a></li></ul></div><div class="clear"></div></div></div>
+            </div>
+            <!--正文内容end-->
+        </div>
+<script src="jedate/jedate.min.js"></script>
+<script>
+    jeDate({
+        dateCell:"#applyDateStart1", //目标元素。由于jedate.js封装了一个轻量级的选择器，因此dateCell还允许你传入class、tag这种方式 '#id .class'
+        format:"YYYY-MM-DD", //日期格式
+        minDate:"1900-01-01 00:00:00", //最小日期
+        maxDate:"2099-12-31 23:59:59", //最大日期
+        isinitVal:false, //是否初始化时间
+        isTime:true, //是否开启时间选择
+        isClear:true, //是否显示清空
+        festival:false, //是否显示节日
+        zIndex:999,  //弹出层的层级高度
+        marks:null, //给日期做标注
+        choosefun:function(val) {},  //选中日期后的回调
+        clearfun:function(val) {},   //清除日期后的回调
+        okfun:function(val) {}       //点击确定后的回调
+    });
+    jeDate({
+        dateCell:"#applyDateStart2", //目标元素。由于jedate.js封装了一个轻量级的选择器，因此dateCell还允许你传入class、tag这种方式 '#id .class'
+        format:"YYYY-MM-DD", //日期格式
+        minDate:"1900-01-01 00:00:00", //最小日期
+        maxDate:"2099-12-31 23:59:59", //最大日期
+        isinitVal:false, //是否初始化时间
+        isTime:true, //是否开启时间选择
+        isClear:true, //是否显示清空
+        festival:false, //是否显示节日
+        zIndex:999,  //弹出层的层级高度
+        marks:null, //给日期做标注
+        choosefun:function(val) {},  //选中日期后的回调
+        clearfun:function(val) {},   //清除日期后的回调
+        okfun:function(val) {}       //点击确定后的回调
+    });
+    jeDate({
+        dateCell:"#applyDateStart3", //目标元素。由于jedate.js封装了一个轻量级的选择器，因此dateCell还允许你传入class、tag这种方式 '#id .class'
+        format:"YYYY-MM-DD hh:mm:ss", //日期格式
+        minDate:"1900-01-01 00:00:00", //最小日期
+        maxDate:"2099-12-31 23:59:59", //最大日期
+        isinitVal:false, //是否初始化时间
+        isTime:true, //是否开启时间选择
+        isClear:true, //是否显示清空
+        festival:false, //是否显示节日
+        zIndex:999,  //弹出层的层级高度
+        marks:null, //给日期做标注
+        choosefun:function(val) {},  //选中日期后的回调
+        clearfun:function(val) {},   //清除日期后的回调
+        okfun:function(val) {}       //点击确定后的回调
+    });
+    jeDate({
+        dateCell:"#applyDateStart4", //目标元素。由于jedate.js封装了一个轻量级的选择器，因此dateCell还允许你传入class、tag这种方式 '#id .class'
+        format:"YYYY-MM-DD hh:mm:ss", //日期格式
+        minDate:"1900-01-01 00:00:00", //最小日期
+        maxDate:"2099-12-31 23:59:59", //最大日期
+        isinitVal:false, //是否初始化时间
+        isTime:true, //是否开启时间选择
+        isClear:true, //是否显示清空
+        festival:false, //是否显示节日
+        zIndex:999,  //弹出层的层级高度
+        marks:null, //给日期做标注
+        choosefun:function(val) {},  //选中日期后的回调
+        clearfun:function(val) {},   //清除日期后的回调
+        okfun:function(val) {}       //点击确定后的回调
+    });
+</script>
+
+<script>
+    var dt;
+     $(function(){
+
+         $("#applyDateStart1").on("blur",function(){
+             var startTime=$(this).val();
+             var endTime=$("#applyDateStart2").val();
+             if(startTime&&endTime){
+                 var idTermBghTime= new Date(startTime.replace("-", "/").replace("-", "/"));
+                 var idTermEndTime = new Date(endTime.replace("-", "/").replace("-", "/"));
+                 if(idTermBghTime >= idTermEndTime)
+                 {
+                     layer.msg("进件结束日期必须大于进件开始日期!");
+                     return false;
+                 }
+             }
+         });
+
+         $("#applyDateStart2").on("blur",function(){
+             var startTime=$("#applyDateStart1").val();
+             var endTime=$(this).val();
+             if(startTime&&endTime){
+                 var idTermBghTime= new Date(startTime.replace("-", "/").replace("-", "/"));
+                 var idTermEndTime = new Date(endTime.replace("-", "/").replace("-", "/"));
+                 if(idTermBghTime >= idTermEndTime)
+                 {
+                     layer.msg("进件结束日期必须大于进件开始日期!");
+                     return false;
+                 }
+             }
+         });
+
+
+
+
+
+    	dt = $("#reviewList").dataTable({
+	         "sDom":'<"top"<"clear">>rt<"bottom"ilp<"clear">>', 
+	         bProcessing:true,
+	         pageLength: 10,
+	         searching: false, // 禁用dataTables自带的查询框
+	         ordering: false, // 禁用排序
+             "scrollX": true,
+	         ajax: {
+	             type: "POST",
+	             url: "/hd/loan/getLoanListData",
+	             data:function(d) {
+	           	  d.idNo = $("#idNo").val();
+	           	  d.idName = $("#idName").val();
+	           	  d.phoneNo = $("#phoneNo").val();
+	           	  d.bcName = $("#bcName").val();
+	           	  d.applyDateStart = $("#applyDateStart1").val();
+	           	  d.applyDateEnd = $("#applyDateStart2").val();
+	           	  d.examineDateStart = $("#applyDateStart3").val();
+	           	  d.examineDateEnd = $("#applyDateStart4").val();
+
+	           	  d.hdQueryStatus = $("#hdStatus").find("option:selected").val();
+	           	  d.fundSource = $("#fundSource").find("option:selected").val();
+	           	  d.pushStatus = $("#pushStatus").find("option:selected").val();
+	           	  d.sourceType = $("#sourceType").find("option:selected").val();
+	           	  d.bobApplyCode = $("#bobApplyCode").val();
+	           	  d.siginStatus = $("#siginStatus").val();
+	             }
+	         },
+	         columns: [
+	             {data:"applyId",visible:false}, 
+	             {data:"sourceType",visible:false},
+	             {data:"bcName" },
+	             {data:"idName"},
+	             {data:"idNo"},
+	             {data:"applyAmount"},
+	             {data: "importTime"},
+	             {data: "applyDuration"},
+	             {data: "examineDate"},
+                 {data:"bobApplyCode"},
+                 {data:"hdStatus",render: function(data, type, row) {
+                     if(0==data){
+                         return "待审批";
+                     }else if(-3000==data){
+                         return "订单取消";
+                     }else if(9000==data){
+                         return "订单完结";
+                     }else if(7000==data){
+                         return "已放款";
+                     }else if(5000==data){
+                         return "审批通过";
+                     }else if(6000==data){
+                         return "已支付";
+                     }else if(-1000==data){
+                         return "审批拒绝";
+                     }else if(2000==data){
+                         return "打回修改";
+                     }else if(1000==data){
+                         return "贷鱼初审通过";
+                     }else if(4500==data){
+                         return "贷鱼审批通过";
+                     }
+                     else if(8000==data){
+                         return "提前还款";
+                     }else if(7500==data){
+                    	 return "退货处理中"; 
+                     }else if(8500==data){
+                    	 return "退货成功"; 
+                     }else if(-7500==data){
+                    	 return "退货失败"; 
+                     }else if(-9000==data){
+                         return "未提交";
+                     }else if(9500==data){
+                         return "退货";
+                     }
+                     return data;
+                 }},
+	             {data: "phoneNo"},
+	          	 {data:"pushStatus",render: function(data, type, row) {
+                    if(0==data){
+                        return "未推送";
+                    }else if(1==data){
+                        return "推送成功";
+                    }else if(2==data){
+                        return "推送失败";
+                    }else if(3==data){
+                        return "待推送";
+                    }
+                    return data;
+                  }},
+ 	          	 {data:"signFlag",render: function(data, type, row) {
+ 	          		 var fundSource = row.fundSource;
+ 	          		 if(3 == fundSource || 17 == fundSource || 18 == fundSource){
+ 	                     if(1==data){
+ 	                         return "已签章";
+ 	                     }
+ 	                     return "未签章";
+ 	          		 }
+ 	          		 return "";
+                   }},
+                 {data:"thridSendFlag",render: function(data, type, row) {
+                         var fundSource = row.fundSource;
+                         if(1==data){
+                            return "已推送";
+                         }
+                         return "未推送";
+                     }},
+                 {data: "applyId",render:function(data,type,row){
+                     var operation= "";
+                     if(row.hdStatus < 7000 && row.hdStatus != -3000){
+                         // 订单取消
+                         if(row.hdStatus == -1000){
+                             operation +="<button type='button' data-id="+data+" class='btn btn-primary btn-sm' name='cancelOrder'>订单取消</button>&nbsp;&nbsp;&nbsp;&nbsp;";
+                         }else{
+                             if('17' == row.fundSource || '18' == row.fundSource){
+                                 if(row.signFlag != '1'){
+                                     operation +="<button type='button' data-id="+data+" class='btn btn-primary btn-sm' name='cancelOrder'>订单取消</button>&nbsp;&nbsp;&nbsp;&nbsp;";
+                                 }else{
+                                     if(row.hdStatus == 5000){
+                                         operation +="<button type='button' data-id="+data+" class='btn btn-primary btn-sm' name='signButton'>合同重新签订</button>&nbsp;&nbsp;&nbsp;&nbsp;";
+                                     }
+                                 }
+                             }else if('3' == row.fundSource || '7' == row.fundSource){
+                                 if(row.signFlag != '1'){
+                                     operation +="<button type='button' data-id="+data+" class='btn btn-primary btn-sm' name='cancelOrder'>订单取消</button>&nbsp;&nbsp;&nbsp;&nbsp;";
+                                 }
+                             }else if('16' == row.fundSource || '19' == row.fundSource){
+                                 if(row.hdStatus < 5000){
+                                     operation +="<button type='button' data-id="+data+" class='btn btn-primary btn-sm' name='cancelOrder'>订单取消</button>&nbsp;&nbsp;&nbsp;&nbsp;";
+                                 }
+                             }else{
+                                 operation +="<button type='button' data-id="+data+" class='btn btn-primary btn-sm' name='cancelOrder'>订单取消</button>&nbsp;&nbsp;&nbsp;&nbsp;";
+                             }
+                         }
+                     }
+                     if(row.hdStatus>1000){
+                         operation +="<button type='button' data-id="+data+" data-source="+row.fundSource+" data-cust-id="+row.hdCustInfoId+" data-cust-name="+row.idName+" class='btn btn-primary btn-sm mt_3' name='modify_card'>变更银行卡</button>";
+                         // return operation;
+                     }
+                     return operation;
+                 }}
+
+	         ]
+
+
+	     });
+    	 $("#btn-search").click(function(e){
+             var startTime=$("#applyDateStart1").val();
+             var endTime=$("#applyDateStart2").val();
+
+             if(startTime&&endTime){
+                 var idTermBghTime= new Date(startTime.replace("-", "/").replace("-", "/"));
+                 var idTermEndTime = new Date(endTime.replace("-", "/").replace("-", "/"));
+                 if(idTermBghTime >= idTermEndTime)
+                 {
+                     layer.msg("进件结束日期必须大于进件开始日期!");
+                     return false;
+                 }
+             }
+             
+             var examineDateStart = $("#applyDateStart3").val();
+          	 var examineDateEnd = $("#applyDateStart4").val();
+             if(examineDateStart&&examineDateEnd){
+                 if(examineDateStart >=examineDateEnd){
+                     layer.msg("信审结束日期必须大于信审开始日期!");
+                     return false;
+                 }
+             }
+             dt.api().draw();
+         });
+    	 
+    	//给行绑定双击事件
+         $('#reviewList tbody').on('dblclick', 'tr', function () {
+        	 var item = dt.api().row(this).data();
+             var applyId = item.applyId;
+             var sType = item.fundSource;
+             var url = '';
+             if(sType=='2'){
+            	 url = '/hd/import_apply/reviewAudit?id='+applyId+'&oper=1';
+             }else{
+            	 url = '/hd/loan/reviewAudit?id='+applyId+ '&oper=1';
+             }
+             layer.open({
+                 type: 2,
+                 area: ['1280px', '600px'],
+                 title: '贷款情况详情页面',
+                 shadeClose: true, //点击遮罩关闭
+                 content: url
+             });
+         });
+
+         $("#reviewList").on("click","button[name='cancelOrder']",function(e){
+             var applyId = $(this).attr("data-id");
+             var initButton="<p class='fixP mt_15'><span class='tx'>订单号:</span>"+applyId+"</p>";
+             layer.open({
+                 type: 1,
+                 area: ['300px', '270px'],
+                 title: '订单取消',
+                 btn: ['确定','取消'],
+                 yes: function (index, layero) {
+                         var bindUrl="/hd/loan/cancelOrder";
+                         $.ajax({
+                             type: 'POST',
+                             url: bindUrl ,
+                             data: {applyId:applyId},
+                             success:function(data){
+                                 if(200==data.code){
+                                     layer.msg("订单取消成功");
+                                     layer.close(index);
+                                 }else{
+                                     layer.msg(data.msg);
+                                 }
+                             }
+                         });
+                 },
+                 cancel:function(index){
+                     //按钮【按钮二】的回调
+                     layer.close(index);
+                 },
+                 shadeClose: true, //点击遮罩关闭
+                 content:initButton
+             });
+         });
+
+         $("#reviewList").on("click","button[name='signButton']",function(e){
+             var applyId = $(this).attr("data-id");
+             var initButton="<p class='fixP mt_15'>确定重新推送晋商合同吗？</p>";
+             layer.open({
+                 type: 1,
+                 area: ['300px', '270px'],
+                 title: '合同推送',
+                 btn: ['确定','取消'],
+                 yes: function (index, layero) {
+                     var bindUrl="/hd/loan/signCancel";
+                     $.ajax({
+                         type: 'POST',
+                         url: bindUrl ,
+                         data: {applyId:applyId},
+                         success:function(data){
+                             if(200==data.code){
+                                 layer.msg("推送成功");
+                                 layer.close(index);
+                             }else{
+                                 layer.msg(data.msg);
+                             }
+                         }
+                     });
+                 },
+                 cancel:function(index){
+                     //按钮【按钮二】的回调
+                     layer.close(index);
+                 },
+                 shadeClose: true, //点击遮罩关闭
+                 content:initButton
+             });
+         });
+
+         $("#reviewList").on("click","button[name='modify_card']",function(e){
+             var applyId = $(this).attr("data-id");
+             var fundSource=$(this).attr("data-source");
+             var hdCustInfoId=$(this).attr("data-cust-id");
+             var idName=$(this).attr("data-cust-name");
+
+             $.ajax({
+                 type: 'POST',
+                 url: "/hd/deduct/getModifyCardMsg" ,
+                 data:{applyId:applyId,fundSource:fundSource} ,
+                 async: true,
+                 success:function(data){
+                     if('200'==data.code){
+                         var bankMsg=data.result;
+                         var banks=bankMsg.data;
+                         var selectStr="<select id='cardName' class='cardSelect'>"
+                         for(var i=0;i<banks.length;i++){
+                             selectStr+="<option value='"+banks[i].value+"'";
+                             if(banks[i].value == bankMsg.repaymentBank){
+                                 selectStr+=" selected "
+                             }
+                             selectStr+=">"+banks[i].name+"</option>"
+                         }
+                         bankMsg.repaymentCardNo=bankMsg.repaymentCardNo.replace(/\s/g,'').replace(/(\d{4})(?=\d)/g,"$1 ");
+                         selectStr+="</select>"
+                         var initButton="<p class='fixP mt_15'><span class='tx'>还款开户行:</span>"+selectStr+"</p>" +
+                                 "<p class='fixP mt_15'><span class='tx' style='padding-right: 13px;'>还款卡号:</span><input  class='borSty' style='width:150px;font-size: 12px;'  id='repaymentCardNo' value='"+bankMsg.repaymentCardNo+"'></p>"+
+                                 "<p class='fixP mt_15'><span class='tx' '>绑定手机号:</span><input  class='borSty' style='width:150px;font-size: 12px;'  id='cardPhoneNo' value='"+bankMsg.repaymentCardPhoneNo+"'></p>"+
+                                 "<p class='fixP mt_15'><span class='tx'>是否对银行卡进行四要素校验:</span><input  type='checkbox' id='cardValid' ></p>";
+                         layer.open({
+                             type: 1,
+                             area: ['300px', '270px'],
+                             title: '变更银行卡',
+                             btn: ['确定','取消'],
+                             yes: function (index, layero) {
+                                 var repaymentCardNo=$("#repaymentCardNo").val();
+                                 var cardName=$("#cardName").val();
+                                 var phoneNo=$("#cardPhoneNo").val();
+                                 var checked=$("input[type='checkbox']").is(':checked');
+                                 repaymentCardNo = repaymentCardNo.replace(/\s+/g,"");
+                                 var reg = /^(\d{16}|\d{18}|\d{19})$/;
+
+
+                                 if(!repaymentCardNo.match(reg)){
+                                     layer.msg("银行卡格式不正确");
+                                     return;
+                                 }
+                                 if(!phoneNo.trim()){
+                                     layer.msg("手机号不能为空!");
+                                     return ;
+                                 }
+                                 if(!(/^1[3|4|5|7|8]\d{9}$/.test(phoneNo))){
+                                     layer.msg("手机号码有误，请重填");
+                                     return ;
+                                 }
+                                 var oldCardNo=bankMsg.repaymentCardNo.replace(/\s+/g,"");
+                                 if(repaymentCardNo==oldCardNo&&cardName==bankMsg.repaymentBank&&phoneNo==bankMsg.repaymentCardPhoneNo){
+                                     layer.msg("没有对银行卡信息做任何修改");
+                                     return;
+                                 }
+
+                                 $(layero).find(".layui-layer-btn0").attr("disabled",true);
+                                 if(checked){
+                                     var mobileModify=false;
+                                     var bindUrl="/hd/loan/juheBindBankCard";
+
+                                     $.ajax({
+                                         type: 'POST',
+                                         url: bindUrl ,
+                                         data: {applyDetailId:bankMsg.applyDetailId,name:bankMsg.repaymentCustName,idNo:bankMsg.idNo,cardNo:repaymentCardNo,mobile:phoneNo,mobileModify:true,hdCustInfoId:bankMsg.hdCustInfoId,bank:cardName},
+                                         success:function(data){
+                                             if(200==data.code){
+                                                 if("1"==data.result.res){
+                                                     modifyOrderCardMsg(bankMsg.applyId,bankMsg.applyDetailId,cardName,repaymentCardNo,hdCustInfoId,idName,phoneNo,true);
+                                                     layer.close(index);
+                                                 }else{
+                                                     layer.msg(data.result.message);
+                                                     $(layero).find(".layui-layer-btn0").attr("disabled"," ");
+                                                 }
+                                             }else{
+                                                 layer.msg(data.msg);
+                                                 $(layero).find(".layui-layer-btn0").attr("disabled"," ");
+                                             }
+                                         }
+                                     });
+                                 }else{
+                                     modifyOrderCardMsg(bankMsg.applyId,bankMsg.applyDetailId,cardName,repaymentCardNo,hdCustInfoId,idName,phoneNo,false);
+                                     layer.close(index);
+                                 }
+
+                             },
+                             cancel:function(index){
+                                 //按钮【按钮二】的回调
+                                 layer.close(index);
+                             },
+                             shadeClose: true, //点击遮罩关闭
+                             content:initButton
+                         });
+                     }else{
+                         layer.msg(data.msg+"加载卡信息失败");
+                     }
+                 }
+             });
+         });
+    });
+
+
+     function modifyOrderCardMsg(applyId,applyDetailId,repaymentBank,repaymentCardNo,hdCustInfoId,idName,phoneNo,cardValid) {
+         $.ajax({
+             type: 'POST',
+             url: "/hd/deduct/modifyOrderCardMsg" ,
+             data:{applyId:applyId,applyDetailId:applyDetailId,repaymentBank:repaymentBank,repaymentCardNo:repaymentCardNo,hdCustInfoId:hdCustInfoId,custName:idName,phoneNo:phoneNo,cardValid:cardValid} ,
+             async: true,
+             success:function(data){
+                 if('200'==data.code){
+                     layer.msg("银行卡变更成功");
+                 }else{
+                     layer.msg(data.msg+"银行卡变更失败");
+                 }
+             }
+         });
+     }
+     function exportResult(){
+         layer.confirm("确定要导出结果到excel中吗？", {
+             btn: ['确认','取消'], //按钮
+             yes:function (index, layero) {
+                 var idNo = $("#idNo").val();
+                 var idName = $("#idName").val();
+                 var phoneNo = $("#phoneNo").val();
+                 var bcName = $("#bcName").val();
+                 var applyDateStart = $("#applyDateStart1").val();
+                 var applyDateEnd = $("#applyDateStart2").val();
+                 var examineDateStart = $("#applyDateStart3").val();
+                 var examineDateEnd = $("#applyDateStart4").val();
+
+                 var hdQueryStatus = $("#hdStatus").find("option:selected").val();
+                 var fundSource = $("#fundSource").find("option:selected").val();
+                 var pushStatus = $("#pushStatus").find("option:selected").val();
+                 var sourceType = $("#sourceType").find("option:selected").val();
+                 var bobApplyCode = $("#bobApplyCode").val();
+                 var params="idNo="+idNo+"&idName="+idName+"&bcName="+bcName+"&phoneNo="+phoneNo;
+                 params+="&applyDateStart="+applyDateStart+"&applyDateEnd="+applyDateEnd+"&examineDateStart="+examineDateStart+"&examineDateEnd="+examineDateEnd;
+                 params+="&hdQueryStatus="+hdQueryStatus+"&fundSource="+fundSource+"&pushStatus="+pushStatus+"&sourceType="+sourceType+"&bobApplyCode="+bobApplyCode;
+                 var url="/hd/loan/reportLoanExport/?"+params;
+                 window.open(url);
+                 layer.close(index);
+             },
+             cancel:function(index){
+                 //按钮【按钮二】的回调
+                 layer.close(index);
+             },
+         });
+     }
+</script>
+<script>
+
+</script>
+<!--按钮弹出层-->
+<script>
+    //询问框
+    $("#piliang").on("click",function(){
+        var ids=new Array();
+        $(".ckb:checkbox:checked").each(function(){
+            ids.push($(this).val());
+        });
+        if(ids.length==0){
+            layer.msg('没有可批量审批的数据');
+            return;
+        }
+        layer.confirm('确定批量通过您选择的？', {
+            btn: ['确定','取消'] //按钮
+        }, function(){
+            var searchName=$("#searchName").val();
+            $.ajax({
+                type: 'POST',
+                url: "/hd/loan/batchReviewAudit" ,
+                data: {ids:ids.toString()} ,
+                async: true,
+                success:function(data){
+                	 if("0"==data.code){
+                         layer.msg("批量更新成功");
+                         conentWin.load("/hd/loan/reviewList?searchName="+searchName);
+
+                     }else{
+                         layer.msg("批量更新失败,原因为：" + data.message);
+                     }
+                }
+            });
+        }, function(){
+            layer.msg('取消成功');
+        });
+    });
+
+
+</script>
+<script>
+    //分页方法
+    function page(n,s){
+        $("#pageNo").val(n);
+        $("#pageSize").val(s);
+        $("#searchForm").submit();
+        return false;
+    }
+
+    function toAuditDetail(id){
+        conentWin.load("/hd/loan/reviewAudit?id="+id);
+    }
+</script>
+
+<script>
+    var time = 100000;
+    var interval; //调度器对象。
+    function run(){
+        interval = setInterval("fun()",time);
+    }
+    function fun(){
+        $(".hui").css("display","none");
+    }
+//    $(function(){
+//        $("#reviewList").delegate('tr td button','click',function(){
+//            $(this).html("加载中...").attr("disabled","disabled");
+//            $(".hui").css("display","block");
+//            run();
+//        })
+//    })
+</script>
+
+<script>
+    $(document).ready(function(e) {
+        var counter = 0;
+        if (window.history && window.history.pushState) {
+            $(window).on('popstate', function () {
+                window.history.pushState('forward', null, '#');
+                window.history.forward(1);
+            });
+        }
+        window.history.pushState('forward', null, '#'); //在IE中必须得有这两行
+        window.history.forward(1);
+    });
+</script>
+
+</div></div>

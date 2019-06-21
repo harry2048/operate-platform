@@ -1,0 +1,314 @@
+<div class="content1" href="">
+
+
+
+
+
+
+
+
+
+
+
+    <meta http-equiv="content-type" content="text/html;charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <title>商户退款申请页面</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/base.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/skin/layer.css" rel="stylesheet">
+    <link href="css/pagination.css" rel="stylesheet">
+    <link href="css/bootstrap-datetimepicker.css" rel="stylesheet">
+    <link href="css/dataTables.bootstrap.min.css" rel="stylesheet">
+    <link href="css/jedate.css" rel="stylesheet">
+    <style>
+        #loanDetail{
+            background-color: #fff;
+            margin-bottom: 15px;
+        }
+        #loanDetail p{
+            padding-left:0 ;
+            padding-right: 0;
+            margin: 6px 0 ;
+        }
+        #loanDetail .wd_60{
+            display: inline-block;
+            width: 102px;
+            text-align: right;
+            font-size: 12px;
+            font-family: "微软雅黑";
+        }
+        #loanDetail .c13 .wd_60{
+            float: left;
+            margin-top: 5px;
+        }
+        #loanDetail .c13 input{
+            float: left;
+            font-size: 12px;
+            font-family: "微软雅黑";
+        }
+        #loanDetail .col-lg-3 ,#loanDetail .c13{
+            margin:5px 0;
+            padding-left:5px;
+            padding-right: 5px;
+        }
+
+        #loanDetail select option{
+            font-size: 12px;
+            font-family: "微软雅黑";
+        }
+        .search_btn {
+            font-size: 12px;
+            background-color: #09C;
+            padding: 5px 16px;
+            margin-top: 3px;
+            margin-bottom: 5px;
+        }
+        .ta_r{
+            text-align: right;
+        }
+        .mr_25{
+            margin-right: 25px;
+        }
+        .phoneStyle:hover{
+            cursor: pointer;
+            color: #09C;
+        }
+        .phoneStyle{
+            cursor: pointer;
+        }
+       .dataTables_scrollBody  #refundList tbody {
+            /*height: 300px;*/
+            /*overflow-y: auto;*/
+        }
+    </style>
+
+<div class="hui"><img src="images/ajax-loader.gif"></div>
+        <div class="content">
+            <!--面包屑导航start-->
+            <ol class="breadcrumb">
+                <li class="active">退货处理</li>
+            </ol>
+            <div id="loanDetail" class="col-lg-12 col-md-12 col-sm-12">
+                <div class="col-lg-3 col-md-3 col-sm-3"><span class="wd_60">商户名称&nbsp;&nbsp;</span><input type="text" id="bizName"></div>
+                <div class="col-lg-3 col-md-3 col-sm-3"><span class="wd_60">客户名称&nbsp;&nbsp;</span><input type="text" id="containsCustName"></div>
+                <div class="col-lg-3 col-md-3 col-sm-3"><span class="wd_60">退款状态&nbsp;&nbsp;</span><select id="refundState">
+                    <option value="">请选择</option>
+                    <option value="0">待提交</option>
+                    <option value="1" selected="">待审批</option>
+                    <option value="2">待财务审核</option>
+                    <option value="3">已拒绝</option>
+                    <option value="4">财务通过</option>
+                    <option value="5">财务拒绝</option>
+                </select></div>
+                <div class="col-lg-3 col-md-3 col-sm-3">
+                    <span class="wd_60">生成日期&nbsp;&nbsp;</span>
+                    <input type="text" id="refundDate" value="2019-05-20" placeholder="请选择时间" readonly="">
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-3">
+                    <span class="wd_60">退货日期&nbsp;&nbsp;</span>
+                    <input type="text" id="handleDate" placeholder="请选择时间" readonly="">
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-4 col-lg-offset-3  col-md-offset-3 col-sm-offset-3 ta_r text-center">
+                    <button class="btn btn-primary btn-sm search_btn" type="button" id="btn-search">查询</button>
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div class="table-responsive" style="overflow-y: auto;">
+                <div id="refundList_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer"><div class="top"><div class="clear"></div></div><div id="refundList_processing" class="dataTables_processing panel panel-default" style="display: none;">处理中...</div><div class="dataTables_scroll"><div class="dataTables_scrollHead" style="overflow: hidden; position: relative; border: 0px; width: 100%;"><div class="dataTables_scrollHeadInner" style="box-sizing: content-box; width: 1139px; padding-right: 0px;"><table style="width: 1139px; margin-left: 0px;" class="table table-bordered table-striped table-hover bg_wt dataTable no-footer" role="grid"><thead style="border-bottom: 0;background-color: #fff;">
+                    <tr role="row"><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 154px;">商户名称</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 154px;">客户姓名</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 155px;">退款金额</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 155px;">申请日期</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 155px;">审核日期</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 155px;">审核状态</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 91px;">操作</th></tr>
+                    </thead></table></div></div><div class="dataTables_scrollBody" style="position: relative; overflow: auto; width: 100%;"><table id="refundList" style="width: 100%;" class="table table-bordered table-striped table-hover bg_wt dataTable no-footer" role="grid" aria-describedby="refundList_info"><thead style="border-bottom: 0;background-color: #fff;">
+                    <tr role="row" style="height: 0px;"><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 154px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;"><div class="dataTables_sizing" style="height:0;overflow:hidden;">商户名称</div></th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 154px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;"><div class="dataTables_sizing" style="height:0;overflow:hidden;">客户姓名</div></th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 155px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;"><div class="dataTables_sizing" style="height:0;overflow:hidden;">退款金额</div></th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 155px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;"><div class="dataTables_sizing" style="height:0;overflow:hidden;">申请日期</div></th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 155px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;"><div class="dataTables_sizing" style="height:0;overflow:hidden;">审核日期</div></th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 155px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;"><div class="dataTables_sizing" style="height:0;overflow:hidden;">审核状态</div></th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 91px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;"><div class="dataTables_sizing" style="height:0;overflow:hidden;">操作</div></th></tr>
+                    </thead>
+                    
+                <tbody><tr class="odd"><td valign="top" colspan="7" class="dataTables_empty">没有符合您搜索条件的信息</td></tr></tbody></table></div></div><div class="bottom"><div class="dataTables_info" id="refundList_info" role="status" aria-live="polite">显示第 0 至 0 项结果，共 0 项</div><div class="dataTables_length" id="refundList_length"><label> <select name="refundList_length" aria-controls="refundList" class="form-control input-sm"><option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select> </label></div><div class="dataTables_paginate paging_full_numbers" id="refundList_paginate"><ul class="pagination"><li class="paginate_button first disabled" id="refundList_first"><a href="javascript:void(0);" aria-controls="refundList" data-dt-idx="0" tabindex="0">首页</a></li><li class="paginate_button previous disabled" id="refundList_previous"><a href="javascript:void(0);" aria-controls="refundList" data-dt-idx="1" tabindex="0">上页</a></li><li class="paginate_button next disabled" id="refundList_next"><a href="javascript:void(0);" aria-controls="refundList" data-dt-idx="2" tabindex="0">下页</a></li><li class="paginate_button last disabled" id="refundList_last"><a href="javascript:void(0);" aria-controls="refundList" data-dt-idx="3" tabindex="0">末页</a></li></ul></div><div class="clear"></div></div></div>
+            </div>
+            <!--正文内容end-->
+        </div>
+<script src="jedate/jedate.min.js"></script>
+<script>
+    jeDate({
+        dateCell:"#refundDate", //目标元素。由于jedate.js封装了一个轻量级的选择器，因此dateCell还允许你传入class、tag这种方式 '#id .class'
+        format:"YYYY-MM-DD", //日期格式
+        minDate:"1900-01-01", //最小日期
+        maxDate:"2099-12-31", //最大日期
+        isinitVal:false, //是否初始化时间
+        isTime:true, //是否开启时间选择
+        isClear:true, //是否显示清空
+        festival:false, //是否显示节日
+        zIndex:999,  //弹出层的层级高度
+        marks:null, //给日期做标注
+        choosefun:function(val) {},  //选中日期后的回调
+        clearfun:function(val) {},   //清除日期后的回调
+        okfun:function(val) {}       //点击确定后的回调
+    });
+    jeDate({
+        dateCell:"#handleDate", //目标元素。由于jedate.js封装了一个轻量级的选择器，因此dateCell还允许你传入class、tag这种方式 '#id .class'
+        format:"YYYY-MM-DD", //日期格式
+        minDate:"1900-01-01", //最小日期
+        maxDate:"2099-12-31", //最大日期
+        isinitVal:false, //是否初始化时间
+        isTime:true, //是否开启时间选择
+        isClear:true, //是否显示清空
+        festival:false, //是否显示节日
+        zIndex:999,  //弹出层的层级高度
+        marks:null, //给日期做标注
+        choosefun:function(val) {},  //选中日期后的回调
+        clearfun:function(val) {},   //清除日期后的回调
+        okfun:function(val) {}       //点击确定后的回调
+    });
+
+</script>
+
+<script>
+    var dt;
+     $(function(){
+
+    	 dt = $("#refundList").dataTable({
+	         "sDom":'<"top"<"clear">>rt<"bottom"ilp<"clear">>', 
+	         bProcessing:true,
+	         pageLength: 10,
+	         searching: false, // 禁用dataTables自带的查询框
+	         ordering: false, // 禁用排序
+             autoHeight:false,
+             "scrollY": 300,
+             "scrollY": true,
+	         ajax: {
+	             type: "POST",
+	             url: "/hd/refund/getRefundListData",
+	             data:function(d) {
+	           	  d.bizName = $("#bizName").val();
+	           	  d.refundState = $("#refundState").val();
+	           	  d.refundDate = $("#refundDate").val();
+	           	  d.containsCustName= $("#containsCustName").val();
+	           	  d.handleDate= $("#handleDate").val();
+	             }
+	         },
+	         columns: [
+	             // {data:"id"},
+	             {data:"bizName"},
+                 {data:"containsCustName"},
+	             {data:"bizSetlTotAmt"},
+	             {data:"refundDate" },
+	             {data:"handleDate"},
+                 {data: "refundState",render:function(data,type,row){
+                     if("0" == data){
+                         return "待提交";
+                     }else if("1"==data){
+                         return "待审核";
+                     }else if("2"==data){
+                         return "待财务审核";
+                     }else if("3"==data){
+                         return "已拒绝";
+                     }else if("4"==data){
+                         return "财务通过";
+                     }else if("5"==data){
+                         return "财务拒绝";
+                     }else if("10"==data){
+                         return "已删除";
+                     }
+                     return data;
+                 }},
+                 {data: "id",render:function(data,type,row){
+                     var operation="";
+                     if(row.refundState=='1' ||row.refundState=='5' ){
+                         operation="<button type='button'  data-id='"+data+"' data-status='"+row.refundState+"' data-amt='"+row.bizSetlTotAmt+"'  class='btn btn-primary btn-sm mt_3' name='refund_audit'>审核</button>";
+                     }else{
+                         operation="<button type='button'  data-id='"+data+"' data-status='"+row.refundState+"' data-amt='"+row.bizSetlTotAmt+"'  class='btn btn-primary btn-sm mt_3' name='refund_detail'>详情</button>";
+                     }
+                     
+                         
+                     
+                         
+                     
+                     return operation;
+                 }}
+	         ]
+	     });
+
+         $("#refundList").on("click","button[name='refund_detail']",function(e) {
+             var $current = $(e.currentTarget);
+             var id = $current.data("id");
+             var status=$current.data("status");
+             var amt=$current.data("amt");
+             var url="/hd/refund/refundDetail?refundId="+id+"&status="+status+"&bizSetlTotAmt="+amt;
+             layerWin=layer.open({
+                 type: 2,
+                 area: ['1280px', '600px'],
+                 title: '商户退款详情',
+                 shadeClose: true, //点击遮罩关闭
+                 content: url
+             });
+         });
+
+         $("#refundList").on("click","button[name='refund_audit']",function(e) {
+             var $current = $(e.currentTarget);
+             var id = $current.data("id");
+             var status=$current.data("status");
+             var amt=$current.data("amt");
+             var url="/hd/refund/refundAudit?refundId="+id+"&status="+status+"&bizSetlTotAmt="+amt;
+             layerWin=layer.open({
+                 type: 2,
+                 area: ['1280px', '600px'],
+                 title: '商户退款详情',
+                 shadeClose: true, //点击遮罩关闭
+                 content: url
+             });
+         });
+
+    	 $("#btn-search").click(function(e){
+             dt.api().draw();
+         });
+
+
+    });
+
+
+</script>
+
+
+<script>
+    //分页方法
+    function page(n,s){
+        $("#pageNo").val(n);
+        $("#pageSize").val(s);
+        $("#searchForm").submit();
+        return false;
+    }
+
+
+</script>
+
+<script>
+    var time = 100000;
+    var interval; //调度器对象。
+    function run(){
+        interval = setInterval("fun()",time);
+    }
+    function fun(){
+        $(".hui").css("display","none");
+    }
+    $(function(){
+//        $("#lendingList").delegate('tr td button','click',function(){
+//            $(this).html("加载中...").attr("disabled","disabled");
+//            $(".hui").css("display","block");
+//            run();
+//        })
+    })
+</script>
+
+<script>
+    $(document).ready(function(e) {
+        var counter = 0;
+        if (window.history && window.history.pushState) {
+            $(window).on('popstate', function () {
+                window.history.pushState('forward', null, '#');
+                window.history.forward(1);
+            });
+        }
+        window.history.pushState('forward', null, '#'); //在IE中必须得有这两行
+        window.history.forward(1);
+    });
+</script>
+
+</div>

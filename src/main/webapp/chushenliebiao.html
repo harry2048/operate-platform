@@ -1,0 +1,47 @@
+ <!DOCTYPE html>
+ <html>
+ <head>
+     <title>初审列表</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/base.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/layer.css" rel="stylesheet">
+    <link href="css/pagination.css" rel="stylesheet">
+    <link href="css/bootstrap-datetimepicker.css" rel="stylesheet">
+ </head>
+ <body>
+ 	<div class="content1">
+ 		<div class="content">
+            <!--面包屑导航start-->
+            <ol class="breadcrumb">
+                <li class="active">初审列表</li>
+            </ol>
+            <!--面包屑导航end-->
+            <!--正文内容start-->
+		    <div class="col-lg-3 col-md-3 col-sm-3 searchArea">
+		        <div class="input-group">
+		            <i class="searchPic"></i>
+		            <input type="text" class="form-control" name="searchName" id="searchName" placeholder="请输入搜索内容">
+		            <span class="input-group-btn">
+		            	<button class="btn btn-primary search_btn" type="button" id="btn-search">查询</button>
+		            </span>
+		        </div>
+
+		    </div>
+		    <div class="col-lg-9 col-sm-9 col-sm-9"></div>
+		    <div class="clear"></div>
+            <div class="table-responsive">
+                <div id="auditList_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer"><div class="top"><div class="clear"></div></div><div id="auditList_processing" class="dataTables_processing panel panel-default" style="display: none;">处理中...</div><table id="auditList" style="width: 100%;" class="table table-bordered table-striped table-hover bg_wt dataTable no-footer" role="grid" aria-describedby="auditList_info">
+                    <thead style="border-bottom: 0;">
+                    <tr role="row"><th class="text-center sorting_disabled" rowspan="1" colspan="1" aria-label="编号" style="width: 62px;">编号</th><th class="text-center sorting" tabindex="0" aria-controls="auditList" rowspan="1" colspan="1" aria-label="资金方: activate to sort column ascending" style="width: 106px;">资金方</th><th class="text-center sorting" tabindex="0" aria-controls="auditList" rowspan="1" colspan="1" aria-label="姓名: activate to sort column ascending" style="width: 83px;">姓名</th><th class="text-center sorting" tabindex="0" aria-controls="auditList" rowspan="1" colspan="1" aria-label="身份证: activate to sort column ascending" style="width: 107px;">身份证</th><th class="text-center sorting" tabindex="0" aria-controls="auditList" rowspan="1" colspan="1" aria-label="申请金额: activate to sort column ascending" style="width: 130px;">申请金额</th><th class="text-center sorting" tabindex="0" aria-controls="auditList" rowspan="1" colspan="1" aria-label="期数: activate to sort column ascending" style="width: 84px;">期数</th><th class="text-center sorting_desc" tabindex="0" aria-controls="auditList" rowspan="1" colspan="1" aria-sort="descending" aria-label="进件时间: activate to sort column ascending" style="width: 130px;">进件时间</th><th class="text-center sorting_disabled" rowspan="1" colspan="1" aria-label="初审状态" style="width: 110px;">初审状态</th><th class="text-center sorting_disabled" rowspan="1" colspan="1" aria-label="操作" style="width: 63px;">操作</th></tr>
+                    </thead>
+                    <tbody>
+
+                    <tr class="odd"><td valign="top" colspan="9" class="dataTables_empty">没有符合您搜索条件的信息</td></tr></tbody>
+                </table><div class="bottom"><div class="dataTables_info" id="auditList_info" role="status" aria-live="polite">显示第 0 至 0 项结果，共 0 项</div><div class="dataTables_length" id="auditList_length"><label> <select name="auditList_length" aria-controls="auditList" class="form-control input-sm"><option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select> </label></div><div class="dataTables_paginate paging_full_numbers" id="auditList_paginate"><ul class="pagination"><li class="paginate_button first disabled" id="auditList_first"><a href="javascript:void(0);" aria-controls="auditList" data-dt-idx="0" tabindex="0">首页</a></li><li class="paginate_button previous disabled" id="auditList_previous"><a href="javascript:void(0);" aria-controls="auditList" data-dt-idx="1" tabindex="0">上页</a></li><li class="paginate_button next disabled" id="auditList_next"><a href="javascript:void(0);" aria-controls="auditList" data-dt-idx="2" tabindex="0">下页</a></li><li class="paginate_button last disabled" id="auditList_last"><a href="javascript:void(0);" aria-controls="auditList" data-dt-idx="3" tabindex="0">末页</a></li></ul></div><div class="clear"></div></div></div>
+            </div>
+            <!--正文内容end-->
+        </div>
+ 	</div>
+ </body>
+ </html>

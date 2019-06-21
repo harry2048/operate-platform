@@ -1,0 +1,253 @@
+ <!DOCTYPE html>
+ <html>
+ <head>
+     <title>批扣列表</title>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/base.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/layer.css" rel="stylesheet">
+    <link href="css/pagination.css" rel="stylesheet">
+    <link href="css/bootstrap-datetimepicker.css" rel="stylesheet">
+    <link href="css/jedate.css" rel="stylesheet">
+    <style>
+        #loanDetail{
+            background-color: #fff;
+            margin-bottom: 15px;
+        }
+        #loanDetail p{
+            padding-left:0 ;
+            padding-right: 0;
+            margin: 6px 0 ;
+        }
+        #loanDetail .wd_60{
+            display: inline-block;
+            width: 102px;
+            text-align: right;
+            font-size: 12px;
+            font-family: "微软雅黑";
+        }
+        #loanDetail .c13 .wd_60{
+            float: left;
+            margin-top: 5px;
+        }
+        #loanDetail .c13 input{
+            float: left;
+            font-size: 12px;
+            font-family: "微软雅黑";
+        }
+        #loanDetail .col-lg-3 ,#loanDetail .c13{
+            margin:5px 0;
+            padding-left:5px;
+            padding-right: 5px;
+        }
+
+        #loanDetail select option{
+            font-size: 12px;
+            font-family: "微软雅黑";
+        }
+        .search_btn {
+            font-size: 12px;
+            background-color: #09C;
+            padding: 5px 16px;
+            margin-top: 3px;
+            margin-bottom: 5px;
+        }
+        .ta_r{
+            text-align: right;
+        }
+        .mr_25{
+            margin-right: 25px;
+        }
+    </style>
+ </head>
+ <body>
+    
+   
+
+<!-- <div class="hui"><img src="/hd/static/images/ajax-loader.gif"></div> -->
+        <div class="content">
+            <!--面包屑导航start-->
+            <ol class="breadcrumb">
+                <li class="active">交易流水列表查询</li>
+            </ol>
+            <div id="loanDetail" class="col-lg-12 col-md-12 col-sm-12">
+
+                <div class="col-lg-3 col-md-3 col-sm-3"><span class="wd_60">流水号&nbsp;&nbsp;</span><input type="text" id="thdSeq"></div>
+                <div class="col-lg-3 col-md-3 col-sm-3"><span class="wd_60">合同号&nbsp;&nbsp;</span><input type="text" id="loanContNo"></div>
+                <div class="col-lg-3 col-md-3 col-sm-3"><span class="wd_60">交易日期&nbsp;&nbsp;</span><input type="text" id="applyDateStart2" value="2019-05-22" placeholder="请选择时间" readonly=""></div>
+                <div class="col-lg-3 col-md-3 col-sm-3"><span class="wd_60">批扣状态&nbsp;&nbsp;</span>
+                    <select id="paySts">
+                        <option value="">---请选择---</option>
+                        <option value="00">待发送</option>
+                        <option value="02">扣款中</option>
+                        <option value="03">代扣成功</option>
+                        <option value="04">代扣失败</option>
+                        <option value="05">JD签约中</option>
+                        <option value="06">JD签约失败</option>
+                        <option value="07">JD签约成功</option>
+                    </select></div>
+                <div class="col-lg-3 col-md-3 col-sm-3">
+
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-3 ta_r">
+                    <button class="btn btn-primary btn-sm search_btn" type="button" id="btn-search">查询</button>
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div class="table-responsive">
+                <div id="sendDetailList_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer"><div class="top"><div class="clear"></div></div><div id="sendDetailList_processing" class="dataTables_processing panel panel-default" style="display: none;">处理中...</div><table id="sendDetailList" style="width: 100%;" class="table table-bordered table-striped table-hover bg_wt dataTable no-footer" role="grid" aria-describedby="sendDetailList_info">
+                    <thead style="border-bottom: 0;background-color: #fff;">
+                    <tr role="row"><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 144px;">代扣流水号</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 72px;">生成日期</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 144px;">贷款合同号</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 52px;">客户姓名</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 136px;">证件号</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 42px;">应扣款</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 121px;">发出代扣时间</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 121px;">收到代扣时间</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 53px;">扣款状态</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 105px;">扣款结果</th></tr>
+                    </thead>
+                <tbody><tr role="row" class="odd"><td>6536635612895642625</td><td>2019-05-22</td><td>6460777522599560193</td><td>秦文进</td><td>140931199412020039</td><td>1680</td><td>2019-5-22 12:16:15</td><td>2019-5-22 12:16:15</td><td>601</td><td></td></tr><tr role="row" class="even"><td>6536636411239465985</td><td>2019-05-22</td><td>6460777522599560193</td><td>秦文进</td><td>140931199412020039</td><td>1680</td><td>2019-5-22 12:19:25</td><td>2019-5-22 12:19:37</td><td>还款成功</td><td>微信支付还款成功</td></tr><tr role="row" class="odd"><td>6536649002816898049</td><td>2019-05-22</td><td>6473880122542785537</td><td>叶锦程</td><td>35021219931112202X</td><td>448.5</td><td>2019-5-22 01:09:27</td><td>2019-5-22 01:09:35</td><td>还款成功</td><td>微信支付还款成功</td></tr><tr role="row" class="even"><td>6536700731679835137</td><td>2019-05-22</td><td>6427755259014153217</td><td>张科举</td><td>370681198711080627</td><td>750</td><td>2019-5-22 04:35:00</td><td>2019-5-22 04:35:12</td><td>还款成功</td><td>微信支付还款成功</td></tr><tr role="row" class="odd"><td>6536735460554703873</td><td>2019-05-22</td><td>6473010528211960833</td><td>李强</td><td>510521198909165858</td><td>830</td><td>2019-5-22 06:53:00</td><td>2019-5-22 06:53:15</td><td>还款成功</td><td>微信支付还款成功</td></tr><tr role="row" class="even"><td>6536736976896263169</td><td>2019-05-22</td><td>6482431810675409921</td><td>姜竹杰</td><td>371624199910063676</td><td>198</td><td>2019-5-22 06:59:02</td><td>2019-5-22 06:59:14</td><td>还款成功</td><td>微信支付还款成功</td></tr><tr role="row" class="odd"><td>6536750015741690881</td><td>2019-05-22</td><td>6418031609719555073</td><td>周海洋</td><td>420528199608312516</td><td>373.5</td><td>2019-5-22 07:50:51</td><td>2019-5-22 07:50:59</td><td>还款成功</td><td>微信支付还款成功</td></tr><tr role="row" class="even"><td>6536756915908641793</td><td>2019-05-22</td><td>6483708982639723521</td><td>蔡杰伟</td><td>441522199801097973</td><td>253.83</td><td>2019-5-22 08:18:16</td><td>2019-5-22 08:20:06</td><td>还款成功</td><td>微信支付还款成功</td></tr><tr role="row" class="odd"><td>6536760974875034625</td><td>2019-05-22</td><td>6525905482204316673</td><td>苏世豪</td><td>362301199609180011</td><td>1848</td><td>2019-5-22 08:34:24</td><td>2019-5-22 08:34:33</td><td>还款成功</td><td>微信支付还款成功</td></tr><tr role="row" class="even"><td>6536762150563611649</td><td>2019-05-22</td><td>6516895933963174913</td><td>马倩</td><td>430304198509122069</td><td>1497</td><td>2019-5-22 08:39:04</td><td>2019-5-22 08:39:12</td><td>还款成功</td><td>微信支付还款成功</td></tr></tbody></table><div class="bottom"><div class="dataTables_info" id="sendDetailList_info" role="status" aria-live="polite">显示第 1 - 10 条记录，共40 条</div><div class="dataTables_length" id="sendDetailList_length"><label> <select name="sendDetailList_length" aria-controls="sendDetailList" class="form-control input-sm"><option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select> </label></div><div class="dataTables_paginate paging_full_numbers" id="sendDetailList_paginate"><ul class="pagination"><li class="paginate_button first disabled" id="sendDetailList_first"><a href="javascript:void(0);" aria-controls="sendDetailList" data-dt-idx="0" tabindex="0">首页</a></li><li class="paginate_button previous disabled" id="sendDetailList_previous"><a href="javascript:void(0);" aria-controls="sendDetailList" data-dt-idx="1" tabindex="0">上页</a></li><li class="paginate_button active"><a href="javascript:void(0);" aria-controls="sendDetailList" data-dt-idx="2" tabindex="0">1</a></li><li class="paginate_button "><a href="javascript:void(0);" aria-controls="sendDetailList" data-dt-idx="3" tabindex="0">2</a></li><li class="paginate_button "><a href="javascript:void(0);" aria-controls="sendDetailList" data-dt-idx="4" tabindex="0">3</a></li><li class="paginate_button "><a href="javascript:void(0);" aria-controls="sendDetailList" data-dt-idx="5" tabindex="0">4</a></li><li class="paginate_button next" id="sendDetailList_next"><a href="javascript:void(0);" aria-controls="sendDetailList" data-dt-idx="6" tabindex="0">下页</a></li><li class="paginate_button last" id="sendDetailList_last"><a href="javascript:void(0);" aria-controls="sendDetailList" data-dt-idx="7" tabindex="0">末页</a></li></ul></div><div class="clear"></div></div></div>
+            </div>
+            <!--正文内容end-->
+        </div>
+<script src="js/jquery-2.1.1.min.js"></script>
+<script src="js/jedate.min.js"></script>
+<script>
+    jeDate({
+        dateCell:"#applyDateStart2", //目标元素。由于jedate.js封装了一个轻量级的选择器，因此dateCell还允许你传入class、tag这种方式 '#id .class'
+        format:"YYYY-MM-DD", //日期格式
+        minDate:"1900-01-01", //最小日期
+        maxDate:"2099-12-31", //最大日期
+        isinitVal:false, //是否初始化时间
+        isTime:true, //是否开启时间选择
+        isClear:true, //是否显示清空
+        festival:false, //是否显示节日
+        zIndex:999,  //弹出层的层级高度
+        marks:null, //给日期做标注
+        choosefun:function(val) {},  //选中日期后的回调
+        clearfun:function(val) {},   //清除日期后的回调
+        okfun:function(val) {}       //点击确定后的回调
+    });
+
+</script>
+
+<script>
+     $(function(){
+
+         var dt = $("#sendDetailList").dataTable({
+             "sDom":'<"top"<"clear">>rt<"bottom"ilp<"clear">>', 
+             bProcessing:true,
+             pageLength: 10,
+             searching: false, // 禁用dataTables自带的查询框
+             ordering: false, // 禁用排序
+             ajax: {
+                 type: "POST",
+                 url: "/hd/repaySendDetail/getRepaySendDetailData",
+                 data:function(d) {
+                  d.thdSeq = $("#thdSeq").val();
+                  d.loanContNo = $("#loanContNo").val();
+                  d.prcsDt = $("#applyDateStart2").val();
+                  d.paySts = $("#paySts").val();
+                 }
+             },
+             columns: [
+                 {data:"thdSeq"},
+                 {data:"prcsDt"},
+                 {data:"loanContNo"},
+                 {data:"custName" },
+                 {data:"idNo"},
+//               {data:"acctNo"},
+                 {data:"totalAmt"},
+                 {data: "sendTime"},
+                 {data: "recvTime"},
+                 {data: "paySts",render:function(data,type,row){
+                     if(00==data){
+                         return "生成清单";
+                     }else if(01==data){
+                         return "待再次发送";
+                     }else if(02==data){
+                         return "扣款中";
+                     }else if(03==data){
+                         return "还款成功";
+                     }else if(04==data){
+                         return "还款失败";
+                     }else if(05==data){
+                         return "JD签约中";
+                     }else if(06==data){
+                         return "JD签约失败";
+                     }else if(07==data){
+                         return "JD签约成功";
+                     }
+                     return data;
+                 }},
+                 {data: "retnRslt"}
+             ]
+
+         });
+
+         $("#btn-search").click(function(e){
+             dt.api().draw();
+         });
+
+         //给行绑定双击事件
+         $('#sendDetailList tbody').on('dblclick', 'tr', function () {
+             var item = dt.api().row(this).data();
+             var applyId = item.loanContNo;
+             var url = '/hd/lending/getRepayPlan/'+applyId;
+             layer.open({
+                 type: 2,
+                 area: ['1280px', '600px'],
+                 title: '贷款情况详情页面',
+                 shadeClose: true, //点击遮罩关闭
+                 content: url
+             });
+         });
+
+    });
+
+
+</script>
+
+
+<script>
+    //分页方法
+    function page(n,s){
+        $("#pageNo").val(n);
+        $("#pageSize").val(s);
+        $("#searchForm").submit();
+        return false;
+    }
+
+
+</script>
+
+<script>
+    var time = 100000;
+    var interval; //调度器对象。
+    function run(){
+        interval = setInterval("fun()",time);
+    }
+    function fun(){
+        $(".hui").css("display","none");
+    }
+    $(function(){
+        $("#sendDetailList").delegate('tr td button','click',function(){
+            $(this).html("加载中...").attr("disabled","disabled");
+            $(".hui").css("display","block");
+            run();
+        })
+    })
+</script>
+
+<script>
+    $(document).ready(function(e) {
+        var counter = 0;
+        if (window.history && window.history.pushState) {
+            $(window).on('popstate', function () {
+                window.history.pushState('forward', null, '#');
+                window.history.forward(1);
+            });
+        }
+        window.history.pushState('forward', null, '#'); //在IE中必须得有这两行
+        window.history.forward(1);
+    });
+</script>
+
+</div>
+ </body>
+ </html>

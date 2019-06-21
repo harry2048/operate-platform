@@ -1,0 +1,539 @@
+ <!DOCTYPE html>
+ <html>
+ <head>
+     <title>初审列表</title>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/base.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/layer.css" rel="stylesheet">
+    <link href="css/pagination.css" rel="stylesheet">
+    <link href="css/bootstrap-datetimepicker.css" rel="stylesheet">
+    <link href="css/jedate.css" rel="stylesheet">
+    <style>
+        #loanDetail{
+            background-color: #fff;
+            margin-bottom: 15px;
+        }
+        #loanDetail p{
+            padding-left:0 ;
+            padding-right: 0;
+            margin: 6px 0 ;
+        }
+        #loanDetail .wd_60{
+            display: inline-block;
+            width: 102px;
+            text-align: right;
+            font-size: 12px;
+            font-family: "微软雅黑";
+        }
+        #loanDetail .c13 .wd_60{
+            float: left;
+            margin-top: 5px;
+        }
+        #loanDetail .c13 input{
+            float: left;
+            font-size: 12px;
+            font-family: "微软雅黑";
+        }
+        #loanDetail .col-lg-3 ,#loanDetail .c13{
+            margin:5px 0;
+            padding-left:5px;
+            padding-right: 5px;
+        }
+
+        #loanDetail select option{
+            font-size: 12px;
+            font-family: "微软雅黑";
+        }
+        .search_btn {
+            font-size: 12px;
+            background-color: #09C;
+            padding: 5px 16px;
+            margin-top: 3px;
+            margin-bottom: 5px;
+        }
+        .ta_r{
+            text-align: center;
+        }
+        .mr_25{
+            margin-right: 25px;
+        }
+        #lateFee{
+            border: 1px solid #ccc;
+            height: 25px;
+            line-height: 25px;
+            text-indent: 5px;
+            width: 120px;
+            font-size: 13px;
+        }
+        .mt_3{
+            margin: 3px 0;
+        }
+        .phoneStyle:hover{
+            cursor: pointer;
+            color: #09C;
+        }
+        .phoneStyle{
+            cursor: pointer;
+        }
+    </style>
+ </head>
+ <body>
+ 	<div class="content1" href="">
+   
+
+		<!-- <div class="hui"><img src="/hd/static/images/ajax-loader.gif"></div> -->
+        <div class="content">
+            <!--面包屑导航start-->
+            <ol class="breadcrumb">
+                <li class="active">扣款列表查询</li>
+            </ol>
+            <div id="loanDetail" class="col-lg-12 col-md-12 col-sm-12">
+
+                <div class="col-lg-3 col-md-3 col-sm-3"><span class="wd_60">合同号&nbsp;&nbsp;</span><input type="text" id="loanContNo"></div>
+                <div class="col-lg-3 col-md-3 col-sm-3"><span class="wd_60">客户名称&nbsp;&nbsp;</span><input type="text" id="custName"></div>
+
+                <div class="col-lg-3 col-md-3 col-sm-3 c13"><span class="wd_60">身份证号</span><input type="text" id="idNo"></div>
+                <div class="col-lg-3 col-md-3 col-sm-3 c13"><span class="wd_60">还款账号</span><input type="text" id="acctNo"></div>
+                <div class="col-lg-3 col-md-3 col-sm-3"><span class="wd_60">生成日期&nbsp;&nbsp;</span><input type="text" id="applyDateStart2" value="2019-05-22" placeholder="请选择时间" readonly=""></div>
+                <div class="col-lg-3 col-md-3 col-sm-3"><span class="wd_60">批扣状态&nbsp;&nbsp;</span><select id="paySts">
+                        <option value="">---请选择---</option>
+                        <option value="00">生成清单</option>
+                        <option value="01">待再次发送</option>
+                        <option value="02">扣款中</option>
+                        <option value="03">代扣成功</option>
+                        <option value="04">代扣失败</option>
+                        <option value="05">JD签约中</option>
+                        <option value="06">JD签约失败</option>
+                        <option value="07">JD签约成功</option>
+
+                        <option value="601">微信预生成订单成功</option>
+                        <option value="602">微信预生成订单失败</option>
+                        <option value="603">微信支付失败</option>
+                    </select></div>
+                <div class="col-lg-3 col-md-3 col-sm-3"><span class="wd_60">批扣渠道&nbsp;&nbsp;</span><select id="deductChannel">
+                    <option value="">---请选择---</option>
+                    <option value="10">通联支付</option>
+                    <option value="11">翼支付</option>
+                </select></div>
+                <div class="col-lg-3 col-md-3 col-sm-3"><span class="wd_60">是否可批扣&nbsp;&nbsp;</span><select id="deductStatus">
+                    <option value="">---请选择---</option>
+                    <option value="0">可批扣</option>
+                    <option value="1">不可批扣</option>
+                </select></div>
+                <div class="col-lg-12 col-md-6 col-sm-6 ta_r">
+                    <button class="btn btn-primary btn-sm search_btn" type="button" id="btn-search">查询</button>
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <button class="btn btn-primary btn-sm search_btn" type="button" id="btn-export2" onclick="exportBatchDeduct();">导出</button>
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <button class="btn btn-primary btn-sm search_btn " type="button" id="btn-export" onclick="sendDedution();">发送代扣</button>
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <button class="btn btn-primary btn-sm search_btn" type="button" id="btn-deduct-query" onclick="batchDeductQuery();">批量代扣结果查询</button>
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div class="table-responsive">
+                <div id="lendingList_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer"><div class="top"><div class="clear"></div></div><div id="lendingList_processing" class="dataTables_processing panel panel-default" style="display: none;">处理中...</div><table id="lendingList" style="width: 100%;" class="table table-bordered table-striped table-hover bg_wt dataTable no-footer" role="grid" aria-describedby="lendingList_info">
+                    <thead style="border-bottom: 0;background-color: #fff;">
+                    <tr role="row"><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 13px;"><input class="allCkb" type="checkbox"></th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 58px;">生成日期</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 134px;">贷款合同号</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 40px;">客户姓名</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 127px;">证件号</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 46px;">应扣款</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 68px;">还款账户开户行</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 134px;">还款账号</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 99px;">发出代扣时间</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 35px;">扣款状态</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 73px;">扣款结果</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 129px;">操作</th></tr>
+                    </thead>
+                <tbody><tr role="row" class="odd"><td><input type="checkbox" value="6536635612870476801" name="ids" class="ckb"></td><td>2019-05-22</td><td>6460777522599560193</td><td>秦文进</td><td>140931199412020039</td><td>1680</td><td>农业银行</td><td>6228481668120214070</td><td>2019-05-22 00:19:25.0</td><td>还款成功</td><td>微信支付还款成功</td><td><button type="button" data-id="6460777522599560193" class="btn btn-primary btn-sm mt_3" name="deduct-query">查询批扣结果</button></td></tr><tr role="row" class="even"><td><input type="checkbox" value="6536722134349120513" name="ids" class="ckb"></td><td>2019-05-22</td><td>6218698888606385153</td><td>袁小华</td><td>511121197704227204</td><td>2658.29</td><td>农业银行</td><td>6228480469623614374</td><td></td><td>生成清单</td><td></td><td><button type="button" data-id="6218698888606385153" class="btn btn-primary btn-sm mt_3" name="deduct-query">查询批扣结果</button><button type="button" data-id="6536722134349120513" data-loan-no="6218698888606385153" class="btn btn-primary btn-sm mt_3" name="public-deduct">对公还款</button></td></tr><tr role="row" class="odd"><td><input type="checkbox" value="6536722134508504065" name="ids" class="ckb"></td><td>2019-05-22</td><td>6220870104499880961</td><td>张大壮</td><td>320381199411087332</td><td>9605</td><td>农业银行</td><td>6228480405855885373</td><td></td><td>生成清单</td><td></td><td><button type="button" data-id="6220870104499880961" class="btn btn-primary btn-sm mt_3" name="deduct-query">查询批扣结果</button><button type="button" data-id="6536722134508504065" data-loan-no="6220870104499880961" class="btn btn-primary btn-sm mt_3" name="public-deduct">对公还款</button></td></tr><tr role="row" class="even"><td><input type="checkbox" value="6536722134579807233" name="ids" class="ckb"></td><td>2019-05-22</td><td>6222447517564404737</td><td>彭勇军</td><td>511323198502190878</td><td>1508.78</td><td>农业银行</td><td>6228480462785007214</td><td></td><td>生成清单</td><td></td><td><button type="button" data-id="6222447517564404737" class="btn btn-primary btn-sm mt_3" name="deduct-query">查询批扣结果</button><button type="button" data-id="6536722134579807233" data-loan-no="6222447517564404737" class="btn btn-primary btn-sm mt_3" name="public-deduct">对公还款</button></td></tr><tr role="row" class="odd"><td><input type="checkbox" value="6536722135246701569" name="ids" class="ckb"></td><td>2019-05-22</td><td>6235099307722146817</td><td>段兰亭</td><td>510121199511016089</td><td>2280.86</td><td>农业银行</td><td>6230520460001265978</td><td></td><td>生成清单</td><td></td><td><button type="button" data-id="6235099307722146817" class="btn btn-primary btn-sm mt_3" name="deduct-query">查询批扣结果</button><button type="button" data-id="6536722135246701569" data-loan-no="6235099307722146817" class="btn btn-primary btn-sm mt_3" name="public-deduct">对公还款</button></td></tr><tr role="row" class="even"><td><input type="checkbox" value="6536722135473193985" name="ids" class="ckb"></td><td>2019-05-22</td><td>6241093333441053697</td><td>陆洒洒</td><td>340321199112280826</td><td>12631.5</td><td>农业银行</td><td>6228480405226722974</td><td></td><td>生成清单</td><td></td><td><button type="button" data-id="6241093333441053697" class="btn btn-primary btn-sm mt_3" name="deduct-query">查询批扣结果</button><button type="button" data-id="6536722135473193985" data-loan-no="6241093333441053697" class="btn btn-primary btn-sm mt_3" name="public-deduct">对公还款</button></td></tr><tr role="row" class="odd"><td><input type="checkbox" value="6536722135930373121" name="ids" class="ckb"></td><td>2019-05-22</td><td>6241928700509553665</td><td>徐超民</td><td>340111199308278513</td><td>38186.5</td><td>农业银行</td><td>6228480669192349779</td><td></td><td>生成清单</td><td></td><td><button type="button" data-id="6241928700509553665" class="btn btn-primary btn-sm mt_3" name="deduct-query">查询批扣结果</button><button type="button" data-id="6536722135930373121" data-loan-no="6241928700509553665" class="btn btn-primary btn-sm mt_3" name="public-deduct">对公还款</button></td></tr><tr role="row" class="even"><td><input type="checkbox" value="6536722136219780097" name="ids" class="ckb"></td><td>2019-05-22</td><td>6242554182257083393</td><td>莫凡</td><td>34011119940629551X</td><td>18692.5</td><td>农业银行</td><td>6228480668089335677</td><td></td><td>生成清单</td><td></td><td><button type="button" data-id="6242554182257083393" class="btn btn-primary btn-sm mt_3" name="deduct-query">查询批扣结果</button><button type="button" data-id="6536722136219780097" data-loan-no="6242554182257083393" class="btn btn-primary btn-sm mt_3" name="public-deduct">对公还款</button></td></tr><tr role="row" class="odd"><td><input type="checkbox" value="6536722137620677633" name="ids" class="ckb"></td><td>2019-05-22</td><td>6245083276477727745</td><td>李雪</td><td>130282199212073320</td><td>21253.6</td><td>农业银行</td><td>6228480668918402672</td><td></td><td>生成清单</td><td></td><td><button type="button" data-id="6245083276477727745" class="btn btn-primary btn-sm mt_3" name="deduct-query">查询批扣结果</button><button type="button" data-id="6536722137620677633" data-loan-no="6245083276477727745" class="btn btn-primary btn-sm mt_3" name="public-deduct">对公还款</button></td></tr><tr role="row" class="even"><td><input type="checkbox" value="6536722138371458049" name="ids" class="ckb"></td><td>2019-05-22</td><td>6245891291762131969</td><td>汪立刚</td><td>420112197201043316</td><td>48031.6</td><td>农业银行</td><td>6228450058152705673</td><td></td><td>生成清单</td><td></td><td><button type="button" data-id="6245891291762131969" class="btn btn-primary btn-sm mt_3" name="deduct-query">查询批扣结果</button><button type="button" data-id="6536722138371458049" data-loan-no="6245891291762131969" class="btn btn-primary btn-sm mt_3" name="public-deduct">对公还款</button></td></tr></tbody></table><div class="bottom"><div class="dataTables_info" id="lendingList_info" role="status" aria-live="polite">显示第 1 - 10 条记录，共1,123 条</div><div class="dataTables_length" id="lendingList_length"><label> <select name="lendingList_length" aria-controls="lendingList" class="form-control input-sm"><option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select> </label></div><div class="dataTables_paginate paging_full_numbers" id="lendingList_paginate"><ul class="pagination"><li class="paginate_button first disabled" id="lendingList_first"><a href="javascript:void(0);" aria-controls="lendingList" data-dt-idx="0" tabindex="0">首页</a></li><li class="paginate_button previous disabled" id="lendingList_previous"><a href="javascript:void(0);" aria-controls="lendingList" data-dt-idx="1" tabindex="0">上页</a></li><li class="paginate_button active"><a href="javascript:void(0);" aria-controls="lendingList" data-dt-idx="2" tabindex="0">1</a></li><li class="paginate_button "><a href="javascript:void(0);" aria-controls="lendingList" data-dt-idx="3" tabindex="0">2</a></li><li class="paginate_button "><a href="javascript:void(0);" aria-controls="lendingList" data-dt-idx="4" tabindex="0">3</a></li><li class="paginate_button "><a href="javascript:void(0);" aria-controls="lendingList" data-dt-idx="5" tabindex="0">4</a></li><li class="paginate_button "><a href="javascript:void(0);" aria-controls="lendingList" data-dt-idx="6" tabindex="0">5</a></li><li class="paginate_button disabled" id="lendingList_ellipsis"><a href="javascript:void(0);" aria-controls="lendingList" data-dt-idx="7" tabindex="0">…</a></li><li class="paginate_button "><a href="javascript:void(0);" aria-controls="lendingList" data-dt-idx="8" tabindex="0">113</a></li><li class="paginate_button next" id="lendingList_next"><a href="javascript:void(0);" aria-controls="lendingList" data-dt-idx="9" tabindex="0">下页</a></li><li class="paginate_button last" id="lendingList_last"><a href="javascript:void(0);" aria-controls="lendingList" data-dt-idx="10" tabindex="0">末页</a></li></ul></div><div class="clear"></div></div></div>
+            </div>
+            <!--正文内容end-->
+        </div>
+		<form id="hiddenForm" name="hiddenForm" action="" method="post">
+		    <input type="hidden" id="startDate" name="startDate" value="">
+		    <input type="hidden" id="channel" name="channel" value="">
+		    <input type="hidden" id="delFlag" name="deductStatus" value="">
+		    <input type="hidden" id="payStatus" name="payStatus" value="">
+
+		</form>
+<script src="js/jquery-2.1.1.min.js"></script>
+<script src="js/jedate.min.js"></script>
+<script src="js/jquery.datatables.min.js"></script>
+<script src="js/layer.js"></script>
+<script>
+    jeDate({
+        dateCell:"#applyDateStart2", //目标元素。由于jedate.js封装了一个轻量级的选择器，因此dateCell还允许你传入class、tag这种方式 '#id .class'
+        format:"YYYY-MM-DD", //日期格式
+        minDate:"1900-01-01", //最小日期
+        maxDate:"2099-12-31", //最大日期
+        isinitVal:false, //是否初始化时间
+        isTime:true, //是否开启时间选择
+        isClear:true, //是否显示清空
+        festival:false, //是否显示节日
+        zIndex:999,  //弹出层的层级高度
+        marks:null, //给日期做标注
+        choosefun:function(val) {},  //选中日期后的回调
+        clearfun:function(val) {},   //清除日期后的回调
+        okfun:function(val) {}       //点击确定后的回调
+    });
+
+</script>
+
+<script>
+    var dt;
+    var baVal;
+    var kai=false;
+    function refresh(){
+        dt.api(dt.api().page()).draw(false);
+    }
+    function dis(data){
+        $(".boxIpt").fadeIn();
+        kai=true;
+    }
+    function noDis(data){
+        $(".boxIpt").fadeOut();
+        kai=false;
+    }
+    var initButton="<p class='fixP'><span class='tx'>是否减免滞纳金</span><label><span>否</span>&nbsp;<input class='needBtn1' checked='checked'  onclick='noDis(this)' type='radio' name='need'></label><label><span>是</span>&nbsp;<input class='needBtn' onclick='dis(this)' type='radio' name='need'></label></p>" +
+            "<p class='fixP boxIpt'><span class='tx'>缴纳滞纳金:</span><input type='number' id='lateFee'></p>";
+     $(function(){
+
+         $('.allCkb').click(function () {
+             $("input[name='ids']").prop("checked", this.checked);
+         });''
+         $("[name=items]:checkbox").click(function () {
+             var p = $("[name=items]:checkbox");
+             if (p.filter(':checked').length == p.length) {
+                 $(".allCkb").prop("checked", true);
+             } else {
+                 $(".allCkb").prop("checked", false);
+             }
+         });
+
+//     	 dt = $("#lendingList").dataTable({
+// 	         "sDom":'<"top"<"clear">>rt<"bottom"ilp<"clear">>', 
+// 	         bProcessing:true,
+// 	         pageLength: 10,
+// 	         searching: false, // 禁用dataTables自带的查询框
+// 	         ordering: false, // 禁用排序
+// 	         ajax: {
+// 	             type: "POST",
+// 	             url: "/hd/deduct/getDeductionListData",
+// 	             data:function(d) {
+// 	           	  d.loanContNo = $("#loanContNo").val();
+// 	           	  d.custName = $("#custName").val();
+// 	           	  d.idNo = $("#idNo").val();
+// 	           	  d.acctNo = $("#acctNo").val();
+
+// 	           	  d.prcsDt = $("#applyDateStart2").val();
+// 	           	  d.paySts = $("#paySts").val();
+// 	           	  d.deductChannel=$("#deductChannel").val();
+// 	           	  d.deductStatus=$("#deductStatus").val();
+// 	             }
+// 	         },
+// 	         columns: [
+//                  {data: "id",render: function(data, type, row) {
+//                      return '<input type="checkbox" value="'+data+'"  name="ids" class="ckb">';
+//                  }},
+// 	             {data:"prcsDt"},
+// 	             {data:"loanContNo"},
+// 	             {data:"custName"},
+// //	             {data:"idType" },
+// 	             {data:"idNo"},
+// 	             {data:"totalAmt"},
+// 	             {data:"bankNo"},
+// 	             {data: "acctNo"},
+// 	             {data: "sendTime"},
+//                  {data: "paySts",render:function(data,type,row){
+//                      if(00==data){
+//                          return "生成清单";
+//                      }else if(01==data){
+//                          return "待再次发送";
+//                      }else if(02==data){
+//                          return "扣款中";
+//                      }else if(03==data){
+//                          return "还款成功";
+//                      }else if(04==data){
+//                          return "还款失败";
+//                      }else if(05==data){
+//                          return "JD签约中";
+//                      }else if(06==data){
+//                          return "JD签约失败";
+//                      }else if(07==data){
+//                          return "JD签约成功";
+//                      }else if(601==data){
+//                          return "微信预生成订单成功";
+//                      }else if(602==data){
+//                          return "微信预生成订单失败";
+//                      }else if(603==data){
+//                          return "微信支付失败";
+//                      }
+//                      return data;
+//                  }},
+//                  {data: "retnRslt"},
+//                  {data: "id",render:function(data,type,row){
+//                      var result="";
+                      
+//                          result="<button type='button'  data-id="+row.loanContNo+" class='btn btn-primary btn-sm mt_3' name='deduct-query'>查询批扣结果</button>";
+// //                     }else
+//                          if(04==row.paySts&&row.dbproDueDt<='2019-05-22'){ /** 还款日必须<=今天才能扣款 **/
+//                          result="<button type='button'  data-id="+row.id+" class='btn btn-primary btn-sm mt_3' name='send-deduct'>扣款</button>&nbsp;&nbsp;&nbsp";
+//                      }
+//                      if((04==row.paySts||01==row.paySts||00==row.paySts||06==row.paySts)&&row.prcsDt=='2019-05-22'){
+//                          result+="<button type='button'  data-id="+row.id+" data-loan-no="+row.loanContNo+" class='btn btn-primary btn-sm mt_3' name='public-deduct'>对公还款</button>";
+//                      }
+//                      if((04==row.paySts||01==row.paySts)){
+//                          result+="<button type='button'  data-id="+data+" data-phone="+row.phoneNo+"  class='btn btn-primary btn-sm mt_3' name='deduction_phone'>打电话</button>";
+//                      }
+//                      return result;
+//                  }}
+// 	         ]
+
+// 	     });
+         $("#lendingList").on("click","button[name='deduction_phone']",function(e) {
+             var $current = $(e.currentTarget);
+             $($current).attr("disabled", "disabled");
+             var loanContNo = $current.data("id");
+             var id=$current.data("id");
+             var teleNum=$current.data("phone");
+             call(id,teleNum);
+         });
+         $("#lendingList").on("click","button[name='deduct-query']",function(e){
+             var $current = $(e.currentTarget);
+             $($current).attr("disabled","disabled");
+             var loanContNo = $current.data("id");
+             $.ajax({
+                 type: 'POST',
+                 url: "/hd/deduct/deductQuery" ,
+                 data:{loanContNo:loanContNo} ,
+                 async: true,
+                 success:function(data){
+                     if('200'==data.code){
+                         layer.msg(data.msg);
+                         dt.api().draw();
+                     }else{
+                         layer.msg("发起代扣结果查询失败");
+                         $($current).removeattr("disabled");
+                     }
+                 }
+             });
+         });
+
+         $("#lendingList").on("click","button[name='send-deduct']",function(e){
+             var $current = $(e.currentTarget);
+             var id = $current.data("id");
+             $($current).attr("disabled","disabled");
+             $.ajax({
+                 type: 'POST',
+                 url: "/hd/deduct/sendDeductByLoanContNo" ,
+                 data:{id:id} ,
+                 async: true,
+                 success:function(data){
+                     if('200'==data.code){
+                         layer.msg("发起批扣请求成功");
+                         dt.api().draw();
+                     }else{
+                         layer.msg(data.msg);
+                         $($current).removeattr("disabled");
+                     }
+                 }
+             });
+         });
+
+         $("#lendingList").on("click","button[name='public-deduct']",function(e){
+             var loanContNo = $(this).attr("data-loan-no");
+             layer.open({
+                 type: 1,
+                 area: ['300px', '200px'],
+                 title: '对公还款',
+                 btn: ['确定','取消'],
+                 yes: function (index, layero) {
+                     baVal=Number($("#lateFee").val());
+
+                     $.ajax({
+                         type: 'POST',
+                         url: "/hd/deduct/publicRepayment" ,
+                         data:{mitigate:kai,money:baVal,loanContNo:loanContNo} ,
+                         async: true,
+                         success:function(data){
+                             if('200'==data.code){
+                                 layer.msg("对公扣款成功");
+                                 refresh();
+                             }else{
+                                 layer.msg(data.msg+"对公扣款失败");
+                             }
+                         }
+                     });
+                     layer.close(index);
+                 },
+                 cancel:function(index){
+                     //按钮【按钮二】的回调
+                     layer.close(index);
+                 },
+                 shadeClose: true, //点击遮罩关闭
+                 content:initButton
+             });
+         });
+    	 $("#btn-search").click(function(e){
+             dt.api().draw();
+         });
+         //给行绑定双击事件
+         $('#lendingList tbody').on('dblclick', 'tr', function () {
+             var item = dt.api().row(this).data();
+             var applyId = item.loanContNo;
+             var url = '/hd/lending/getRepayPlan/'+applyId;
+             layer.open({
+                 type: 2,
+                 area: ['1280px', '600px'],
+                 title: '贷款情况详情页面',
+                 shadeClose: true, //点击遮罩关闭
+                 content: url
+             });
+         });
+
+    });
+
+    function call(id,teleNum){
+        var loginName = '8022@hdjf';
+        var password = '8022';
+        var loginType = 'gateway';
+        var applyNo = id;
+        var creditId = '18760dec-f53b-4a6b-9bf8-2cf322da9a35';
+        var url='http://123.57.14.26:8088/stcash/edb_bar/phoneBar/phonebar.html?loginName=' + loginName + '&password=' + password + '&loginType=' + loginType + '&teleNum=' + teleNum + '&aid=' + applyNo + '&cid=' + creditId;
+        layer.open({
+            type: 2,
+            area: ['500px', '250px'],
+            title: '软电话条',
+            shadeClose: true, //点击遮罩关闭
+            content: url
+        });
+    }
+     function sendDedution(){
+         var ids=new Array();
+         $(".ckb:checkbox:checked").each(function(){
+             ids.push($(this).val());
+         });
+         layer.confirm("确定要发起代扣吗？", {
+             btn: ['确认','取消'], //按钮
+             yes:function (index, layero) {
+                 var loanContNo = $("#loanContNo").val();
+                 var custName = $("#custName").val();
+                 var idNo = $("#idNo").val();
+                 var acctNo = $("#acctNo").val();
+                 var prcsDt = $("#applyDateStart2").val();
+                 var idsplit='';
+                 if(ids.length>0){
+                     idsplit=ids.toString();
+                 }
+                 $.ajax({
+                     type: 'POST',
+                     url: "/hd/deduct/deduction" ,
+                     data:{loanContNo:loanContNo,custName:custName,idNo:idNo,acctNo:acctNo,prcsDt:prcsDt,ids:idsplit} ,
+                     async: true,
+                     success:function(data){
+                         if('200'==data.code){
+                             layer.msg("发起批扣请求成功");
+                             refresh();
+                         }else{
+                             layer.msg("发起批扣请求失败！");
+                         }
+                     }
+                 });
+                 layer.close(index);
+             },
+             cancel:function(index){
+                 //按钮【按钮二】的回调
+                 layer.close(index);
+             },
+         });
+     }
+    function batchDeductQuery(){
+
+        layer.confirm("确定要发起批量代扣查询吗？", {
+            btn: ['确认','取消'], //按钮
+            yes:function (index, layero) {
+                $.ajax({
+                    type: 'POST',
+                    url: "/hd/deduct/batchDeductQuery" ,
+                    async: true,
+                    success:function(data){
+                        if('200'==data.code){
+                            layer.msg("发起批扣结果查询请求成功");
+                            refresh();
+                        }else{
+                            layer.msg("发起批扣结果查询请求失败！");
+                        }
+                    }
+                });
+                layer.close(index);
+            },
+            cancel:function(index){
+                //按钮【按钮二】的回调
+                layer.close(index);
+            },
+        });
+    }
+    function exportBatchDeduct(){
+        var startDate = $("#applyDateStart2").val();
+        var deductChannel = $("#deductChannel").val();
+        var deductStatus = $("#deductStatus").val();
+        var paySts = $("#paySts").val();
+
+        $("#startDate").val(startDate);
+        $("#channel").val(deductChannel);
+        $("#delFlag").val(deductStatus);
+        $("#payStatus").val(paySts);
+        var index = layer.confirm("确定要导出所选结果吗？", {
+            btn: ['确认','取消'] //按钮
+        }, function(){
+            document.hiddenForm.action = "/hd/deduct/expOrderList";
+            document.hiddenForm.submit();
+            layer.close(index);
+        }, function(){
+            return;
+        });
+    }
+
+</script>
+
+
+<script>
+    //分页方法
+    function page(n,s){
+        $("#pageNo").val(n);
+        $("#pageSize").val(s);
+        $("#searchForm").submit();
+        return false;
+    }
+
+
+</script>
+
+<script>
+    var time = 100000;
+    var interval; //调度器对象。
+    function run(){
+        interval = setInterval("fun()",time);
+    }
+    function fun(){
+        $(".hui").css("display","none");
+    }
+    $(function(){
+        $("#reviewList").delegate('tr td button','click',function(){
+            $(this).html("加载中...").attr("disabled","disabled");
+            $(".hui").css("display","block");
+            run();
+        })
+    })
+</script>
+
+<script>
+    $(document).ready(function(e) {
+        var counter = 0;
+        if (window.history && window.history.pushState) {
+            $(window).on('popstate', function () {
+                window.history.pushState('forward', null, '#');
+                window.history.forward(1);
+            });
+        }
+        window.history.pushState('forward', null, '#'); //在IE中必须得有这两行
+        window.history.forward(1);
+    });
+</script>
+
+</div>
+ </body>

@@ -1,0 +1,766 @@
+*{
+    margin: 0 auto;
+    padding: 0;
+    text-decoration: none;
+    list-style: none;
+}
+.sqjldiv{
+    width: 900px;
+    height: 500px;
+    background: #fff;
+    position: fixed;
+    z-index: 50;
+    top: 50%;
+    left: 50%;
+    margin-top: -250px;
+    margin-left: -450px;
+    border-radius: 5px;
+    display: none;
+    padding: 5px;
+    z-index: 200;
+}
+.sqjlckmx{
+    cursor: pointer;
+}
+.sqjldivs{
+    overflow-y: scroll;
+    height: 400px;
+    margin-top: 40px;
+}
+.sqjldivx{
+    margin-top: 70px;
+}
+.sqjldivbtn{
+    position: relative;
+}
+.sqjldivbtn span{
+    position: absolute;
+    right: 10px;
+    font-size: 24px;
+    font-weight: bolder;
+    cursor: pointer;
+}
+
+ul{
+    margin: 0;
+}
+a{
+    color: #444;
+}
+.HeadDiv{
+    width: 85%;
+    height: 70px;
+    /*position: fixed;*/
+    background: #fff;
+    z-index: 2;
+    margin-left: 90px;
+    margin-top: 13px;
+    /* border: 1px solid #ccc;
+    box-shadow:0px 0px  5px 3px #aaa; */
+
+}
+#CredBox{
+    margin-top: 5px;
+    /*margin-top: 90px;*/
+}
+.HeadDiv span{
+    display: inline-block;
+    float: left;
+    margin-top: 10px;
+}
+.HeadDiv span p,.HeadDiv span p a{
+    color: #ccc;
+}
+.HeadDiv span ul{
+    float: right;
+}
+.HeadDiv span ul li{
+    float: left;
+    margin-left: 10px;
+    margin-top: 20px;
+}
+.CredBOX_one span:nth-child(1){
+    font-weight: bolder;
+}
+.DetailBOX_one span:nth-child(1){
+    font-weight: bolder;
+}
+.FootlBOX_one span:nth-child(1){
+    font-weight: bolder;
+}
+.HeadDiv span ul li span{
+    margin-right: 10px;
+    cursor:pointer;
+}
+.HeadDiv span ul li img{
+    float: left;
+    cursor:pointer;
+    margin-right: 10px;
+    margin-top: 12px;
+}
+
+.CredBOX{
+    width: 100%;
+    /*height: 50%;*/
+    display: block;
+    margin-bottom: 5px;
+    /*margin-bottom: 20px;*/
+    float: left;
+    padding: 0 100px;
+}
+#FYBGtxt{
+    width: 80%;
+    height: 100%;
+    overflow-y: scroll;
+    position: absolute;
+    background: #fff;
+    display: none;
+    margin-left: 15%;
+}
+#FYBGtxt iframe{
+    width: 100%;
+    height: 100%;
+}
+.CredBOXs{
+    width: 100%;
+    height: 30%;
+    display: block;
+    margin-bottom: 20px;
+    float: left;
+    padding: 0 100px;
+}
+CredBOX:nth-child(5){
+    width: 100%;
+    height: 20%;
+}
+.CredBOX_one{
+    height: 40px;
+}
+.CredBOX_one span,.position_one span{
+    float: left;
+}
+.CredBOX_one span:nth-child(1){
+
+    font-size: 18px;
+}
+.CredBOX_one span img,.position_one span img{
+    width: 100%;
+    padding-top:10px;
+}
+
+
+.table thead{
+    background: #dfe5ff;
+}
+.table thead tr th{
+    border-right: 1px solid #fff;
+    font-size: 14px;
+    color: #444;
+}
+.table thead tr th:last-child{
+    border-right: 1px solid #dee2e6;
+}
+.table{
+    text-align: center;
+}
+.tablediv{
+    margin-top: 5px;
+    overflow-y: auto;
+    /*height: 300px;*/
+    margin-bottom: 5px;
+}
+.Mail_tbody{
+    height: 200px;
+    margin-top: 30px;
+    overflow-y: auto;
+}
+
+.CredBOX_two ul{
+    width: 100%;
+    /*margin-top: 10px;*/
+    height: 40px;
+    /*line-height: 40px;*/
+}
+.CredBOX_two ul li{
+    float: left;
+}
+.CredBOX_two ul li span:nth-child(1){
+    display: inline-block;
+    width: 30%;
+    float: left;
+}
+.CredBOX_two ul li span:nth-child(2){
+    display: inline-block;
+    width: 70%;
+    float: left;
+    padding: 0 10px;
+}
+.CredBOX_two ul li span a{
+    color: deepskyblue;
+    font-size: 14px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+.xybgimg{
+    width: 100%;
+    float: left;
+    margin-top: 10px;
+}
+.DetailBOX_one{
+    height: 40px;
+}
+.DetailBOX_one .span{
+    font-size: 18px;
+    
+}
+.DetailBOX_one span{
+    float: left;
+}
+.FYBdw{
+    position: relative;
+}
+.FYBGtxt{
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: inline-block;
+    padding: 5px 7px;
+    font-size: 14px;
+    float: left;
+    background: dodgerblue;
+    color: #fff;
+    text-align: center;
+    border-radius: 5px;
+}
+.FYBGtxt a{
+    color: #fff;
+}
+.DetailBOX_two{
+	margin-bottom:10px;
+	overflow:auto;
+}
+.DetailBOX_two div{
+    float: left;
+    margin-top: 10px;
+}
+.DetailBOX_two div ul{
+    margin-top: 20px;
+    /*height: 24px;*/
+    width: 100%;
+    overflow:auto;
+    /*float: left;*/
+}
+.DetailBOX_two div ul li{
+    float: left;
+/*     margin-right: 50px; */
+}
+/* .DetailBOX_two div ul:nth-child(1){ */
+/* 	margin-top:0px; */
+/* } */
+/* .DetailBOX_two div ul li:nth-child(1){ */
+/* 	width:40%; */
+/* } */
+/* .DetailBOX_two div ul li:nth-child(2){ */
+/* 	width:20%; */
+/* } */
+/* .DetailBOX_two div ul li:nth-child(3){ */
+/* 	width:20%; */
+/* } */
+.DetailBOX_twos{
+	margin-bottom:10px;
+	overflow:auto;
+}
+.DetailBOX_twos div{
+    float: left;
+    margin-top: 10px;
+}
+.DetailBOX_twos div ul{
+    margin-top: 20px;
+    /*height: 24px;*/
+    width: 100%;
+    overflow:auto;
+    /*float: left;*/
+}
+.DetailBOX_twos div{
+    float: left;
+    margin-top: 10px;
+}
+.DetailBOX_twos div ul{
+    margin-top: 20px;
+    /*height: 24px;*/
+    width: 100%;
+    overflow:auto;
+    /*float: left;*/
+}
+.DetailBOX_twos div ul li{
+    float: left;
+/*     margin-right: 50px; */
+}
+.DetailBOX_twos div ul:nth-child(1){
+	margin-top:0px;
+}
+.DetailBOX_twos div ul:nth-child(1){
+	margin-top:0px;
+}
+.DetailBOX_twos div ul li:nth-child(1){
+	width:40%;
+}
+.DetailBOX_twos div ul li:nth-child(2){
+	width:30%;
+}
+.DetailBOX_twos div ul li:nth-child(3){
+	width:30%;
+}
+.DetailBOX_twos div ul li img{
+    margin-left: 20px;
+}
+.Login span{
+    float: left;
+}
+.Login span button{
+    display: block;
+    margin-left: 20px;
+    border: none;
+    border-radius: 5px;
+    margin-top: 10px;
+    font-size: 14px;
+    width: 100px;
+    padding: 5px 0;
+    background: dodgerblue;
+    color: #fff;
+}
+
+.SFZDIV{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    z-index: 5;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, .5);
+    display: none;
+}
+.SFZDIV .SFZDIVm,.SFZ_back_DIV .SFZDIVc,.SFZ_face_DIV .SFZDIVv{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 500px;
+    height: 300px;
+    margin-top: -150px;
+    background: #000;
+    margin-left: -200px;
+    display: none;
+}
+.SFZDIVs p{
+    width: 100%;
+    margin-top: 5px;
+    height: 30px;
+}
+.SFZDIVs p span{
+    display: inline-block;
+    width: 50%;
+    float: left;
+}
+.SFZDIVs p span img{
+    cursor:pointer;
+}
+.SFZDbtn{
+    cursor:pointer;
+}
+.FYBGtxt,.FYBGtxts{
+    cursor:pointer;
+}
+.SFZDIVx{
+    width: 100%;
+}
+.errorBtn{
+    position: relative;
+}
+.errorBtn img{
+    position: absolute;
+    right: -10px;
+    top: -15px;
+    background: #000;
+    border-radius: 50%;
+    cursor:pointer;
+}
+
+.SFZDIVx img{
+    width: 500px;
+    height: 300px;
+}
+.FYBGtxts{
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: inline-block;
+    padding: 5px 8px;
+    font-size: 14px;
+    float: left;
+    font-weight: bolder;
+    border: 1px solid dodgerblue;
+    background: #fff;
+    color: dodgerblue;
+    text-align: center;
+}
+.ml15{
+    margin-left: 15px;
+}
+
+.FootlBOX_one{
+    height: 40px;
+}
+.FootlBOX_one .span{
+    font-size: 18px;
+    
+}
+.FootlBOX_one span{
+    float: left;
+}
+.Footlspan span{
+    font-size: 12px;
+    color: dodgerblue;
+}
+.Footlspan img{
+    width: 35%;
+    margin-left: 5%;
+}
+
+
+#ffile{
+    width: 50px;
+    height: 50px;
+    position: relative;
+    margin-left: 40px;
+}
+#file0{
+    display: none;
+}
+#ffile span{
+    border: 1px solid #ccc;
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    font-size: 48px;
+    text-align: center;
+    line-height: 40px;
+    color: #ccc;
+    cursor:pointer;
+}
+.ULL{
+    width: 100%;
+}
+.ULL li{
+    width: 50px;
+    height: 50px;
+    float: left;
+    margin-left: 20px;
+    padding: 5px;
+    position: relative;
+    overflow: hidden;
+}
+.ULL li b{
+    position: absolute;
+    z-index: 10;
+    width: 50px;
+    height: 50px;
+    display: inline-block;
+    cursor:pointer;
+    background: rgba(0, 0, 0, .01);
+}
+.ULL li embed{
+    width: 60px;
+    height: 60px;
+    overflow: hidden;
+}
+
+.edf embed{
+    width: 100%;
+    height: 100%;
+}
+.edf embed html{
+    width: 100%;
+    height: 100%;
+}
+.ULL li img{
+    width: 100%;
+    height: 100%;
+}
+
+.FJDIV{
+    width: 100%;
+    height: 400%;
+    position: absolute;
+    z-index: 20;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, .5);
+    overflow-y: hidden;
+    display: none;
+}
+.FJDIV_one{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 900px;
+    height: 800px;
+    margin-top: -400px;
+    background: #000;
+    margin-left: -450px;
+    overflow-y: hidden;
+    border-radius: 10px;
+}
+.FJDIV_two{
+    width: 100%;
+    height: 600px;
+    overflow: hidden;
+}
+.FJbtnerr{
+    right: 0px;
+    z-index: 25;
+    position: absolute;
+    cursor:pointer;
+}
+.FJDIV_twos{
+    width: 10%;
+    height: 600px;
+    float: left;
+    margin-top: 50px;
+    position: relative;
+}
+.FJDIV_twos img{
+    position: absolute;
+    top: 50%;
+    left: 20px;
+    cursor:pointer;
+}
+.FJDIV_twoss{
+    width: 10%;
+    height: 600px;
+    margin-top: 50px;
+    float: left;
+    position: relative;
+}
+.FJDIV_twoss img{
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    cursor:pointer;
+}
+.FJDIV_two .edf{
+    width: 80%;
+    height: 100%;
+    float: left;
+    margin-top: 50px;
+    margin-left: 10%;
+}
+#reed{
+    height: 20%;
+}
+.FJDIV_two .edf embed{
+    width: 100%;
+    cursor:pointer;
+}
+.FJDIV_twox{
+    width: 100%;
+    height: 50px;
+    display: flex;
+    padding: 10px;
+}
+.FJDIV_twox span{
+    flex: 1;
+    color: #fff;
+    font-size: 16px;
+    
+}
+.FJDIV_twox span:nth-child(1){
+    margin-left: 70px;
+}
+.FJDIV_twox span:nth-child(2){
+    text-align: right;
+    margin-right: 70px;
+}
+.FJDIV_twox span:nth-child(2) img{
+    margin-right: 10px;
+}
+.olsdiv{
+    width: 100%;
+    height: 110px;
+    padding: 10px;
+    position: relative;
+    overflow: hidden;
+}
+.olsdiv span{
+    position: absolute;
+    top: 50px;
+    display: inline-block;
+    width: 30px;
+    height: 60px;
+    background: #000;
+}
+.olsdiv span img{
+    width: 100%;
+    height: 100%;
+    cursor:pointer;
+}
+#ols{
+    width: 90%;
+    height: 50px;
+    margin-top: 50px;
+    margin-left: 50px;
+    overflow: hidden;
+}
+#ols li{
+    width: 50px;
+    height: 50px;
+    float: left;
+    margin-left: 20px;
+    padding: 5px 0;
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+}
+#ols li b{
+    position: absolute;
+    z-index: 10;
+    width: 50px;
+    height: 50px;
+    display: inline-block;
+    cursor:pointer;
+    background: rgba(0, 0, 0, .01);
+}
+#ols li embed{
+    width: 65px;
+    height: 65px;
+    overflow: hidden;
+}
+.bgbg{
+    border: 1px solid #fff;
+}
+#left{
+    left: 10px;
+}
+#righ{
+    right: 10px;
+}
+.MyDetails_tk{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, .5);
+    z-index: 40;
+    display: none;
+}
+
+#MyDetails_bc,#MyDetails_sh,#MyDetails_dh,#MyDetails_qx,#MyDetails_jj{
+    width: 700px;
+    height: 600px;
+    background: #fff;
+    position: absolute;
+    z-index: 50;
+    top: 50%;
+    left: 50%;
+    margin-top: -300px;
+    margin-left: -350px;
+    border-radius: 5px;
+    display: none;
+}
+.tcerror{
+    position: absolute;
+    right: 10px;
+    top: 5px;
+    cursor:pointer;
+}
+.MyDetails_black{
+    width: 100%;
+}
+.MyDetails_black span{
+    color: #fff;
+    position: absolute;
+    top: 40px;
+    font-size: 24px;
+    left: 50%;
+    margin-left: -48px;
+}
+.MyDetails_black .blac{
+    width: 100%;
+}
+.MyDetails_b{
+    padding: 10px;
+}
+.MyDetails_b textarea{
+    margin-left: 20px;
+}
+
+.MyDetails_success{
+    border: none;
+    background: deepskyblue;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor:pointer;
+    margin-left: 40px;
+}
+.MyDetails_error{
+    border: none;
+    border: 1px solid #ccc;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor:pointer;
+    margin-left: 40px;
+}
+.MyDetails_inp{
+    height: 300px;
+}
+.female{
+    position: relative;
+    margin-left: 10px;
+    display: inline-block;
+    width: 300px;
+    height: 30px;
+
+}
+.MyDetails_inp input{
+    display: none;
+}
+.MyDetails_inps input{
+    display: none;
+}
+.female-custom{
+    display: inline-block;
+    position: absolute;
+    top: 0px;
+    bottom: 0;
+    left: 0px;
+    margin: auto;
+    width: 15px;
+    height: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    font-size: 16px;
+    line-height: 12px;
+}
+.female-custom img{
+    width: 16px;
+    height: 16px;
+    display: none;
+}
+.female label{
+    display: block;
+    width: 250px;
+    font-size: 20px;
+    cursor: pointer;
+    position: absolute;
+    left: 10%;
+    top: 3px;
+    font-size: 14px;
+}

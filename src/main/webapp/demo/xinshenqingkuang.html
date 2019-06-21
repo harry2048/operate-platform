@@ -1,0 +1,227 @@
+<div class="content1" href="">
+    <meta http-equiv="content-type" content="text/html;charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <title>信审情况统计查询页面</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/base.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/layer.css" rel="stylesheet">
+    <link href="css/pagination.css" rel="stylesheet">
+    <link href="css/bootstrap-datetimepicker.css" rel="stylesheet">
+    <link href="css/dataTables.bootstrap.min.css" rel="stylesheet">
+    <link href="css/jedate.css" rel="stylesheet">
+    <style>
+        #loanDetail{
+            background-color: #fff;
+            margin-bottom: 15px;
+        }
+        #loanDetail p{
+            padding-left:0 ;
+            padding-right: 0;
+            margin: 6px 0 ;
+        }
+        #loanDetail .wd_60{
+            display: inline-block;
+            width: 102px;
+            text-align: right;
+            font-size: 12px;
+            font-family: "微软雅黑";
+        }
+        #loanDetail .c13 .wd_60{
+            float: left;
+            margin-top: 5px;
+        }
+        #loanDetail .c13 input{
+            float: left;
+            font-size: 12px;
+            font-family: "微软雅黑";
+        }
+        #loanDetail .col-lg-3 ,#loanDetail .c13{
+            margin:5px 0;
+            padding-left:5px;
+            padding-right: 5px;
+        }
+
+        #loanDetail select option{
+            font-size: 12px;
+            font-family: "微软雅黑";
+        }
+        .search_btn {
+            font-size: 12px;
+            background-color: #09C;
+            padding: 5px 16px;
+            margin-top: 3px;
+            margin-bottom: 5px;
+        }
+        .ta_r{
+            text-align: right;
+        }
+        .mr_25{
+            margin-right: 25px;
+        }
+        #lateFee{
+            border: 1px solid #ccc;
+            height: 25px;
+            line-height: 25px;
+            text-indent: 5px;
+            width: 120px;
+            font-size: 13px;
+        }
+        .mt_3{
+            margin: 3px 0;
+        }
+        .phoneStyle:hover{
+            cursor: pointer;
+            color: #09C;
+        }
+        .phoneStyle{
+            cursor: pointer;
+        }
+    </style>
+
+<div class="hui"><img src="images/ajax-loader.gif"></div>
+        <div class="content">
+            <!--面包屑导航start-->
+            <ol class="breadcrumb">
+                <li class="active">信审情况统计查询</li>
+            </ol>
+            <div id="loanDetail" class="col-lg-12 col-md-12 col-sm-12">
+                <div class="col-lg-3 col-md-3 col-sm-3"><span class="wd_60">姓名&nbsp;&nbsp;</span><input type="text" id="examineName"></div>
+                <div class="col-lg-3 col-md-3 col-sm-3 c13"><span class="wd_60">信审日期(开始)&nbsp;&nbsp;</span><input type="text" id="applyDateStart2" value="2019-05-19 00:00:00" placeholder="请选择时间" readonly=""></div>
+                <div class="col-lg-3 col-md-3 col-sm-3 c13"><span class="wd_60">信审日期(结束)&nbsp;&nbsp;</span><input type="text" id="applyDateStart3" value="2019-05-19 23:59:59" placeholder="请选择时间" readonly=""></div>
+                
+
+                
+                <div class="col-lg-3 col-md-3 col-sm-3 ta_r">
+                    <button class="btn btn-primary btn-sm search_btn" style="margin-right: 30px;" type="button" id="btn-search">查询</button>
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div class="table-responsive">
+                <div id="examineTotalList_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer"><div class="top"><div class="clear"></div></div><div id="examineTotalList_processing" class="dataTables_processing panel panel-default" style="display: none;">处理中...</div><table id="examineTotalList" style="width: 100%;" class="table table-bordered table-striped table-hover bg_wt dataTable no-footer" role="grid" aria-describedby="examineTotalList_info">
+                    <thead style="border-bottom: 0;background-color: #fff;">
+                    <tr role="row"><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 40px;">序号</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 125px;">信审员姓名</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 74px;">审件总数</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 91px;">审件通过数</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 91px;">审件通过率</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 92px;">审件打回数</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 92px;">审件打回率</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 92px;">审件拒绝数</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 92px;">审件拒绝率</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 92px;">审件取消数</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 92px;">审件取消率</th></tr>
+                    </thead>
+                <tbody><tr role="row" class="odd"><td>1</td><td>张荣欣</td><td>37</td><td>25</td><td>67.57%</td><td>12</td><td>32.43%</td><td>0</td><td>0</td><td>0</td><td>0</td></tr><tr role="row" class="even"><td>2</td><td>吴英骄</td><td>3</td><td>0</td><td>0</td><td>1</td><td>33.33%</td><td>1</td><td>33.33%</td><td>1</td><td>33.33%</td></tr><tr role="row" class="odd"><td>3</td><td>董艳涛</td><td>3</td><td>3</td><td>100.00%</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr><tr role="row" class="even"><td>4</td><td>黄玲玲（教育）</td><td>26</td><td>17</td><td>65.38%</td><td>8</td><td>30.77%</td><td>1</td><td>3.85%</td><td>0</td><td>0</td></tr><tr role="row" class="odd"><td>5</td><td>李家欢</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>100.00%</td></tr></tbody></table><div class="bottom"><div class="dataTables_info" id="examineTotalList_info" role="status" aria-live="polite">显示第 1 - 5 条记录，共5 条</div><div class="dataTables_length" id="examineTotalList_length"><label> <select name="examineTotalList_length" aria-controls="examineTotalList" class="form-control input-sm"><option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select> </label></div><div class="dataTables_paginate paging_full_numbers" id="examineTotalList_paginate"><ul class="pagination"><li class="paginate_button first disabled" id="examineTotalList_first"><a href="javascript:void(0);" aria-controls="examineTotalList" data-dt-idx="0" tabindex="0">首页</a></li><li class="paginate_button previous disabled" id="examineTotalList_previous"><a href="javascript:void(0);" aria-controls="examineTotalList" data-dt-idx="1" tabindex="0">上页</a></li><li class="paginate_button active"><a href="javascript:void(0);" aria-controls="examineTotalList" data-dt-idx="2" tabindex="0">1</a></li><li class="paginate_button next disabled" id="examineTotalList_next"><a href="javascript:void(0);" aria-controls="examineTotalList" data-dt-idx="3" tabindex="0">下页</a></li><li class="paginate_button last disabled" id="examineTotalList_last"><a href="javascript:void(0);" aria-controls="examineTotalList" data-dt-idx="4" tabindex="0">末页</a></li></ul></div><div class="clear"></div></div></div>
+            </div>
+            <!--正文内容end-->
+        </div>
+
+<script src="jedate/jedate.min.js"></script>
+<script>
+    jeDate({
+        dateCell:"#applyDateStart2", //目标元素。由于jedate.js封装了一个轻量级的选择器，因此dateCell还允许你传入class、tag这种方式 '#id .class'
+        format:"YYYY-MM-DD hh:mm:ss", //日期格式
+        minDate:"1900-01-01 00:00:00", //最小日期
+        maxDate:"2099-12-31 23:59:59", //最大日期
+        isinitVal:false, //是否初始化时间
+        isTime:true, //是否开启时间选择
+        isClear:true, //是否显示清空
+        festival:false, //是否显示节日
+        zIndex:999,  //弹出层的层级高度
+        marks:null, //给日期做标注
+        choosefun:function(val) {},  //选中日期后的回调
+        clearfun:function(val) {},   //清除日期后的回调
+        okfun:function(val) {}       //点击确定后的回调
+    });
+    jeDate({
+        dateCell:"#applyDateStart3", //目标元素。由于jedate.js封装了一个轻量级的选择器，因此dateCell还允许你传入class、tag这种方式 '#id .class'
+        format:"YYYY-MM-DD hh:mm:ss", //日期格式
+        minDate:"1900-01-01 00:00:00", //最小日期
+        maxDate:"2099-12-31 23:59:59", //最大日期
+        isinitVal:false, //是否初始化时间
+        isTime:true, //是否开启时间选择
+        isClear:true, //是否显示清空
+        festival:false, //是否显示节日
+        zIndex:999,  //弹出层的层级高度
+        marks:null, //给日期做标注
+        choosefun:function(val) {},  //选中日期后的回调
+        clearfun:function(val) {},   //清除日期后的回调
+        okfun:function(val) {}       //点击确定后的回调
+    });
+
+</script>
+
+<script>
+    var dt;
+    function refresh(){
+        dt.api().draw();
+    }
+
+     $(function(){
+    	 dt = $("#examineTotalList").dataTable({
+	         "sDom":'<"top"<"clear">>rt<"bottom"ilp<"clear">>', 
+	         bProcessing:true,
+	         pageLength: 10,
+	         searching: false, // 禁用dataTables自带的查询框
+	         ordering: false, // 禁用排序
+	         ajax: {
+	             type: "POST",
+	             url: "/hd/report/getExamineTotalPage",
+	             data:function(d) {
+	           	  d.startExamineTime = $("#applyDateStart2").val();
+	           	  d.endExamineTime = $("#applyDateStart3").val();
+	           	  d.examineName = $("#examineName").val();
+	             }
+	         },
+	         columns: [
+                 {data:"id"},
+	             {data:"examineName"},
+	             {data:"examineTotal"},
+	             {data:"examinePassTotal"},
+	             {data:"examinePassRate" },
+	             {data:"examineRecallTotal"},
+	             {data:"examineRecallRate"},
+	             {data:"examineRefushTotal"},
+	             {data: "examineRefushRate"},
+	             {data: "examineCancelTotal"},
+                 {data: "examineCancelRate"}
+                 ],
+             fnDrawCallback:function(oSettings) {
+                 for (var i=0, iLen=oSettings.aiDisplay.length; i<iLen; i++) {
+                     $('td:eq(0)', oSettings.aoData[ oSettings.aiDisplay[i] ].nTr).html(oSettings['_iDisplayStart']+i+1);
+                 }
+             }
+
+	     });
+
+
+    	 $("#btn-search").click(function(e){
+             dt.api().draw();
+         });
+
+    });
+
+
+
+</script>
+
+
+<script>
+    //分页方法
+    function page(n,s){
+        $("#pageNo").val(n);
+        $("#pageSize").val(s);
+        $("#searchForm").submit();
+        return false;
+    }
+
+
+</script>
+
+
+<script>
+    $(document).ready(function(e) {
+        var counter = 0;
+        if (window.history && window.history.pushState) {
+            $(window).on('popstate', function () {
+                window.history.pushState('forward', null, '#');
+                window.history.forward(1);
+            });
+        }
+        window.history.pushState('forward', null, '#'); //在IE中必须得有这两行
+        window.history.forward(1);
+    });
+</script>
+
+</div>

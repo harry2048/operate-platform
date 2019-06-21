@@ -1,0 +1,1095 @@
+<div id="warp">
+    <nav id="nav" class="col-sm-12 col-lg-12 navbar">
+        <a class="logo" href="javascript:void(0);"></a>
+        <span class="AuditText">运营平台</span>
+        <ul class="navbar-right">
+        <input type="hidden" id="username" value="wuyingjiao">
+            <li class="login_name">
+                <a class="state" href="javascript:void(0);"><span class="caret tx_fr"></span><span class="busNmae">吴英骄</span></a>
+                <ul class="quit" onclick="logout()">
+                    <li><a href="javascript:void(0);">退出</a></li>
+                </ul>
+            </li>
+        </ul>
+        <ul class="navbar-right">
+        <input type="hidden" id="ssoUrl" value="http://sso.daiyutech.com/">
+            <li class="login_name" onclick="ssoTurn()">
+              <a class="state" href="javascript:void(0);"><span id="ssoTurn" class="busNmae">SSO系统</span></a>
+              <!-- <span class="busNmae" onclick="ssoTurn()">SSO系统</span> -->
+            </li>
+        </ul>
+        
+            <ul class="navbar-right" id="signStatusUl">
+                
+                
+                <li class="login_name1 qianLi">
+                    <a class="navbar-right qian" href="javascript:void(0);" onclick="signStatus('18760dec-f53b-4a6b-9bf8-2cf322da9a35','1');">未签到</a>
+                </li><li>
+                    
+                    
+                        
+                    
+            </li></ul>
+        
+
+    </nav>
+    <div id="content">
+       
+            
+        <div class="content1" href="">
+        <!-- 公共css样式 start -->
+
+            <link href="css/bootstrap.min.css" rel="stylesheet">
+            <link href="css/pagination.css" rel="stylesheet">
+            <!-- 公共css样式 end -->
+            <meta http-equiv="content-type" content="text/html;charset=utf-8">
+            <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+            <title>修改商户页面</title>
+            <link href="css/base.css" rel="stylesheet">
+            <link href="css/style.css" rel="stylesheet">
+            
+            <link href="css/layer.css" rel="stylesheet">
+            <link href="css/jedate.css" rel="stylesheet">
+
+    <style>
+
+        .shenXinSpan{
+            display: inline-block;
+            width: 80px;
+            color: #428bca;
+        }
+        .shenXinSpan2{
+            display: inline-block;
+            width: 120px;
+            color: #428bca;
+        }
+        .shenXinSpan3{
+            display: inline-block;
+            width: 100px;
+            color: #428bca;
+        }
+
+        .upLoad {
+            display: inline-block;
+            width: 146px;
+            height: 146px;
+            background-image: url("/hd/static/images/addPic.png");
+            background-size: 146px 146px;
+            position: relative;
+            overflow: hidden;
+            margin-left: 0;
+            margin-top: 20px;
+        }
+        .upLoad img{
+            width: 146px;
+            height: 146px;
+        }
+        .fileImg {
+            width: 146px;
+            height: 146px;
+            position: absolute;
+            right: 0;
+            top: 0;
+            opacity: 0;
+            filter: alpha(opacity=0);
+        }
+        .otherImg{
+            width: 100%;
+            height: 420px;
+            overflow-y: auto;
+            margin-top: 15px;
+        }
+        .otherImg p{
+            height: 30px;
+            line-height: 30px;
+            font-size: 16px;
+            margin: 0;
+            text-align: center;
+        }
+        .clear{
+            clear: both;
+        }
+        .IDCard{
+            height: 230px;
+            text-align: center;
+            border: 1px solid #ddd;
+            margin-top: 15px;
+        }
+        .IDCard p{
+            height: 30px;
+            line-height: 30px;
+            font-size: 16px;
+            margin: 0;
+        }
+        .ml-50{
+            margin-left: 50px;
+        }
+        .selec ,#hdBussinessCustomerId{
+            height: 25px;
+            line-height: 25px;
+            border: 1px solid #ddd;
+        }
+        .selec ,.selec option{
+            font-size: 12px;
+        }
+        .jobInfo input{
+            height: 25px;
+            line-height: 25px;
+        }
+        .nnn input{
+            height: 25px;
+            line-height: 25px;
+        }
+        .bankArea input{
+            height: 25px;
+            line-height: 25px;
+        }
+        .bankArea{
+            margin-top: 2px;
+            height: 85px;
+            background-color: #fff;
+        }
+        .contactsList p{
+            margin: 11px 0;
+        }
+        .upLoad{
+            width: 269px;
+            height: 170px;
+            background-image: url("/hd/static/images/addID.png");
+            background-size: cover;
+            margin-top: 5px;
+            margin-bottom: 5px;
+        }
+        .fileImg{
+            width: 269px;
+            height: 170px;
+        }
+        .lab{
+            font-weight: normal;
+            margin: 0 5px;
+        }
+        .mwt_150{
+            min-width: 150px;
+        }
+
+        .content .ListTips{
+            font-size: 13px;
+        }
+        .contactFirst{
+            font-size: 12px;
+            color: #428bca;
+        }
+        .fs_12{
+            font-size: 12px;
+        }
+        .shenXin p input{
+            width: 370px;
+            height: 25px;
+            line-height: 25px;
+            border: 1px solid #ddd;
+            text-indent: 5px;
+        }
+        .shenXinSpan{
+            display: inline-block;
+            width: 100px;
+            color: #428bca;
+        }
+        .spanBtn{
+            font-size: 14px;
+            /*background-color: #0a9dc7;*/
+            color: #0a9dc7;
+            margin-left: 800px;
+            cursor: pointer;
+            width:100px;
+            height: 25px;
+            line-height: 25px;
+            text-align: center;
+        }
+        .shenXin a:hover{ color:red; }
+
+        .shenXin a:active{
+            color: #00A1CB;
+        }
+        .shenXin a {
+            color: #0a9dc7;
+        }
+
+
+    </style>
+    <script>
+        function getProvinceCityCode(){
+            var province=$("#bizProvince").val();
+            var city=$("#bizCity").val();
+            var area=$("#bizArea").val();
+            if(province){
+                $.getJSON("static/area.json",function(data){
+                    $.each(data, function (index,item) {
+                        if(province==item["areaName"]){  //省相同获取省编码
+                            $("#bizProvinceCode").val(item['areaId']);
+                            var cityData=item.cities
+                            $.each(cityData, function (index_, item) {
+                                if(city==item["areaName"]){
+                                    $("#bizCityCode").val(item['areaId']);
+                                    var areaData=item.counties
+                                    $.each(areaData, function (index_, item) {
+                                        if(area==item["areaName"]){
+                                            $("#bizAreaCode").val(item['areaId']);
+                                        }
+                                    });
+                                }
+                            });
+                        }
+                    });
+                });
+            }
+        }
+
+    </script>
+
+    <form id="saveForm" class="form-horizontal" action="/hd/biz/saveBiz/" method="post">
+        <div class="content">
+            <!--面包屑导航start-->
+            <ol class="breadcrumb">
+                <li><a href="#">商户列表</a></li>
+                <li class="active">商户信息录入</li>
+            </ol>
+            <!--面包屑导航end-->
+
+            <!--正文内容start-->
+            <div class="panel panel-default">
+                <ul class="list-group">
+                    <!--基本信息start-->
+                    <li class="list-group-item con_title" id="mao2">基本信息</li>
+                    <div class="col-sm-12 col-lg-12 mt_10">
+                        <!--申请人信息start-->
+                        <div class="col-sm-12 col-lg-12 shenXin">
+                            <p class="col-lg-6 col-sm-6"><span class="shenXinSpan">商户编号:</span><input type="text" class="nameIpt" readonly="readonly" name="id" id="id" value="6534388078183455745"></p>
+                            <p class="col-lg-6 col-sm-6"><span class="shenXinSpan">商户名称:</span><input type="text" class="nameIpt" name="name" id="name" value="医美月付测试商户"></p>
+                            <div class="clear"></div>
+                            <p class="col-lg-6 col-sm-6"><span class="shenXinSpan">对外联系电话:</span><input type="text" class="nameIpt" id="contactTelNo" name="contactTelNo" value="11111"></p>
+                            <p class="col-lg-6 col-sm-6"><span class="shenXinSpan">商户法人:</span><input type="text" class="nameIpt" name="contacts" id="contacts" value="111"></p>
+                            <div class="clear"></div>
+                            <p class="col-lg-6 col-sm-6"><span class="shenXinSpan">联系电话:</span><input type="text" class="nameIpt" id="tel" name="tel" value="111"></p>
+                            <p class="col-lg-6 col-sm-6"><span class="shenXinSpan" style="display:inline">是否需要风险准备金:</span>
+                              <select class="selec" style="min-width: 370px" name="needRisk" id="needRisk">
+                             <option value="00" selected="">否</option>
+                             <option value="01">是</option> </select></p>
+                            <div class="clear"></div>
+                            <p class="col-lg-6 col-sm-6"><span class="shenXinSpan">商户地址:</span><input type="text" class="nameIpt" id="bizAddrDetail" name="bizAddrDetail" value="北京市东城区东华门街道南池子大街"></p>
+                            <p class="col-lg-6 col-sm-6"><a style="margin-top:3px;" href="javascript:getBizPosition()">[从地图中搜索]</a></p>
+                            <div class="clear"></div>
+                            <p class="col-lg-12 col-sm-12" style="height:60px;"><span class="shenXinSpan">商户简介:</span><textarea style="width:874px;height: 60px;" placeholder="请输入商户简介" id="intro" name="intro">发送到</textarea></p>
+                            <div class="clear"></div>
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                    <li class="list-group-item con_title" id="mao2">生成合同所需信息</li>
+                    <div class="col-sm-12 col-lg-12 mt_10">
+                        <div class="col-sm-12 col-lg-12 shenXin">
+                            <p class="col-lg-6 col-sm-6"><span class="shenXinSpan">出借人银行卡号:</span><input type="text" class="nameIpt" name="outBankCardNo" id="outBankCardNo" value=""></p>
+                            <p class="col-lg-6 col-sm-6"><span class="shenXinSpan">所属银行及支行:</span><input type="text" class="nameIpt" name="outBankName" id="outBankName" value=""></p>
+                            <div class="clear"></div>
+                            <p class="col-lg-6 col-sm-6"><span class="shenXinSpan">户名:</span><input type="text" class="nameIpt" id="outBankIdName" name="outBankIdName" value=""></p>
+                            <p class="col-lg-6 col-sm-6"><span class="shenXinSpan">出借人手机号:</span><input type="text" class="nameIpt" id="outPhoneNo" name="outPhoneNo" value=""></p>
+                            <div class="clear"></div>
+                            <p class="col-lg-6 col-sm-6"><span class="shenXinSpan">出借人地址:</span><input type="text" class="nameIpt" id="outAddress" name="outAddress" value=""></p>
+                            <p class="col-lg-6 col-sm-6"><span class="shenXinSpan">出借人邮箱:</span><input type="text" class="nameIpt" name="outEmail" id="outEmail" value=""></p>
+                            <p class="col-lg-6 col-sm-6"><span class="shenXinSpan">开户行所在省:</span><input type="text" class="nameIpt" id="outbankprovince" name="outbankprovince" value=""></p>
+                            <p class="col-lg-6 col-sm-6"><span class="shenXinSpan">开户行所在市:</span><input type="text" class="nameIpt" id="outbankcity" name="outbankcity" value=""></p>
+                            <div class="clear"></div>
+                            <p class="col-lg-6 col-sm-6"><span class="shenXinSpan">开户银行联行号:</span><input type="text" class="nameIpt" id="outBankNo" name="outBankNo" value=""></p>
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                    <!--基本信息start-->
+                    <li class="list-group-item con_title" id="mao2">法人信息(开通易保全签章)</li>
+                    <div class="col-sm-12 col-lg-12 mt_10">
+                        <!--申请人信息start-->
+                        <div class="col-sm-12 col-lg-12 shenXin">
+                            
+                            <p class="col-lg-6 col-sm-6"><span class="shenXinSpan">企业名称:</span><input type="text" class="nameIpt" name="signName" id="signName" value=""></p>
+                            <p class="col-lg-6 col-sm-6"><span class="shenXinSpan">法人身份证号:</span><input type="text" class="nameIpt" id="legalPersonIdNo" name="legalPersonIdNo" value=""></p>
+                            <p class="col-lg-6 col-sm-6"><span class="shenXinSpan">营业执照号:</span><input type="text" class="nameIpt" id="identityCard" name="identityCard" value=""></p>
+                            <p class="col-lg-6 col-sm-6"><span class="shenXinSpan">易保全开户账号:</span><input type="text" class="nameIpt" readonly="readonly" id="signEmail" name="signEmail" value=""></p>
+                            <div class="clear"></div>
+                            <p class="col-lg-12 col-sm-12"><span class="shenXinSpan" style="width: 300px;">上传营业执照(<span style="color:red" display="inline-block">*以最新上传的图片为准</span> ):</span></p>
+                            <div class="clear"></div>
+                            <div class="col-sm-12 col-lg-12 otherData">
+                                
+
+                                <div class="col-lg-3 col-sm-3 imgBox _img_box legalImgDiv">
+                                    <a class="addPicBtn">
+                                        <input type="file" id="legalImg" class="upLoadImg" onchange="generateEmail(this)" multiple="multiple">
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                    <!--基本信息end-->
+                    <!--进度信息【资金方准入】start-->
+                    <li class="list-group-item con_title">进度信息【资金方准入】<span class="spanBtn" id="addCapital">添加</span></li>
+                    <div class="contacts">
+                        <div class="col-lg-12 col-sm-12 col-md-12 pt_15">
+                            <table class="table table-bordered ta_bm" id="addCaseTable">
+                                <tbody><tr>
+                                    <th class="text-center">序号</th>
+                                    <th class="text-center">资方</th>
+                                    <th class="text-center">描述</th>
+                                    <th class="text-center">状态</th>
+                                    <th class="text-center">机构码</th>
+                                    <th class="text-center">操作</th>
+                                </tr>
+                                
+                            </tbody></table>
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                    <!--进度信息【资金方准入】end-->
+                    <!--合同信息start-->
+                    <li class="list-group-item con_title">合同信息</li>
+                    <div class="col-sm-12 col-lg-12 mt_10">
+                        <div class="col-sm-12 col-lg-12 shenXin">
+                            <p class="col-lg-6 col-sm-6"><span class="shenXinSpan">开始日期:</span><input type="text" class="nameIpt" readonly="" placeholder="请选择时间" id="startDate" name="startDate" value="2019-05-15"></p>
+                            <p class="col-lg-6 col-sm-6"><span class="shenXinSpan">结束日期:</span><input type="text" class="nameIpt" readonly="" placeholder="请选择时间" id="endDate" name="endDate" value="2022-05-28"></p>
+                            <div class="clear"></div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-lg-12 otherData">
+                        
+                        <div class="col-lg-3 col-sm-3 imgBox _img_box contractImgDiv">
+                            <a class="addPicBtn">
+                                <input type="file" class="upLoadImg" onchange="contractImg(this)" multiple="multiple">
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="clear"></div>
+                    <!--合同信息end-->
+                    <!--配置信息start-->
+                    <li class="list-group-item con_title" id="mao5">配置信息</li>
+                    <div class="col-sm-12 col-lg-12 mt_10">
+                        <div class="col-sm-12 col-lg-12 col-md-12 shenXin">
+                            <p class="col-lg-6 col-sm-6"><span class="shenXinSpan">商户类型:</span>
+                                <select class="selec" style="min-width: 370px" name="bussinessType" id="bussinessType">
+                                    <option value="0" selected="">商户</option>
+                                    <option value="1">代理</option> </select></p>
+                            <p class="col-lg-6 col-sm-6"><span class="shenXinSpan">是否有门店:</span>
+                                <select class="selec" style="min-width: 370px" name="shopFlag" id="shopFlag">
+                                    <option value="0">是</option>
+                                    <option value="1" selected="">否</option></select></p>
+                            <div class="clear"></div>
+                            <p class="col-lg-6 col-sm-6"><span class="shenXinSpan">是否能自建门店:</span>
+                                <select class="selec" style="min-width: 370px" name="createShopFlag" id="createShopFlag">
+                                    <option value="0" selected="">否</option>
+                                    <option value="1">是</option> </select></p>
+                            <p class="col-lg-6 col-sm-6"><span class="shenXinSpan">是否商户扣款:</span>
+                                <select class="selec" style="min-width: 370px" name="bussinessCustomerDeductionFlag" id="bussinessCustomerDeductionFlag">
+                                    <option value="01" selected="">互动扣款</option>
+                                    <option value="02">资方扣款</option>
+                                    <option value="03">商户扣款</option></select></p>
+                            <div class="clear"></div>
+                            <p class="col-lg-6 col-sm-6"><span class="shenXinSpan">是否强制授权:</span>
+                                <select class="selec" style="min-width: 370px" name="authFlag" id="authFlag">
+                                    <option value="N" selected="">否</option>
+                                    <option value="Y">是</option> </select></p>
+                            <p class="col-lg-6 col-sm-6"><span class="shenXinSpan">是否能主动还款:</span>
+                                <select class="selec" style="min-width: 370px" name="paymentMethod" id="paymentMethod">
+                                    <option value="0" selected="">否</option>
+                                    <option value="1">是</option> </select></p>
+                            <div class="clear"></div>
+                            <p class="col-lg-6 col-sm-6"><span class="shenXinSpan">商户标识:</span>
+                                <label><input style="width:20px;" type="checkbox" value="1" name="sourceTpe" checked="">教育</label>
+                                <label><input style="width:20px;" type="checkbox" value="2" name="sourceTpe" onclick="rentingHoustChecked(this)">租房</label>
+                                <label><input style="width:20px;" type="checkbox" value="4" name="sourceTpe">数码</label>
+                                <label><input style="width:20px;" type="checkbox" value="3" name="sourceTpe">碧水源</label>
+                                <label><input style="width:20px;" type="checkbox" value="6" name="sourceTpe">花呗</label>
+                                <label><input style="width:20px;" type="checkbox" value="10" name="sourceTpe">房租月付</label>
+                            </p>
+                            <p class="col-lg-6 col-sm-6"><span class="shenXinSpan">渠道维护 :</span>
+                                <select class="selec" style="min-width: 370px" name="channelManagerId" id="channelManagerId">
+                                    
+                                        <option value="18760dec-f53b-4a6b-9bf8-2cf322da9a35" selected="">吴英骄</option>
+                                    
+                                        <option value="36d938bf-58d5-4a7e-a7e6-2ae7e28efbb7">肖俊骞</option>
+                                    
+                                        <option value="8a86bc56-55af-4957-9eea-61e34a778232">楚鹏</option>
+                                    
+                                        <option value="92c4dfed-e665-4e98-9afe-4bc01f9dc525">林燚填</option>
+                                    
+                                        <option value="931937a3-e374-469f-8977-e8373bb7ab34">张咏</option>
+                                    
+                                        <option value="bc4e53ba-a7f0-4abf-a1a3-e4e0630ab1c6">张雍昊</option>
+                                    
+                                        <option value="cfef2ca9-3805-45c3-b7aa-c1aab257294e">李家欢</option>
+                                    
+                                        <option value="f9b2f164-691b-42aa-8d0b-bb3f06478edc">李文明</option>
+                                    
+                                </select>
+                            </p>
+                            <div class="clear"></div>
+                            <div id="sourceTpyDel" style="display: none">
+                                <p class="col-lg-6 col-sm-6"><span class="shenXinSpan">公寓类型 :</span>
+                                    <select class="selec" style="min-width: 370px" name="houseType" id="houseType">
+                                        <option value="1" selected="">集中式</option>
+                                        <option value="2">分散式</option>
+                                        <option value="1,2">集中/分散式</option> </select></p>
+                                <p class="col-lg-6 col-sm-6"><span class="shenXinSpan">是否添加房源 :</span>
+                                    <select class="selec" style="min-width: 370px" name="addHouseFlag" id="addHouseFlag">
+                                        <option value="0" selected="">不允许</option>
+                                        <option value="1">允许</option>
+                                    </select>
+                                </p>
+                                <div class="clear"></div>
+                            </div>
+                            <p class="col-lg-6 col-sm-6"><span class="shenXinSpan">商户账号:</span><input type="text" readonly="" class="nameIpt" value="ymtest"></p>
+                            <div class="clear"></div>
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                    <!--配置信息end-->
+                    <li class="list-group-item con_title" id="mao6">资金信息</li>
+                    <div class="col-sm-12 col-lg-12 mt_10">
+                        <div class="col-sm-12 col-lg-12 col-md-12 shenXin">
+                            <p class="col-lg-6 col-sm-6"><span class="shenXinSpan">账户类型:</span>
+                                <select class="selec" style="min-width: 370px" name="accountType" id="accountType">
+                                    <option value="0" selected="">对公</option>
+                                    <option value="1">对私</option></select></p>
+                            <p class="col-lg-6 col-sm-6"><span class="shenXinSpan">账户名称:</span><input type="text" class="nameIpt" id="comName" name="comName" value="打死了po"></p>
+                            <div class="clear"></div>
+                            <p class="col-lg-6 col-sm-6"><span class="shenXinSpan">开户银行:</span><input type="text" class="nameIpt" id="bankName" name="bankName" value="111"></p>
+                            <p class="col-lg-6 col-sm-6"><span class="shenXinSpan">银行账号:</span><input type="text" class="nameIpt" id="bankAccountNo" name="bankAccountNo" value="11111111"></p>
+                            <div class="clear"></div>
+                            <p class="col-lg-6 col-sm-6"><span class="shenXinSpan">提前扣款天数:</span><input type="text" class="nameIpt" name="prepaymentDay" id="prepaymentDay" value="0"></p>
+                            <p class="col-lg-6 col-sm-6"><span class="shenXinSpan">一次性服务费率:</span><input type="text" class="nameIpt" id="disposableFeeRate" name="disposableFeeRate" value=""></p>
+                            <div class="clear"></div>
+                            <p class="col-lg-6 col-sm-6"><span class="shenXinSpan">服务费率:</span><input type="text" class="nameIpt" id="serviceFeeRate" name="serviceFeeRate" value=""></p>
+                            <div class="clear"></div>
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                     <!--配置信息end-->
+                    <li class="list-group-item con_title" id="mao6">支付宝信息</li>
+                    <div class="col-sm-12 col-lg-12 mt_10">
+                        <div class="col-sm-12 col-lg-12 col-md-12 shenXin">
+                            <p class="col-lg-6 col-sm-6"><span class="shenXinSpan">支付宝账号:</span><input type="text" class="nameIpt" id="alipayNo" name="alipayNo" value=""></p>
+                            <p class="col-lg-6 col-sm-6"><span class="shenXinSpan">支付宝PID:</span><input type="text" class="nameIpt" id="alipayPid" name="alipayPid" value=""></p>
+                            <div class="clear"></div>
+                        </div>                  
+                    </div>
+                    <div class="clear"></div>
+                    <li class="list-group-item con_title">其他资料信息</li>
+                    <div class="col-sm-12 col-lg-12 otherData">
+                        
+                        <div class="col-lg-3 col-sm-3 imgBox _img_box otherImgDiv">
+                            <a class="addPicBtn">
+                                <input type="file" class="upLoadImg" onchange="otherImg(this)" multiple="multiple">
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="clear"></div>
+
+                </ul>
+            </div>
+            <input type="hidden" id="channelManagerName" name="channelManagerName">
+            <input type="hidden" id="id" name="id" value="6534388078183455745">
+            <input type="hidden" id="bizProvince" name="bizProvince" value="北京市">
+            <input type="hidden" id="bizCity" name="bizCity" value="北京市">
+            <input type="hidden" id="bizArea" name="bizArea" value="东城区">
+            <input type="hidden" id="bizProvinceCode" name="bizProvinceCode" value="110000">
+            <input type="hidden" id="bizCityCode" name="bizCityCode" value="110100">
+            <input type="hidden" id="bizAreaCode" name="bizAreaCode" value="110101">
+            <input type="hidden" id="longitude" name="longitude" value="116.403139">
+            <input type="hidden" id="latitude" name="latitude" value="39.91368">
+            <!--复审意见-->
+            <div class="findingsAudit wt_100" style="height: 100px;">
+                <button type="button" class="btn btn-primary nextStep" style="left: 50%" onclick="modifyBiz(this)">提交</button>
+            </div>
+        </div>
+    </form>
+    <!--点击图片显示区域 end-->
+    <!-- script 公共 start -->
+    <script src="js/jquery-2.1.1.min.js"></script>
+    <!-- script 公共 end -->
+    <script src="js/dragZoom-1.0.js"></script>
+    <script src="js/imgController.js"></script>
+    <script src="js/layer.js"></script>
+    <script src="js/jedate.min.js"></script>
+    <script src="js/PCASClass.js"></script>
+    <script src="js/jquery.cityselect.js"></script>
+    <script src="js/hashmap.js"></script>
+
+    <script>
+        function getBizPosition(){
+            var bizAddrDetail=$("#bizAddrDetail").val();
+            var bizProvince=$("#bizProvince").val();
+            var bizCity=$("#bizCity").val();
+            var bizArea=$("#bizArea").val();
+            var longitude=$("#longitude").val();
+            var latitude=$("#latitude").val();
+            var params="/hd/biz/toBizMap?address="+bizAddrDetail;
+            params+="&province="+bizProvince;
+            params+="&city="+bizCity;
+            params+="&area="+bizArea;
+            params+="&longitude="+longitude;
+            params+="&latitude="+latitude;
+            var url=encodeURI(params);
+            layer.open({
+                type: 2,
+                area: ['900px', '500px'],
+                title: '地图搜索',
+                shadeClose: false, //点击遮罩关闭
+                content:url,
+            });
+        }
+        var bizId='6534388078183455745';
+
+        function generateEmail(files) {
+            var t_files = files.files;
+            var commpanyName=$("#signName").val();
+            if(!commpanyName.trim()){
+                alert('企业名称不能为空！');
+                return false;
+            }
+            var legalPersonName=$("#contacts").val();
+            if(!commpanyName.trim()){
+                alert('商户法人不能为空！');
+                return false;
+            }
+            var legalPersonIdNo=$("#legalPersonIdNo").val();
+            if(!commpanyName.trim()){
+                alert('法人身份证号不能为空！');
+                return false;
+            }
+            var businessLicense=$("#identityCard").val();
+            if(!commpanyName.trim()){
+                alert('营业执照号不能为空！');
+                return false;
+            }
+            for (var i = 0, len = t_files.length; i < len; i++) {
+                $(".legalImgDiv").before("<div class='col-lg-3 col-sm-3 imgBox'><img class='otherImg' src="+getObjectURL(t_files[i])+"></div>");
+                generateEmailImg(t_files[i], commpanyName, legalPersonName, legalPersonIdNo, businessLicense);
+            }
+        }
+        function generateEmailImg(file, commpanyName, legalPersonName, legalPersonIdNo, businessLicense){
+            var otherImgData=new FormData();
+            otherImgData.append('file',file);
+            otherImgData.append("commpanyName",commpanyName);
+            otherImgData.append("legalPersonName",legalPersonName);
+            otherImgData.append("legalPersonIdNo",legalPersonIdNo);
+            otherImgData.append("businessLicense",businessLicense);
+            otherImgData.append("bizId",bizId);
+            var url = "/hd/biz/generateEmail";
+            $.ajax({
+                type: 'POST',
+                url: url,
+                data: otherImgData,
+                processData: false,
+                contentType: false,
+                async: true,
+                success: function (data) {
+                    if ("200" == data.code) {
+                        $("#signEmail").attr("value", data.result);
+                    } else {
+                        layer.msg(data.msg);
+                    }
+                }
+            });
+        }
+
+        function modifyBiz(obj){
+            var flag=valid();
+            if(!flag){
+                return ;
+            }
+            var submitBtn=$(obj);
+            submitBtn.attr("disabled","disabled");
+            $.ajax({
+                type: 'POST',
+                url: "/hd//biz/modifyBiz/" ,
+                data: $('#saveForm').serialize(),
+                async: true,
+                success:function(data){
+                    if("200"==data.code){
+                        alert("修改成功");
+                        conentWin.load("/hd/biz/bizList?pageIndex=0&pageSize=10");
+                    }else{
+                        layer.msg("提交失败");
+                    }
+                    submitBtn.removeAttr("disabled");
+                },
+                error:function(data){
+                    submitBtn.removeAttr("disabled");
+                }
+            });
+        }
+
+        function checkNum(str){
+            return str.match(/\D/) == null;
+        }
+        function  valid(){
+
+            var bname=$("#name").val();
+            if(!bname.trim()){
+                alert('商户名称不能为空');
+                return false;
+            }
+    //        var bizAreaCode =$("#bizAreaCode").val();
+    //        if(!bizAreaCode.trim()){
+    //            alert('商户地址省市区不能为空');
+    //            return false;
+    //        }
+            var bizDetail =$("#bizAddrDetail").val();
+            if(!bizDetail.trim()){
+                alert('商户地址不能为空');
+                return false;
+            }
+            var bizProvince=$("#bizProvince").val();
+            if(!bizProvince.trim()){
+                alert('未通过地图获取到商户所在省市');
+                return false;
+            }
+    //        var intro =$("#intro").val();
+    //        if(!intro.trim()){
+    //            alert('商户介绍不能为空');
+    //            return false;
+    //        }
+    //        if(bizAreaCode){
+    //            $("#bizProvince").val($('#bizProvinceCode option:selected').text());
+    //            $("#bizCity").val($('#bizCityCode option:selected').text());
+    //            $("#bizArea").val($('#bizAreaCode option:selected').text());
+    //        }
+            $("#channelManagerName").val($('#channelManagerId option:selected').text());
+            var startDate =$("#startDate").val();
+            if(!startDate.trim()){
+                alert('合同开始日期不能为空');
+                return false;
+            }
+
+            var checkbox= $("input:checked").length;
+            if(checkbox==0){
+                alert('商户标识不能为空');
+                return false;
+            }
+
+            var comName =$("#comName").val();
+            if(!comName.trim()){
+                alert('账户名称不能为空');
+                return false;
+            }
+
+            var bankName =$("#bankName").val();
+            if(!bankName.trim()){
+                alert('开户银行不能为空');
+                return;
+            }
+            var bankAccountNo =$("#bankAccountNo").val();
+            if(!bankAccountNo.trim()){
+                alert('开户行账号不能为空');
+                return false;
+            }
+            if(!checkNum(bankAccountNo)){
+                alert('开户行账号必须为数字');
+                return false;
+            }
+            var prepaymentDay =$("#prepaymentDay").val();
+            if(prepaymentDay.trim()){
+                var reg=/^[0-9]{1,2}$/;
+                if(!prepaymentDay.match(reg)){
+                    alert("提前扣款天数只能是数字,并且长度不能超过2位整数");
+                    return ;
+                }
+            }
+            return true;
+        }
+
+        var capitalSelectList=eval("("+'[{"capitalName":"北银消费金融有限公司","capitalid":"bobcfc","id":"1","lateFeePlan":"2"},{"capitalName":"闪银","capitalid":"sy","id":"2","lateFeePlan":"2"},{"capitalName":"海尔消费金融有限公司","capitalid":"hr","id":"3"},{"capitalName":"百度","capitalid":"bidu","id":"4"},{"capitalName":"互动金服","capitalid":"hdfex","id":"5","lateFeePlan":"3"},{"capitalName":"闪银3C分期","capitalid":"wecash3c","id":"6","lateFeePlan":"2"},{"capitalName":"蚂蚁金服","capitalid":"alipay","id":"7"},{"capitalName":"贷鱼租房","capitalid":"dyzf","id":"8","lateFeePlan":"2"},{"capitalName":"贷鱼教育","capitalid":"dyjy","id":"9","lateFeePlan":"2"},{"capitalName":"海尔租房","capitalid":"haier_rent","id":"10"},{"capitalName":"国美金融","capitalid":"gmxjd","id":"11"},{"capitalName":"沃付分期","capitalid":"word","id":"12","lateFeePlan":"4"},{"capitalName":"91金融","capitalid":"91","id":"13","lateFeePlan":"4"},{"capitalName":"91旺财","capitalid":"91online","id":"14","lateFeePlan":"4"},{"capitalName":"晋商租房","capitalid":"jszf","id":"15"},{"capitalName":"晋商教育","capitalid":"jsjy","id":"16"},{"capitalName":"91旺财-租房","capitalid":"91zfonline","id":"17"},{"capitalName":"贷鱼租房","capitalid":"dyhouse","id":"18"},{"capitalName":"库分期","capitalid":"kbt","id":"19"},{"capitalName":"苏宁","capitalid":"suning","id":"20"},{"capitalName":"医美月付","capitalid":"ymwf","id":"21"}]'+")");
+        var capitalSelectStr="<select id='capitalCode' style='width:170px;'>";
+        for(var i=0;i<capitalSelectList.length;i++){
+            var obj=capitalSelectList[i];
+            capitalSelectStr+="<option value='"+obj.capitalid+"'>"+obj.capitalName+"</option>";
+        }
+        capitalSelectStr+="</select>";
+        var tableIndex='0';
+
+        var capitalStr="<select id='capitalStatus' style='width:170px;'><option value='0'>未启用</option><option value='1'>启用</option><option value='2'>已到期</option></select>"
+
+
+        $('#addCapital').on('click', function(){
+
+            var content='<table class="table sousuo no-border" align="center" style="width:90%;margin-left: 8%;">' +
+                '<tr><td><span>资方code&nbsp;:&nbsp;</span>'+capitalSelectStr+'</td><td><span>资方状态&nbsp;:&nbsp;</span>'+capitalStr+'</td></tr>';
+            content+='<tr><td colspan="2"><span>资方机构码&nbsp;:&nbsp;</span><input type="text"  id="capitalBchCode" name="capitalBchCode" /></td></tr>';
+            content+='<tr><td colspan="2"><span>描述&nbsp;:&nbsp;</span><textarea style="width:460px;height: 127px; border: 1px solid grey;"  placeholder="请输入资方准入进度" id="capitalDesc" name="capitalDesc"></textarea>'+"</td></tr>";
+            content+='</table>';
+            layer.open({
+                type: 1,
+                area: ['665px', '300px'],
+                title: '添加商户资方信息',
+                btn: ['添加','清空','取消'],
+                yes: function (index, layero) {
+                    var capitalCode=$("#capitalCode").val();
+                    var capitalDesc=$("#capitalDesc").val();
+                    var capitalStatus=$("#capitalStatus").val();
+                    if(!capitalCode.trim()){
+                        alert("资方code不能为空");
+                        return;
+                    }
+                    if(!capitalDesc.trim()){
+                        alert("资方准入详情不能为空");
+                        return;
+                    }
+                    var capitalDescDis="";
+                    if(capitalDesc.length>30){
+                        capitalDescDis=capitalDesc.substr(0,30)+"...";
+                    }else{
+                        capitalDescDis=capitalDesc;
+                    }
+                    var capitalName=$("#capitalCode").find("option:selected").text();
+                    var capitalStatusName=$("#capitalStatus").find("option:selected").text();
+                    var capitalBchCode=$("#capitalBchCode").val();
+
+                    var obj=new Object();
+                    obj.capitalCode=capitalCode;
+                    obj.hdBussinessCustomerId=bizId;
+                    obj.description=capitalDesc;
+                    obj.status=capitalStatus;
+                    obj.capitalName=capitalName;
+                    obj.capitalBchCode=capitalBchCode;
+
+                    var capitalUrl="/hd/biz/addBussinessCapitalInfo";
+                    var dataJson=JSON.stringify(obj);
+                    $.ajax({
+                        type: 'POST',
+                        url:capitalUrl,
+                        data:dataJson,
+                        contentType : 'application/json;charset=utf-8', //设置请求头信息
+                        dataType:"json",
+                        async: true,
+                        success:function(data){
+                            if('200'==data.code){
+                                layer.msg("添加成功");
+                                tableIndex++;
+                                var trStr="<tr id='tr'+tableIndex><td class='text-center'>"+tableIndex+"</td>";
+                                trStr+="<td class='text-center'>"+capitalName+"<input type='hidden' value='"+capitalCode+"'></td>";
+                                trStr+="<td class='text-center'>"+capitalDescDis+"<input type='hidden' value='"+capitalDesc+"'></td>";
+                                trStr+="<td class='text-center'>"+capitalStatusName+"<input type='hidden' value='"+capitalStatus+"'></td>";
+                                trStr+="<td class='text-center'>"+capitalBchCode+"<input type='hidden' value='"+capitalBchCode+"'></td>";
+                                trStr+="<td class='text-center'><button type='button'  class='btn btn-primary btn-sm' data-index="+tableIndex+" data-id="+data.result+" onclick='updateTr(this)' >修改</button> &nbsp;&nbsp;<button type='button' data-index="+tableIndex+" data-id="+data.result+"  class='btn btn-primary btn-sm' onclick='deleteTr(this)' >删除</button>" +
+                                    " &nbsp;&nbsp;<button type='button'  data-code='"+capitalCode+"' data-biz-id='"+bizId+"' class='btn btn-primary btn-sm ' name='add-case'>配置专案</button></td>";
+                                $(".ta_bm").append(trStr);
+                            }else{
+                                layer.msg("添加失败");
+                            }
+                        }
+                    });
+                    //按钮【按钮一】的回调
+                    layer.close(index);
+                },
+                btn2: function (index, layero) {
+                    //按钮【按钮二】的回调
+                    $(".sousuo input").val("");
+                    return false;
+                },
+                btn3: function (index, layero) {
+                    //按钮【按钮三】的回调
+                    layer.close(index);
+                },
+                shadeClose: true, //点击遮罩关闭
+                content:  content
+            });
+        });
+
+        function updateTr(obj){
+            var id=$(obj).attr("data-id");
+            var tr=$(obj).parent().parent();
+            var capitalCode=tr.find("td:eq(1)").find("input[type=hidden]").val();
+            var capitalDesc=tr.find("td:eq(2)").find("input[type=hidden]").val();
+            var capitalStatus=tr.find("td:eq(3)").find("input[type=hidden]").val();
+            var capitalBchCode=tr.find("td:eq(4)").find("input[type=hidden]").val();
+
+            var capitalSelectUpdateStr="<select id='capitalCode' style='width:170px;'>";
+            for(var i=0;i<capitalSelectList.length;i++){
+                var obj=capitalSelectList[i];
+                capitalSelectUpdateStr+="<option value='"+obj.capitalid+"'";
+                if(obj.capitalid==capitalCode){
+                    capitalSelectUpdateStr+=" selected ";
+                }
+                capitalSelectUpdateStr+=">"+obj.capitalName+"</option>";
+            }
+            var capitalStr="<select id='capitalStatus' style='width:170px;'><option value='0'";
+            if(0==capitalStatus){
+                capitalStr+=" selected ";
+            }
+            capitalStr+=" >未启用</option><option value='1'";
+            if(1==capitalStatus){
+                capitalStr+=" selected ";
+            }
+            capitalStr+=">启用</option><option value='2'";
+            if(2==capitalStatus){
+                capitalStr+=" selected ";
+            }
+            capitalStr+=">已到期</option></select>";
+            var content='<table class="table sousuo no-border" align="center" style="width:90%;margin-left: 8%;">' +
+                '<tr><td><span>资方code&nbsp;:&nbsp;</span>'+capitalSelectUpdateStr+'</td><td><span>资方状态&nbsp;:&nbsp;</span>'+capitalStr+'</td></tr>';
+            content+='<tr><td colspan="2"><span>资方机构码&nbsp;:&nbsp;</span><input type="text"  id="capitalBchCode" name="capitalBchCode" value="'+ capitalBchCode +'"/></td></tr>';
+            content+='<tr><td colspan="2"><span>描述&nbsp;:&nbsp;</span><textarea style="width:460px;height: 127px; border: 1px solid grey;"  placeholder="请输入资方准入进度" id="capitalDesc" name="capitalDesc">'+capitalDesc+'</textarea>'+"</td></tr>";
+            content+='</table>';
+            layer.open({
+                type: 1,
+                area: ['665px', '300px'],
+                title: '修改商户资方信息',
+                btn: ['修改','清空','取消'],
+                yes: function (index, layero) {
+                    var capitalCode=$("#capitalCode").val();
+                    var capitalDesc=$("#capitalDesc").val();
+                    var capitalStatus=$("#capitalStatus").val();
+                    var capitalBchCode=$("#capitalBchCode").val();
+
+                    if(!capitalCode.trim()){
+                        alert("资方code不能为空");
+                        return;
+                    }
+                    if(!capitalDesc.trim()){
+                        alert("资方准入详情不能为空");
+                        return;
+                    }
+                    var capitalName=$("#capitalCode").find("option:selected").text();
+                    var obj=new Object();
+                    obj.capitalCode=capitalCode;
+                    obj.hdBussinessCustomerId=bizId;
+                    obj.description=capitalDesc;
+                    obj.status=capitalStatus;
+                    obj.capitalName=capitalName;
+                    obj.capitalBchCode=capitalBchCode;
+                    obj.id=id;
+                    var capitalUrl="/hd/biz/modifyBussinessCapitalInfo";
+                    var dataJson=JSON.stringify(obj);
+                    $.ajax({
+                        type: 'POST',
+                        url:capitalUrl,
+                        data:dataJson,
+                        contentType : 'application/json;charset=utf-8', //设置请求头信息
+                        dataType:"json",
+                        async: true,
+                        success:function(data){
+                            if('200'==data.code){
+                                layer.msg("修改成功");
+                                var capitalDescDis="";
+                                if(capitalDesc.length>30){
+                                    capitalDescDis=capitalDesc.substr(0,30)+"...";
+                                }else{
+                                    capitalDescDis=capitalDesc;
+                                }
+                                var capitalName=$("#capitalCode").find("option:selected").text();
+                                var capitalStatusName=$("#capitalStatus").find("option:selected").text();
+                                tr.find("td:nth-child(2)").html(capitalName+"<input type='hidden' value='"+capitalCode+"'>");
+                                tr.find("td:nth-child(3)").html(capitalDescDis+"<input type='hidden' value='"+capitalDesc+"'>");
+                                tr.find("td:nth-child(4)").html(capitalStatusName+"<input type='hidden' value='"+capitalStatus+"'>");
+                                tr.find("td:nth-child(5)").html(capitalBchCode+"<input type='hidden' value='"+capitalBchCode+"'>");
+
+                            }else{
+                                layer.msg("修改失败");
+                            }
+                            //按钮【按钮一】的回调
+                            layer.close(index);
+                        }
+                    });
+                },
+                btn2: function (index, layero) {
+                    //按钮【按钮二】的回调
+                    $(".sousuo input").val("");
+                    return false;
+                },
+                btn3: function (index, layero) {
+                    //按钮【按钮三】的回调
+                    layer.close(index);
+                },
+                shadeClose: true, //点击遮罩关闭
+                content:  content
+            });
+        }
+
+        function deleteTr(obj){
+            layer.confirm("确定要删除该商户资方准入信息吗?", {
+                btn: ['确认','取消'], //按钮
+                yes:function (index, layero) {
+                    var id=$(obj).attr("data-id");
+                    $.ajax({
+                        type: 'POST',
+                        url:"/hd/biz/deleteBussinessCapitalInfo",
+                        data:{id:id},
+                        success:function(data){
+                            if('200'==data.code){
+                                layer.msg("删除成功");
+                                var currentTr=$(obj).parent().parent();
+                                var trList=currentTr.nextAll("tr");
+                                tableIndex--;
+                                trList.each(function(index,ele){
+                                    var td=$(ele).find("td").first();
+                                    td.html(td.html()-1);
+                                })
+                                $(obj).parent().parent().remove();
+                            }else{
+                                layer.msg("删除失败");
+                            }
+                        }
+                    });
+                    layer.close(index);
+                },
+                cancel:function(index){
+                    //按钮【按钮二】的回调
+                    layer.close(index);
+                },
+            });
+        }
+
+
+        function rentingHoustChecked(obj){
+            var isChecked=obj.checked;
+            if(isChecked){
+                $("#sourceTpyDel").css("display","block");
+            }else{
+                $("#sourceTpyDel").css("display","none");
+            }
+        }
+
+        function contractImg(files) {
+            var t_files = files.files;
+            var contractFormData=new FormData();
+            for (var i = 0, len = t_files.length; i < len; i++) {
+                $(".contractImgDiv").before("<div class='col-lg-3 col-sm-3 imgBox'><img class='contractImg' src="+getObjectURL(t_files[i])+"></div>");
+                contractFormData.append('file',t_files[i]);
+            }
+            uploadImg(contractFormData,bizId,0);
+
+        }
+        function otherImg(files) {
+            var t_files = files.files;
+            var otherFormData=new FormData();
+            for (var i = 0, len = t_files.length; i < len; i++) {
+                $(".otherImgDiv").before("<div class='col-lg-3 col-sm-3 imgBox'><img class='otherImg' src="+getObjectURL(t_files[i])+"></div>");
+                otherFormData.append('file',t_files[i]);
+            }
+            uploadImg(otherFormData,bizId,t_files.length);
+        }
+
+
+        function uploadImg(contractFormData,bizId,otherImgCount){
+            contractFormData.append("otherImgCount",otherImgCount);
+            contractFormData.append("bizId",bizId);
+            var url="/hd/biz/uploadImg";
+            $.ajax({
+                type: 'POST',
+                url: url,
+                data: contractFormData,
+                processData: false,
+                contentType: false,
+                async: true,
+                success: function (data) {
+                    if ('200' == data.code) {
+                        layer.msg("图片上传成功")
+                    }else{
+                        layer.msg("图片上传失败")
+                    }
+                }
+            });
+        }
+        function getObjectURL(file) {
+            var url = null;
+            if (window.createObjectURL != undefined) { // basic
+                url = window.createObjectURL(file);
+            } else if (window.URL != undefined) { // mozilla(firefox)
+                url = window.URL.createObjectURL(file);
+            } else if (window.webkitURL != undefined) { // webkit or chrome
+                url = window.webkitURL.createObjectURL(file);
+            }
+            return url;
+        }
+
+        $(function(){
+            $("#addCaseTable").on("click","button[name='add-case']",function(e){
+                var $current = $(e.currentTarget);
+                var bizId = $current.data("biz-id");
+                var capitalCode = $current.data("code");
+                var url='/hd/biz/case/detail?bizId='+bizId+'&capitalCode='+capitalCode;
+                layer.open({
+                    type: 2,
+                    area: ['1150px', '600px'],
+                    title: '商户专案配置',
+                    shadeClose: true, //点击遮罩关闭
+                    content: url
+                });
+
+            });
+        });
+
+        
+            
+            
+                
+                
+                
+                
+                
+            
+        
+    </script>
+
+
+    <script>
+        jeDate({
+            dateCell:"#startDate", //目标元素。由于jedate.js封装了一个轻量级的选择器，因此dateCell还允许你传入class、tag这种方式 '#id .class'
+            format:"YYYY-MM-DD", //日期格式
+            minDate:"1900-01-01 00:00:00", //最小日期
+            maxDate:"2099-12-31 23:59:59", //最大日期
+            isinitVal:false, //是否初始化时间
+            isTime:true, //是否开启时间选择
+            isClear:true, //是否显示清空
+            festival:false, //是否显示节日
+            zIndex:999,  //弹出层的层级高度
+            marks:null, //给日期做标注
+            choosefun:function(val) {},  //选中日期后的回调
+            clearfun:function(val) {},   //清除日期后的回调
+            okfun:function(val) {}       //点击确定后的回调
+        });
+        jeDate({
+            dateCell:"#endDate", //目标元素。由于jedate.js封装了一个轻量级的选择器，因此dateCell还允许你传入class、tag这种方式 '#id .class'
+            format:"YYYY-MM-DD", //日期格式
+            minDate:"1900-01-01 00:00:00", //最小日期
+            maxDate:"2099-12-31 23:59:59", //最大日期
+            isinitVal:false, //是否初始化时间
+            isTime:true, //是否开启时间选择
+            isClear:true, //是否显示清空
+            festival:false, //是否显示节日
+            zIndex:999,  //弹出层的层级高度
+            marks:null, //给日期做标注
+            choosefun:function(val) {},  //选中日期后的回调
+            clearfun:function(val) {},   //清除日期后的回调
+            okfun:function(val) {}       //点击确定后的回调
+        });
+    </script>
+
+
+
+    <script>
+        $(function () {
+            var ht = parseInt($(".by_hd").height());
+            var ht1 = (ht - 250) / 2;
+            $(".mr_zo").css("padding-top", ht1);
+        });
+    </script>
+
+
+
+    <script>
+        $(function () {
+            $(".content1").scrollTop(0);
+        })
+    </script>
+
+    </div>
+        </div>
+
+        </div>

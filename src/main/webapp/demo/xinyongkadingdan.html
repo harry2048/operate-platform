@@ -1,0 +1,425 @@
+<div class="content1" href="">
+
+
+
+
+
+
+
+
+
+
+
+    <meta http-equiv="content-type" content="text/html;charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <title>信用卡订单页面</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/base.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/layer.css" rel="stylesheet">
+    <link href="css/pagination.css" rel="stylesheet">
+    <link href="css/bootstrap-datetimepicker.css" rel="stylesheet">
+    <link href="css/dataTables.bootstrap.min.css" rel="stylesheet">
+    <link href="css/jedate.css" rel="stylesheet">
+    <style>
+        #loanDetail{
+            background-color: #fff;
+            margin-bottom: 15px;
+        }
+        #loanDetail p{
+            padding-left:0 ;
+            padding-right: 0;
+            margin: 6px 0 ;
+        }
+        #loanDetail .wd_60{
+            display: inline-block;
+            width: 102px;
+            text-align: right;
+            font-size: 12px;
+            font-family: "微软雅黑";
+        }
+        #loanDetail .c13 .wd_60{
+            float: left;
+            margin-top: 5px;
+        }
+        #loanDetail .c13 input{
+            float: left;
+            font-size: 12px;
+            font-family: "微软雅黑";
+        }
+        #loanDetail .col-lg-3 ,#loanDetail .c13{
+            margin:5px 0;
+            padding-left:5px;
+            padding-right: 5px;
+        }
+
+        #loanDetail select option{
+            font-size: 12px;
+            font-family: "微软雅黑";
+        }
+        .search_btn {
+            font-size: 12px;
+            background-color: #09C;
+            padding: 5px 16px;
+            margin-top: 3px;
+            margin-bottom: 5px;
+        }
+        .cardSelect{
+            border: 1px solid #ddd;
+            height: 25px;
+            width: 150px;
+            font-size: 12px;
+        }
+
+    </style>
+
+<div class="hui"><img src="images/ajax-loader.gif"></div>
+        <div class="content">
+            <!--面包屑导航start-->
+            <ol class="breadcrumb">
+                <li class="active">信用卡订单查询</li>
+            </ol>
+            <div id="loanDetail" class="col-lg-12 col-md-12 col-sm-12">
+                <div class="col-lg-3 col-md-3 col-sm-3"><span class="wd_60">身份证号&nbsp;&nbsp;</span><input type="text" id="certNo"></div>
+                <div class="col-lg-3 col-md-3 col-sm-3"><span class="wd_60">姓名&nbsp;&nbsp;</span><input type="text" id="name"></div>
+                <div class="col-lg-3 col-md-3 col-sm-3"><span class="wd_60">手机号&nbsp;&nbsp;</span><input type="text" id="mobile"></div>
+                <div class="col-lg-3 col-md-3 col-sm-3"><span class="wd_60">商户&nbsp;&nbsp;</span><input type="text" id="hdBussinessCustomerName"></div>
+                <div class="col-lg-3 col-md-3 col-sm-3 cl3"><span class="wd_60">交易时间(开始)&nbsp;&nbsp;</span>
+                    <input type="text" id="applyDateStart1" placeholder="请选择时间" readonly=""></div>
+                <div class="col-lg-3 col-md-3 col-sm-3 c13"><span class="wd_60">交易时间(结束)&nbsp;&nbsp;</span>
+                    <input type="text" id="applyDateStart2" placeholder="请选择时间" readonly=""></div>
+                <div class="col-lg-3 col-md-3 col-sm-3"><span class="wd_60">支付状态&nbsp;&nbsp;</span><select id="status"><option value="">请选择</option>
+                    <option value="9000">交易成功</option>
+                    <option value="0">处理中</option>
+                </select></div>
+                <div class="col-lg-2 col-md-2 col-sm-2"></div>
+                <div class="col-lg-7 col-md-7 col-sm-7">
+                    <button class="btn btn-primary btn-sm search_btn" type="button" id="btn-search">查询</button>&nbsp;&nbsp;
+                    <button class="btn btn-primary btn-sm search_btn mr_25" type="button" id="btn-clear">重置</button>
+                    
+                    	
+                </div>
+					
+                
+                <div class="clear"></div>
+            </div>
+            <div class="table-responsive">
+                <div id="reviewList_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer"><div class="top"><div class="clear"></div></div><div id="reviewList_processing" class="dataTables_processing panel panel-default" style="display: none;">处理中...</div><div class="dataTables_scroll"><div class="dataTables_scrollHead" style="overflow: hidden; position: relative; border: 0px; width: 100%;"><div class="dataTables_scrollHeadInner" style="box-sizing: content-box; width: 1700px; padding-right: 0px;"><table style="overflow: auto; width: 1700px; margin-left: 0px;" class="table table-bordered table-striped table-hover bg_wt dataTable no-footer" role="grid"><thead style="border-bottom: 0;background-color: #fff;">
+                    <tr role="row"><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 173px;">订单编号</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 185px;">商户名称</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 132px;">客户姓名</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 164px;">身份证号</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 132px;">手机号</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 133px;">订单金额</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 168px;">分期方案</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 133px;">用户服务费</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 133px;">实际支付金额</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 133px;">支付状态</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 158px;">交易时间</th></tr>
+                    </thead></table></div></div><div class="dataTables_scrollBody" style="position: relative; overflow: auto; width: 100%;"><table id="reviewList" style="overflow: auto;width:1700px;" class="table table-bordered table-striped table-hover bg_wt dataTable no-footer" role="grid" aria-describedby="reviewList_info"><thead style="border-bottom: 0;background-color: #fff;">
+                    <tr role="row" style="height: 0px;"><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px; width: 173px;"><div class="dataTables_sizing" style="height:0;overflow:hidden;">订单编号</div></th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px; width: 185px;"><div class="dataTables_sizing" style="height:0;overflow:hidden;">商户名称</div></th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px; width: 132px;"><div class="dataTables_sizing" style="height:0;overflow:hidden;">客户姓名</div></th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px; width: 164px;"><div class="dataTables_sizing" style="height:0;overflow:hidden;">身份证号</div></th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px; width: 132px;"><div class="dataTables_sizing" style="height:0;overflow:hidden;">手机号</div></th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px; width: 133px;"><div class="dataTables_sizing" style="height:0;overflow:hidden;">订单金额</div></th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px; width: 168px;"><div class="dataTables_sizing" style="height:0;overflow:hidden;">分期方案</div></th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px; width: 133px;"><div class="dataTables_sizing" style="height:0;overflow:hidden;">用户服务费</div></th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px; width: 133px;"><div class="dataTables_sizing" style="height:0;overflow:hidden;">实际支付金额</div></th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px; width: 133px;"><div class="dataTables_sizing" style="height:0;overflow:hidden;">支付状态</div></th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px; width: 158px;"><div class="dataTables_sizing" style="height:0;overflow:hidden;">交易时间</div></th></tr>
+                    </thead>
+                    
+                <tbody><tr role="row" class="odd"><td>6511477058319680513</td><td>上海绍致信息科技有限公司</td><td>王淼</td><td>513722199809154082</td><td>17621541293</td><td>1900</td><td>¥316.67*6</td><td>76.38</td><td>1976.38</td><td>交易成功</td><td>2019-03-13 14:05:11</td></tr><tr role="row" class="even"><td>6509341088254264321</td><td>上海绍致信息科技有限公司</td><td>胡阳</td><td>430624200003142216</td><td>17673495135</td><td>8900</td><td>¥370.83*24</td><td>1068.00</td><td>9968</td><td>交易成功</td><td>2019-03-07 16:37:36</td></tr><tr role="row" class="odd"><td>6509339946464052225</td><td>上海绍致信息科技有限公司</td><td>胡阳</td><td>430624200003142216</td><td>17673495135</td><td>10000</td><td>¥416.67*24</td><td>1200.00</td><td>11200</td><td>处理中</td><td>2019-03-07 16:33:04</td></tr><tr role="row" class="even"><td>6508197736947385345</td><td>上海绍致信息科技有限公司</td><td>王超</td><td>230223199806201637</td><td>18317049596</td><td>950</td><td>¥158.33*6</td><td>38.22</td><td>988.19</td><td>交易成功</td><td>2019-03-04 12:54:20</td></tr><tr role="row" class="odd"><td>6504549389275497473</td><td>上海绍致信息科技有限公司</td><td>张可贵</td><td>342401199512213819</td><td>13564696160</td><td>9100</td><td>¥3033.33*3</td><td>182.91</td><td>9282.91</td><td>交易成功</td><td>2019-02-22 11:17:06</td></tr><tr role="row" class="even"><td>6494471903812518913</td><td>上海绍致信息科技有限公司</td><td>陈诗雨</td><td>330681199912179022</td><td>13917940993</td><td>8000</td><td>¥333.33*24</td><td>960.00</td><td>8960</td><td>交易成功</td><td>2019-01-25 15:52:45</td></tr><tr role="row" class="odd"><td>6494471486282138625</td><td>上海绍致信息科技有限公司</td><td>陈诗雨</td><td>330681199912179022</td><td>13917940993</td><td>9000</td><td>¥375.00*24</td><td>1080.00</td><td>10080</td><td>处理中</td><td>2019-01-25 15:51:08</td></tr><tr role="row" class="even"><td>6481345501693215745</td><td>贷鱼科技</td><td>王栋</td><td>130683199102171315</td><td>15028108565</td><td>1000</td><td>¥166.67*6（无服务费）</td><td>0.00</td><td>1000</td><td>交易成功</td><td>2018-12-20 10:33:07</td></tr><tr role="row" class="odd"><td>6481345123849339905</td><td>贷鱼科技</td><td>王栋</td><td>130683199102171315</td><td>15028108565</td><td>1000</td><td>¥166.67*6（无服务费）</td><td>0.00</td><td>1000</td><td>交易成功</td><td>2018-12-20 10:31:37</td></tr><tr role="row" class="even"><td>6481119427218637825</td><td>贷鱼科技</td><td>王栋</td><td>130683199102171315</td><td>15028108565</td><td>1000</td><td>¥166.67*6（无服务费）</td><td>0.00</td><td>1000</td><td>交易成功</td><td>2018-12-19 19:34:46</td></tr></tbody></table></div></div><div class="bottom"><div class="dataTables_info" id="reviewList_info" role="status" aria-live="polite">显示第 1 - 10 条记录，共39 条</div><div class="dataTables_length" id="reviewList_length"><label> <select name="reviewList_length" aria-controls="reviewList" class="form-control input-sm"><option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select> </label></div><div class="dataTables_paginate paging_full_numbers" id="reviewList_paginate"><ul class="pagination"><li class="paginate_button first disabled" id="reviewList_first"><a href="javascript:void(0);" aria-controls="reviewList" data-dt-idx="0" tabindex="0">首页</a></li><li class="paginate_button previous disabled" id="reviewList_previous"><a href="javascript:void(0);" aria-controls="reviewList" data-dt-idx="1" tabindex="0">上页</a></li><li class="paginate_button active"><a href="javascript:void(0);" aria-controls="reviewList" data-dt-idx="2" tabindex="0">1</a></li><li class="paginate_button "><a href="javascript:void(0);" aria-controls="reviewList" data-dt-idx="3" tabindex="0">2</a></li><li class="paginate_button "><a href="javascript:void(0);" aria-controls="reviewList" data-dt-idx="4" tabindex="0">3</a></li><li class="paginate_button "><a href="javascript:void(0);" aria-controls="reviewList" data-dt-idx="5" tabindex="0">4</a></li><li class="paginate_button next" id="reviewList_next"><a href="javascript:void(0);" aria-controls="reviewList" data-dt-idx="6" tabindex="0">下页</a></li><li class="paginate_button last" id="reviewList_last"><a href="javascript:void(0);" aria-controls="reviewList" data-dt-idx="7" tabindex="0">末页</a></li></ul></div><div class="clear"></div></div></div>
+            </div>
+            <!--正文内容end-->
+        </div>
+<script src="jedate/jedate.min.js"></script>
+<script>
+    jeDate({
+        dateCell:"#applyDateStart1", //目标元素。由于jedate.js封装了一个轻量级的选择器，因此dateCell还允许你传入class、tag这种方式 '#id .class'
+        format:"YYYY-MM-DD hh:mm:ss", //日期格式
+        minDate:"1900-01-01 00:00:00", //最小日期
+        maxDate:"2099-12-31 23:59:59", //最大日期
+        isinitVal:false, //是否初始化时间
+        isTime:true, //是否开启时间选择
+        isClear:true, //是否显示清空
+        festival:false, //是否显示节日
+        zIndex:999,  //弹出层的层级高度
+        marks:null, //给日期做标注
+        choosefun:function(val) {},  //选中日期后的回调
+        clearfun:function(val) {},   //清除日期后的回调
+        okfun:function(val) {}       //点击确定后的回调
+    });
+    jeDate({
+        dateCell:"#applyDateStart2", //目标元素。由于jedate.js封装了一个轻量级的选择器，因此dateCell还允许你传入class、tag这种方式 '#id .class'
+        format:"YYYY-MM-DD hh:mm:ss", //日期格式
+        minDate:"1900-01-01 00:00:00", //最小日期
+        maxDate:"2099-12-31 23:59:59", //最大日期
+        isinitVal:false, //是否初始化时间
+        isTime:true, //是否开启时间选择
+        isClear:true, //是否显示清空
+        festival:false, //是否显示节日
+        zIndex:999,  //弹出层的层级高度
+        marks:null, //给日期做标注
+        choosefun:function(val) {},  //选中日期后的回调
+        clearfun:function(val) {},   //清除日期后的回调
+        okfun:function(val) {}       //点击确定后的回调
+    });
+/*    jeDate({
+        dateCell:"#applyDateStart3", //目标元素。由于jedate.js封装了一个轻量级的选择器，因此dateCell还允许你传入class、tag这种方式 '#id .class'
+        format:"YYYY-MM-DD hh:mm:ss", //日期格式
+        minDate:"1900-01-01 00:00:00", //最小日期
+        maxDate:"2099-12-31 23:59:59", //最大日期
+        isinitVal:false, //是否初始化时间
+        isTime:true, //是否开启时间选择
+        isClear:true, //是否显示清空
+        festival:false, //是否显示节日
+        zIndex:999,  //弹出层的层级高度
+        marks:null, //给日期做标注
+        choosefun:function(val) {},  //选中日期后的回调
+        clearfun:function(val) {},   //清除日期后的回调
+        okfun:function(val) {}       //点击确定后的回调
+    });
+    jeDate({
+        dateCell:"#applyDateStart4", //目标元素。由于jedate.js封装了一个轻量级的选择器，因此dateCell还允许你传入class、tag这种方式 '#id .class'
+        format:"YYYY-MM-DD hh:mm:ss", //日期格式
+        minDate:"1900-01-01 00:00:00", //最小日期
+        maxDate:"2099-12-31 23:59:59", //最大日期
+        isinitVal:false, //是否初始化时间
+        isTime:true, //是否开启时间选择
+        isClear:true, //是否显示清空
+        festival:false, //是否显示节日
+        zIndex:999,  //弹出层的层级高度
+        marks:null, //给日期做标注
+        choosefun:function(val) {},  //选中日期后的回调
+        clearfun:function(val) {},   //清除日期后的回调
+        okfun:function(val) {}       //点击确定后的回调
+    });*/
+</script>
+
+<script>
+    var dt;
+     $(function(){
+
+         $("#applyDateStart1").on("blur",function(){
+             var startTime=$(this).val();
+             var endTime=$("#applyDateStart2").val();
+             if(startTime&&endTime){
+                 var idTermBghTime= new Date(startTime.replace("-", "/").replace("-", "/"));
+                 var idTermEndTime = new Date(endTime.replace("-", "/").replace("-", "/"));
+                 if(idTermBghTime >= idTermEndTime)
+                 {
+                     layer.msg("交易结束日期必须大于交易开始日期!");
+                     return false;
+                 }
+             }
+         });
+
+         // $("#applyDateStart2").on("blur",function(){
+         //     var startTime=$("#applyDateStart1").val();
+         //     var endTime=$(this).val();
+         //     if(startTime&&endTime){
+         //         var idTermBghTime= new Date(startTime.replace("-", "/").replace("-", "/"));
+         //         var idTermEndTime = new Date(endTime.replace("-", "/").replace("-", "/"));
+         //         if(idTermBghTime >= idTermEndTime)
+         //         {
+         //             layer.msg("进件结束日期必须大于进件开始日期!");
+         //             return false;
+         //         }
+         //     }
+         // });
+
+
+
+
+
+    	dt = $("#reviewList").dataTable({
+	         "sDom":'<"top"<"clear">>rt<"bottom"ilp<"clear">>', 
+	         bProcessing:true,
+	         pageLength: 10,
+	         searching: false, // 禁用dataTables自带的查询框
+	         ordering: false, // 禁用排序
+            "autoWidth":false,
+            autoHeigth:false,
+             "scrollX": true,
+            "scrollX": 1700,
+            "scrollY": true,
+            "scrollX": 500,
+	         ajax: {
+	             type: "POST",
+	             url: "/hd/skquery/skqueryListData",
+	             data:function(d) {
+	           	  d.idNo = $("#certNo").val();
+	           	  d.idName = $("#name").val();
+	           	  d.phoneNo = $("#mobile").val();
+	           	  d.hdBussinessCustomerName = $("#hdBussinessCustomerName").val();
+	           	  d.startTime = $("#applyDateStart1").val();
+	           	  d.endTime = $("#applyDateStart2").val();
+	           	  // d.payStartTime = $("#applyDateStart3").val();
+	           	  // d.payEndTime = $("#applyDateStart4").val();
+	           		
+	           	  d.status = $("#status").find("option:selected").val();
+
+	             }
+	         },
+	         columns: [
+	             {data:"id",defaultContent:'--'},
+	             {data:"hdBussinessCustomerName",defaultContent:'--'},
+	             {data:"idName",defaultContent:'--' },
+	             {data:"idNo",defaultContent:'--'},
+	             {data:"phoneNo",defaultContent:'--'},
+	             {data:"orderAmount",defaultContent:'--'},
+
+	             {data: "stageNum",defaultContent:'--',render: function(data, type, row) {
+                       var  rest=(row.orderAmount/data).toFixed(2);
+                       var subinfo="";
+                       if(0==row.chargeAmount){
+                           subinfo='（无服务费）';
+                       }
+                       return "¥"+rest+"*"+data+subinfo;
+                 }},
+                 {data: "chargeAmount",defaultContent:'--',render: function(data, type, row) {
+                         var reset=row.stageNum*data
+
+                                            console.log(data)
+                                            console.log(row.stageNum)
+                         return reset.toFixed(2);
+                     }},
+	             {data: "payAmount",defaultContent:'--'},
+	         /*    {data: "payAmount",defaultContent:'--'},*/
+	             {data: "status",defaultContent:'--',render: function(data, type, row) {
+	                 if("0"==data){
+	                     return "处理中";
+                     }else if("9000"==data){
+                         return "交易成功";
+                     }else{
+                         return data;
+                     }
+                     }},
+	             {data: "importDate",defaultContent:'--',render: function(data, type, row) {
+                         return formatDate(data);
+                     }}
+            /*     {data:"mobile",defaultContent:'--'},
+                 {data:"certNo",defaultContent:'--'},formatDate
+	             {data: "status",defaultContent:'--'}*/
+	         ]
+	     });
+    	 $("#btn-search").click(function(e){
+             var startTime=$("#applyDateStart1").val();
+             var endTime=$("#applyDateStart2").val();
+
+             if(startTime&&endTime){
+                 var idTermBghTime= new Date(startTime.replace("-", "/").replace("-", "/"));
+                 var idTermEndTime = new Date(endTime.replace("-", "/").replace("-", "/"));
+                 if(idTermBghTime >= idTermEndTime)
+                 {
+                     layer.msg("交易结束日期必须大于交易开始日期!");
+                     return false;
+                 }
+             }
+             
+             // var examineDateStart = $("#applyDateStart3").val();
+          	//  var examineDateEnd = $("#applyDateStart4").val();
+             // if(examineDateStart&&examineDateEnd){
+             //     if(examineDateStart >=examineDateEnd){
+             //         layer.msg("支付结束日期必须大于信审开始日期!");
+             //         return false;
+             //     }
+             // }
+             dt.api().draw();
+         });
+    	 $("#btn-clear").click(function(e){
+            $("#certNo").val("");
+            $("#name").val("");
+            $("#mobile").val("");
+            $("#hdBussinessCustomerName").val("");
+            $("#applyDateStart1").val("");
+            $("#applyDateStart2").val("");
+             // d.payStartTime = $("#applyDateStart3").val();
+             // d.payEndTime = $("#applyDateStart4").val();
+
+             $("#status").val("");
+             dt.api().draw();
+         });
+
+
+
+    });
+
+    function formatDate(time){
+        if(null !=time && time !=''){
+            var date = new Date(time);
+
+            var year = date.getFullYear(),
+                month = date.getMonth()+1,//月份是从0开始的
+                day = date.getDate(),
+                hour = date.getHours(),
+                min = date.getMinutes(),
+                sec = date.getSeconds();
+            var newTime = year + '-' +
+                (month < 10? '0' + month : month) + '-' +
+                (day < 10? '0' + day : day) + ' ' +
+                (hour < 10? '0' + hour : hour) + ':' +
+                (min < 10? '0' + min : min) + ':' +
+                (sec < 10? '0' + sec : sec);
+
+            return newTime;
+        }else{
+            return "";
+        }
+
+    }
+
+     function exportResult(){
+         layer.confirm("确定要导出结果到excel中吗？", {
+             btn: ['确认','取消'], //按钮
+             yes:function (index, layero) {
+                 var certNo = $("#certNo").val();
+                 var name = $("#name").val();
+                 var mobile = $("#mobile").val();
+                 var hdBussinessCustomerName = $("#hdBussinessCustomerName").val();
+                 var importStartTime = $("#applyDateStart1").val();
+                 var importEndTime = $("#applyDateStart2").val();
+                 var payStartTime = $("#applyDateStart3").val();
+                 var payEndTime = $("#applyDateStart4").val();
+
+                 var status = $("#status").find("option:selected").val();
+                 var params="certNo="+certNo+"&name="+name+"&mobile="+mobile+"&hdBussinessCustomerName="+hdBussinessCustomerName;
+                 params+="&importStartTime="+importStartTime+"&importEndTime="+importEndTime+"&payStartTime="+payStartTime+"&payEndTime="+payEndTime;
+                 params+="&status="+status;
+                 var url="/hd/alipay/export?"+params;
+                 window.open(url);
+                 layer.close(index);
+             },
+             cancel:function(index){
+                 //按钮【按钮二】的回调
+                 layer.close(index);
+             },
+         });
+     }
+</script>
+<script>
+
+</script>
+<!--按钮弹出层-->
+<script>
+
+
+
+</script>
+
+
+<script>
+    var time = 100000;
+    var interval; //调度器对象。
+    function run(){
+        interval = setInterval("fun()",time);
+    }
+    function fun(){
+        $(".hui").css("display","none");
+    }
+//    $(function(){
+//        $("#reviewList").delegate('tr td button','click',function(){
+//            $(this).html("加载中...").attr("disabled","disabled");
+//            $(".hui").css("display","block");
+//            run();
+//        })
+//    })
+</script>
+
+<script>
+    $(document).ready(function(e) {
+        var counter = 0;
+        if (window.history && window.history.pushState) {
+            $(window).on('popstate', function () {
+                window.history.pushState('forward', null, '#');
+                window.history.forward(1);
+            });
+        }
+        window.history.pushState('forward', null, '#'); //在IE中必须得有这两行
+        window.history.forward(1);
+    });
+</script>
+
+</div>

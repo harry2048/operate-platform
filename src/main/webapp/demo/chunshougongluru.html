@@ -1,0 +1,1768 @@
+<div class="content1" href="">
+    <meta http-equiv="content-type" content="text/html;charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <title>复审页面</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/base.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/blue.css" rel="stylesheet">
+    <link href="css/layer.css" rel="stylesheet">
+    <link href="css/jedate.css" rel="stylesheet">
+
+<style>
+    .list-group .inputWidth{
+             width:60px;
+         }
+    .shenXinSpan{
+        display: inline-block;
+        width: 80px;
+        color: #428bca;
+    }
+    .shenXinSpan2{
+        display: inline-block;
+        width: 120px;
+        color: #428bca;
+    }
+    .shenXinSpan3{
+        display: inline-block;
+        width: 100px;
+        color: #428bca;
+    }
+    
+     .upLoad {
+            display: inline-block;
+            width: 146px;
+            height: 146px;
+            background-image: url("images/addPic.png");
+            background-size: 146px 146px;
+            position: relative;
+            overflow: hidden;
+            margin-left: 0;
+            margin-top: 20px;
+        }
+        .upLoad img{
+            width: 146px;
+            height: 146px;
+        }
+        .fileImg {
+            width: 146px;
+            height: 146px;
+            position: absolute;
+            right: 0;
+            top: 0;
+            opacity: 0;
+            filter: alpha(opacity=0);
+        }
+        .otherImg{
+            width: 100%;
+            height: 420px;
+            overflow-y: auto;
+            margin-top: 15px;
+        }
+    .otherImg p{
+        height: 30px;
+        line-height: 30px;
+        font-size: 16px;
+        margin: 0;
+        text-align: center;
+    }
+        .clear{
+            clear: both;
+        }
+        .IDCard{
+            height: 230px;
+            text-align: center;
+            border: 1px solid #ddd;
+            margin-top: 15px;
+        }
+        .IDCard p{
+            height: 30px;
+            line-height: 30px;
+            font-size: 16px;
+            margin: 0;
+        }
+        .ml-50{
+            margin-left: 50px;
+        }
+    .selec ,#hdBussinessCustomerId{
+        height: 25px;
+        line-height: 25px;
+        border: 1px solid #ddd;
+    }
+    .selec ,.selec option{
+        font-size: 12px;
+    }
+    .jobInfo input{
+        height: 25px;
+        line-height: 25px;
+    }
+    .nnn input{
+        height: 25px;
+        line-height: 25px;
+    }
+    .bankArea input{
+        height: 25px;
+        line-height: 25px;
+    }
+    .bankArea{
+        margin-top: 2px;
+        height: 85px;
+        background-color: #fff;
+    }
+    .contactsList p{
+        margin: 11px 0;
+    }
+    .upLoad{
+        width: 269px;
+        height: 170px;
+        background-image: url("images/addID.png");
+        background-size: cover;
+        margin-top: 5px;
+        margin-bottom: 5px;
+    }
+    .fileImg{
+        width: 269px;
+        height: 170px;
+    }
+    .lab{
+        font-weight: normal;
+        margin: 0 5px;
+    }
+    .mwt_150{
+     min-width: 150px;
+    }
+
+    .content .ListTips{
+        font-size: 13px;
+    }
+    .contactFirst{
+        font-size: 12px;
+        color: #428bca;
+    }
+    .fs_12{
+        font-size: 12px;
+    }
+</style>
+
+<form id="saveForm" class="form-horizontal" action="/hd/loan/saveReviewMsg/" method="post">
+    <div class="content">
+        <!--面包屑导航start-->
+        <ol class="breadcrumb">
+            <li><a href="#">申请列表</a></li>
+            <li class="active">贷款信息录入</li>
+        </ol>
+        <!--面包屑导航end-->
+
+        <!--正文内容start-->
+        <div class="panel panel-default">
+            <ul class="list-group">
+                <li class="list-group-item con_title" id="mao2">申请人信息</li>
+                <div class="col-sm-12 col-lg-12 mt_10">
+                    <!--申请人信息start-->
+                    <div class="col-sm-12 col-lg-12 shenXin">
+                        <p class="col-lg-3 col-sm-3"><span class="shenXinSpan">姓名:</span><input type="text" class="nameIpt" name="idName" id="idName"></p>
+                        <p class="col-lg-3 col-sm-3"><span class="shenXinSpan">证件号:</span><input type="text" class="nameIpt" id="idNo" name="idNo"></p>
+                        <p class="col-lg-3 col-sm-3"><span class="shenXinSpan">民族:</span>
+                            <select class="selec" style="min-width: 90px" name="nation" id="nation">
+                                <option value="汉">汉族</option>
+                                <option value="蒙古">蒙古族</option>
+                                <option value="彝">彝族</option>
+                                <option value="侗">侗族</option>
+                                <option value="哈萨克">哈萨克族</option>
+                                <option value="畲">畲族</option>
+                                <option value="纳西">纳西族</option>
+                                <option value="仫佬">仫佬族</option>
+                                <option value="仡佬">仡佬族</option>
+                                <option value="怒">怒族</option>
+                                <option value="保安">保安族</option>
+                                <option value="鄂伦春">鄂伦春族</option>
+                                <option value="回">回族</option>
+                                <option value="壮">壮族</option>
+                                <option value="瑶">瑶族</option>
+                                <option value="傣">傣族</option>
+                                <option value="高山">高山族</option>
+                                <option value="景颇">景颇族</option>
+                                <option value="羌">羌族</option>
+                                <option value="锡伯">锡伯族</option>
+                                <option value="乌孜别克">乌孜别克族</option>
+                                <option value="裕固">裕固族</option>
+                                <option value="赫哲">赫哲族</option>
+                                <option value="藏">藏族</option>
+                                <option value="布依">布依族</option>
+                                <option value="白">白族</option>
+                                <option value="黎">黎族</option>
+                                <option value="拉祜">拉祜族</option>
+                                <option value="柯尔克孜">柯尔克孜族</option>
+                                <option value="布朗">布朗族</option>
+                                <option value="阿昌">阿昌族</option>
+                                <option value="俄罗斯">俄罗斯族</option>
+                                <option value="京">京族</option>
+                                <option value="门巴">门巴族</option>
+                                <option value="维吾尔">维吾尔族</option>
+                                <option value="朝鲜">朝鲜族</option>
+                                <option value="土家">土家族</option>
+                                <option value="傈僳">傈僳族</option>
+                                <option value="水">水族</option>
+                                <option value="土">土族</option>
+                                <option value="撒拉">撒拉族</option>
+                                <option value="普米">普米族</option>
+                                <option value="鄂温克">鄂温克族</option>
+                                <option value="塔塔尔">塔塔尔族</option>
+                                <option value="珞巴">珞巴族</option>
+                                <option value="苗">苗族</option>
+                                <option value="满">满族</option>
+                                <option value="哈尼">哈尼族</option>
+                                <option value="佤">佤族</option>
+                                <option value="东乡">东乡族</option>
+                                <option value="达斡尔">达斡尔族</option>
+                                <option value="毛南">毛南族</option>
+                                <option value="塔吉克">塔吉克族</option>
+                                <option value="德昂">德昂族</option>
+                                <option value="独龙">独龙族</option>
+                                <option value="基诺">基诺族</option>
+                            </select>
+                        </p>
+                        <p class="col-lg-3 col-sm-3"><span class="shenXinSpan">手机号:</span><input type="text" class="nameIpt" id="phone" name="phone"></p>
+                       <div class="clear"></div>
+                        <p class="col-lg-3 col-sm-3"><span class="shenXinSpan">证件开始日:</span>
+                        <input type="text" id="idTermBgh" name="idTermBgh" placeholder="请选择时间"></p>
+                        <p class="col-lg-3 col-sm-3"><span class="shenXinSpan">证件到期日:</span>
+                            <input type="text" id="idTermEnd" name="idTermEnd" placeholder="请选择时间"></p>
+
+                        <p class="col-lg-3 col-sm-3"><span class="shenXinSpan">婚姻状况:</span><select class="selec" style="min-width: 90px" name="marital" id="marital">
+                                <option value="">--- 请选择 ---</option>
+                                
+                                    <option value="20">已婚</option>
+                                
+                                    <option value="10">未婚</option>
+                                
+                                    <option value="90">其他</option>
+                                
+                            </select></p>
+                        <p class="col-lg-3 col-sm-3"><span class="shenXinSpan">教育程度:</span><select class="selec" name="education" id="education">
+                                <option value="">--- 请选择 ---</option>
+                                
+                                    <option value="09">硕士及以上</option>
+                                
+                                    <option value="50">无教育经历</option>
+                                
+                                    <option value="08">博士</option>
+                                
+                                    <option value="30">高中,中专</option>
+                                
+                                    <option value="40">初中及以下</option>
+                                
+                                    <option value="10">本科</option>
+                                
+                                    <option value="20">专科</option>
+                                
+                            </select></p>
+                        <div class="clear"></div>
+                        <p class="col-lg-6 col-sm-6"><span class="Householdaddress">户籍所在地:</span><input type="text" class="address" name="indivRegAddr" id="indivRegAddr"></p>
+                        <p class="col-lg-3 col-sm-3"><span class="shenXinSpan">户籍派出所:</span><input type="text" class="nameIpt" name="policeStation" id="policeStation"></p>
+                        <p class="col-lg-3 col-sm-3"><span class="shenXinSpan">户籍邮编:</span><input type="text" class="nameIpt" name="indivZipCode" id="indivZipCode"></p>
+                        <div class="clear"></div>
+                        <p class="col-lg-6 col-sm-6"><span class="liveAddress">申请人居住地址:</span><input type="text" class="address1" name="address" id="address"></p>
+                        <p class="col-lg-3 col-sm-3"><span class="shenXinSpan">居住地邮编:</span><input type="text" class="nameIpt" name="residentAddressCode" id="residentAddressCode"></p>
+                        <p class="col-lg-3 col-sm-3"><span class="shenXinSpan">是否是农户:</span>
+                            <div class="iradio_square-blue checked" style="position: relative;"><input type="radio" checked="" name="isAgriResidence" id="isAgriResidence1" value="1" style="position: absolute; top: -100%; left: -100%; display: block; width: 300%; height: 300%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: -100%; left: -100%; display: block; width: 300%; height: 300%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div><label class="lab" for="isAgriResidence1">是</label>
+                            <div class="iradio_square-blue" style="position: relative;"><input type="radio" name="isAgriResidence" id="isAgriResidence2" value="0" style="position: absolute; top: -100%; left: -100%; display: block; width: 300%; height: 300%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: -100%; left: -100%; display: block; width: 300%; height: 300%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div><label class="lab" for="isAgriResidence2">否</label></p>
+
+                        <div class="clear"></div>
+                        <p class="col-lg-6 col-sm-6"><span class="shenXinSpan">行政划区:</span>
+                            <span id="city_1">
+                                <select class="prov selec" style="min-width: 90px" name="homeProvince" id="homeProvince"><option value="">请选择</option><option value="北京">北京</option><option value="天津">天津</option><option value="河北">河北</option><option value="山西">山西</option><option value="内蒙古">内蒙古</option><option value="辽宁">辽宁</option><option value="吉林">吉林</option><option value="黑龙江">黑龙江</option><option value="上海">上海</option><option value="江苏">江苏</option><option value="浙江">浙江</option><option value="安徽">安徽</option><option value="福建">福建</option><option value="江西">江西</option><option value="山东">山东</option><option value="河南">河南</option><option value="湖北">湖北</option><option value="湖南">湖南</option><option value="广东">广东</option><option value="广西">广西</option><option value="海南">海南</option><option value="重庆">重庆</option><option value="四川">四川</option><option value="贵州">贵州</option><option value="云南">云南</option><option value="西藏">西藏</option><option value="陕西">陕西</option><option value="甘肃">甘肃</option><option value="青海">青海</option><option value="宁夏">宁夏</option><option value="新疆">新疆</option><option value="香港">香港</option><option value="澳门">澳门</option><option value="台湾">台湾</option><option value="国外">国外</option></select>省
+                                <select class="city selec" style="min-width: 90px" disabled="disabled" name="homeCity" id="homeCity"></select>市
+                            </span>
+                            
+                        </p>
+                        <p class="col-lg-6 col-sm-6"><span class="shenXinSpan">通讯地址:</span>
+                            <div class="iradio_square-blue checked" style="position: relative;"><input type="radio" checked="" name="contType" id="contType1" value="0" style="position: absolute; top: -100%; left: -100%; display: block; width: 300%; height: 300%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: -100%; left: -100%; display: block; width: 300%; height: 300%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div><label class="lab" for="contType1">住宅地址</label>
+                            <div class="iradio_square-blue" style="position: relative;"><input type="radio" name="contType" id="contType2" value="1" style="position: absolute; top: -100%; left: -100%; display: block; width: 300%; height: 300%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: -100%; left: -100%; display: block; width: 300%; height: 300%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div><label class="lab" for="contType2">单位地址</label>
+                            <div class="iradio_square-blue" style="position: relative;"><input type="radio" name="contType" id="contType3" value="2" style="position: absolute; top: -100%; left: -100%; display: block; width: 300%; height: 300%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: -100%; left: -100%; display: block; width: 300%; height: 300%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div><label class="lab" for="contType3">户籍地址</label>
+                        </p>
+                        <div class="clear"></div>
+                    </div>
+                </div>
+                <div class="clear"></div>
+                <li class="list-group-item con_title">贷款信息</li>
+                <div class="col-sm-12 col-lg-12 mt_10 shenXin">
+                    <p class="col-lg-3 col-sm-3"><span class="shenXinSpan">商品名称:</span><input type="text" class="nameIpt" name="commodityName" id="commodityName"></p>
+                    <p class="col-lg-3 col-sm-3"><span class="shenXinSpan">数量:</span><input type="text" class="nameIpt" id="commodityCount" name="commodityCount" value="1"></p>
+                    <p class="col-lg-3 col-sm-3"><span class="shenXinSpan">单价:</span><input type="text" class="nameIpt" id="commodityPrice" name="commodityPrice"></p>
+                    <p class="col-lg-3 col-sm-3"><span class="shenXinSpan">总价:</span><input type="text" class="nameIpt" readonly="" id="totalCommodityPrice" name="totalCommodityPrice"></p>
+
+                    <p class="col-lg-3 col-sm-3"><span class="shenXinSpan">申请金额:</span><input type="text" class="nameIpt" name="applyAmount" id="applyAmount"></p>
+                    <p class="col-lg-3 col-sm-3"><span class="shenXinSpan">利率:</span><input type="text" class="nameIpt" id="interestRate" name="interestRate"></p>
+                    <p class="col-lg-3 col-sm-3"><span class="shenXinSpan">首付款:</span><input type="text" class="nameIpt" id="totalInitialPayment" name="totalInitialPayment"></p>
+                    <p class="col-lg-3 col-sm-3"><span class="shenXinSpan">优惠金额:</span><input type="text" class="nameIpt" id="totalDiscountAmount" name="totalDiscountAmount"></p>
+
+                    <p class="col-lg-6 col-sm-6"><span class="shenXinSpan">房源所在地:</span><select class="selec" name="addrProvince" id="addrProvince"><option value="">--请选择省份--</option><option value="北京市">北京市</option><option value="天津市">天津市</option><option value="河北省">河北省</option><option value="山西省">山西省</option><option value="内蒙古自治区">内蒙古自治区</option><option value="辽宁省">辽宁省</option><option value="吉林省">吉林省</option><option value="黑龙江省">黑龙江省</option><option value="上海市">上海市</option><option value="江苏省">江苏省</option><option value="浙江省">浙江省</option><option value="安徽省">安徽省</option><option value="福建省">福建省</option><option value="江西省">江西省</option><option value="山东省">山东省</option><option value="河南省">河南省</option><option value="湖北省">湖北省</option><option value="湖南省">湖南省</option><option value="广东省">广东省</option><option value="广西壮族自治区">广西壮族自治区</option><option value="海南省">海南省</option><option value="重庆市">重庆市</option><option value="四川省">四川省</option><option value="贵州省">贵州省</option><option value="云南省">云南省</option><option value="西藏自治区">西藏自治区</option><option value="陕西省">陕西省</option><option value="甘肃省">甘肃省</option><option value="青海省">青海省</option><option value="宁夏回族自治区">宁夏回族自治区</option><option value="新疆维吾尔自治区">新疆维吾尔自治区</option><option value="香港特别行政区">香港特别行政区</option><option value="澳门特别行政区">澳门特别行政区</option><option value="台湾省">台湾省</option><option value="其它">其它</option></select><select class="selec" name="addrCounty" id="addrCounty"><option value="">--请选择城市--</option></select><select class="selec" name="addrArea" id="addrArea"><option value="">--请选择地区--</option></select></p>
+                    <p class="col-lg-6 col-sm-6"><span class="shenXinSpan">房源详细地址:</span><input type="text" class="nameIpt" style="width: 300px;" id="addrDetail" name="addrDetail"></p>
+
+                    <p class="col-lg-3 col-sm-3"><span class="shenXinSpan">开租时间:</span><input type="text" class="nameIpt" placeholder="请选择时间" name="startDate" id="startDate"></p>
+                    <p class="col-lg-3 col-sm-3"><span class="shenXinSpan">结租时间:</span><input type="text" class="nameIpt" placeholder="请选择时间" id="endDate" name="endDate"></p>
+                    <p class="col-lg-3 col-sm-3"><span class="shenXinSpan">首付方式:</span>
+                        <select style="width:145px;" id="downpaymentType" name="downpaymentType">
+                            <option value="">--- 请选择 ---</option>
+                            
+                                <option value="1">押一付一</option>
+                            
+                                <option value="2">押二付零</option>
+                            
+                                <option value="3">押二付一</option>
+                            
+                        </select>
+                    </p>
+                    <p class="col-lg-3 col-sm-3"><span class="shenXinSpan">月租金:</span><input type="text" class="nameIpt" id="monthRent" name="monthRent"></p>
+
+                    <p></p>
+                    <input type="hidden" name="bcName" id="bcName">
+                    <p class="col-lg-3 col-sm-3"><span class="shenXinSpan">商户&nbsp;:&nbsp;</span><select style="width:145px;" name="hdBussinessCustomerId" id="hdBussinessCustomerId">
+                            <option value="">--- 请选择 ---</option>
+                            
+                                <option value="64">上海寓见</option>
+                            
+                                <option value="66">合肥榴莲公寓</option>
+                            
+                                <option value="77">成都美寓</option>
+                            
+                                <option value="133">成都成港</option>
+                            
+                                <option value="134">生产测试-商户</option>
+                            
+                                <option value="197">月付生活</option>
+                            
+                                <option value="198">房司令</option>
+                            
+                                <option value="211">91投房</option>
+                            
+                                <option value="220">上海摩铁</option>
+                            
+                                <option value="222">豆比家</option>
+                            
+                                <option value="223">豆比家</option>
+                            
+                                <option value="275">北京测试金服科技有限公司-租房</option>
+                            
+                                <option value="312">删除恒佳物业</option>
+                            
+                                <option value="390">北京东方瑞丽尚品医疗美容诊所</option>
+                            
+                                <option value="461">上海喆欣</option>
+                            
+                                <option value="6181732179845095425">蛋壳公寓</option>
+                            
+                                <option value="6183174729282560001">橡果公寓</option>
+                            
+                                <option value="6183192350806823937">苏州恒佳物业</option>
+                            
+                                <option value="6183197985237739521">上海喆欣物业</option>
+                            
+                                <option value="6183875864645149697">成都菜鸟公寓</option>
+                            
+                                <option value="6184633000283376641">上海寓见公寓</option>
+                            
+                                <option value="6193722407950761985">北京哎窝公寓</option>
+                            
+                                <option value="6197638211821741057">济南青年物业管理有限公司</option>
+                            
+                                <option value="6197666543640643585">幸福居</option>
+                            
+                                <option value="6198699710275129345">北京大熊公寓</option>
+                            
+                                <option value="6199116676207425537">和嘉公寓</option>
+                            
+                                <option value="6199118055487064065">成都实华公寓</option>
+                            
+                                <option value="6199118774777331713">成都尚品公寓</option>
+                            
+                                <option value="6199122075765372929">成都便利客公寓</option>
+                            
+                                <option value="6199442730415271937">成都住哪儿公寓</option>
+                            
+                                <option value="6199445284558109697">上海索纳特公寓曲阳店</option>
+                            
+                                <option value="6199449135012598785">成都尚元公寓</option>
+                            
+                                <option value="6199462903322970113">成都美住公寓</option>
+                            
+                                <option value="6199534576445089793">成都大城小蜗公寓</option>
+                            
+                                <option value="6202328629746075649">成都品家居公寓</option>
+                            
+                                <option value="6208779810905129666">大熊公寓-1部</option>
+                            
+                                <option value="6209594994043779073">成都美一家公寓</option>
+                            
+                                <option value="6209595681515892737">上海V+公寓</option>
+                            
+                                <option value="6209596289110483969">上海V+呼兰社区</option>
+                            
+                                <option value="6209596935235283969">上海V+金桥社区</option>
+                            
+                                <option value="6209945124761098241">成都鑫源公寓</option>
+                            
+                                <option value="6211794807762386945">幸福居公寓3</option>
+                            
+                                <option value="6215032114140976129">成都海川一家公寓</option>
+                            
+                                <option value="6217542446353250305">成都蓉城壹家公寓</option>
+                            
+                                <option value="6217593369200909313">上海众寓公寓</option>
+                            
+                                <option value="6219013310344974337">上海互欣公寓</option>
+                            
+                                <option value="6222264713280790529">北京花卷公寓</option>
+                            
+                                <option value="6222691136809532417">自由自宅</option>
+                            
+                                <option value="6224057728546429953">成都地和公寓</option>
+                            
+                                <option value="6224071296277019649">上海豫晟房地产营销策划有限公司</option>
+                            
+                                <option value="6224072781361884161">上海吟祥企业管理有限公司</option>
+                            
+                                <option value="6225167325856459777">成都I+公寓</option>
+                            
+                                <option value="6226714392244411393">上海今加公寓</option>
+                            
+                                <option value="6227032597978782721">上海索纳特公寓黄渡店</option>
+                            
+                                <option value="6227082301323654145">上海苏荷贝塔公寓</option>
+                            
+                                <option value="6235647078849263617">GO窝公寓</option>
+                            
+                                <option value="6240519311354908673">上海闺宿公寓</option>
+                            
+                                <option value="6240522833441835009">上海青领物业</option>
+                            
+                                <option value="6240524742760867841">上海索纳特公寓外滩店</option>
+                            
+                                <option value="6240526081292924929">上海索纳特公寓九亭店</option>
+                            
+                                <option value="6240887952655152129">合肥一地故乡公寓</option>
+                            
+                                <option value="6241804823344226305">北京盈佳地产</option>
+                            
+                                <option value="6241921360936189953">GO窝公寓合肥分店</option>
+                            
+                                <option value="6243390063163367425">上海铂客公寓</option>
+                            
+                                <option value="6243395733131866113">北京函数公寓</option>
+                            
+                                <option value="6244338015326727169">武汉银河晋昌公寓</option>
+                            
+                                <option value="6246134023912709121">北京知寓公寓</option>
+                            
+                                <option value="6247298565448630273">北京白领之家公寓</option>
+                            
+                                <option value="6248326430116661249">上海阿拉丁公寓</option>
+                            
+                                <option value="6248664816285548545">上海闲猫公寓</option>
+                            
+                                <option value="6250909279024503809">成都米乐公寓</option>
+                            
+                                <option value="6252648471688476673">西安拾光盒公寓</option>
+                            
+                                <option value="6252650470703183873">西安青桔公寓</option>
+                            
+                                <option value="6253901158601146369">济南美家公寓</option>
+                            
+                                <option value="6255226689649259521">上海MOHO公寓</option>
+                            
+                                <option value="6255252375684561921">北京安泰伟业房地产</option>
+                            
+                                <option value="6256017883834981377">上海超懿房地产</option>
+                            
+                                <option value="6256032482900876289">北京链信地产</option>
+                            
+                                <option value="6256054129093871617">合肥乐租公寓</option>
+                            
+                                <option value="6256303980251866113">GO窝公寓广州大石分店</option>
+                            
+                                <option value="6256305575336501249">GO窝公寓广州大学城分店</option>
+                            
+                                <option value="6257367125881268225">上海善庭公寓</option>
+                            
+                                <option value="6257426834811513857">北京天诚鸿业地产</option>
+                            
+                                <option value="6257939977124360193">大诚公寓</option>
+                            
+                                <option value="6257941124731247617">蚂蚁公寓</option>
+                            
+                                <option value="6257941973489443841">天成置地</option>
+                            
+                                <option value="6258074653275098113">成都美乐家公寓</option>
+                            
+                                <option value="6259894113494984705">成都橙堡公寓</option>
+                            
+                                <option value="6259897678228232193">成都橙乐公寓</option>
+                            
+                                <option value="6260411784877224961">武汉相遇有家公寓</option>
+                            
+                                <option value="6262514043234654209">北京景山盛世地产</option>
+                            
+                                <option value="6268094212636083201">上海V+外高桥社区</option>
+                            
+                                <option value="6270187995644832769">上海艺影公寓</option>
+                            
+                                <option value="6272322672178164737">北京企鹅村公寓</option>
+                            
+                                <option value="6277749199280699393">苏州优住公寓</option>
+                            
+                                <option value="6305239490629903361">西安DUDO公寓</option>
+                            
+                                <option value="6341940058376555521">陕西众合资产管理有限公司</option>
+                            
+                                <option value="6352041117210460161">上海寓见公寓安亭店</option>
+                            
+                                <option value="6352041117453851649">上海寓见公寓川沙店</option>
+                            
+                                <option value="6352041117675065345">上海寓见公寓阳光城五洲大道店</option>
+                            
+                                <option value="6352041117908337665">上海寓见公寓周浦御桥店</option>
+                            
+                                <option value="6352041118122068993">上海寓见公寓顾村店</option>
+                            
+                                <option value="6352041118349216769">上海寓见公寓景瑞遇道店</option>
+                            
+                                <option value="6352041118591428609">上海寓见公寓罗南店</option>
+                            
+                                <option value="6352041118847566849">上海寓见公寓月浦店</option>
+                            
+                                <option value="6352041119143237633">上海寓见公寓惠南店</option>
+                            
+                                <option value="6352041119391566849">上海寓见公寓嘉定西店</option>
+                            
+                                <option value="6352041119607754753">上海寓见公寓嘉海金运店</option>
+                            
+                                <option value="6352041119826446337">上海寓见公寓南翔店</option>
+                            
+                                <option value="6352041120036170753">上海寓见公寓江月店</option>
+                            
+                                <option value="6352041120233288705">上海寓见公寓九亭店</option>
+                            
+                                <option value="6352041120451508225">上海寓见公寓徐汇店</option>
+                            
+                                <option value="6352041120849671169">上海寓见公寓南桥店</option>
+                            
+                                <option value="6352041121110386689">上海寓见公寓青浦店</option>
+                            
+                                <option value="6410755501780911105">武汉可遇科技有限公司</option>
+                            
+                                <option value="6414768087315876865">成都普天同创科技有限公司</option>
+                            
+                                <option value="6424835032505309185">成都乐乎火车北站</option>
+                            
+                                <option value="6434965836003408897">山东柠果公寓管理有限公司</option>
+                            
+                                <option value="6435024762614040577">山东寓到家公寓管理有限公司</option>
+                            
+                                <option value="6435035238671243265">成都蓝豚工业设计有限公司</option>
+                            
+                                <option value="6435064068499631105">山东卓寓公寓管理有限公司</option>
+                            
+                                <option value="6435390799938214913">济南中合房地产经纪有限公司</option>
+                            
+                                <option value="6435397145645471745">山东海誉美家房屋租赁有限公司</option>
+                            
+                                <option value="6435782741701726209">北京蜂客科技有限公司</option>
+                            
+                                <option value="6437224078730050561">中投新业（北京）投资管理有限公司</option>
+                            
+                                <option value="6445830883101604865">91众创（北京）信息咨询有限公司</option>
+                            
+                                <option value="6447717553220557825">青年物业一托公寓</option>
+                            
+                                <option value="6448522937248982017">租房测试商户</option>
+                            
+                                <option value="6450206624387527681">北京纷享家物业管理有限公司</option>
+                            
+                                <option value="6450236484187993089">湖南合居商业管理有限公司</option>
+                            
+                                <option value="6450238842892557313">上海满寓网络科技有限公司</option>
+                            
+                                <option value="6450241529178404865">成都蓝豚工业设计有限公司</option>
+                            
+                                <option value="6450276498527219713">北京左安居物业管理有限公司</option>
+                            
+                                <option value="6451316981401020417">成都番茄酒店管理有限公司</option>
+                            
+                                <option value="6451627945439903745">刘源鹏</option>
+                            
+                                <option value="6451633799292752897">西安盒马公寓</option>
+                            
+                                <option value="6452102986067828737">成都番茄酒店管理有限公司</option>
+                            
+                                <option value="6452104869653042177">四川海川一家网络科技有限公司</option>
+                            
+                                <option value="6455664895013615617">西安窝趣公寓管理有限公司</option>
+                            
+                                <option value="6455670818700542977">西安小桔公寓管理有限公司</option>
+                            
+                                <option value="6458894498349670401">上海都妤房屋租赁有限公司</option>
+                            
+                                <option value="6458896516423078913">上海柏浒房屋租赁有限公司</option>
+                            
+                                <option value="6465153044085698561">晋商消费金融</option>
+                            
+                                <option value="6465461821319373825">成都心誉酒店管理有限公司</option>
+                            
+                                <option value="6466590638784422913">北京大德如家国际房地产投资管理有限公司</option>
+                            
+                                <option value="6467671804140049409">国寓酒店公寓</option>
+                            
+                                <option value="6471282882650189825">北京昊园恒业房地产经纪有限公司</option>
+                            
+                                <option value="6475233925605443585">汉壹公寓</option>
+                            
+                                <option value="6475240349993974785">新时代公寓</option>
+                            
+                                <option value="6475547310342635521">自居自在家公寓</option>
+                            
+                                <option value="6475557474473993217">鹿客家公寓</option>
+                            
+                                <option value="6475613633562544129">北京龙泽房地产经纪有限公司</option>
+                            
+                                <option value="6475615809552818177">北京九鼎易居房地产经纪有限公司</option>
+                            
+                                <option value="6475665383629408257">志鹏公寓</option>
+                            
+                                <option value="6475930707763186689">测试一店</option>
+                            
+                                <option value="6475930835694231553">测试二店</option>
+                            
+                                <option value="6476381096699282433">温馨公寓</option>
+                            
+                                <option value="6478208786621009921">优趣青年社区</option>
+                            
+                                <option value="6478806954288431105">高亚航测试账号</option>
+                            
+                                <option value="6478896733294422017">南京峻家房地产经纪有限公司</option>
+                            
+                                <option value="6479176966578057217">北京九星置地房地产经纪有限公司</option>
+                            
+                                <option value="6479185103740701697">美忆寓公寓管理（武汉）有限公司 </option>
+                            
+                                <option value="6479258074549129217">天津蜗牛之家公寓管理有限公司</option>
+                            
+                                <option value="6480330861183301633">河南梦凡电子商务有限公司</option>
+                            
+                                <option value="6480632769862658049">四川实华房地产营销策划有限公司</option>
+                            
+                                <option value="6480742176459364353">北京青年易居网络科技有限公司</option>
+                            
+                                <option value="6481102189033505793">榴莲公寓</option>
+                            
+                                <option value="6481110573777087489">万洋测试账号</option>
+                            
+                                <option value="6481118237479845889">郑田翔</option>
+                            
+                                <option value="6481708263389814785">北京浩源嘉业房地产经纪有限公司</option>
+                            
+                                <option value="6481727425911227393">成都蜗牛之家公寓</option>
+                            
+                                <option value="6482893198525074433">祥和公寓</option>
+                            
+                                <option value="6483240008058675201">北京和顺安泰置业有限公司</option>
+                            
+                                <option value="6483270008633553921">哎窝公寓</option>
+                            
+                                <option value="6483653267091862529">王小非测试账号</option>
+                            
+                                <option value="6484669406494928897">删除北京和顺安泰置业有限公司</option>
+                            
+                                <option value="6486070110325338113">成都住哪儿公寓</option>
+                            
+                                <option value="6486120850332017665">长沙久利房地产顾问有限公司</option>
+                            
+                                <option value="6488596729061856257">上海尚元不动产咨询有限公司</option>
+                            
+                                <option value="6488600446619738113">上海昌君投资管理有限公司</option>
+                            
+                                <option value="6489032144458267649">上海泛昕公寓管理有限公司</option>
+                            
+                                <option value="6489414116123632641">上海象果网络科技有限公司</option>
+                            
+                                <option value="6490862920810493953">刘浩测试账号</option>
+                            
+                                <option value="6491216879441225729">王栋测试账号</option>
+                            
+                                <option value="6492991624048130049">上海欢庆房地产经营有限公司</option>
+                            
+                                <option value="6493296756785916929">上海豫晟房地产营销策划有限公司</option>
+                            
+                                <option value="6493297821900675073">微淳（上海）企业发展有限公司</option>
+                            
+                                <option value="6494103178184733697">删除北京丰信达行房地产经纪有限公司</option>
+                            
+                                <option value="6494107447641164801">北京丰信达行房地产经纪有限公司</option>
+                            
+                                <option value="6494384844617111553">分付君房源测试商户</option>
+                            
+                                <option value="6506424344021035009">武汉万事如寓房地产经纪有限公司</option>
+                            
+                                <option value="6506782219089295361">02济南青年物业管理有限公司</option>
+                            
+                                <option value="6528526695290324993">济南一托公寓管理有限公司</option>
+                            
+                        </select></p>
+                    <p class="col-lg-4 col-sm-4"><span class="shenXinSpan">贷款期限:</span>
+
+                        <select style="width:145px;" name="applyDuration" id="applyDuration">
+                            <option value="">--- 请选择 ---</option>
+                            
+                                <option value="1">一个月</option>
+                            
+                                <option value="2">二个月</option>
+                            
+                                <option value="3">三个月</option>
+                            
+                                <option value="4">四个月</option>
+                            
+                                <option value="5">五个月</option>
+                            
+                                <option value="6">六个月</option>
+                            
+                                <option value="7">七个月</option>
+                            
+                                <option value="8">八个月</option>
+                            
+                                <option value="9">九个月</option>
+                            
+                                <option value="10">十个月</option>
+                            
+                                <option value="11">十一个月</option>
+                            
+                                <option value="12">十二个月</option>
+                            
+                        </select>
+                    </p>
+                    <p class="col-lg-5 col-sm-5"><span class="shenXinSpan">还款方式:</span><div class="iradio_square-blue checked" style="position: relative;"><input type="radio" checked="" name="loanMdt" id="loanMtd1" value="等额本息" style="position: absolute; top: -100%; left: -100%; display: block; width: 300%; height: 300%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: -100%; left: -100%; display: block; width: 300%; height: 300%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div><label class="lab" for="loanMtd1">等额本息</label>
+                        <div class="iradio_square-blue" style="position: relative;"><input type="radio" name="loanMdt" id="loanMtd2" value="等额本金" style="position: absolute; top: -100%; left: -100%; display: block; width: 300%; height: 300%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: -100%; left: -100%; display: block; width: 300%; height: 300%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div><label class="lab" for="loanMtd2">等额本金</label>
+                        <div class="iradio_square-blue" style="position: relative;"><input type="radio" name="loanMdt" id="loanMtd3" value="按月付息,到期一次性还本" style="position: absolute; top: -100%; left: -100%; display: block; width: 300%; height: 300%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: -100%; left: -100%; display: block; width: 300%; height: 300%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div><label class="lab" for="loanMtd3">按月付息,到期一次性还本</label>
+                    </p>
+                </div>
+                <div class="clear"></div>
+                        <!--工薪 start-->
+                        <div>
+                            <li class="list-group-item con_title">从业信息审查</li>
+                            <div class="col-sm-12 col-lg-12 jobInfo">
+                                <p><span>工作/学习类别&nbsp;:&nbsp;</span><div class="iradio_square-blue checked" style="position: relative;"><input type="radio" checked="" name="type" id="type1" value="2" style="position: absolute; top: -100%; left: -100%; display: block; width: 300%; height: 300%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: -100%; left: -100%; display: block; width: 300%; height: 300%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div><label class="lab" for="type1">工薪</label><div class="iradio_square-blue" style="position: relative;"><input type="radio" name="type" id="type2" value="1" style="position: absolute; top: -100%; left: -100%; display: block; width: 300%; height: 300%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: -100%; left: -100%; display: block; width: 300%; height: 300%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div><label class="lab" for="type2">学生</label></p>
+                                <p class="col-lg-6 col-sm-6"><span>公司或学校名称&nbsp;:&nbsp;</span><input type="text" name="company" id="company"></p>
+                                <p class="col-lg-6 col-sm-6"><span>公司或学校地址&nbsp;:&nbsp;</span><input type="text" name="companyAddress" id="companyAddress"></p>
+                                <p class="col-lg-6 col-sm-6"><span>部门&nbsp;:&nbsp;</span><input type="text" name="department" id="department"></p>
+                                <p class="col-lg-6 col-sm-6"><span>职务&nbsp;:&nbsp;</span>
+                                    <select class="selec" name="position" id="position">
+                                        <option value="">--- 请选择 ---</option>
+                                        
+                                            <option value="1">中,高级管理人员</option>
+                                        
+                                            <option value="2">一般管理人员</option>
+                                        
+                                            <option value="3">正式员工</option>
+                                        
+                                            <option value="4">非正式员工</option>
+                                        
+                                            <option value="5">无</option>
+                                        
+                                            <option value="6">企业负责人</option>
+                                        
+                                            <option value="7">中层管理人员</option>
+                                        
+                                            <option value="9">其他</option>
+                                        
+                                            <option value="11">厅局级以上</option>
+                                        
+                                            <option value="12">处级</option>
+                                        
+                                            <option value="13">科级</option>
+                                        
+                                            <option value="14">一般干部</option>
+                                        
+                                    </select></p>
+                                <p class="col-lg-6 col-sm-6"><span>职称&nbsp;:&nbsp;</span>
+                                    <select class="selec" name="title" id="title">
+                                        <option value="">--- 请选择 ---</option>
+                                        
+                                            <option value="高级">高级</option>
+                                        
+                                            <option value="中级">中级</option>
+                                        
+                                            <option value="初级">初级</option>
+                                        
+                                            <option value="无">无</option>
+                                        
+                                            <option value="未知">未知</option>
+                                        
+                                    </select></p>
+                                
+                                    
+                                        
+                                        
+                                            
+                                        
+                                    
+                                <p class="col-lg-6 col-sm-6"><span>所属行业&nbsp;:&nbsp;</span>
+                                    <select class="selec" id="industry" name="industry">
+                                        <option value="">--- 请选择 ---</option>
+                                        
+                                            <option value="农、林、牧、渔业">农、林、牧、渔业</option>
+                                        
+                                            <option value="采矿业">采矿业</option>
+                                        
+                                            <option value="制造业">制造业</option>
+                                        
+                                            <option value="电力、燃气及水的生产和供应业">电力、燃气及水的生产和供应业</option>
+                                        
+                                            <option value="建筑业">建筑业</option>
+                                        
+                                            <option value="交通运输、计算机服务和软件业">交通运输、计算机服务和软件业</option>
+                                        
+                                            <option value="批发零售业">批发零售业</option>
+                                        
+                                            <option value="住宿餐饮业">住宿餐饮业</option>
+                                        
+                                            <option value="金融业">金融业</option>
+                                        
+                                            <option value="房地产业">房地产业</option>
+                                        
+                                            <option value="租赁和商业服务业">租赁和商业服务业</option>
+                                        
+                                            <option value="租赁和商业服务业">租赁和商业服务业</option>
+                                        
+                                            <option value="科研技术服务业">科研技术服务业</option>
+                                        
+                                            <option value="水利环境设施管理业">水利环境设施管理业</option>
+                                        
+                                            <option value="居民服务业">居民服务业</option>
+                                        
+                                            <option value="教育">教育</option>
+                                        
+                                            <option value="卫生及社会福利业">卫生及社会福利业</option>
+                                        
+                                            <option value="文化、体育和娱乐业">文化、体育和娱乐业</option>
+                                        
+                                            <option value="公共管理和社会组织">公共管理和社会组织</option>
+                                        
+                                            <option value="国际组织">国际组织</option>
+                                        
+                                            <option value="个人贷款">个人贷款</option>
+                                        
+                                    </select></p>
+                                <p class="col-lg-6 col-sm-6"><span>年收入&nbsp;:&nbsp;</span><input type="text" class="nameIpt" name="annualIncome" id="annualIncome"></p>
+                                <p class="col-lg-6 col-sm-6"><span>企业电话&nbsp;:&nbsp;</span><input type="text" class="nameIpt" name="companyTelNo" id="companyTelNo"></p>
+                                <p class="col-lg-6 col-sm-6"><span>学院名称&nbsp;:&nbsp;</span><input type="text" name="academy" id="academy" disabled="disabled" class="bg_dark"></p>
+                                <p class="col-lg-6 col-sm-6"><span>月承受还款金额&nbsp;:&nbsp;</span><input type="text" name="periodUndertake" id="periodUndertake" disabled="disabled" class="bg_dark"></p>
+                                <p class="col-lg-6 col-sm-6"><span>宿舍地址&nbsp;:&nbsp;</span><input type="text" name="domitory" id="domitory" disabled="disabled" class="bg_dark"></p>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                        <!--工薪 end-->
+                        <div class="clear"></div>
+                <!--还款银行卡start-->
+                <div class="bankCard">
+                    <li class="list-group-item con_title" id="mao5">还放款银行卡</li>
+                    <div class="bankArea col-sm-12 col-lg-12 col-md-12">
+                        <p class="col-lg-4 col-sm-4"><span class="shenXinSpan3">放款账户名称&nbsp;:&nbsp;</span><input type="text" class="repaymentAcc" style="width:150px;" name="disbAcNam" id="disbAcNam"></p>
+                        <p class="col-lg-4 col-sm-4"><span class="shenXinSpan2">放款账号开户行&nbsp;:&nbsp;</span>
+                            <select class="selec mwt_150" name="disbAcBank" id="disbAcBank">
+                                <option value="">--- 请选择 ---</option>
+                                
+                                    <option value="ABC">农业银行</option>
+                                
+                                    <option value="BOB">北京银行</option>
+                                
+                                    <option value="BOC">中国银行</option>
+                                
+                                    <option value="BOS">上海银行</option>
+                                
+                                    <option value="CCB">建设银行</option>
+                                
+                                    <option value="CEB">光大银行</option>
+                                
+                                    <option value="CIB">兴业银行</option>
+                                
+                                    <option value="CMB">招商银行</option>
+                                
+                                    <option value="EGB">恒丰银行</option>
+                                
+                                    <option value="CGB">广发银行</option>
+                                
+                                    <option value="HXB">华夏银行</option>
+                                
+                                    <option value="JSH">晋商银行</option>
+                                
+                                    <option value="PAB">平安银行</option>
+                                
+                                    <option value="SDB">平安银行</option>
+                                
+                                    <option value="ADBC">农发银行</option>
+                                
+                                    <option value="CMBC">民生银行</option>
+                                
+                                    <option value="ICBC">工商银行</option>
+                                
+                                    <option value="PSBC">邮储银行</option>
+                                
+                                    <option value="SPDB">浦发银行</option>
+                                
+                                    <option value="BCM">交通银行</option>
+                                
+                                    <option value="CITIC">中信银行</option>
+                                
+                                    <option value="QDCCB">青岛银行</option>
+                                
+                            </select></p>
+                        <p class="col-lg-4 col-sm-4"><span class="shenXinSpan3">放款账号&nbsp;:&nbsp;</span><input class="repaymentCard" type="text" name="disbAcNo" id="disbAcNo"></p>
+                        <p class="col-lg-4 col-sm-4"><span class="shenXinSpan3">还款账户名称&nbsp;:&nbsp;</span><input type="text" class="repaymentAcc" style="width:150px;" name="repaymentCustName" id="repaymentCustName"></p>
+                        <p class="col-lg-4 col-sm-4"><span class="shenXinSpan2">还款账户开户行&nbsp;:&nbsp;</span>
+                            <input class="ht_25 bg_dark" readonly="" style="width:150px;" type="text" name="repaymentBank" id="repaymentBank" value="晋城银行"></p>
+                            
+                                
+                                
+                                    
+                                
+                            
+                        <p class="col-lg-4 col-sm-4"><span class="shenXinSpan3">还款账号&nbsp;:&nbsp;</span><input class="repaymentAcc" type="text" name="repaymentCardNo" id="repaymentCardNo"></p>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <!--还款银行卡end-->
+                <div class="clear"></div>
+                <p class="list-group-item con_title" id="mao6" style="margin-bottom: 30px;">联系人</p>
+                <div class="clear"></div>
+                <!--联系人审查 start-->
+                <div class="contacts" style="margin-top: 15px;">
+                    <div class="clear"></div>
+                    
+                        <div class="contactsList">
+                            <a class="ListTips" style="font-size: 13px;">第一联系人</a>
+                            <div class="col-lg-12 col-sm-12 col-md-12">
+                                <p class="nnn"><span class="contactFirst" style="font-size: 12px;color: #428bca;">姓名&nbsp;:&nbsp;</span><input type="text" class="fs_12" id="loanCustContactsInfoList0Name" name="loanCustContactsInfoList[0].name"><span class="contactFirst" style="font-size: 12px;color: #428bca;">关系&nbsp;:&nbsp;</span>
+                                    <select class="selec" name="loanCustContactsInfoList[0].relation" id="loanCustContactsInfoList0Relation">
+                                        
+                                            <option value="2">父母</option>
+                                        
+                                            <option value="1">配偶</option>
+                                        
+                                            <option value="9">子女或兄弟姐妹</option>
+                                        
+                                            <option value="6">同事</option>
+                                        
+                                            <option value="10">同学</option>
+                                        
+                                            <option value="11">朋友</option>
+                                        
+                                    </select>
+                                    <span style="width: 80px;font-size: 12px;color: #428bca;">联系方式&nbsp;:&nbsp;</span><input type="text" class="fs_12" name="loanCustContactsInfoList[0].phone" id="loanCustContactsInfoList0Phone"></p>
+                                    <input type="hidden" name="loanCustContactsInfoList[0].type" value="1">
+                                <div class="clear"></div>
+                            </div>
+                        </div>
+                    
+                        <div class="contactsList">
+                            <a class="ListTips" style="font-size: 13px;">第二联系人</a>
+                            <div class="col-lg-12 col-sm-12 col-md-12">
+                                <p class="nnn"><span class="contactFirst" style="font-size: 12px;color: #428bca;">姓名&nbsp;:&nbsp;</span><input type="text" class="fs_12" id="loanCustContactsInfoList1Name" name="loanCustContactsInfoList[1].name"><span class="contactFirst" style="font-size: 12px;color: #428bca;">关系&nbsp;:&nbsp;</span>
+                                    <select class="selec" name="loanCustContactsInfoList[1].relation" id="loanCustContactsInfoList1Relation">
+                                        
+                                            <option value="2">父母</option>
+                                        
+                                            <option value="1">配偶</option>
+                                        
+                                            <option value="9">子女或兄弟姐妹</option>
+                                        
+                                            <option value="6">同事</option>
+                                        
+                                            <option value="10">同学</option>
+                                        
+                                            <option value="11">朋友</option>
+                                        
+                                    </select>
+                                    <span style="width: 80px;font-size: 12px;color: #428bca;">联系方式&nbsp;:&nbsp;</span><input type="text" class="fs_12" name="loanCustContactsInfoList[1].phone" id="loanCustContactsInfoList1Phone"></p>
+                                    <input type="hidden" name="loanCustContactsInfoList[1].type" value="2">
+                                <div class="clear"></div>
+                            </div>
+                        </div>
+                    
+                </div>
+                <!--联系人审查 end-->
+            </ul>
+        </div>
+
+		<div class="panel panel-default">
+            <ul class="list-group">
+                <li class="list-group-item con_title">图片上传</li>
+		<!-- 图片 start -->
+		
+		<div class="IDCard col-lg-4 col-sm-4 col-md-4">
+		    <p>身份证正面</p>
+		    <a class="upLoad" href="javascript:void(0)">
+		        <input type="file" class="fileImg" id="idCardFont" name="idCardFont" value="" multiple="" onchange="changeImg(this,'1')">
+		    </a>
+		</div>
+		<div class="IDCard col-lg-4 col-sm-4 col-md-4">
+		    <p>身份证反面</p>
+		    <a class="upLoad" href="javascript:void(0)">
+		        <input type="file" class="fileImg" id="idCardBack" name="idCardBack" value="" multiple="" onchange="changeImg(this,'2')">
+		    </a>
+		</div>
+		<div class="IDCard col-lg-4 col-sm-4 col-md-4">
+		    <p>手持身份证照</p>
+		    <a class="upLoad" href="javascript:void(0)">
+		        <input type="file" class="fileImg" id="handPhoto" name="handPhoto" value="" multiple="" onchange="changeImg(this,'3')">
+		    </a>
+		</div>
+		<div class="clear"></div>
+		<div class="otherImg">
+		    <p>其他资料</p>
+		    <a class="upLoad ml-50" href="javascript:void(0)">
+		        <input type="file" class="fileImg" name="file" multiple="" onchange="changeImg1(this)">
+		    </a>
+		</div>
+		
+		<!-- 图片 end -->
+            </ul>
+            <!--复审意见-->
+            <div class="findingsAudit wt_100" style="height: 100px;">
+                <button type="button" class="btn btn-primary nextStep" style="left: 50%" onclick="reviewLoan(this)">提交</button>
+            </div>
+        </div>
+    </div></form>
+
+
+<!--点击图片显示区域 end-->
+<script src="js/dragZoom-1.0.js"></script>
+<script src="js/imgController.js"></script>
+<script src="lib/js/layer.js"></script>
+<script src="jedate/jedate.min.js"></script>
+<script src="js/PCASClass.js"></script>
+<script src="js/jquery.cityselect.js"></script>
+<script>
+    $(function(){
+        //初始化省、市、区（县）联动
+        new PCAS("addrProvince","addrCounty","addrArea");
+        $("#commodityPrice").on("blur",function(){
+
+//            reg=/^[1-9]+[0-9]*]*$/;
+            var reg=/^[0-9]+(.[0-9]{2})?$/;
+            var commodityPrice=$("#commodityPrice").val();
+            if(!commodityPrice.trim()){
+                layer.msg("商品单价不能为空!");
+                return false;
+            }
+            if(!reg.test(commodityPrice)){
+                layer.msg("商品单价只能是数字,且最多保留两位小数!");
+                return false;
+            }
+
+            var commodityCount=$("#commodityCount").val();
+            if(commodityCount.trim()&&!isNaN(commodityCount)){
+                var totalCommodityPrice=commodityCount*commodityPrice;
+                $("#totalCommodityPrice").val(totalCommodityPrice.toFixed(2));
+            }
+        });
+        $("#commodityCount").on("blur",function(){
+            var reg=/^[0-9]+(.[0-9]{2})?$/;
+            var commodityCount=$("#commodityCount").val();
+            if(!commodityCount.trim()){
+                layer.msg("商品数量不能为空!");
+                return false;
+            }
+            if(isNaN(commodityCount)){
+                layer.msg("商品数量只能是数字!");
+                return false;
+            }
+
+            var commodityPrice=$("#commodityPrice").val();
+            if(commodityPrice.trim()&&reg.test(commodityPrice)){
+                var totalCommodityPrice=commodityCount*commodityPrice;
+                $("#totalCommodityPrice").val(totalCommodityPrice.toFixed(2));
+            }
+
+        });
+
+        $("#city_1").citySelect({
+            nodata:"none",
+            required:false
+        });
+
+        $(".jobInfo input:radio").on("ifChecked",function(){
+            var type=$(this).val();
+            if(1==type){  //学生
+                hidenEmpProperty();
+            }else if(2==type){  //工薪
+                hidenStudentProperty();
+            }
+        });
+        hidenStudentProperty();
+
+        $("#hdBussinessCustomerId").on("change",function(){
+           var bcName=$("#hdBussinessCustomerId").find("option:selected").text();
+            $("#bcName").val(bcName);
+        });
+
+
+    });
+    function hidenEmpProperty() {
+        $("#department").attr("disabled","disabled");
+        $("#position").attr("disabled","disabled");
+        $("#title").attr("disabled","disabled");
+        $("#indivEmpType").attr("disabled","disabled");
+        $("#industry").attr("disabled","disabled");
+        $("#annualIncome").attr("disabled","disabled");
+        $("#companyTelNo").attr("disabled","disabled");
+
+        $("#department").addClass("bg_dark");
+        $("#position").addClass("bg_dark");
+        $("#title").addClass("bg_dark");
+        $("#indivEmpType").addClass("bg_dark");
+        $("#industry").addClass("bg_dark");
+        $("#annualIncome").addClass("bg_dark");
+        $("#companyTelNo").addClass("bg_dark");
+
+        $("#company").val("");
+        $("#companyAddress").val("");
+        $("#department").val("");
+        $("#position").val("");
+        $("#title").val("");
+        $("#indivEmpType").val("");
+        $("#industry").val("");
+        $("#annualIncome").val("");
+        $("#companyTelNo").val("");
+
+        $("#academy").removeAttr("disabled");
+        $("#domitory").removeAttr("disabled");
+        $("#periodUndertake").removeAttr("disabled");
+        $("#academy").removeClass("bg_dark");
+        $("#domitory").removeClass("bg_dark");
+        $("#periodUndertake").removeClass("bg_dark");
+    }
+    function hidenStudentProperty() {
+        $("#department").removeAttr("disabled");
+        $("#position").removeAttr("disabled");
+        $("#title").removeAttr("disabled");
+        $("#indivEmpType").removeAttr("disabled");
+        $("#industry").removeAttr("disabled");
+        $("#annualIncome").removeAttr("disabled");
+        $("#companyTelNo").removeAttr("disabled");
+
+        $("#department").removeClass("bg_dark");
+        $("#position").removeClass("bg_dark");
+        $("#title").removeClass("bg_dark");
+        $("#indivEmpType").removeClass("bg_dark");
+        $("#industry").removeClass("bg_dark");
+        $("#annualIncome").removeClass("bg_dark");
+        $("#companyTelNo").removeClass("bg_dark");
+
+        $("#company").val("");
+        $("#companyAddress").val("");
+        $("#academy").val("");
+        $("#domitory").val("");
+        $("#periodUndertake").val("");
+        $("#academy").attr("disabled","disabled");
+        $("#domitory").attr("disabled","disabled");
+        $("#periodUndertake").attr("disabled","disabled");
+
+        $("#academy").addClass("bg_dark");
+        $("#domitory").addClass("bg_dark");
+        $("#periodUndertake").addClass("bg_dark");
+    }
+</script>
+
+<script>
+    jeDate({
+        dateCell:"#idTermEnd", //目标元素。由于jedate.js封装了一个轻量级的选择器，因此dateCell还允许你传入class、tag这种方式 '#id .class'
+        format:"YYYY-MM-DD", //日期格式
+        minDate:"1900-01-01 00:00:00", //最小日期
+        maxDate:"2099-12-31 23:59:59", //最大日期
+        isinitVal:false, //是否初始化时间
+        isTime:true, //是否开启时间选择
+        isClear:true, //是否显示清空
+        festival:false, //是否显示节日
+        zIndex:999,  //弹出层的层级高度
+        marks:null, //给日期做标注
+        choosefun:function(val) {},  //选中日期后的回调
+        clearfun:function(val) {},   //清除日期后的回调
+        okfun:function(val) {}       //点击确定后的回调
+    });
+    jeDate({
+        dateCell:"#idTermBgh", //目标元素。由于jedate.js封装了一个轻量级的选择器，因此dateCell还允许你传入class、tag这种方式 '#id .class'
+        format:"YYYY-MM-DD", //日期格式
+        minDate:"1900-01-01 00:00:00", //最小日期
+        maxDate:"2099-12-31 23:59:59", //最大日期
+        isinitVal:false, //是否初始化时间
+        isTime:true, //是否开启时间选择
+        isClear:true, //是否显示清空
+        festival:false, //是否显示节日
+        zIndex:999,  //弹出层的层级高度
+        marks:null, //给日期做标注
+        choosefun:function(val) {},  //选中日期后的回调
+        clearfun:function(val) {},   //清除日期后的回调
+        okfun:function(val) {}       //点击确定后的回调
+    });
+
+
+    jeDate({
+        dateCell:"#startDate", //目标元素。由于jedate.js封装了一个轻量级的选择器，因此dateCell还允许你传入class、tag这种方式 '#id .class'
+        format:"YYYY-MM-DD", //日期格式
+        minDate:"1900-01-01 00:00:00", //最小日期
+        maxDate:"2099-12-31 23:59:59", //最大日期
+        isinitVal:false, //是否初始化时间
+        isTime:true, //是否开启时间选择
+        isClear:true, //是否显示清空
+        festival:false, //是否显示节日
+        zIndex:999,  //弹出层的层级高度
+        marks:null, //给日期做标注
+        choosefun:function(val) {},  //选中日期后的回调
+        clearfun:function(val) {},   //清除日期后的回调
+        okfun:function(val) {}       //点击确定后的回调
+    });
+    jeDate({
+        dateCell:"#endDate", //目标元素。由于jedate.js封装了一个轻量级的选择器，因此dateCell还允许你传入class、tag这种方式 '#id .class'
+        format:"YYYY-MM-DD", //日期格式
+        minDate:"1900-01-01 00:00:00", //最小日期
+        maxDate:"2099-12-31 23:59:59", //最大日期
+        isinitVal:false, //是否初始化时间
+        isTime:true, //是否开启时间选择
+        isClear:true, //是否显示清空
+        festival:false, //是否显示节日
+        zIndex:999,  //弹出层的层级高度
+        marks:null, //给日期做标注
+        choosefun:function(val) {},  //选中日期后的回调
+        clearfun:function(val) {},   //清除日期后的回调
+        okfun:function(val) {}       //点击确定后的回调
+    });
+    $(document).ready(function(){
+        $('input').iCheck({
+            checkboxClass: 'icheckbox_square-blue',
+            radioClass: 'iradio_square-blue',
+            increaseArea: '100%' // optional
+        });
+    });
+</script>
+
+<script>
+    $(function(){
+        //银行卡数字4个一空格
+        $(".repaymentAcc").val($(".repaymentAcc").val().replace(/\s/g, '').replace(/(\d{4})(?=\d)/g, "$1 "));
+    })
+</script>
+
+<script>
+
+    function  valid(){
+
+        var idName=$("#idName").val();
+        if(!idName.trim()){
+            layer.msg("姓名不能为空!");
+            return false;
+        }
+
+        var idNo=$("#idNo").val();
+        if(!idNo.trim()){
+            layer.msg("证件号码不能为空!");
+            return false;
+        }
+        var reg = /(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/;
+        if(reg.test(idNo) === false)
+        {
+            layer.msg("身份证输入不合法");
+            return  false;
+        }
+        var nation=$("#nation").val();
+        if(!nation.trim()){
+            layer.msg("民族不能为空!");
+            return false;
+        }
+
+        var idTermBgh=$("#idTermBgh").val();
+        if(!idTermBgh.trim()){
+            layer.msg("证件开始日期不能为空!");
+            return false;
+        }
+        var idTermEnd=$("#idTermEnd").val();
+        if(!idTermEnd.trim()){
+            layer.msg("证件结束日期不能为空!");
+            return false;
+        }
+
+        var idTermBghTime= new Date(idTermBgh.replace("-", "/").replace("-", "/"));
+        var idTermEndTime = new Date(idTermEnd.replace("-", "/").replace("-", "/"));
+        if(idTermBghTime >= idTermEndTime)
+        {
+            layer.msg("证件结束日期必须比证件开始日期大!");
+            return false;
+        }
+
+        var phone=$("#phone").val();
+        if(!phone.trim()){
+            layer.msg("手机号不能为空!");
+            return false;
+        }
+        if(!(/^1[3|4|5|7|8]\d{9}$/.test(phone))){
+            layer.msg("手机号码有误，请重填");
+            return false;
+        }
+
+        var marital=$("#marital").val();
+        if(!marital.trim()){
+            layer.msg("婚姻状况不能为空!");
+            return false;
+        }
+
+        var education=$("#education").val();
+        if(!education.trim()){
+            layer.msg("教育程度不能为空!");
+            return false;
+        }
+        var indivRegAddr=$("#indivRegAddr").val();
+        if(!indivRegAddr.trim()){
+            layer.msg("户籍地址不能为空!");
+            return false;
+        }
+
+        var indivZipCode=$("#indivZipCode").val();
+        reg =/^[0-9]{6}$/;
+        if(!indivZipCode.trim()){
+            layer.msg("户籍地址邮编不能为空!");
+            return false;
+        }
+        if(!reg.test(indivZipCode)){
+            layer.msg("户籍地址邮编格式不正确,只能是数字并且长度为6");
+            return false;
+        }
+
+        var address=$("#address").val();
+        if(!address.trim()){
+            layer.msg("居住地址不能为空!");
+            return false;
+        }
+
+        var residentAddressCode=$("#residentAddressCode").val();
+        if(!residentAddressCode.trim()){
+            layer.msg("居住地址邮编不能为空!");
+            return false;
+        }
+
+        if(!reg.test(residentAddressCode)){
+            layer.msg("居住地址邮编格式不正确,只能是数字并且长度为6");
+            return false;
+        }
+
+
+
+        var policeStation=$("#policeStation").val();
+        if(!policeStation.trim()){
+            layer.msg("户籍派出所不能为空!");
+            return false;
+        }
+
+        var homeProvince=$("#homeProvince").val();
+        if(!homeProvince.trim()){
+            layer.msg("行政区划所在省不能为空!");
+            return false;
+        }
+
+        var homeCity=$("#homeCity").val();
+        if(!homeCity.trim()){
+            layer.msg("行政区划所在市不能为空!");
+            return false;
+        }
+
+        var commodityName=$("#commodityName").val();
+        if(!commodityName.trim()){
+            layer.msg("商品名称不能为空!");
+            return false;
+        }
+//        reg=/^[1-9]+[0-9]*]*$/;
+        reg=/^[0-9]+(.[0-9]{2})?$/;
+
+        var commodityCount=$("#commodityCount").val();
+        if(!commodityCount.trim()){
+            layer.msg("商品数量不能为空!");
+            return false;
+        }
+        if(isNaN(commodityCount)){
+            layer.msg("商品数量只能是数字!");
+            return false;
+        }
+
+        var commodityPrice=$("#commodityPrice").val();
+        if(!commodityPrice.trim()){
+            layer.msg("商品单价不能为空!");
+            return false;
+        }
+        if(!reg.test(commodityPrice)){
+            layer.msg("商品单价只能是数字,且最多保留两位小数!");
+            return false;
+        }
+
+        var totalCommodityPrice=$("#totalCommodityPrice").val();
+        if(!totalCommodityPrice.trim()){
+            layer.msg("商品总价不能为空!");
+            return false;
+        }
+        if(!reg.test(totalCommodityPrice)){
+            layer.msg("商品总价只能是数字,且最多保留两位小数!");
+            return false;
+        }
+
+        var applyAmount=$("#applyAmount").val();
+        if(!applyAmount.trim()){
+            layer.msg("申请金额不能为空!");
+            return false;
+        }
+        if(!reg.test(applyAmount)){
+            layer.msg("申请金额只能是数字,且最多保留两位小数!");
+            return false;
+        }
+
+
+        var interestRate=$("#interestRate").val();
+        if(!interestRate.trim()){
+            layer.msg("利率不能为空!");
+            return false;
+        }
+        if(isNaN(interestRate.trim())){
+            layer.msg("利率只能为数字,请重新输入!");
+            return false;
+        }
+
+        var addrProvince=$("#addrProvince").val();
+        if(!addrProvince.trim()){
+            layer.msg("房源所在省市不能为空!");
+            return false;
+        }
+
+        var addrDetail=$("#addrDetail").val();
+        if(!addrDetail.trim()){
+            layer.msg("房源所在地详细地址不能为空!");
+            return false;
+        }
+
+        var startDate=$("#startDate").val();
+        if(!startDate.trim()){
+            layer.msg("房源开始出租时间不能为空!");
+            return false;
+        }
+
+        var endDate=$("#endDate").val();
+        if(!endDate.trim()){
+            layer.msg("房源结束出租时间不能为空!");
+            return false;
+        }
+
+        var time1 = new Date(startDate.replace("-", "/").replace("-", "/"));
+        var time2 = new Date(endDate.replace("-", "/").replace("-", "/"));
+        if(time1 >= time2)
+        {
+            layer.msg("房源结束出租时间必须比开始出租时间大!");
+            return false;
+        }
+
+        var downpaymentType=$("#downpaymentType").val();
+        if(!downpaymentType.trim()){
+            layer.msg("租客首付方式不能为空!");
+            return false;
+        }
+
+        var monthRent=$("#monthRent").val();
+        if(!monthRent.trim()){
+            layer.msg("月租金不能为空!");
+            return false;
+        }
+
+        if(isNaN(monthRent)){
+            layer.msg("月租金只能为数字,请重新输入!");
+            return false;
+        }
+
+
+        var id=$("#hdBussinessCustomerId").val();
+        if(!id){
+            layer.msg("请指定商户!");
+            return false;
+        }
+        var applyDuration=$("#applyDuration").val();
+        if(!applyDuration.trim()){
+            layer.msg("贷款期限不能为空!");
+            return false;
+        }
+
+
+        var company=$("#company").val();
+        if(!company.trim()){
+            layer.msg("公司或学校名称不能为空!");
+            return false;
+        }
+        var companyAddress=$("#companyAddress").val();
+        if(!companyAddress.trim()){
+            layer.msg("公司或学校地址不能为空!");
+            return false;
+        }
+
+        var type=$('.jobInfo input[name="type"]:checked ').val();
+        if(1==type){   //学生
+            var periodUndertake=$("#periodUndertake").val();
+            if(!periodUndertake.trim()){
+                layer.msg("月承受还款金额不能为空!");
+                return false;
+            }
+            if(!reg.test(periodUndertake)){
+                layer.msg("月承受还款金额只能是数字,且最多保留两位小数!");
+                return false;
+            }
+        }else if(2==type){  //工薪
+            var position=$("#position").val();
+            if(!position.trim()){
+                layer.msg("职务不能为空!");
+                return false;
+            }
+
+            var title=$("#title").val();
+            if(!title.trim()){
+                layer.msg("职称不能为空!");
+                return false;
+            }
+
+            var industry=$("#industry").val();
+            if(!industry.trim()){
+                layer.msg("所属行业不能为空!");
+                return false;
+            }
+
+            var annualIncome=$("#annualIncome").val();
+            if(!annualIncome.trim()){
+                layer.msg("年收入不能为空!");
+                return false;
+            }
+            if(!reg.test(annualIncome)){
+                layer.msg("年收入只能是数字!");
+                return false;
+            }
+
+            var companyTelNo=$("#companyTelNo").val();
+            if(!companyTelNo.trim()){
+                layer.msg("企业电话不能为空!");
+                return false;
+            }
+        }
+
+        var disbAcNam=$("#disbAcNam").val();
+        if(!disbAcNam.trim()){
+            layer.msg("放款账户名称不能为空!");
+            return false;
+        }
+
+        var disbAcBank=$("#disbAcBank").val();
+        if(!disbAcBank.trim()){
+            layer.msg("放款账号开户行不能为空!");
+            return false;
+        }
+
+        var disbAcNo=$("#disbAcNo").val();
+        if(!disbAcNo.trim()){
+            layer.msg("放款账号不能为空!");
+            return false;
+        }
+
+
+        var repaymentCustName=$("#repaymentCustName").val();
+        if(!repaymentCustName.trim()){
+            layer.msg("还款账户名称不能为空!");
+            return false;
+        }
+
+        var repaymentBank=$("#repaymentBank").val();
+        if(!repaymentBank.trim()){
+            layer.msg("还款账号开户行不能为空!");
+            return false;
+        }
+
+        var repaymentCardNo=$("#repaymentCardNo").val();
+        if(!repaymentCardNo.trim()){
+            layer.msg("还款账号不能为空!");
+            return false;
+        }
+
+
+        var loanCustContactsInfoList0_name=$("#loanCustContactsInfoList0Name").val();
+        if(!loanCustContactsInfoList0_name.trim()){
+            layer.msg("第一联系人姓名不能为空!");
+            return false;
+        }
+
+        var loanCustContactsInfoList0_relation=$("#loanCustContactsInfoList0Relation").val();
+        if(!loanCustContactsInfoList0_relation.trim()){
+            layer.msg("第一联系人关系不能为空!");
+            return false;
+        }
+        var loanCustContactsInfoList0_phone=$("#loanCustContactsInfoList0Phone").val();
+        if(!loanCustContactsInfoList0_phone.trim()){
+            layer.msg("第一联系人手机号不能为空!");
+            return false;
+        }
+
+        if(!(/^1[3|4|5|7|8]\d{9}$/.test(loanCustContactsInfoList0_phone))){
+            layer.msg("第一联系人手机号码有误，请重填");
+            return false;
+        }
+
+        var loanCustContactsInfoList1_name=$("#loanCustContactsInfoList1Name").val();
+        if(!loanCustContactsInfoList1_name.trim()){
+            layer.msg("第二联系人姓名不能为空!");
+            return false;
+        }
+
+        var loanCustContactsInfoList1_relation=$("#loanCustContactsInfoList1Relation").val();
+        if(!loanCustContactsInfoList1_relation.trim()){
+            layer.msg("第二联系人关系不能为空!");
+            return false;
+        }
+        var loanCustContactsInfoList1_phone=$("#loanCustContactsInfoList1Phone").val();
+        if(!loanCustContactsInfoList1_phone.trim()){
+            layer.msg("第二联系人手机号不能为空!");
+            return false;
+        }
+
+        if(!(/^1[3|4|5|7|8]\d{9}$/.test(loanCustContactsInfoList1_phone))){
+            layer.msg("第二联系人手机号码有误，请重填");
+            return false;
+        }
+
+
+
+        var idCardFont = $("#idCardFont").val();
+        if(idCardFont==''){
+        	layer.msg("请上传身份证正面图片!");
+            return false;
+        }
+        var idCardBack = $("#idCardBack").val();
+        if(idCardBack==''){
+        	layer.msg("请上传身份证反面图片!");
+            return false;
+        }
+        var handPhoto = $("#handPhoto").val();
+        if(handPhoto==''){
+        	layer.msg("请上传手持身份证照!");
+            return false;
+        }
+       return true;
+    }
+
+    function reviewLoan(obj){
+        var flag=valid();
+        if(!flag){
+            return ;
+        }
+
+        var submitBtn=$(obj);
+        submitBtn.attr("disabled","disabled");
+
+        $.ajax({
+            type: 'POST',
+            url: "/hd/import_apply/save_import_apply/" ,
+            data: $('#saveForm').serialize(),
+            async: true,
+            success:function(data){
+                if("200"==data.code){
+                    layer.msg("贷款信息提交成功,等待图片信息上传...")
+                    var custId = data.result.custId;
+                    var applyId = data.result.applyId;
+                    var formData = new FormData();
+                    var fileNum = $(".fileImg").length;
+                    for (var i = 0; i < fileNum; i++) {
+                        formData.append('file', $('.fileImg').eq(i)[0].files[0]);
+                    }
+                    formData.append('custId',custId);
+                    formData.append('applyId',applyId);
+                    $.ajax({
+                        url: '/hd/loan/uploadImg',
+                        type: 'post',
+                        cache: false,
+                        data: formData,
+                        dataType: 'JSON',
+                        processData: false,
+                        contentType: false,
+                        success: function(data) {
+                            if(data.code=='0'){
+                                alert("提交成功");
+                                conentWin.load("/hd/import_apply/to_import_apply_page");
+                            }else{
+                                layer.msg("上传图片失败！");
+                            }
+                            submitBtn.removeAttr("disabled")
+                        },
+                        error:function(data){
+                            submitBtn.removeAttr("disabled");
+                        }
+                    });
+
+                }else{
+                    layer.msg("提交失败");
+                }
+                submitBtn.removeAttr("disabled");
+            },
+            error:function(data){
+                submitBtn.removeAttr("disabled");
+            }
+        });
+    }
+
+</script>
+
+<script>
+    $(function () {
+        var ht = parseInt($(".by_hd").height());
+        var ht1 = (ht - 250) / 2;
+        $(".mr_zo").css("padding-top", ht1);
+    });
+</script>
+
+
+
+<script>
+    $(function () {
+        $(".content1").scrollTop(0);
+    })
+</script>
+
+<!-- 图片处理 -->
+<script>
+    function getObjectURL(file) {
+        var url = null;
+        if (window.createObjectURL != undefined) { // basic
+            url = window.createObjectURL(file);
+        } else if (window.URL != undefined) { // mozilla(firefox)
+            url = window.URL.createObjectURL(file);
+        } else if (window.webkitURL != undefined) { // webkit or chrome
+            url = window.webkitURL.createObjectURL(file);
+        }
+        return url;
+    }
+    function changeImg(files,type) {
+    	/* if(type=='1'){
+    		var idCardFont = $("#idCardFont").val();
+    	}
+    	if(type=='2'){
+    		var idCardBack = $("#idCardBack").val();
+    	}
+    	if(type=='3'){
+    		var handPhoto = $("#handPhoto").val();
+    	} */
+        var objUrl = getObjectURL(files.files[0]);
+        $(files).parent(".upLoad").css("background-image", 'url(' + objUrl + ')');
+    }
+    function changeImg1(files) {
+        var objUrl = getObjectURL(files.files[0]);
+        $(files).attr("disabled","disabled");
+        $(files).parent(".upLoad").css("background-image", 'url(' + objUrl + ')');
+        $(".otherImg").append("<a class='upLoad ml-50' href='javascript:void(0);'><input type='file' class='fileImg'' onchange='changeImg1(this)'/></a>");
+    }
+</script>
+
+</div>

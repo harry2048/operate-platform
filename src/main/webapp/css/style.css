@@ -1,0 +1,1749 @@
+﻿body{
+    height:100%; overflow:hidden;
+}
+.hidden1{
+    display: none;
+}
+/*NAV*/
+#warp #nav {
+    height: 50px;
+    line-height: 50px;
+    width: 100%;
+    background-color: #09C;
+    margin-bottom:0;
+    border: 0;
+    padding-right: 0;
+}
+#warp #nav .dropdown{
+
+}
+
+#warp #nav .logo {
+    display: inline-block;
+    height: 35px;
+    width: 40px;
+    background-image: url("../images/logo.png");
+    background-size: 40px 35px;
+    vertical-align: middle;
+}
+#warp #nav .AuditText{
+    display: inline-block;
+    vertical-align: middle;
+    color: #fff;
+    font-size: 16px;
+    margin-left: 10px;
+}
+.iframe{
+    margin-left: 180px;
+}
+#warp .sidebar{
+    position: absolute;
+    left: 0;
+    top: 50px;
+    float: left;
+    display: inline-block;
+    width: 180px;
+    height: calc( 100% -  50px );
+    background-color: #293038;
+    z-index: 999;
+    overflow-y: auto;
+    border-right: 1px solid #bdbdbd;
+
+}
+#warp .activeList{
+    width: 50px;
+}
+#warp .activeList .listSou{
+    width: 50px;
+}
+#warp .activeList .listSpan{
+    display: none;
+}
+#warp #content{
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+    padding: 0;
+    background-color: #F2F4F8;
+}
+#warp .navbar-right{
+    margin-bottom: 0;
+}
+#warp #nav .login_name {
+    width: 170px;
+    background-color: #09C;
+    text-align: center;
+    line-height: 10px;
+
+}
+#warp #nav .login_name1 {
+    width: 80px;
+    background-color: #09C;
+    text-align: center;
+    line-height: 10px;
+}
+#warp #nav .login_name .state{
+    display: inline-block;
+    width: 170px;
+    height: 50px;
+    line-height: 50px;
+    color: #fff;
+    font-size:14px;
+    overflow: hidden;
+    word-break:keep-all;/* 涓嶆崲琛�*/
+    white-space:nowrap;/* 涓嶆崲琛�*/
+    padding: 0 10px;
+    text-decoration: none;
+    border-left: 1px solid #008FBF;
+    text-align: center;
+    outline: none;
+}
+#warp #nav .login_name .state .busNmae{
+    float: right;
+    display: inline-block;
+    width: 120px;
+    color: #fff;
+    font-size:14px;
+    overflow: hidden;
+    word-break:keep-all;/* 涓嶆崲琛�*/
+    white-space:nowrap;/* 涓嶆崲琛�*/
+}
+#warp #nav .login_name .state:hover{
+    background-color: #008FBF;
+}
+#warp #nav .tx_fr{
+    float: right;
+    display: inline-block;
+    margin-top: 23px;
+    border-top: 4px solid #fff;
+    font-size: 14px;
+    margin-left: 10px;
+}
+#warp #nav .login_name .quit{
+    position: absolute;
+    display: none;
+    width: 170px;
+    height: 40px;
+    line-height: 40px;
+    background-color: #fff;
+    border: 1px solid #eaedf1;
+    text-decoration: none;
+    cursor: pointer;
+    z-index: 1000;
+}
+#warp #nav .login_name1 .quit1{
+    position: absolute;
+    top: 50px;
+    display: none;
+    width: 80px;
+    height: 40px;
+    line-height: 40px;
+    background-color: #fff;
+    border: 1px solid #eaedf1;
+    text-decoration: none;
+    cursor: pointer;
+    z-index: 1000;
+}
+#warp #nav .login_name .quit:hover ,#warp #nav .login_name .quit1:hover{
+    background-color: #F9F9FA;
+}
+
+#warp #nav .login_name .quit li a ,#warp #nav .login_name .quit1 li a{
+    text-align: center;
+    color: #000;
+}
+#warp #nav .bg{
+    background-color:#fff
+}
+#warp #nav .bg .state:hover{
+    background-color: #fff;
+}
+#warp #nav .bg .state .busNmae{
+    color: #000;
+}
+#warp #nav .bg .state .tx_fr {
+    transform: rotate(180deg);
+    -ms-transform: rotate(180deg); /* IE 9 */
+    -webkit-transform: rotate(180deg); /* Safari and Chrome */
+    -o-transform: rotate(180deg); /* Opera */
+    -moz-transform: rotate(180deg);
+}
+#warp #nav .bg .tx_fr{
+    border-top: 4px solid #000;
+}
+/*NAV*/
+
+/*SIDEBAR*/
+#content .sidebar{
+    color: #fff;
+}
+#content .sidebar .sideConller{
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+    text-align: center;
+    height: 30px;
+    line-height: 30px;
+    cursor: pointer;
+    background-color: #293038;
+    border-bottom:1px solid #6C6C6C;
+}
+#content .sidebar .sideConller:hover{
+    background-color: #6E6E6E;
+}
+
+#content .sidebar li{
+
+    cursor: pointer;
+}
+/*#content .sidebar li:hover{*/
+    /*background-color: #394555;*/
+/*}*/
+#content .sidebar .sidebarIcon{
+    display: inline-block;
+    width: 50px;
+}
+#content .sidebar span{
+    display: inline-block;
+    width: 90px;
+    font-size: 12px;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+}
+#content .sidebar .listSpan{
+    font-family: "微软雅黑";
+}
+#content .sidebar .sideConller span{
+    color: #fff;
+    font-size: 12px;
+}
+#content .sidebar .sidebarIcon{
+    display: inline-block;
+    width: 50px;
+    text-align: center;
+}
+#content .sidebar .sidebarIcon img{
+    margin-top: -3px;
+}
+/*SIDEBAR*/
+
+/*content*/
+.content{
+    float: right;
+    width: 100%;
+    padding:15px 15px;
+    margin-bottom: 40px;
+    background-color: #F2F4F8;
+}
+#warp .activeCon .content{
+    float: right;
+    width: calc(100% - 50px);
+    width: -moz-calc(100% - 50px);
+    width: -webkit-calc(100% - 50px);
+    padding:15px 15px;
+    margin-bottom: 40px;
+    background-color: #F2F4F8;
+}
+#warp .activeCon{
+}
+#warp .content .con_title{
+    font-size: 13px;
+    color: #428bca;
+    background-color:#F5F5F5;
+}
+#warp .content .text_lg{
+    font-size: 14px;
+}
+#warp .content .text_16{
+    font-size: 16px;
+    letter-spacing: 1px;
+}
+#warp .content .loanNum{
+    display: inline-block;
+    float: right;
+    color: #000;
+}
+.progressState{
+    width: 150px;
+    position: relative;
+    float: left;
+    margin-right: 25px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    background-color: #a6a6a6;
+    border: 1px solid #ddd;
+    font-size: 13px;
+    color: #fff;
+    margin-bottom: 0;
+    -moz-box-shadow:0 1px 3px 0 rgba(0, 0, 0, 0.2);
+    -webkit-box-shadow:0 1px 3px 0 rgba(0, 0, 0, 0.2);
+    box-shadow:0 1px 3px 0 rgba(0, 0, 0, 0.2);
+}
+.activeState{
+    background-color: #09C;
+    border: 1px solid #09C;
+}
+.progressState a, .progressState1 a {
+    color: #fff;
+    font-size: 13px;
+    text-decoration:underline;
+
+}
+.progressState1{
+    background-color: #fff;
+    border: 1px solid #ddd;
+}
+#warp .content .rightPic{
+    float: left;
+    display: inline-block;
+    width: 47px;
+    height:50px;
+    margin: 12px 40px 0 40px;
+    background-image: url("../images/rightPic.png");
+    background-size: 47px 50px;
+}
+.content .panel-heading{
+    border-left: 4px solid #428bca;
+}
+.personInfo .name{
+    width: 140px;
+    height:40px;
+}
+#content .shenInfo{
+    border-right: 1px solid #dddddd;
+}
+#content .shenInfo p{
+    display: inline-block;
+    width: 80%;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-size: 13px;
+}
+#content .shenInfo p:first-child{
+    margin-top: 10px;
+}
+#content .shenInfo .name ,#content .shenInfo .sex ,#content .shenInfo .age ,#content .shenInfo .ID ,#content .shenInfo .address{
+    display: inline-block;
+    font-size: 13px;
+    text-align: right;
+    color: #428bca;
+}
+.IDPic{
+    position: relative;
+    float: left;
+    height: 400px;
+    width: 49%;
+    border: 1px dashed #999;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    -moz-border-radius: 15px;
+    -webkit-border-radius: 15px;
+    border-radius: 15px;
+}
+.findingsAudit{
+    position: relative;
+    float: left;
+    height: 400px;
+    width: 49%;
+    border: 1px solid #dddddd;
+    margin-bottom: 20px;
+    background-color: #fff;
+}
+.IDPic img{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 474px;
+    height: 300px;
+    margin-left: -237px;
+    margin-top: -150px;
+}
+.IDPic .tipspic{
+    display: inline-block;
+    position: absolute;
+    width: 45px;
+    height:43px;
+    left: 20px;
+    top:-20px;
+    background-image: url("../images/tips.png");
+    background-size: 45px 43px;
+}
+.content .n_borle{
+    border-left:0;
+}
+.findingsAudit .panel{
+    border: 0;
+}
+.auditOption p {
+    margin: 5px 0;
+    padding-right: 3px;
+    padding-left: 3px;
+}
+
+.auditOption label {
+    font-size: 13px;
+    vertical-align: middle;
+    cursor: pointer;
+    font-weight: normal;
+    margin-bottom: 0;
+}
+.auditOption label:hover{
+    color: #09C;
+}
+.auditView textarea{
+    display: inline-block;
+    width: 400px;
+    height: 150px;
+    border: 1px solid #ddd;
+    margin-left: 20px;
+    padding-top: 2px;
+}
+.auditView .wt_90{
+    display: inline-block;
+    width: 90%;
+    margin-left: 5%;
+}
+.auditView .wg_130{
+    width: 300px;
+    height: 120px;
+}
+.nextStep ,.nextStep1 ,.nextStep2 ,.nextStep3,.nextStep4 {
+    width: 100px;
+    height: 35px;
+    position: absolute;
+    bottom: 10px;
+    left: 40%;
+    margin-left: -50px;
+    letter-spacing: 1px;
+    font-size: 14px;
+}
+
+.nextStep1 {
+    left: 50%;
+}
+
+.nextStep2 {
+    left: 60%;
+}
+
+.nextStep3 {
+    left: 70%;
+}
+.nextStep4{
+    left: 30%;
+}
+.content .jobInfo{
+    padding-left: 0;
+}
+.content .jobInfo p{
+    position: relative;
+    display: block;
+    height: 30px;
+    line-height: 30px;
+    /*border: 1px solid #ddd;*/
+    margin: 10px 0 0 0;
+    padding-left: 5px;
+    font-size: 13px;
+}
+.content .jobInfo .addText{
+    height: 60px;
+    line-height:20px;
+    width: 300px;
+    border: 1px solid #ddd;
+}
+.content .jobInfo input{
+    width: 300px;
+    border: 1px solid #ddd;
+    text-indent: 5px;
+}
+.content .jobInfo .selec{
+    width: 300px;
+    border: 1px solid #ddd;
+    height: 30px;
+    text-indent: 3px;
+    margin-left: -4px;
+}
+
+.contacts .selec{
+    width: 140px;
+    border: 1px solid #ddd;
+    margin-right: 10px;
+}
+.content .jobInfo p:last-child{
+    margin-bottom: 10px;
+    position: relative;
+}
+.content .jobInfo .companyAddress{
+    display: block;
+    height:auto !important;
+    height:30px;
+    min-height: 30px;
+}
+.content .jobInfo span{
+    display: inline-block;
+    width: 110px;
+    text-align: right;
+    color: #428bca;
+}
+.content .jobInfo .companyAddress span{
+    padding: 5px;
+}
+.content .jobInfo .callBtn{
+    display: inline-block;
+    position: absolute;
+    width: 18px;
+    left: 425px;
+    top: 6px;
+    font-size: 18px;
+    cursor: pointer;
+}
+.content .jobInfo .callBtn:hover{
+    color: #09C;
+}
+.content .tipsArea{
+    padding: 6px 12px;
+    line-height: 18px;
+    margin-bottom: 6px;
+    margin-top: 10px;
+    border-radius: 0px;
+    color: #090;
+    background-color: #F2FFEA;
+    border: 1px solid #C7DDB9;
+}
+.content .tipsArea p{
+    margin-bottom: 0;
+}
+.chaRadion p{
+    overflow: hidden;
+    margin: 15px 0 15px 0;
+}
+.chaRadion label{
+    margin:0 3px 0 3px;
+    font-weight: normal;
+    cursor: pointer;
+}
+.chaRadion span{
+    display: inline-block;
+    width: 90px;
+    font-size: 13px;
+    color: #428bca;
+}
+.fiAudrRes{
+    position: absolute;
+    right: 15px;
+    top: 110px;
+    width: 240px;
+    height: 150px;
+    background: url("../images/tipsBG.png") no-repeat no-repeat;
+    background-size: contain;
+}
+.fiAudrRes p{
+    padding-left: 10px;
+    padding-top: 10px;
+}
+.fiAudrRes .footerText{
+    margin-top: 65px;
+    margin-left: 205px;
+}
+.fiAudrRes .compDetial{
+    position: absolute;
+    right: 10px;
+    bottom: 25px;
+}
+.fiAudrRes .comText{
+    height: 105px;
+    width: 225px;
+    margin: 5px;
+    display: inline-block;
+}
+.he_30{
+    height: 300px;
+}
+.he_50{
+    height: 300px;
+}
+
+.tableXue{
+    width: 590px;
+    height: 200px;
+    margin: 0 auto;
+    margin-top: 10px;
+}
+.tableXue .tableHead{
+    display: inline-block;
+    width: 95px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    background-color: #ddd;
+    border: 1px solid #ddd;
+}
+.tableXue .tableContent{
+    display: inline-block;
+    width: 190px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    background-color: #fff;
+    border: 1px solid #ddd;
+}
+.tableXue .accreditation{
+    font-size: 16px;
+}
+.tableXue .acc{
+    display: inline-block;
+    margin-left: 10px;
+    font-size: 16px;
+    color: red;
+}
+.content .hg_10{
+    height: 100px;
+    line-height: 100px;
+}
+.content .otherData{
+    height: auto;
+    overflow: hidden;
+    border-bottom: 1px solid #ddd;
+    margin-bottom:20px;
+}
+.content .otherData .imgBox{
+    margin: 10px 0;
+    text-align: center;
+}
+.content .otherData img:hover{
+    border: 1px solid #09C;
+}
+.content .otherData img{
+    display: block;
+    max-width: 100%;
+    height: 113px;
+    cursor: pointer;
+    margin: 0 auto;
+}
+.col_ri{
+    font-size: 16px;
+    color: red;
+}
+.col_bl{
+    font-size: 16px;
+    color: #000;
+}
+#warp .auditList td{
+    height: 30px;
+    line-height: 30px;
+    cursor: pointer;
+}
+#warp .auditList .submit{
+    color: #5cb85c;
+}
+#warp .auditList .repulse{
+    color: #ec971f;
+}
+#warp .auditList .review{
+    color: #09C;
+}
+.col_dr{
+    color:#666 ;
+}
+.content .searchArea{
+    padding-left: 0;
+    margin-bottom: 10px;
+}
+.content .searchArea input{
+    font-size: 13px;
+    text-indent: 20px;
+}
+.content .searchArea .searchPic{
+    position: absolute;
+    background: url("../images/searchPic.png") no-repeat no-repeat;
+    background-size: 16px 16px;
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    left: 8px;
+    top: 10px;
+    z-index: 20;
+}
+.search_btn{
+    font-size: 13px;
+    background-color: #09C;
+    padding: 7px 16px;
+}
+.content .btn_examine{
+    padding-left: 0;
+}
+.content .btn_examine button{
+    background-color: #09C;
+    -moz-border-radius: 3px;      /* Gecko browsers */
+    -webkit-border-radius: 3px;   /* Webkit browsers */
+    border-radius:3px;            /* W3C syntax */
+    padding: 7px 7px;
+    font-size: 13px;
+    margin-right: 10px;
+}
+.fs_13{
+ font-size: 12px;
+}
+.bg_wt{
+    font-size: 12px;
+    background-color: #fff;
+}
+.wt_55{
+    width: 550px;
+}
+.applyInfo{
+    width: 650px;
+    height: 185px;
+    margin-left: 0;
+    margin-top: 0;
+}
+
+.applyInfo .tableHead{
+    display: inline-block;
+    width: 100px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    background-color: #ddd;
+    border: 1px solid #ddd;
+}
+.applyInfo .tableContent{
+    display: inline-block;
+    width: 165px;
+    height: 30px;
+    margin-right: 10px;
+    line-height: 30px;
+    text-align: center;
+    background-color: #fff;
+    border: 1px solid #ddd;
+}
+.applyInfo .address{
+    display: inline-block;
+    width: 430px;
+    height: 30px;
+    padding-left: 10px;
+    margin-right: 10px;
+    line-height: 30px;
+    text-align: left;
+    background-color: #fff;
+    border: 1px solid #ddd;
+}
+.applyInfo .last{
+    width: 440px;
+}
+.applyInfo .accreditation{
+    font-size: 16px;
+}
+.applyInfo .acc{
+    display: inline-block;
+    margin-left: 10px;
+    font-size: 16px;
+    color: red;
+}
+
+.rentingHouseApplyInfo{
+    width:100%;
+    height: 160px;
+    margin-left: 0;
+    margin-top: 0;
+}
+.rentingHouseApplyInfo .tableHead{
+    display: inline-block;
+    width: 10%;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    background-color: #ddd;
+    border: 1px solid #ddd;
+}
+
+.rentingHouseApplyInfo .tableContent{
+    display: inline-block;
+    width: 14.5%;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    margin-right: 0.5%;
+}
+.rentingHouseApplyInfo .head_last{
+    width: 15%;
+    margin-right: 0;
+}
+.rentingHouseApplyInfo .address{
+    display: inline-block;
+    width: 39%;
+    height: 30px;
+    padding-left: 10px;
+    margin-right: 1%;
+    line-height: 30px;
+    text-align: left;
+    background-color: #fff;
+    border: 1px solid #ddd;
+}
+.rentingHouseApplyInfo .last{
+    width: 39.5%;
+}
+.rentingHouseApplyInfo .accreditation{
+    font-size: 16px;
+}
+.rentingHouseApplyInfo .acc{
+    display: inline-block;
+    margin-left: 10px;
+    font-size: 16px;
+    color: red;
+}
+.zhengArea .chaKan,.nusa{
+    height: 30px;
+    line-height: 30px;
+    letter-spacing: 1px;
+    color: #fff;
+    background-color: #06a7ca;
+    border: 1px solid #06a7ca;
+    border-radius: 3px;
+    padding: 0 25px;
+}
+
+.zhengArea .chaKan,.yys{
+    height: 30px;
+    line-height: 30px;
+    letter-spacing: 1px;
+    color: #fff;
+    background-color: #06a7ca;
+    border: 1px solid #06a7ca;
+    border-radius: 3px;
+    padding: 0 25px;
+}
+
+.zhengArea .chaKan,.yys1{
+    height: 30px;
+    line-height: 30px;
+    letter-spacing: 1px;
+    color: #fff;
+    background-color: #06a7ca;
+    border: 1px solid #06a7ca;
+    border-radius: 3px;
+    padding: 0 25px;
+}
+
+.zhengArea .chaKan,.yys2{
+    height: 30px;
+    line-height: 30px;
+    letter-spacing: 1px;
+    color: #fff;
+    background-color: #06a7ca;
+    border: 1px solid #06a7ca;
+    border-radius: 3px;
+    padding: 0 25px;
+}
+
+.zhengArea .chaKan,.signContract{
+    height: 30px;
+    line-height: 30px;
+    letter-spacing: 1px;
+    color: #fff;
+    background-color: #06a7ca;
+    border: 1px solid #06a7ca;
+    border-radius: 3px;
+    padding: 0 25px;
+}
+.zhengArea .chaKan,.signAttach{
+    height: 30px;
+    line-height: 30px;
+    letter-spacing: 1px;
+    color: #fff;
+    background-color: #06a7ca;
+    border: 1px solid #06a7ca;
+    border-radius: 3px;
+    padding: 0 25px;
+}
+
+.zhengArea .chaKan:hover,.nusa:hover{
+    background-color: #1494ca;
+}
+
+#warp .col_red{
+    color: red;
+}
+.zhengxin{
+    position: relative;
+    width: 386px;
+    height: 250px;
+    line-height: 100px;
+    text-align: center;
+    background: url("../images/zhengxin.jpg") no-repeat no-repeat;
+    background-size: contain;
+    margin: 0 auto;
+    cursor: pointer;
+    border: 1px solid #ddd;
+}
+.zhengxin .zhengText{
+    font-size: 20px;
+    letter-spacing: 2px;
+    color: #292929;
+    text-decoration: none;
+}
+.zhengxin .chaKan{
+    position: absolute;
+    left: 50%;
+    top: 62%;
+    margin-left: -50px;
+    width: 100px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    color: #fff;
+    background-color: #0a9dc7;
+    letter-spacing: 1px;
+    text-decoration: none;
+}
+#warp .auditList .totalMon{
+    vertical-align:middle;
+}
+.shenXin{
+padding-left: 0;
+ }
+.shenXin p{
+    height: 30px;
+    line-height: 30px;
+    margin: 5px 0;
+    padding-left: 5px;
+    padding-right: 0;
+    font-size: 12px;
+}
+.shenXin p input{
+    width: 145px;
+    height: 25px;
+    line-height: 25px;
+    border: 1px solid #ddd;
+    text-indent: 5px;
+}
+.shenXin p textarea{
+    height: 25px;
+    width: 200px;
+    line-height: 16px;
+    border: 1px solid #ddd;
+    margin-bottom: 10px;
+    padding:0 5px;
+}
+.shenXinSpan{
+    display: inline-block;
+    width: 60px;
+    color: #428bca;
+}
+.Householdaddress ,.liveAddress{
+    display: inline-block;
+    width: 160px;
+    color: #428bca;
+}
+.shenXin p .address{
+    width: 381px;
+}
+.shenXin p .address1{
+    width: 381px;
+}
+
+.shenXin .ht_50{
+ height: 65px;
+}
+.ml_20{
+    margin-left: 20px;
+}
+.wd_80{
+    width: 80%;
+}
+.mr_20{
+    margin-top: 0;
+}
+.ht_31{
+    height: 310px;
+}
+.img_box{
+    width: 300px;
+    height: 180px;
+    margin: 10px auto;
+    border: 1px solid #ddd;
+}
+.img_box .img_header{
+    height: 30px;
+    line-height: 30px;
+    text-indent: 10px;
+    border-bottom: 1px solid #ddd;
+    background-color: #f5f5f5;
+}
+.img_box .img_content{
+    height: 150px;
+    line-height: 150px;
+    text-align: center;
+}
+.img_box .img_content img{
+    display: inline-block;
+    height: 130px;
+    width: auto;
+    margin-top:8px;
+}
+.mt_10{
+    margin-top: 10px;
+}
+.bankArea{
+    margin-top: 2px;
+    height: 160px;
+    background-color: #fff;
+}
+.bankArea p{
+    height: 30px;
+    line-height: 30px;
+    margin: 5px 0;
+    font-size: 13px;
+}
+.bankArea p span{
+    font-size: 13px;
+}
+.bankArea p .repaymentCard ,.bankArea p .repaymentAcc{
+    width: 200px;
+    border: 1px solid #ddd;
+    text-indent: 5px;
+}
+.bankArea input{
+    width: 200px;
+    border: 1px solid #ddd;
+    text-indent: 5px;
+}
+.ht_11{
+    height: 115px;
+    line-height: 115px;
+    vertical-align: middle;
+}
+.bankCard .bankBtn{
+    margin-top:40px;
+    background-color:#09C ;
+    color: #fff;
+    border-radius: 3px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+}
+.contacts .firstCon{
+    margin: 10px 15px;
+    font-size: 14px;
+    color: #000;
+    margin-bottom: 35px;
+}
+.contacts p span{
+    display: inline-block;
+    width: 130px;
+}
+.contacts p label{
+    font-weight: normal;
+    font-size: 12px;
+    margin: 0 8px 0 8px
+}
+.contactsList{
+    position: relative;
+    width: 98%;
+    border: 1px solid #eee;
+    margin: 0 auto;
+    margin-bottom: 40px;
+}
+.contactsList .ListTips{
+    position: absolute;
+    top: -30px;
+    left: -1px;
+    padding: 0 10px;
+    display: inline-block;
+    height: 30px;
+    line-height: 30px;
+    border: 1px solid #ddd;
+    border-bottom: 0;
+    background-color: #1b809e;
+    color: #fff;
+}
+.contactsList p{
+    overflow: hidden;
+    position: relative;
+    margin: 10px 0;
+}
+.contactsList input{
+    border: 1px solid #ddd;
+    margin-right: 10px;
+    text-indent: 5px;
+}
+.contactsList .contactFirst{
+    display: inline-block;
+    width: 60px;
+}
+.contactsList .phoneIcon{
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    font-size: 18px;
+    cursor: pointer;
+    top: 4px;
+}
+.contactsList .contactHeader{
+    height: 100%;
+    padding: 0;
+}
+.contactsList .contactHeader i{
+    display: inline-block;
+    width: 80px;
+    height: 80px;
+    line-height: 80px;
+    text-align: center;
+    border-radius: 50%;
+    background-color: #d0d0d0;
+    margin:10px;
+    color: #fff;
+}
+.shen input{
+    margin-right:0;
+}
+.textArea{
+    width: 800px;
+    height: 60px;
+    border: 1px solid #ddd;
+}
+.textArea textarea{
+    width: 100%;
+}
+.contactsList .phoneIcon:hover{
+    color: #09C;
+}
+#BG ,#BG2{
+    display: none;
+    position: relative;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    text-align: center;
+    vertical-align: middle;
+}
+#BG .fixImg ,#BG2 .fixImg{
+    /*width: 410px;*/
+    /*height: 280px;*/
+    display: inline-block;
+    vertical-align: middle;
+    position: absolute;
+    /*top: 50%;*/
+    /*left: 50%;*/
+    /*margin-top: -140px;*/
+    /*margin-left: -210px;*/
+}
+
+#BG .dragZoom ,#BG2 .dragZoom{
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+    background-color: #c6c6c6;
+    position: relative;
+    overflow: hidden;
+    vertical-align: middle;
+    text-align: center;
+}
+
+#BG .controlBtn ,#BG2 .controlBtn{
+    width: 100%;
+    position: absolute;
+    display: table-cell;
+    bottom: 10px;
+    left: 0;
+    text-align: center;
+}
+
+#BG .controlBtn img ,#BG2 .controlBtn img{
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+}
+
+#BG .close_btn ,#BG2 .close_btn{
+    position: absolute;
+    color: #000;
+    right: 0;
+    top: 0;
+    background-color: #fff;
+    z-index: 9999;
+}
+
+#BG .close_btn img ,#BG2 .close_btn img{
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+}
+
+#BG .leBtn ,#BG2 .leBtn{
+    position: absolute;
+    left: 30px;
+    top: 50%;
+    margin-top: -38px;
+    width: 42px;
+    height: 76px;
+    cursor: pointer;
+}
+
+#BG .riBtn ,#BG2 .riBtn{
+    position: absolute;
+    right: 30px;
+    top: 50%;
+    margin-top: -38px;
+    width: 42px;
+    height: 76px;
+    cursor: pointer;
+}
+
+#BG .leBtn img, .riBtn img ,#BG2 .leBtn img, .riBtn img{
+    width: 30px;
+    height: 50px;
+}
+
+#BG .picContent, .txtNum ,#BG2 .picContent, .txtNum {
+    margin-top: 10px;
+    color: #fff;
+    font-size: 14px;
+}
+.IDArea .imgArea{
+    position: relative;
+    float: left;
+    height: 400px;
+    width: 49%;
+    border: 1px solid #dddddd;
+    margin-bottom: 20px;
+    background-color: #fff;
+}
+.IDArea .imgHeader{
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    text-indent: 15px;
+    font-size: 14px;
+    background-color: #f5f5f5;
+    color: #333333;
+    border-bottom: 1px solid #dddddd;
+}
+.imgArea .imgContent{
+    height: 360px;
+    line-height: 360px;
+    position: relative;
+    text-align: center;
+    vertical-align: middle;
+    overflow: hidden;
+}
+.imgArea .imgContent .IDImg{
+    display: inline-block;
+    position: absolute;
+}
+.imgArea .imgContent .IdFi ,.imgArea .imgContent .IdSe ,.imgArea .imgContent .IdTh{
+    opacity: 0;
+    left: 50%;
+    top:50%;
+}
+.navIcon ,.navIcon1 ,.navIcon2{
+    position: absolute;
+    left: 12px;
+    top: 14px;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background: url("../images/USEr.png") no-repeat no-repeat;
+    background-size: 20px 20px;
+}
+.navIcon1{
+    background: url("../images/WorkInfo.png") no-repeat no-repeat;
+    background-size: 20px 20px;
+}
+.navIcon2{
+    background: url("../images/otherInfo.png") no-repeat no-repeat;
+    background-size: 20px 20px;
+}
+.wt_100{
+    width: 100%;
+}
+.mr_50{
+    left: 50%;
+}
+#content .sidebar .listIcon{
+    display: inline-block;
+    width: 50px;
+    text-align: center;
+}
+.mr_zo{
+    height: 250px;
+}
+#warp .qian ,#warp .yiqian{
+    position: relative;
+    width: 80px;
+    height: 50px;
+    line-height: 50px;
+    font-size: 14px;
+    color:#fff;
+    text-align: center;
+    border-left: 1px solid #008FBF;
+}
+#warp .qian:hover ,#warp .yiqian:hover{
+    background-color: #008FBF;
+}
+
+
+.wt_90{
+    margin-left: 15px;
+    width: 95%;
+}
+.content .ht_60{
+    height: 60px;
+}
+.he_24{
+    height: 240px;
+}
+.sel{
+    display: inline-block;
+    width: 200px;
+    height: 30px;
+    margin-top: 30px;
+    margin-left: 50px;
+    border: 1px solid #ddd;
+}
+.no-border {
+    border: 1px solid transparent !important;
+}
+.layui-layer-content .sousuo td{
+    border-top:0;
+}
+.sousuo input ,.sousuo select{
+    height: 25px;
+    width: 140px;
+    border: 1px solid #ddd;
+}
+#datetimepicker input ,#datetimepicker1 input{
+    height: 25px;
+    width: 140px;
+    border: 1px solid #ddd;
+    padding: 5px 5px;
+}
+.sousuo span{
+    display: inline-block;
+    width: 80px;
+    vertical-align: middle;
+}
+.sousuo .startDate ,.sousuo .endDate{
+    display: inline-block;
+    margin-bottom: 0;
+    vertical-align: middle;
+}
+.sousuo .input-group-addon{
+    width: 30px;
+    padding: 4px 8px;
+    font-size: 13px;
+}
+#content .fixbar{
+    position: fixed;
+    right: 15px;
+    top: 30%;
+    z-index: 1000;
+}
+#content .fixbar .mao{
+    width: 100px;
+    height: 30px;
+    line-height: 30px;
+    margin-bottom: 10px;
+    background-color: #0a9dc7;
+    text-align: center;
+}
+#content .fixbar .mao a{
+    color: #fff;
+}
+.ibox-title h5{
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+.pl_10{
+    padding: 10px;
+}
+
+#content .content .auditList tr td {
+    padding: 4px 11px;
+}
+.datetimepicker table{
+    font-size: 12px;
+}
+#auditList_length label ,#reviewList_length .dataTables_length label{
+    padding-left: 3px;
+    width: 180px;
+    font-weight: normal;
+    text-align: right;
+}
+#auditList_length label select ,.dataTables_length label select{
+    width: 65px;
+}
+#auditList_info ,#managerList_info ,#reviewList_info{
+    text-align: left;
+    float: left;
+    width: 20%;
+}
+.dataTables_paginate{
+    float: right;
+    width: 47%;
+    text-align: right;
+}
+.dataTables_length{
+    float: right;
+    width: 33%;
+    text-align: right;
+}
+.table-responsive tr td{
+    text-align: center;
+}
+#managerList_length label{
+    padding-left: 3px;
+    text-align: right;
+    width: 180px;
+    font-weight: normal;
+}
+#managerList_length label select{
+    width: 65px;
+}
+.content1{
+    position: absolute;
+    right: 0;
+    /* top: 50px;*/
+    top: 0;
+    width: 100%;
+    height: calc(100% - 50px);
+    height: -moz-calc(100% - 50px);
+    height: -webkit-calc(100% - 50px);
+    overflow-y: scroll;
+}
+.refuseOP{
+    display: block;
+    height: 30px;
+    line-height: 30px;
+    margin-left: 15px;
+    margin-bottom: 0;
+}
+.refuseOP input{
+    width: 14px;
+    height: 14px;
+}
+.refuseOP input ,.refuseOp label{
+    display: inline-block;
+    margin-left: 5px;
+    vertical-align: middle;
+    font-size: 13px;
+    font-family: "微软雅黑";
+    margin-bottom: 0;
+    font-weight: normal;
+    cursor: pointer;
+}
+.refuseOp label:hover{
+    color: #2e8ded;
+}
+.hui{
+    position: fixed;
+    top:0;
+    left:0;
+    display: none;
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    opacity: 0.5;
+    z-index: 9999;
+}
+.hui img{
+    width: 66px;
+    height: 66px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -33px;
+    margin-top: -33px;
+}
+#managerList tr th ,#auditList tr th ,#reviewList tr th{
+    font-weight: 400;
+}
+#auditList tr td{
+padding: 6px 8px;
+ }
+#reviewList tr td{
+    min-width: 100px;
+    border-left-width: 0;
+    border-right-width:0 ;
+    /*word-wrap:break-word;*/
+}
+#lendingList tbody .colRed td{
+    background-color: red;
+    color: #fff;
+}
+#lendingList tbody .colRed:hover td{
+    background-color: red;
+    color: #fff;
+}
+#reviewList tr th{
+    min-width: 100px;
+    padding: 8px 2px;
+}
+.imgHeader .leftBtn ,.imgHeader .rightBtn{
+    float: right;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    overflow: hidden;
+    text-indent: 0;
+    cursor: pointer;
+}
+.imgHeader .leftBtn img ,.imgHeader .rightBtn img{
+    display: inline-block;
+    width: 35px;
+    height:35px;
+    margin: 0 auto;
+    margin-top:2px;
+}
+
+.daoAll{
+    display: inline-block;
+    width: 85px;
+    height:34px;
+    line-height: 34px;
+    margin-right: 0;
+    text-align: center;
+    background-color: #1C84C6;
+    border: 1px solid #1C84C6;
+    color: #fff;
+    font-size: 13px;
+}
+.daoAll:hover{
+    color: #fff;
+}
+#loanDetail select{
+    border:1px solid #ccc;
+    width: 160px;
+    height: 25px;
+    font-size: 12px;
+    font-family: "微软雅黑";
+}
+#loanDetail input{
+    border:1px solid #ccc;
+    width: 160px;
+    height: 25px;
+    font-size: 12px;
+    font-family: "微软雅黑";
+}
+
+@media screen and (max-width: 1280px) {
+    .shenXin p .address{
+        width: 360px;
+    }
+    .shenXin p .address1{
+        width: 360px;
+    }
+    .shenXin p .address2{
+        width: 420px;
+    }
+    .auditOption label{
+        font-size: 12px;
+        vertical-align: middle;
+        cursor: pointer;
+        font-weight: normal;
+        margin-bottom: 0;
+    }
+    #loanDetail input{
+        border:1px solid #ccc;
+        height: 25px;
+        width: 120px;
+        font-size: 12px;
+        font-family: "微软雅黑";
+    }
+    #loanDetail select{
+        border:1px solid #ccc;
+        width: 120px;
+        height: 25px;
+        font-size: 12px;
+        font-family: "微软雅黑";
+    }
+}
+@media screen and (min-width: 1152px) and (max-width: 1360px) {
+    .content .jobInfo input{
+        width: 250px;
+        border: 1px solid #ddd;
+        text-indent: 5px;
+    }
+    .content .jobInfo .selec{
+        width: 250px;
+        border: 1px solid #ddd;
+        height: 30px;
+        text-indent: 3px;
+        margin-left: -4px;
+    }
+    .content .jobInfo .addText{
+        height: 60px;
+        line-height:20px;
+        width: 250px;
+        border: 1px solid #ddd;
+    }
+    .shenXin p .address{
+        width: 360px;
+    }
+    .shenXin p .address1{
+        width: 360px;
+    }
+    .shenXin p .address2{
+        width: 420px;
+    }
+    #loanDetail input{
+        border:1px solid #ccc;
+        height: 25px;
+        width: 120px;
+        font-size: 12px;
+        font-family: "微软雅黑";
+    }
+    #loanDetail select{
+        border:1px solid #ccc;
+        width: 120px;
+        height: 25px;
+        font-size: 12px;
+        font-family: "微软雅黑";
+    }
+}
+.bg_dark{
+    background-color: #EBEBE4;
+}
+.br_1{
+    border: 1px solid #ccc;
+}
+.fixP{
+    width: 90%;
+    height: 30px;
+    line-height: 30px;
+    margin: 0 auto;
+}
+.fixP .tx{
+    display: inline-block;
+    font-size: 13px;
+    margin-right: 10px;
+    vertical-align: middle;
+}
+.fixP label span{
+    font-size: 13px;
+    font-weight: normal;
+}
+.fixP label{
+    display: inline-block;
+    padding: 0 5px;
+    cursor: pointer;
+}
+.fixP label input{
+    margin-top: 0;
+}
+
+.boxIpt{
+    display: none;
+    margin-top: 10px;
+}
+.needBtn{
+
+}
+.contacts p .wt_100{
+    width: 100px;
+}
+.contacts p .wt_60{
+    width: 70px;
+}
+.contacts p .con_bor{
+    width: 128px;
+    border: 1px solid #ddd;
+    margin-right: 10px;
+    text-indent: 5px;
+}
+.contacts p .mr_20{
+    margin-left: 200px;
+}
+.borSty{
+    height: 25px;
+    width: 128px;
+    border: 1px solid #ddd;
+    margin-right: 10px;
+    text-indent: 5px;
+}
+.mt_15{
+    margin-top: 10px;
+}
+._idArea{
+    width: 95%;
+    margin: 0 auto;
+    margin-top: 10px;
+    text-align: center;
+}
+._shen{
+    margin: 0 auto;
+    height: 200px;
+    max-width: 100%;
+}
+._uploadArea{
+    width: 95%;
+    margin: 0 auto;
+    margin-top: 10px;
+    text-align: center;
+}
+
+#_uploadImg ,._uploadArea{
+    width: 30px;
+    height: 30px;
+    font-size: 12px;
+    background-image: url("../images/upLoadImg.png");
+    background-size: cover;
+    opacity: 0;
+    cursor: pointer;
+}
+._uploadArea{
+ opacity: 1;
+}
+.addPicBtn{
+    display: inline-block;
+    width: 113px;
+    height: 113px;
+    background-image: url("../images/addPic.png");
+    background-size: 113px 113px;
+    margin: 0 auto;
+}
+.upLoadImg{
+    display: inline-block;
+    width: 113px;
+    height: 113px;
+    opacity: 0;
+}
+.pt_15{
+    padding: 13px 13px 0 13px;
+}
+.ta_bm{
+    margin-bottom: 10px;
+}
+.pr_b1{
+    margin-bottom: 15px;
+}
+.content .bc_dr .active ,.content .bc_dr .active a{
+    background-color: #428bca;
+    color: #fff;
+    border: 1px solid #428bca;
+}
+.content .bc_dr .active:hover{
+    background-color: #4aa6ed;
+    color: #fff;
+    border: 1px solid #4aa6ed;
+}
+
+.closeBtn {
+    display: inline-block;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    background-image: url("../img/closeBtn1.png");
+    width: 17px;
+    height: 17px;
+    z-index: 1000;
+    cursor: pointer;
+}
+

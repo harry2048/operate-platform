@@ -1,0 +1,302 @@
+ <!DOCTYPE html>
+ <html>
+ <head>
+    <title>资方列表页面</title>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/base.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/layer.css" rel="stylesheet">
+    <link href="css/pagination.css" rel="stylesheet">
+    <link href="css/bootstrap-datetimepicker.css" rel="stylesheet">
+    <link href="css/jedate.css" rel="stylesheet">
+    <style>
+        #loanDetail{
+            background-color: #fff;
+            margin-bottom: 15px;
+        }
+        #loanDetail p{
+            padding-left:0 ;
+            padding-right: 0;
+            margin: 6px 0 ;
+        }
+        #loanDetail .wd_60{
+            display: inline-block;
+            width: 102px;
+            text-align: right;
+            font-size: 12px;
+            font-family: "微软雅黑";
+        }
+        #loanDetail .c13 .wd_60{
+            float: left;
+            margin-top: 5px;
+        }
+        #loanDetail .c13 input{
+            float: left;
+            font-size: 12px;
+            font-family: "微软雅黑";
+        }
+        #loanDetail .col-lg-3 ,#loanDetail .c13{
+            margin:5px 0;
+            padding-left:5px;
+            padding-right: 5px;
+        }
+
+        #loanDetail select option{
+            font-size: 12px;
+            font-family: "微软雅黑";
+        }
+        .search_btn {
+            font-size: 12px;
+            background-color: #09C;
+            padding: 5px 16px;
+            margin-top: 3px;
+            margin-bottom: 5px;
+        }
+        .ta_r{
+            text-align: right;
+        }
+        .mr_25{
+            margin-right: 25px;
+        }
+        .cardSelect{
+            border: 1px solid #ddd;
+            height: 25px;
+            width: 150px;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+<div class="content1" href="">
+
+<div class="hui"><img src="/hd/static/images/ajax-loader.gif"></div>
+<div class="content">
+    <!--面包屑导航start-->
+    <ol class="breadcrumb">
+        <li class="active">资方列表</li>
+    </ol>
+    <div id="loanDetail" class="col-lg-12 col-md-12 col-sm-12">
+        <div class="col-lg-3 col-md-3 col-sm-3"><span class="wd_60">客户姓名&nbsp;&nbsp;</span><input type="text" id="holder"></div>
+        <div class="col-lg-3 col-md-3 col-sm-3"><span class="wd_60">客户手机号&nbsp;&nbsp;</span><input type="text" id="phone"></div>
+        <div class="col-lg-3 col-md-3 col-sm-3"><span class="wd_60">银行卡号&nbsp;&nbsp;</span><input type="text" id="cardid"></div>
+        <div class="col-lg-3 col-md-3 col-sm-3"><span class="wd_60">验证状态&nbsp;&nbsp;</span>
+            <select id="checkFlag">
+                <option value="">请选择</option>
+                <option value="0">验证未通过</option>
+                <option value="1">验证通过</option>
+                <option value="2">未验证</option>
+            </select>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-3"><span class="wd_60">卡状态&nbsp;&nbsp;</span>
+        <select id="status">
+            <option value="">请选择</option>
+            <option value="0">有效</option>
+            <option value="1">已注销</option>
+        </select>
+    </div>
+        <div class="col-lg-3 col-md-3 col-sm-3 ta_r">
+            <button class="btn btn-primary btn-sm search_btn" type="button" id="btn-search">查询</button>&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="btn btn-primary btn-sm search_btn mr_25" id="addBankCard" type="button">添加银行卡</button>
+        </div>
+        <div class="clear"></div>
+    </div>
+    <div class="table-responsive">
+        <div id="bankCardList_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer"><div class="top"><div class="clear"></div></div><div id="bankCardList_processing" class="dataTables_processing panel panel-default" style="display: none;">处理中...</div><table id="bankCardList" style="width: 100%;" class="table table-bordered table-striped table-hover bg_wt dataTable no-footer" role="grid" aria-describedby="bankCardList_info">
+            <thead style="border-bottom: 0;background-color: #fff;">
+            <tr role="row"><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 132px;">客户姓名</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 201px;">手机号</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 329px;">银行卡号</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 160px;">银行卡类型</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 132px;">验证状态</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 104px;">卡状态</th></tr>
+            </thead>
+        <tbody><tr role="row" class="odd"><td>温美欣</td><td>13226734662</td><td>6236683110004263179</td><td>建设银行</td><td>验证通过</td><td>有效</td></tr><tr role="row" class="even"><td>杨志</td><td>15080656900</td><td>6215591908000787967</td><td>工商银行</td><td>验证通过</td><td>有效</td></tr><tr role="row" class="odd"><td>张林岛</td><td>13698914585</td><td>6212262201041013675</td><td>工商银行</td><td>验证通过</td><td>有效</td></tr><tr role="row" class="even"><td>赵诗昱</td><td>18970358829</td><td>6217002020055267181</td><td>建设银行</td><td>验证通过</td><td>有效</td></tr><tr role="row" class="odd"><td>谢思宇</td><td>18280175534</td><td>6217908300001589291</td><td>中国银行</td><td>验证通过</td><td>有效</td></tr><tr role="row" class="even"><td>刘芮辰</td><td>18166049600</td><td>6217002020062522446</td><td>建设银行</td><td>验证通过</td><td>有效</td></tr><tr role="row" class="odd"><td>陶旺</td><td>17602363787</td><td>6217233100010013341</td><td>工商银行</td><td>验证通过</td><td>有效</td></tr><tr role="row" class="even"><td>磨承鑫</td><td>17396714867</td><td>6217003370017338839</td><td>建设银行</td><td>验证通过</td><td>有效</td></tr><tr role="row" class="odd"><td>李文婷</td><td>13160880649</td><td>6228480089229500379</td><td>农业银行</td><td>验证通过</td><td>有效</td></tr><tr role="row" class="even"><td>厉东鑫</td><td>18615581106</td><td>6217002340037438647</td><td>建设银行</td><td>验证通过</td><td>有效</td></tr></tbody></table><div class="bottom"><div class="dataTables_info" id="bankCardList_info" role="status" aria-live="polite">显示第 1 - 10 条记录，共51,467 条</div><div class="dataTables_length" id="bankCardList_length"><label> <select name="bankCardList_length" aria-controls="bankCardList" class="form-control input-sm"><option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select> </label></div><div class="dataTables_paginate paging_full_numbers" id="bankCardList_paginate"><ul class="pagination"><li class="paginate_button first disabled" id="bankCardList_first"><a href="javascript:void(0);" aria-controls="bankCardList" data-dt-idx="0" tabindex="0">首页</a></li><li class="paginate_button previous disabled" id="bankCardList_previous"><a href="javascript:void(0);" aria-controls="bankCardList" data-dt-idx="1" tabindex="0">上页</a></li><li class="paginate_button active"><a href="javascript:void(0);" aria-controls="bankCardList" data-dt-idx="2" tabindex="0">1</a></li><li class="paginate_button "><a href="javascript:void(0);" aria-controls="bankCardList" data-dt-idx="3" tabindex="0">2</a></li><li class="paginate_button "><a href="javascript:void(0);" aria-controls="bankCardList" data-dt-idx="4" tabindex="0">3</a></li><li class="paginate_button "><a href="javascript:void(0);" aria-controls="bankCardList" data-dt-idx="5" tabindex="0">4</a></li><li class="paginate_button "><a href="javascript:void(0);" aria-controls="bankCardList" data-dt-idx="6" tabindex="0">5</a></li><li class="paginate_button disabled" id="bankCardList_ellipsis"><a href="javascript:void(0);" aria-controls="bankCardList" data-dt-idx="7" tabindex="0">…</a></li><li class="paginate_button "><a href="javascript:void(0);" aria-controls="bankCardList" data-dt-idx="8" tabindex="0">5147</a></li><li class="paginate_button next" id="bankCardList_next"><a href="javascript:void(0);" aria-controls="bankCardList" data-dt-idx="9" tabindex="0">下页</a></li><li class="paginate_button last" id="bankCardList_last"><a href="javascript:void(0);" aria-controls="bankCardList" data-dt-idx="10" tabindex="0">末页</a></li></ul></div><div class="clear"></div></div></div>
+    </div>
+    <!--正文内容end-->
+</div>
+<script src="js/jquery-2.1.1.min.js"></script>
+<script src="js/jedate.min.js"></script>
+<script>
+
+
+</script>
+
+<script>
+    $(function(){
+
+        var dt = $("#bankCardList").dataTable({
+            "sDom":'<"top"<"clear">>rt<"bottom"ilp<"clear">>',
+            bProcessing:true,
+            pageLength: 10,
+            searching: false, // 禁用dataTables自带的查询框
+            ordering: false, // 禁用排序
+            ajax: {
+                type: "POST",
+                url: "/hd/custBackCard/listData",
+                data:function(d) {
+                    d.holder = $("#holder").val();
+                    d.phone = $("#phone").val();
+                    d.cardid = $("#cardid").val();
+                    d.checkFlag = $("#checkFlag").val();
+                    d.status = $("#status").val();
+                }
+            },
+            columns: [
+                {data:"holder"},
+                {data:"phone",defaultContent:'--'},
+                {data:"cardid"},
+                {data:"bankname",defaultContent:'--'},
+                {data: "checkFlag",render:function(data,type,row){
+                    var operation ="";
+                    if(data=='0'){
+                        operation="验证未通过";
+                    }else if(data=="1"){
+                        operation="验证通过";
+                    }else if(data =='2'){
+                        operation="未验证";
+                    }
+                    return operation;
+                }},
+                {data: "status",render:function(data,type,row){
+                    var operation ="有效";
+                    if(data=='1'){
+                        operation="已注销";
+                    }
+                    return operation;
+                }}
+            ]
+        });
+        $("#btn-search").click(function(e){
+            dt.api().draw();
+        });
+
+//高级搜索弹出层
+        var bankCardList=[{"deleted":"0","description":"农业银行","did":"bank_abc","ext":"ABC","ext1":"866300","name":"农业银行","pid":"bank","sort":"0","value":"ABC"},{"deleted":"0","description":"北京银行","did":"bank_bob","ext":"BOB","ext1":"865900","name":"北京银行","pid":"bank","sort":"0","value":"BOB"},{"deleted":"0","description":"中国银行","did":"bank_boc","ext":"BOC","ext1":"866100","name":"中国银行","pid":"bank","sort":"0","value":"BOC"},{"deleted":"0","description":"上海银行","did":"bank_bos","ext":"BOS","name":"上海银行","pid":"bank","sort":"0","value":"BOS"},{"deleted":"0","description":"建设银行","did":"bank_ccb","ext":"CBC","ext1":"866500","name":"建设银行","pid":"bank","sort":"0","value":"CCB"},{"deleted":"0","description":"光大银行","did":"bank_ceb","ext":"CEBBANK","ext1":"867200","name":"光大银行","pid":"bank","sort":"0","value":"CEB"},{"deleted":"0","description":"兴业银行","did":"bank_cib","ext":"CIB","ext1":"867600","name":"兴业银行","pid":"bank","sort":"0","value":"CIB"},{"deleted":"0","description":"招商银行","did":"bank_cmb","ext":"CMB","ext1":"866900","name":"招商银行","pid":"bank","sort":"0","value":"CMB"},{"deleted":"0","description":"恒丰银行","did":"bank_egb","ext":"EGB","name":"恒丰银行","pid":"bank","sort":"0","value":"EGB"},{"deleted":"0","description":" 广发银行","did":"bank_gdb","ext":"GDB","ext1":"866800","name":"广发银行","pid":"bank","sort":"0","value":"CGB"},{"deleted":"0","description":"华夏银行","did":"bank_hxb","ext":"HXB","ext1":"866400","name":"华夏银行","pid":"bank","sort":"0","value":"HXB"},{"deleted":"0","description":"晋商银行","did":"bank_jsh","ext":"JSH","ext1":"","name":"晋商银行","pid":"bank","sort":"0","value":"JSH"},{"deleted":"0","description":"平安银行","did":"bank_pab","ext":"PAB","name":"平安银行","pid":"bank","sort":"0","value":"PAB"},{"deleted":"0","description":"平安银行","did":"bank_sdb","ext":"SDB","ext1":"","name":"平安银行","pid":"bank","sort":"0","value":"SDB"},{"deleted":"0","description":"农发银行","did":"bank_adbc","name":"农发银行","pid":"bank","sort":"0","value":"ADBC"},{"deleted":"0","description":"民生银行","did":"bank_cmbc","ext":"CMBC","ext1":"866600","name":"民生银行","pid":"bank","sort":"0","value":"CMBC"},{"deleted":"0","description":"工商银行","did":"bank_icbc","ext":"ICBC","ext1":"866200","name":"工商银行","pid":"bank","sort":"0","value":"ICBC"},{"deleted":"0","description":"邮储银行","did":"bank_psbc","ext":"PSBC","ext1":"866000","name":"邮储银行","pid":"bank","sort":"0","value":"PSBC"},{"deleted":"0","description":"浦发银行","did":"bank_spdb","ext":"SPDB","ext1":"867100","name":"浦发银行","pid":"bank","sort":"0","value":"SPDB"},{"deleted":"0","description":"交通银行","did":"bank_bcomm","ext":"BCOMM","ext1":"866400","name":"交通银行","pid":"bank","sort":"0","value":"BCM"},{"deleted":"0","description":"中信银行","did":"bank_citic","ext":"CITIC","ext1":"867400","name":"中信银行","pid":"bank","sort":"0","value":"CITIC"},{"deleted":"0","description":"青岛银行","did":"bank_qdccb","ext":"QDCCB","name":"青岛银行","pid":"bank","sort":"0","value":"QDCCB"}];
+        function getSelectStr(list){
+            var bankCardStr="<select id='addBankname'><option value=''>请选择</option>";
+            for(var j=0;j<list.length;j++){
+                var map=list[j];
+                bankCardStr+='<option ';
+                bankCardStr+=' value="'+map["value"]+'">'+map["name"]+'</option>';
+            }
+            bankCardStr+="</select>";
+            return bankCardStr;
+        }
+        var bankCardListStr=getSelectStr(bankCardList);
+
+        $('#addBankCard').on('click', function(){
+            var content='<table class="table sousuo no-border"><tr>';
+            content+='<td><span>客户姓名&nbsp;:&nbsp;</span><input type="text" id="addHolder"/></td>';
+            content+='<td><span>手机号&nbsp;:&nbsp;</span><input type="text" id="addPhone"/></td>';
+            content+= '</tr><tr>';
+            content+='<td><span>银行卡类型&nbsp;:&nbsp;</span>'+bankCardListStr+'</td>';
+            content+='<td><span>银行卡号&nbsp;:&nbsp;</span><input type="text" id="addCardid"/></td>';
+            content+= '</tr></table>';
+            layer.open({
+                type: 1,
+                area: ['600px', '200px'],
+                title: '添加客户银行卡',
+                btn: ['添加','清空','取消'],
+                yes: function (index, layero) {
+                    var holder=$("#addHolder").val();
+                    var phone=$("#addPhone").val();
+                    var bankname=$("#addBankname").val();
+                    var cardid=$("#addCardid").val();
+                    if(!holder.trim()){
+                        alert("银行卡绑定用户名不能为空");
+                        return;
+                    }
+                    if(!phone.trim()){
+                        alert("银行卡预留手机号不能为空");
+                        return;
+                    }
+                    if(!bankname.trim()){
+                        alert("银行卡类型不能为空");
+                        return;
+                    }
+                    if(!cardid.trim()){
+                        alert("银行卡卡号不能为空");
+                        return;
+                    }
+                    $.ajax({
+                        type: 'POST',
+                        url: '/hd/custBackCard/addBandCard' ,
+                        data: {holder:holder,phone:phone,cardid:cardid,bankname:bankname},
+                        success:function(data){
+                            if("200"==data.code){
+                                layer.msg("添加客户银行卡成功");
+                                dt.api().draw();
+                                layer.close(index);
+                            }else{
+                                layer.msg(data.msg);
+                            }
+                        }
+                    });
+                    //按钮【按钮一】的回调
+//                    layer.close(index);
+                },
+                btn2: function (index, layero) {
+                    //按钮【按钮二】的回调
+                    $(".sousuo input").val("");
+                    return false;
+                },
+                btn3: function (index, layero) {
+                    //按钮【按钮三】的回调
+                    layer.close(index);
+                },
+                shadeClose: true, //点击遮罩关闭
+                content:  content
+            });
+        });
+
+    });
+
+
+
+</script>
+
+
+<script>
+    //分页方法
+    function page(n,s){
+        $("#pageNo").val(n);
+        $("#pageSize").val(s);
+        $("#searchForm").submit();
+        return false;
+    }
+
+
+</script>
+
+<script>
+    var time = 100000;
+    var interval; //调度器对象。
+    function run(){
+        interval = setInterval("fun()",time);
+    }
+    function fun(){
+        $(".hui").css("display","none");
+    }
+    $(function(){
+        $("#reviewList").delegate('tr td button','click',function(){
+            $(this).html("加载中...").attr("disabled","disabled");
+            $(".hui").css("display","block");
+            run();
+        })
+    })
+</script>
+
+<script>
+    $(document).ready(function(e) {
+        var counter = 0;
+        if (window.history && window.history.pushState) {
+            $(window).on('popstate', function () {
+                window.history.pushState('forward', null, '#');
+                window.history.forward(1);
+            });
+        }
+        window.history.pushState('forward', null, '#'); //在IE中必须得有这两行
+        window.history.forward(1);
+    });
+</script>
+
+</div>
+</body>
+</html>

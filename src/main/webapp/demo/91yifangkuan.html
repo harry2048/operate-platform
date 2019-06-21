@@ -1,0 +1,536 @@
+<div class="content1" href="">
+    <meta http-equiv="content-type" content="text/html;charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <title>91放款查询页面</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/base.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/layer.css" rel="stylesheet">
+    <link href="css/pagination.css" rel="stylesheet">
+    <link href="css/bootstrap-datetimepicker.css" rel="stylesheet">
+    <link href="css/dataTables.bootstrap.min.css" rel="stylesheet">
+    <link href="css/jedate.css" rel="stylesheet">
+    <style>
+        #loanDetail{
+            background-color: #fff;
+            margin-bottom: 15px;
+        }
+        #loanDetail p{
+            padding-left:0 ;
+            padding-right: 0;
+            margin: 6px 0 ;
+        }
+        #loanDetail .wd_60{
+            display: inline-block;
+            width: 102px;
+            text-align: right;
+            font-size: 12px;
+            font-family: "微软雅黑";
+        }
+        #loanDetail .c13 .wd_60{
+            float: left;
+            margin-top: 5px;
+        }
+        #loanDetail .c13 input{
+            float: left;
+            font-size: 12px;
+            font-family: "微软雅黑";
+        }
+        #loanDetail .col-lg-3 ,#loanDetail .c13{
+            margin:5px 0;
+            padding-left:5px;
+            padding-right: 5px;
+        }
+
+        #loanDetail select option{
+            font-size: 12px;
+            font-family: "微软雅黑";
+        }
+        .search_btn {
+            font-size: 12px;
+            background-color: #09C;
+            padding: 5px 16px;
+            margin-top: 3px;
+            margin-bottom: 5px;
+        }
+        .ta_r{
+            text-align: right;
+        }
+        .mr_25{
+            margin-right: 25px;
+        }
+        .cardSelect{
+            border: 1px solid #ddd;
+            height: 25px;
+            width: 150px;
+            font-size: 12px;
+        }
+    </style>
+
+<div class="hui"><img src="images/ajax-loader.gif"></div>
+        <div class="content">
+            <!--面包屑导航start-->
+            <ol class="breadcrumb">
+                <li class="active">已放款列表查询</li>
+            </ol>
+            <div id="loanDetail" class="col-lg-12 col-md-12 col-sm-12">
+                <div class="col-lg-3 col-md-3 col-sm-3"><span class="wd_60">身份证号&nbsp;&nbsp;</span><input type="text" id="idNo"></div>
+                <div class="col-lg-3 col-md-3 col-sm-3"><span class="wd_60">姓名&nbsp;&nbsp;</span><input type="text" id="idName"></div>
+                <div class="col-lg-3 col-md-3 col-sm-3"><span class="wd_60">商户&nbsp;&nbsp;</span><input type="text" id="bcName"></div>
+                <div class="col-lg-3 col-md-3 col-sm-3"><span class="wd_60">资方&nbsp;&nbsp;</span><select id="fundSource">
+                      <option value="14" selected="selected">91金融</option>
+                      <option value="16">91旺财</option>
+                 </select></div>
+                <div class="col-lg-3 col-md-3 col-sm-3"><span class="wd_60">资方放款日期&nbsp;&nbsp;</span><input type="text" id="applyDateStart2" value="2019-05-20" placeholder="请选择时间" readonly=""></div>
+                <div class="col-lg-3 col-md-3 col-sm-3 c13"><span class="wd_60">信审日期(开始)&nbsp;&nbsp;</span><input type="text" id="applyDateStart3" value="" placeholder="请选择时间" readonly=""></div>
+                <div class="col-lg-3 col-md-3 col-sm-3 c13"><span class="wd_60">信审日期(结束)&nbsp;&nbsp;</span><input type="text" id="applyDateStart4" value="" placeholder="请选择时间" readonly=""></div>
+                <div class="col-lg-3 col-md-3 col-sm-3">
+
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-3 ta_r">
+                    <button class="btn btn-primary btn-sm search_btn" type="button" id="btn-search">查询</button>
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <button class="btn btn-primary btn-sm search_btn mr_25" type="button" id="btn-export" onclick="exportResult();">导出</button>
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div class="table-responsive">
+                <div id="lendingList_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer"><div class="top"><div class="clear"></div></div><div id="lendingList_processing" class="dataTables_processing panel panel-default" style="display: none;">处理中...</div><table id="lendingList" style="width: 100%;" class="table table-bordered table-striped table-hover bg_wt dataTable no-footer" role="grid" aria-describedby="lendingList_info">
+                    <thead style="border-bottom: 0;background-color: #fff;">
+                    <tr role="row"><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 134px;">订单编号</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 113px;">申请时间</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 63px;">放款日期</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 148px;">渠道</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 45px;">申请金额</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 45px;">申请期限</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 46px;">期供款</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 45px;">客户姓名</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 127px;">身份证号码</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 66px;">资方放款金额</th><th class="text-center sorting_disabled" rowspan="1" colspan="1" style="width: 141px;">操作</th></tr>
+                    </thead>
+                <tbody><tr role="row" class="odd"><td>6391491967033803777</td><td>2018-04-16 11:47:13</td><td>2018-04-17</td><td>北京佰加佰教育咨询有限公司</td><td>18780</td><td>12</td><td>1565</td><td>包鑫宗</td><td>622801199003230839</td><td>18780</td><td><button type="button" data-id="6391491967033803777" class="btn btn-primary btn-sm mt_3" style="margin-bottom: 5px" name="public-deduct">提前结清</button><button type="button" data-id="6391491967033803777" data-source="14" data-cust-id="6391463057736115201" data-cust-name="包鑫宗" class="btn btn-primary btn-sm mt_3" name="modify_card">变更银行卡</button></td></tr><tr role="row" class="even"><td>6391528578731738113</td><td>2018-04-16 14:12:42</td><td>2018-04-17</td><td>北京佰加佰教育咨询有限公司</td><td>10200</td><td>12</td><td>850</td><td>刘荣文</td><td>230207198611250012</td><td>10200</td><td><button type="button" data-id="6391528578731738113" class="btn btn-primary btn-sm mt_3" style="margin-bottom: 5px" name="public-deduct">提前结清</button><button type="button" data-id="6391528578731738113" data-source="14" data-cust-id="6391185630843126785" data-cust-name="刘荣文" class="btn btn-primary btn-sm mt_3" name="modify_card">变更银行卡</button></td></tr><tr role="row" class="odd"><td>6390172470309028865</td><td>2018-04-13 18:18:57</td><td>2018-04-16</td><td>广州黑格力斯</td><td>21900</td><td>12</td><td>1825</td><td>张恒</td><td>610422199203083438</td><td>21900</td><td><button type="button" data-id="6390172470309028865" class="btn btn-primary btn-sm mt_3" style="margin-bottom: 5px" name="public-deduct">提前结清</button><button type="button" data-id="6390172470309028865" data-source="14" data-cust-id="6385406165406314497" data-cust-name="张恒" class="btn btn-primary btn-sm mt_3" name="modify_card">变更银行卡</button></td></tr><tr role="row" class="even"><td>6390773918189224961</td><td>2018-04-14 12:35:45</td><td>2018-04-16</td><td>北京佰加佰教育咨询有限公司</td><td>18780</td><td>12</td><td>1565</td><td>张岩</td><td>152101197901111524</td><td>18780</td><td><button type="button" data-id="6390773918189224961" class="btn btn-primary btn-sm mt_3" style="margin-bottom: 5px" name="public-deduct">提前结清</button><button type="button" data-id="6390773918189224961" data-source="14" data-cust-id="6390770483245727745" data-cust-name="张岩" class="btn btn-primary btn-sm mt_3" name="modify_card">变更银行卡</button></td></tr><tr role="row" class="odd"><td>6390836862973379585</td><td>2018-04-14 16:24:04</td><td>2018-04-16</td><td>北京佰加佰教育咨询有限公司</td><td>7980</td><td>12</td><td>665</td><td>裴永生</td><td>211321199303033459</td><td>7980</td><td><button type="button" data-id="6390836862973379585" class="btn btn-primary btn-sm mt_3" style="margin-bottom: 5px" name="public-deduct">提前结清</button><button type="button" data-id="6390836862973379585" data-source="14" data-cust-id="6389791827260751873" data-cust-name="裴永生" class="btn btn-primary btn-sm mt_3" name="modify_card">变更银行卡</button></td></tr><tr role="row" class="even"><td>6390837384411350017</td><td>2018-04-14 16:26:08</td><td>2018-04-16</td><td>北京佰加佰教育咨询有限公司</td><td>18780</td><td>12</td><td>1565</td><td>罗楠</td><td>110105198205111820</td><td>18780</td><td><button type="button" data-id="6390837384411350017" class="btn btn-primary btn-sm mt_3" style="margin-bottom: 5px" name="public-deduct">提前结清</button><button type="button" data-id="6390837384411350017" data-source="14" data-cust-id="6390833356502140929" data-cust-name="罗楠" class="btn btn-primary btn-sm mt_3" name="modify_card">变更银行卡</button></td></tr><tr role="row" class="odd"><td>6391134505100379137</td><td>2018-04-15 12:14:41</td><td>2018-04-16</td><td>北京佰加佰教育咨询有限公司</td><td>21600</td><td>12</td><td>1800</td><td>时文博</td><td>411424199911236614</td><td>21600</td><td><button type="button" data-id="6391134505100379137" class="btn btn-primary btn-sm mt_3" style="margin-bottom: 5px" name="public-deduct">提前结清</button><button type="button" data-id="6391134505100379137" data-source="14" data-cust-id="6391123135251619841" data-cust-name="时文博" class="btn btn-primary btn-sm mt_3" name="modify_card">变更银行卡</button></td></tr><tr role="row" class="even"><td>6391153948390065153</td><td>2018-04-15 13:24:03</td><td>2018-04-16</td><td>北京佰加佰教育咨询有限公司</td><td>21300</td><td>12</td><td>1775</td><td>郭东东</td><td>140522199307301017</td><td>21300</td><td><button type="button" data-id="6391153948390065153" class="btn btn-primary btn-sm mt_3" style="margin-bottom: 5px" name="public-deduct">提前结清</button><button type="button" data-id="6391153948390065153" data-source="14" data-cust-id="6391127084735416321" data-cust-name="郭东东" class="btn btn-primary btn-sm mt_3" name="modify_card">变更银行卡</button></td></tr><tr role="row" class="odd"><td>6391205381453906945</td><td>2018-04-15 17:10:11</td><td>2018-04-16</td><td>北京佰加佰教育咨询有限公司</td><td>10800</td><td>12</td><td>900</td><td>吴洪扬</td><td>130623198908192712</td><td>10800</td><td><button type="button" data-id="6391205381453906945" class="btn btn-primary btn-sm mt_3" style="margin-bottom: 5px" name="public-deduct">提前结清</button><button type="button" data-id="6391205381453906945" data-source="14" data-cust-id="6391193907634337793" data-cust-name="吴洪扬" class="btn btn-primary btn-sm mt_3" name="modify_card">变更银行卡</button></td></tr><tr role="row" class="even"><td>6391264151467983873</td><td>2018-04-15 20:41:57</td><td>2018-04-16</td><td>北京华夏学子培训学校</td><td>20000</td><td>12</td><td>1666.67</td><td>赵立伟</td><td>222404199002040016</td><td>20000</td><td><button type="button" data-id="6391264151467983873" class="btn btn-primary btn-sm mt_3" style="margin-bottom: 5px" name="public-deduct">提前结清</button><button type="button" data-id="6391264151467983873" data-source="14" data-cust-id="6391250764034800641" data-cust-name="赵立伟" class="btn btn-primary btn-sm mt_3" name="modify_card">变更银行卡</button></td></tr></tbody></table><div class="bottom"><div class="dataTables_info" id="lendingList_info" role="status" aria-live="polite">显示第 1 - 10 条记录，共105 条</div><div class="dataTables_length" id="lendingList_length"><label> <select name="lendingList_length" aria-controls="lendingList" class="form-control input-sm"><option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select> </label></div><div class="dataTables_paginate paging_full_numbers" id="lendingList_paginate"><ul class="pagination"><li class="paginate_button first disabled" id="lendingList_first"><a href="javascript:void(0);" aria-controls="lendingList" data-dt-idx="0" tabindex="0">首页</a></li><li class="paginate_button previous disabled" id="lendingList_previous"><a href="javascript:void(0);" aria-controls="lendingList" data-dt-idx="1" tabindex="0">上页</a></li><li class="paginate_button active"><a href="javascript:void(0);" aria-controls="lendingList" data-dt-idx="2" tabindex="0">1</a></li><li class="paginate_button "><a href="javascript:void(0);" aria-controls="lendingList" data-dt-idx="3" tabindex="0">2</a></li><li class="paginate_button "><a href="javascript:void(0);" aria-controls="lendingList" data-dt-idx="4" tabindex="0">3</a></li><li class="paginate_button "><a href="javascript:void(0);" aria-controls="lendingList" data-dt-idx="5" tabindex="0">4</a></li><li class="paginate_button "><a href="javascript:void(0);" aria-controls="lendingList" data-dt-idx="6" tabindex="0">5</a></li><li class="paginate_button disabled" id="lendingList_ellipsis"><a href="javascript:void(0);" aria-controls="lendingList" data-dt-idx="7" tabindex="0">…</a></li><li class="paginate_button "><a href="javascript:void(0);" aria-controls="lendingList" data-dt-idx="8" tabindex="0">11</a></li><li class="paginate_button next" id="lendingList_next"><a href="javascript:void(0);" aria-controls="lendingList" data-dt-idx="9" tabindex="0">下页</a></li><li class="paginate_button last" id="lendingList_last"><a href="javascript:void(0);" aria-controls="lendingList" data-dt-idx="10" tabindex="0">末页</a></li></ul></div><div class="clear"></div></div></div>
+            </div>
+            <!--正文内容end-->
+        </div>
+        
+        
+		    
+		        
+		            
+		                
+		                
+		            
+		            
+		            	
+			                
+			                    
+				                    
+				                    	
+				                    	
+				                        
+				                        
+				                        
+				                        
+				                        
+				                        
+				                    
+			                    
+			                
+			            
+		            
+		            
+		                
+		            
+		        
+		    
+		
+<script src="jedate/jedate.min.js"></script>
+
+<script>
+    jeDate({
+        dateCell:"#applyDateStart2", //目标元素。由于jedate.js封装了一个轻量级的选择器，因此dateCell还允许你传入class、tag这种方式 '#id .class'
+        format:"YYYY-MM-DD", //日期格式
+        minDate:"1900-01-01", //最小日期
+        maxDate:"2099-12-31", //最大日期
+        isinitVal:false, //是否初始化时间
+        isTime:true, //是否开启时间选择
+        isClear:true, //是否显示清空
+        festival:false, //是否显示节日
+        zIndex:999,  //弹出层的层级高度
+        marks:null, //给日期做标注
+        choosefun:function(val) {},  //选中日期后的回调
+        clearfun:function(val) {},   //清除日期后的回调
+        okfun:function(val) {}       //点击确定后的回调
+    });
+    jeDate({
+        dateCell:"#applyDateStart3", //目标元素。由于jedate.js封装了一个轻量级的选择器，因此dateCell还允许你传入class、tag这种方式 '#id .class'
+        format:"YYYY-MM-DD hh:mm:ss", //日期格式
+        minDate:"1900-01-01 00:00:00", //最小日期
+        maxDate:"2099-12-31 23:59:59", //最大日期
+        isinitVal:false, //是否初始化时间
+        isTime:true, //是否开启时间选择
+        isClear:true, //是否显示清空
+        festival:false, //是否显示节日
+        zIndex:999,  //弹出层的层级高度
+        marks:null, //给日期做标注
+        choosefun:function(val) {},  //选中日期后的回调
+        clearfun:function(val) {},   //清除日期后的回调
+        okfun:function(val) {}       //点击确定后的回调
+    });
+    jeDate({
+        dateCell:"#applyDateStart4", //目标元素。由于jedate.js封装了一个轻量级的选择器，因此dateCell还允许你传入class、tag这种方式 '#id .class'
+        format:"YYYY-MM-DD hh:mm:ss", //日期格式
+        minDate:"1900-01-01 00:00:00", //最小日期
+        maxDate:"2099-12-31 23:59:59", //最大日期
+        isinitVal:false, //是否初始化时间
+        isTime:true, //是否开启时间选择
+        isClear:true, //是否显示清空
+        festival:false, //是否显示节日
+        zIndex:999,  //弹出层的层级高度
+        marks:null, //给日期做标注
+        choosefun:function(val) {},  //选中日期后的回调
+        clearfun:function(val) {},   //清除日期后的回调
+        okfun:function(val) {}       //点击确定后的回调
+    });
+</script>
+
+<script>
+    var dt;
+    function refresh(){
+        dt.api(dt.api().page()).draw(false);
+    }
+     $(function(){
+         $("body").delegate('#repaymentCardNo',"keyup",function(){
+             this.value =this.value.replace(/\s/g,'').replace(/(\d{4})(?=\d)/g,"$1 ");
+         });
+
+
+    	dt = $("#lendingList").dataTable({
+	         "sDom":'<"top"<"clear">>rt<"bottom"ilp<"clear">>', 
+	         bProcessing:true,
+	         pageLength: 10,
+	         searching: false, // 禁用dataTables自带的查询框
+	         ordering: false, // 禁用排序
+	         ajax: {
+	             type: "POST",
+	             url: "/hd/lending/getAlreadyLendingListData",
+	             data:function(d) {
+	           	  d.idNo = $("#idNo").val();
+	           	  d.idName = $("#idName").val();
+	           	  d.lendingDate = $("#applyDateStart2").val();
+	           	  d.bcName = $("#bcName").val();
+	           	  if('' == $("#fundSource").val()){
+	           		d.fundSource='14'
+	           	  }else{
+	           		d.fundSource=$("#fundSource").val();
+	           	  }
+	           	  d.examineDateStart = $("#applyDateStart3").val();
+	           	  d.examineDateEnd = $("#applyDateStart4").val();
+	             }
+	         },
+	         columns: [
+	             {data:"applyId"},
+	             {data:"importTime"},
+	             {data:"lendingDate"},
+	             {data:"bcName" },
+	             {data:"applyAmount"},
+	             {data:"applyDuration"},
+	             {data:"periodAmount"},
+	             {data: "idName"},
+	             {data: "idNo"},
+	             {data: "applyAmount"},
+	             //{data: "hdLoanAmount"},
+                 {data: "applyId",render:function(data,type,row){
+                     if(row.status==7000){
+                         var operation = "<button type='button'  data-id="+data+" class='btn btn-primary btn-sm mt_3' style='margin-bottom: 5px' name='public-deduct'>提前结清</button>"+
+                                 "<button type='button' data-id="+data+" data-source="+row.fundSource+" data-cust-id="+row.hdCustInfoId+" data-cust-name="+row.idName+" class='btn btn-primary btn-sm mt_3' name='modify_card'>变更银行卡</button>";
+                         return operation;
+                     }
+                     return '';
+                 }}
+	         ]
+
+	     });
+    	 $("#btn-search").click(function(e){
+             var examineDateStart = $("#applyDateStart3").val();
+          	 var examineDateEnd = $("#applyDateStart4").val();
+             if(examineDateStart&&examineDateEnd){
+                 if(examineDateStart >=examineDateEnd){
+                     layer.msg("信审结束日期必须大于信审开始日期!");
+                     return false;
+                 }
+             }
+             dt.api().draw();
+         });
+         //给行绑定双击事件
+         $('#lendingList tbody').on('dblclick', 'tr', function () {
+             var item = dt.api().row(this).data();
+             var applyId = item.applyId;
+             var url = '/hd/lending/get91RepayPlan/'+applyId;
+             layer.open({
+                 type: 2,
+                 area: ['1280px', '600px'],
+                 title: '贷款情况详情页面',
+                 shadeClose: true, //点击遮罩关闭
+                 content: url
+             });
+         });
+
+         $("#lendingList").on("click","button[name='public-deduct']",function(e){
+             var applyId = $(this).attr("data-id");
+             $.ajax({
+                 type: 'POST',
+                 url: "/hd/deduct/getBackDiscountAmount" ,
+                 data:{applyId:applyId} ,
+                 async: true,
+                 success:function(data){
+                     if('200'==data.code){
+                         var initButton="<p class='fixP mt_15'><span class='tx'>商户应退互动金额:</span><input class='borSty' type='number' id='bizSetlAmt' value='"+data.result.bizSetlAmt+"'></p><input class='borSty' type='hidden' id='backDiscountAmount' value='"+data.result.disCountAmount+"'>" +
+                                 "<p class='fixP mt_15'><span class='tx'>互动应退资方金额:</span><input class='borSty' type='number' id='hdSetlAmt' value='"+data.result.hdSetlAmt+"'></p>";
+                         layer.open({
+                             type: 1,
+                             area: ['300px', '200px'],
+                             title: '提前还款',
+                             btn: ['确定','取消'],
+                             yes: function (index, layero) {
+                                 var backBizDiscountAmount=Number($("#backDiscountAmount").val());
+                                 var hdSetlAmt=Number($("#hdSetlAmt").val());
+                                 var bizSetlAmt=Number($("#bizSetlAmt").val());
+
+                                 $.ajax({
+                                     type: 'POST',
+                                     url: "/hd/deduct/prepayment" ,
+                                     data:{applyId:applyId,backBizDiscountAmount:backBizDiscountAmount,hdSetlAmt:hdSetlAmt,bizSetlAmt:bizSetlAmt} ,
+                                     async: true,
+                                     success:function(data){
+                                         if('200'==data.code){
+                                             layer.msg("提前还款成功");
+                                             refresh();
+                                         }else{
+                                             layer.msg(data.msg+"提前还款失败");
+                                         }
+                                     }
+                                 });
+                                 layer.close(index);
+                             },
+                             cancel:function(index){
+                                 //按钮【按钮二】的回调
+                                 layer.close(index);
+                             },
+                             shadeClose: true, //点击遮罩关闭
+                             content:initButton
+                         });
+                     }else{
+                         layer.msg(data.msg+"对公扣款失败");
+                     }
+                 }
+             });
+
+         });
+
+         $("#lendingList").on("click","button[name='modify_card']",function(e){
+             var applyId = $(this).attr("data-id");
+             var fundSource=$(this).attr("data-source");
+             var hdCustInfoId=$(this).attr("data-cust-id");
+             var idName=$(this).attr("data-cust-name");
+
+             $.ajax({
+                 type: 'POST',
+                 url: "/hd/deduct/getModifyCardMsg" ,
+                 data:{applyId:applyId,fundSource:fundSource} ,
+                 async: true,
+                 success:function(data){
+                     if('200'==data.code){
+                         var bankMsg=data.result;
+                         var banks=bankMsg.data;
+                         var selectStr="<select id='cardName' class='cardSelect'>"
+                         for(var i=0;i<banks.length;i++){
+                             selectStr+="<option value='"+banks[i].value+"'";
+                             if(banks[i].value == bankMsg.repaymentBank){
+                                 selectStr+=" selected "
+                             }
+                             selectStr+=">"+banks[i].name+"</option>"
+                         }
+                         bankMsg.repaymentCardNo=bankMsg.repaymentCardNo.replace(/\s/g,'').replace(/(\d{4})(?=\d)/g,"$1 ");
+                         selectStr+="</select>"
+                         var initButton="<p class='fixP mt_15'><span class='tx'>还款开户行:</span>"+selectStr+"</p>" +
+                                 "<p class='fixP mt_15'><span class='tx' style='padding-right: 13px;'>还款卡号:</span><input  class='borSty' style='width:150px;font-size: 12px;'  id='repaymentCardNo' value='"+bankMsg.repaymentCardNo+"'></p>"+
+                                 "<p class='fixP mt_15'><span class='tx' '>绑定手机号:</span><input  class='borSty' style='width:150px;font-size: 12px;'  id='cardPhoneNo' value='"+bankMsg.repaymentCardPhoneNo+"'></p>"+
+                                 "<p class='fixP mt_15'><span class='tx'>是否对银行卡进行四要素校验:</span><input  type='checkbox' id='cardValid' ></p>";
+                         layer.open({
+                             type: 1,
+                             area: ['300px', '270px'],
+                             title: '变更银行卡',
+                             btn: ['确定','取消'],
+                             yes: function (index, layero) {
+                                 var repaymentCardNo=$("#repaymentCardNo").val();
+                                 var cardName=$("#cardName").val();
+                                 var phoneNo=$("#cardPhoneNo").val();
+                                 var checked=$("input[type='checkbox']").is(':checked');
+                                 repaymentCardNo = repaymentCardNo.replace(/\s+/g,"");
+                                 var reg = /^(\d{16}|\d{19})$/;
+
+
+                                 if(!repaymentCardNo.match(reg)){
+                                     layer.msg("银行卡格式不正确");
+                                     return;
+                                 }
+                                 if(!phoneNo.trim()){
+                                     layer.msg("手机号不能为空!");
+                                     return ;
+                                 }
+                                 if(!(/^1[3|4|5|7|8]\d{9}$/.test(phoneNo))){
+                                     layer.msg("手机号码有误，请重填");
+                                     return ;
+                                 }
+                                 var oldCardNo=bankMsg.repaymentCardNo.replace(/\s+/g,"");
+                                 if(repaymentCardNo==oldCardNo&&cardName==bankMsg.repaymentBank&&phoneNo==bankMsg.repaymentCardPhoneNo){
+                                     layer.msg("没有对银行卡信息做任何修改");
+                                     return;
+                                 }
+
+                                 $(layero).find(".layui-layer-btn0").attr("disabled",true);
+                                 if(checked){
+                                     var mobileModify=false;
+                                     var bindUrl="/hd/loan/juheBindBankCard";
+
+                                     $.ajax({
+                                         type: 'POST',
+                                         url: bindUrl ,
+                                         data: {applyDetailId:bankMsg.applyDetailId,name:bankMsg.repaymentCustName,idNo:bankMsg.idNo,cardNo:repaymentCardNo,mobile:phoneNo,mobileModify:true,hdCustInfoId:bankMsg.hdCustInfoId,bank:cardName},
+                                         success:function(data){
+                                             if(200==data.code){
+                                                 if("1"==data.result.res){
+                                                     modifyOrderCardMsg(bankMsg.applyId,bankMsg.applyDetailId,cardName,repaymentCardNo,hdCustInfoId,idName,phoneNo,true);
+                                                     layer.close(index);
+                                                 }else{
+                                                     layer.msg(data.result.message);
+                                                     $(layero).find(".layui-layer-btn0").attr("disabled"," ");
+                                                 }
+                                             }else{
+                                                 layer.msg(data.msg);
+                                                 $(layero).find(".layui-layer-btn0").attr("disabled"," ");
+                                             }
+                                         }
+                                     });
+                                 }else{
+                                     modifyOrderCardMsg(bankMsg.applyId,bankMsg.applyDetailId,cardName,repaymentCardNo,hdCustInfoId,idName,phoneNo,false);
+                                     layer.close(index);
+                                 }
+
+                             },
+                             cancel:function(index){
+                                 //按钮【按钮二】的回调
+                                 layer.close(index);
+                             },
+                             shadeClose: true, //点击遮罩关闭
+                             content:initButton
+                         });
+                     }else{
+                         layer.msg(data.msg+"加载卡信息失败");
+                     }
+                 }
+             });
+         });
+
+
+    });
+
+    function modifyOrderCardMsg(applyId,applyDetailId,repaymentBank,repaymentCardNo,hdCustInfoId,idName,phoneNo,cardValid) {
+        $.ajax({
+            type: 'POST',
+            url: "/hd/deduct/modifyOrderCardMsg" ,
+            data:{applyId:applyId,applyDetailId:applyDetailId,repaymentBank:repaymentBank,repaymentCardNo:repaymentCardNo,hdCustInfoId:hdCustInfoId,custName:idName,phoneNo:phoneNo,cardValid:cardValid} ,
+            async: true,
+            success:function(data){
+                if('200'==data.code){
+                    layer.msg("银行卡变更成功");
+                }else{
+                    layer.msg(data.msg+"银行卡变更失败");
+                }
+            }
+        });
+    }
+    
+    function exportResult(){
+        layer.confirm("确定要导出结果到excel中吗？", {
+            btn: ['确认','取消'], //按钮
+            yes:function (index, layero) {
+                var idNo = $("#idNo").val();
+                if(idNo === undefined){
+                	idNo = '';
+                }
+                var idName = $("#idName").val();
+                if(idName === undefined){
+                	idName = '';
+                }
+                var bcName = $("#bcName").val();
+                if(bcName === undefined){
+                	bcName = '';
+                }
+                var applyDateStart2 = $("#applyDateStart2").val();
+                if(applyDateStart2 === undefined){
+                	applyDateStart2 = '';
+                }
+                var examineDateStart = $("#examineDateStart").val();
+                if(examineDateStart === undefined){
+                	examineDateStart = '';
+                }
+                var examineDateEnd = $("#examineDateEnd").val();
+                if(examineDateEnd === undefined){
+                	examineDateEnd = '';
+                }
+                var fundSource = $("#fundSource").val();
+                if(fundSource === undefined){
+                	fundSource = '';
+                }
+                var url="/hd/lending/alreadyLendingExportFor91/?idNo="+idNo+"&idName="+idName+"&bcName="+bcName+"&applyDateStart2="+applyDateStart2
+                		+ "&examineDateStart=" + examineDateStart + "&examineDateEnd=" + examineDateEnd + "&fundSource=" + fundSource;
+                window.open(url);
+                layer.close(index);
+            },
+            cancel:function(index){
+                //按钮【按钮二】的回调
+                layer.close(index);
+            },
+        });
+    }
+</script>
+
+
+<script>
+    //分页方法
+    function page(n,s){
+        $("#pageNo").val(n);
+        $("#pageSize").val(s);
+        $("#searchForm").submit();
+        return false;
+    }
+
+
+</script>
+
+<script>
+    var time = 100000;
+    var interval; //调度器对象。
+    function run(){
+        interval = setInterval("fun()",time);
+    }
+    function fun(){
+        $(".hui").css("display","none");
+    }
+    $(function(){
+        $("#reviewList").delegate('tr td button','click',function(){
+            $(this).html("加载中...").attr("disabled","disabled");
+            $(".hui").css("display","block");
+            run();
+        })
+    })
+</script>
+
+<script>
+    $(document).ready(function(e) {
+        var counter = 0;
+        if (window.history && window.history.pushState) {
+            $(window).on('popstate', function () {
+                window.history.pushState('forward', null, '#');
+                window.history.forward(1);
+            });
+        }
+        window.history.pushState('forward', null, '#'); //在IE中必须得有这两行
+        window.history.forward(1);
+    });
+</script>
+
+</div>

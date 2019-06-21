@@ -1,0 +1,427 @@
+ <!DOCTYPE html>
+ <html>
+ <head>
+     <title></title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/base.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/layer.css" rel="stylesheet">
+    <link href="css/pagination.css" rel="stylesheet">
+    <link href="css/bootstrap-datetimepicker.css" rel="stylesheet">
+ </head>
+ <body>
+ 	<div class="content1" href="">
+    
+
+<!-- <div class="hui"><img src="/hd/static/images/ajax-loader.gif"></div> -->
+		<div class="content">
+            <!--面包屑导航start-->
+            <ol class="breadcrumb">
+                <li class="active">信审管理员列表</li>
+            </ol>
+            <!--面包屑导航end-->
+            <!--正文内容start-->
+            <div class="col-lg-10 col-md-10 col-sm-10 btn_examine">
+                <button id="chushen" type="button" class="btn btn-primary">分配初审人员</button>
+                <button id="fushen" disabled="disabled" type="button" class="btn btn-primary">分配复审人员</button>
+                <button id="seachBtn" type="button" class="btn btn-primary">高级搜索</button>
+                <button id="batchInitBtn" type="button" class="btn btn-primary">批量初审</button>
+                <input type="hidden" id="searchType" name="searchType" value="0">
+                <p style="display: inline-block;margin-bottom: 0;"><span>审核状态&nbsp;:&nbsp;</span><select id="auditType" style="border: 1px solid #ddd;height: 34px;background-color: #fff;width: 80px;text-align: center;"><option value="0" selected="">初审</option><option value="1">复审</option></select></p>
+            </div>
+            <div class="col-lg-2 col-md-2 col-sm-2 btn_examine" style="padding-right: 0;">
+                <div class="searchArea">
+                    <div class="input-group">
+                        <i class="searchPic"></i>
+                        <input type="text" class="form-control" id="searchName" placeholder="请输入搜索内容">
+                    <span class="input-group-btn">
+                    <button class="btn btn-primary search_btn" id="btn-search" style="margin-right: 0;" type="button">查询</button>
+                    </span>
+                    </div>
+                </div>
+            </div>
+    		<div class="clear"></div>
+            <div class="table-responsive">
+                <div id="managerList_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer"><div class="top"><div class="clear"></div></div><div id="managerList_processing" class="dataTables_processing panel panel-default" style="display: none;">处理中...</div><table id="managerList" class="order-column table table-bordered table-striped table-hover bg_wt dataTable no-footer" style="width: 100%;" role="grid" aria-describedby="managerList_info">
+                    <thead style="border-bottom: 0;background-color: #fff;">
+                    <tr role="row"><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" aria-label="" style="width: 20px;"><input class="allCkb" type="checkbox"></th><th class="text-center fs_13 sorting" tabindex="0" aria-controls="managerList" rowspan="1" colspan="1" aria-label="同&amp;nbsp;盾: activate to sort column ascending" style="width: 30px;">同&nbsp;盾</th><th class="text-center fs_13 sorting" tabindex="0" aria-controls="managerList" rowspan="1" colspan="1" aria-label="反馈意见: activate to sort column ascending" style="width: 51px;">反馈意见</th><th class="text-center fs_13 sorting" tabindex="0" aria-controls="managerList" rowspan="1" colspan="1" aria-label="资金方: activate to sort column ascending" style="width: 39px;">资金方</th><th class="text-center fs_13 sorting" tabindex="0" aria-controls="managerList" rowspan="1" colspan="1" aria-label="渠道商: activate to sort column ascending" style="width: 135px;">渠道商</th><th class="text-center fs_13 sorting" tabindex="0" aria-controls="managerList" rowspan="1" colspan="1" aria-label="&amp;nbsp;姓&amp;nbsp;名&amp;nbsp;: activate to sort column ascending" style="width: 38px;">&nbsp;姓&nbsp;名&nbsp;</th><th class="text-center fs_13 sorting" tabindex="0" aria-controls="managerList" rowspan="1" colspan="1" aria-label="身份证: activate to sort column ascending" style="width: 119px;">身份证</th><th class="text-center fs_13 sorting" tabindex="0" aria-controls="managerList" rowspan="1" colspan="1" aria-label="申请金额: activate to sort column ascending" style="width: 52px;">申请金额</th><th class="text-center fs_13 sorting" tabindex="0" aria-controls="managerList" rowspan="1" colspan="1" aria-label="期&amp;nbsp;数: activate to sort column ascending" style="width: 31px;">期&nbsp;数</th><th class="text-center fs_13 sorting_desc" tabindex="0" aria-controls="managerList" rowspan="1" colspan="1" aria-sort="descending" aria-label="进件时间: activate to sort column ascending" style="width: 110px;">进件时间</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" aria-label="当前信审人员" style="width: 77px;">当前信审人员</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" aria-label="操&amp;nbsp;作" style="width: 56px;">操&nbsp;作</th></tr>
+                    </thead>
+                    <tbody class="auditList">
+
+                    <tr role="row" class="odd"><td><input type="checkbox" value="6536849876475446273" name="items" class="ckb"></td><td>9</td><td><span></span></td><td>晋商教育</td><td>宁波鸿途教育科技有限公司</td><td>朱柳青</td><td>35072419850829152X</td><td>22800</td><td>24</td><td class="sorting_1">2019-05-22 14:27:39</td><td></td><td><button type="button" onclick="managerApproveClick(&quot;6536849876475446273&quot;)" class="btn btn-primary btn-sm">审批</button></td></tr></tbody>
+                </table><div class="bottom"><div class="dataTables_info" id="managerList_info" role="status" aria-live="polite">显示第 1 - 1 条记录，共1 条</div><div class="dataTables_length" id="managerList_length"><label> <select name="managerList_length" aria-controls="managerList" class="form-control input-sm"><option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select> </label></div><div class="dataTables_paginate paging_full_numbers" id="managerList_paginate"><ul class="pagination"><li class="paginate_button first disabled" id="managerList_first"><a href="javascript:void(0);" aria-controls="managerList" data-dt-idx="0" tabindex="0">首页</a></li><li class="paginate_button previous disabled" id="managerList_previous"><a href="javascript:void(0);" aria-controls="managerList" data-dt-idx="1" tabindex="0">上页</a></li><li class="paginate_button active"><a href="javascript:void(0);" aria-controls="managerList" data-dt-idx="2" tabindex="0">1</a></li><li class="paginate_button next disabled" id="managerList_next"><a href="javascript:void(0);" aria-controls="managerList" data-dt-idx="3" tabindex="0">下页</a></li><li class="paginate_button last disabled" id="managerList_last"><a href="javascript:void(0);" aria-controls="managerList" data-dt-idx="4" tabindex="0">末页</a></li></ul></div><div class="clear"></div></div></div>
+            </div>
+            <!--正文内容end-->
+            <input type="hidden" id="globalIdNo">
+            <input type="hidden" id="globalIdName">
+            <input type="hidden" id="globalPhoneNo">
+            <input type="hidden" id="globalBusinessCustomerName">
+            <input type="hidden" id="globalStartTime">
+            <input type="hidden" id="globalEndTime">
+            <input type="hidden" id="globalSourceType">
+            <input type="hidden" id="globalAllocStatus">
+            <input type="hidden" id="globalBizType">
+
+        </div>
+        </div>
+ </body>
+ <script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
+ <script src="js/layer.js"></script>
+ <script src="js/controllertop.js"></script>
+<script>
+        $("#btn-search").click(function(e){
+            $("#searchType").val("0");
+            dt.api().draw();
+        });
+        $("#auditType").on("change",function(){
+            $("#searchType").val("0");
+           var type= $("#auditType").val();
+            if(0==type){  //初审
+                $("#chushen").removeAttr("disabled");
+                $("#fushen").attr("disabled","disabled");
+                $("#batchInitBtn").removeAttr("disabled");
+            }else{   //复审
+                $("#fushen").removeAttr("disabled");
+                $("#chushen").attr("disabled","disabled");
+                $("#batchInitBtn").attr("disabled","disabled");
+            }
+            dt.api().draw();
+        });
+        $("#batchInitBtn").on("click",function(){
+            layer.confirm('确定批量通过吗？', {
+                btn: ['确定','取消'] //按钮
+            }, function(){
+                $.ajax({
+                    type: 'POST',
+                    url: "/hd/loan/batchIntiAuditPass/" ,
+                    success:function(data){
+                        if("200"==data.code){
+                            layer.msg("批量初审提交完成");
+                            dt.api().draw();
+                        }else{
+                            layer.msg("批量初审提交异常");
+                        }
+                    }
+                });
+            }, function(){
+                layer.msg('取消成功');
+            });
+
+        });
+
+    
+
+</script>
+<!--单选复选-->
+<script>
+    $(function () {
+        $('.allCkb').click(function () {
+
+            $("input[name='items']").prop("checked", this.checked);
+        });
+        $("[name=items]:checkbox").click(function () {
+            var p = $("[name=items]:checkbox");
+            if (p.filter(':checked').length == p.length) {
+                $(".allCkb").prop("checked", true);
+            } else {
+                $(".allCkb").prop("checked", false);
+            }
+        });
+    });
+</script>
+
+<!--按钮弹出层-->
+<script>
+    var initAuditUserList=[{"id":"6fa1c538-5884-4d21-82b4-fcac69fd521c","name":"田儒莹"},{"id":"8fbe7834-2c42-436a-85ce-5739dfb82e5e","name":"赵玉凤"}];
+    var reviewAuditList=[{"id":"6fa1c538-5884-4d21-82b4-fcac69fd521c","name":"田儒莹"},{"id":"8996ba5b-cfec-4535-b034-efaf09592088","name":"苏峰"},{"id":"8fbe7834-2c42-436a-85ce-5739dfb82e5e","name":"赵玉凤"},{"id":"92c4dfed-e665-4e98-9afe-4bc01f9dc525","name":"林燚填"}];
+    var sourceTypeList=[{"deleted":"0","description":"app进件","did":"source_type_app1","name":"app进件","pid":"source_type","sort":"1","value":"1"},{"deleted":"0","description":"代客下单","did":"source_type_cust","name":"代客下单","pid":"source_type","sort":"2","value":"2"},{"deleted":"0","description":"excel导入","did":"source_type_excel","name":"excel导入","pid":"source_type","sort":"3","value":"3"},{"deleted":"0","description":"闪银接口","did":"source_type_sy","name":"闪银接口","pid":"source_type","sort":"4","value":"4"},{"deleted":"0","description":"新氧","did":"source_type_xinyang","name":"新氧","pid":"source_type","sort":"5","value":"5"},{"deleted":"0","description":"App2.0进件","did":"source_type_app2","name":"App2.0进件","pid":"source_type","sort":"6","value":"6"},{"deleted":"0","description":"会分期进件","did":"source_type_huifenqi","name":"会分期进件","pid":"source_type","sort":"8","value":"8"},{"deleted":"0","description":"优谈进件","did":"source_type_youtan","name":"优谈进件","pid":"source_type","sort":"9","value":"9"},{"deleted":"0","description":"晋城银行","did":"source_type_jicheng","name":"晋城银行","pid":"source_type","sort":"11","value":"11"}];
+
+
+    function getAuditUserSelectStr(list){
+        var auditUserSelect='<select class="sel">';
+        for(var i=0;i<list.length;i++){
+            var map=list[i];
+            auditUserSelect+='<option value="'+map["id"]+'">'+map["name"]+'</option>';
+        }
+        auditUserSelect+='</select>';
+        return auditUserSelect;
+    }
+    var initAuditUserSelectStr=getAuditUserSelectStr(initAuditUserList);
+    var reviewAuditUserSelectStr=getAuditUserSelectStr(reviewAuditList);
+
+
+    //初审弹出层
+    $('#chushen').on('click', function(){
+        layer.open({
+            type: 1,
+            area: ['300px', '180px'],
+            title: '分配初审人员',
+            btn: ['确定','取消'],
+            yes: function (index, layero) {
+               var value= $(".sel option:selected").val();
+               var name= $(".sel option:selected").html();
+                var id=getSelectCheckboxIds();
+                if(""==id){
+                    layer.msg("请选择需要分配的数据");
+                }else{
+                    ajaxAddUserAllocApproveOrder(id,name,value);
+                }
+                //按钮【按钮一】的回调
+                layer.close(index);
+
+            },
+            cancel:function(index){
+                //按钮【按钮二】的回调
+                layer.close(index);
+            },
+            shadeClose: true, //点击遮罩关闭
+            content:initAuditUserSelectStr
+        });
+    });
+    //复审弹出层
+    $('#fushen').on('click', function(){
+        layer.open({
+            type: 1,
+            area: ['300px', '180px'],
+            title: '分配复审人员',
+            btn: ['确定','取消'],
+            yes: function (index, layero) {
+                var value= $(".sel option:selected").val();
+                var name= $(".sel option:selected").html();
+                var id=getSelectCheckboxIds();
+                if(""==id){
+                    layer.msg("请选择需要分配的数据");
+                }else{
+                    ajaxAddUserAllocApproveOrder(id,name,value);
+                }
+                //按钮【按钮一】的回调
+                layer.close(index);
+            },
+            cancel:function(index){
+                //按钮【按钮二】的回调
+                layer.close(index);
+            },
+            shadeClose: true, //点击遮罩关闭
+            content: reviewAuditUserSelectStr
+        });
+    });
+    function ajaxAddUserAllocApproveOrder(ids,userName,userId){
+        $.ajax({
+            type: 'POST',
+            url: "/hd/loan/addUserAllocApproveOrder" ,
+            data: {ids:ids,userName:userName,userId:userId} ,
+            async: true,
+            success:function(data){
+                if('200'==data.code){
+                    layer.msg("手动分件成功");
+                    dt.api().draw();
+                }else{
+                    layer.msg("手动分件失败！");
+                }
+            }
+        });
+    }
+    function getSelectCheckboxIds(){
+        var ids=new Array();
+        $(".ckb:checkbox:checked").each(function(){
+            ids.push($(this).val());
+        });
+        return ids.toString();
+    }
+
+
+
+    //高级搜索弹出层
+    $('#seachBtn').on('click', function(){
+        var  auditType=$("#auditType").val();
+        var selectBizStr='';
+        $.ajax({
+            type: 'POST',
+            url: "/hd/loan/getAwaitExamineBiz/" ,
+            data: {auditType:auditType},
+            async: false,
+            success:function(data){
+                if("200"==data.code){
+                    var result=data.result;
+                   var bizList= eval('('+result+')')
+                    selectBizStr="<select id='bizId'><option value=''>请选择</option>";
+                    for(var i=0;i<bizList.length;i++){
+                       var biz=bizList[i];
+                        selectBizStr+="<option value="+biz.bizId;
+                        if($("#globalBizType").val()==biz.bizId){
+                            selectBizStr+=' selected ';
+                        }
+                        selectBizStr+=">"+biz.bizName+"</option>";
+                    }
+                    selectBizStr+="</select>"
+                }else{
+                    layer.msg("获取待审批的商户信息失败");
+                }
+
+            }
+        });
+
+        var selectTypeStr="<select id='sourceType'><option value=''>请选择</option>";
+        for(var j=0;j<sourceTypeList.length;j++){
+            var map=sourceTypeList[j];
+            selectTypeStr+='<option ';
+            if($("#globalSourceType").val()==map["value"]){
+                selectTypeStr+='selected ';
+            }
+            selectTypeStr+=' value="'+map["value"]+'">'+map["name"]+'</option>';
+        }
+        selectTypeStr+="</select>";
+
+        var allocStatusStr='<select id="allocStauts"><option value="">请选择</option>';
+        allocStatusStr+='<option ';
+        if("0"==$("#globalAllocStatus").val()){
+            allocStatusStr+="selected ";
+        }
+        allocStatusStr+='value="0">未分件</option>';
+        allocStatusStr+='<option ';
+        if("1"==$("#globalAllocStatus").val()){
+            allocStatusStr+="selected ";
+        }
+        allocStatusStr+='value="1">已分件</option></select>';
+
+        var content='<table class="table sousuo no-border"><tr>' +
+                '<td><span>身份证号&nbsp;:&nbsp;</span><input type="text" id="idNo"'
+            content+=' value='+$("#globalIdNo").val();
+        content+='></td><td><span>姓名&nbsp;:&nbsp;</span><input type="text" id="idName"';
+            content+=' value='+$("#globalIdName").val();
+        content+= '></td><td><span>联系电话&nbsp;:&nbsp;</span><input type="text" id="phoneNo"';
+            content+=' value='+$("#globalPhoneNo").val();
+        content+='></td></tr><tr><td><span>商户&nbsp;:&nbsp;</span>'+selectBizStr;
+//        content+='></td></tr><tr><td><span>商户&nbsp;:&nbsp;</span><input type="text" id="businessCustomerName"' ;
+//            content+=' value='+$("#globalBusinessCustomerName").val();
+        content+='</td><td><span>开始时间&nbsp;:&nbsp;</span><div class="form-group startDate"><div class="input-group date" id="datetimepicker"><input type="text" class="form-control" id="startTime" ';
+            content+=' value='+$("#globalStartTime").val();
+        content+=' ><span class="input-group-addon"><span class="glyphicon glyphicon-calendar DateSpan"></span></span></div></div><td><span>结束时间&nbsp;:&nbsp;</span>';
+        content+='<div class="form-group endDate"><div class="input-group date" id="datetimepicker1"><input type="text" class="form-control" id="endTime"';
+            content+=' value='+$("#globalEndTime").val();
+        content+='><span class="input-group-addon"><span class="glyphicon glyphicon-calendar DateSpan"></span></span></div></div>' +
+                '</td></tr><tr><td><span>进件类型&nbsp;:&nbsp;</span>'+selectTypeStr+'</td>' +
+                '<td><span>分件状态&nbsp;:&nbsp;</span>'+allocStatusStr+'</td>' +
+                '</tr></table>';
+        layer.open({
+            type: 1,
+            area: ['900px', '360px'],
+            title: '高级搜索',
+            btn: ['查询','清空','取消'],
+            yes: function (index, layero) {
+                $("#searchType").val("1"); //搜索类型为高级搜索
+
+                //将高级搜索条件存入到隐藏域中
+                $("#globalIdNo").val($("#idNo").val());
+                $("#globalIdName").val($("#idName").val());
+                $("#globalPhoneNo").val($("#phoneNo").val());
+                $("#globalBusinessCustomerName").val($("#businessCustomerName").val());
+                $("#globalStartTime").val($("#startTime").val());
+                $("#globalEndTime").val($("#endTime").val());
+                $("#globalSourceType").val($("#sourceType").val());
+                $("#globalAllocStatus").val($("#allocStauts").val());
+                $("#globalBizType").val($("#bizId").val());
+
+
+                dt.api().draw();
+                //按钮【按钮一】的回调
+                layer.close(index);
+            },
+            btn2: function (index, layero) {
+                //按钮【按钮二】的回调
+                $(".sousuo input").val("");
+                globalIdNo="";
+                globalIdName="";
+                globalPhoneNo="";
+                globalBusinessCustomerName="";
+                globalStartTime="";
+                globalEndTime="";
+                globalSourceType="";
+                globalAllocStatus="";
+                globalBizType="";
+                return false;
+            },
+            btn3: function (index, layero) {
+                //按钮【按钮三】的回调
+                layer.close(index);
+            },
+            shadeClose: true, //点击遮罩关闭
+            content:  content
+        });
+    });
+
+</script>
+<!--日期控件-->
+<script type="text/javascript">
+    $(function () {
+        $('body').delegate('#datetimepicker','click',function(){
+            $("#datetimepicker").datetimepicker({
+                minView: "month",//设置只显示到月份
+                format : "yyyy-mm-dd",//日期格式
+                autoclose:true,//选中关闭
+                todayBtn: true//今日按钮
+            });
+        });
+        $('body').delegate('#datetimepicker1','click',function(){
+            $("#datetimepicker1").datetimepicker({
+                minView: "month",//设置只显示到月份
+                format : "yyyy-mm-dd",//日期格式
+                autoclose:true,//选中关闭
+                todayBtn: true//今日按钮
+            });
+        })
+    });
+</script>
+<script>
+    // $(function(){
+    //     $('.dropdown-toggle').dropdown();
+    // });
+</script>
+
+<script>
+    $(function () {
+        $(".content").delegate(' .paginate_button a', 'click', function () {
+            $(".content1").scrollTop(50);
+        })
+    });
+</script>
+<script>
+    $(function () {
+        $(".content1").scrollTop(0);
+    })
+</script>
+
+<script>
+    var time = 100000;
+    var interval; //调度器对象。
+    function run(){
+        interval = setInterval("fun()",time);
+    }
+    function fun(){
+        $(".hui").css("display","none");
+    }
+    $(function(){
+        $("#managerList").delegate('tr td button','click',function(){
+            $(this).html("加载中...").attr("disabled","disabled");
+            $(".hui").css("display","block");
+            run();
+        })
+    })
+</script>
+
+<script>
+    $(document).ready(function(e) {
+        var counter = 0;
+        if (window.history && window.history.pushState) {
+            $(window).on('popstate', function () {
+                window.history.pushState('forward', null, '#');
+                window.history.forward(1);
+            });
+        }
+        window.history.pushState('forward', null, '#'); //在IE中必须得有这两行
+        window.history.forward(1);
+    });
+</script>
+
+
+ </html>

@@ -1,0 +1,883 @@
+﻿<html>
+<head>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <title></title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/base.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/layer.css" rel="stylesheet">
+    <link href="css/pagination.css" rel="stylesheet">
+    <link href="css/bootstrap-datetimepicker.css" rel="stylesheet">
+    <style>
+
+        .u_Li {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+
+        .u_Li a {
+            display: block;
+            width: 100%;
+            height: 40px;
+            line-height: 40px;
+            cursor: pointer;
+            vertical-align: middle;
+            background-color: #293038;
+            color: #fff;
+        }
+
+        .u_Li .two {
+            width: 100%;
+        }
+        .two ,.third{
+            position: relative;
+            display: none;
+        }
+        .u_Li {
+            background-color: #293038;
+            border-top: 1px solid #6C6C6C;
+            cursor: pointer;
+        }
+        .one .u_Li a:hover {
+            color:#fff;
+        }
+       .two .u_Li a:hover {
+            background-color: #6E6E6E;
+            color:#fff;
+        }
+        .two .activeBg ,.third .activeBg{
+            background-color: #6E6E6E;
+            color:#fff;
+        }
+        .two .activeBg a ,.third .activeBg a{
+            background-color: #6E6E6E;
+            color:#fff;
+        }
+
+        .two .u_Li a{
+            display: block;
+            padding: 0 0 5px 15px;
+        }
+        .third .u_Li {
+            height: 40px;
+            line-height: 40px;
+        }
+        .two .u_Li .third .u_Li a{
+            width: 100%;
+            display: block;
+            padding: 0;
+            text-align: center;
+        }
+        .side_icon {
+            float: left;
+            width: 16px;
+            height: 16px;
+            margin-top: 12px;
+            margin-left: 12px;
+            margin-right: 15px;
+            vertical-align: middle;
+        }
+
+        .side_text {
+            float: left;
+            display: inline-block;
+            font-size: 13px;
+        }
+
+        .side_up {
+            float: right;
+            width: 10px;
+            height: 10px;
+            margin-top: 15px;
+            margin-right: 12px;
+        }
+        .side_top{
+            width: 100%;
+            height: 50px;
+            line-height: 50px;
+            margin-top: 30px;
+            text-align: center;
+            font-size: 14px;
+            color: #fff;
+            background-color: #293038;
+            letter-spacing: 1px;
+        }
+        .activeImg{
+            animation: bian2 0.5s linear ;
+            -webkit-animation: bian2 0.5s linear ;
+            animation-fill-mode: forwards;
+            -webkit-animation-fill-mode:forwards;
+        }
+        .fs_12{
+            float: left;
+            width: 12px;
+            height: 12px;
+            margin-top: 14px;
+            margin-left: 12px;
+            margin-right: 15px;
+            vertical-align: middle;
+        }
+        .activeIcon{
+            animation: bian4 0.5s linear ;
+            -webkit-animation: bian4 0.5s linear ;
+            animation-fill-mode: forwards;
+            -webkit-animation-fill-mode:forwards;
+        }
+        #content .co_wt{
+            color: #fff;
+        }
+        @-webkit-keyframes bian2 {
+            0% {
+                -webkit-transform:rotate(0deg);
+            }
+            25% {
+                -webkit-transform:rotate(36deg);
+            }
+            50% {
+                -webkit-transform:rotate(90deg);
+            }
+            75% {
+                -webkit-transform:rotate(135deg);
+            }
+            100% {
+                -webkit-transform:rotate(180deg);
+            }
+        }
+        @keyframes bian2
+        {
+            0% {
+                -webkit-transform:rotate(0deg);
+            }
+            25% {
+                -webkit-transform:rotate(36deg);
+            }
+            50% {
+                -webkit-transform:rotate(90deg);
+            }
+            75% {
+                -webkit-transform:rotate(135deg);
+            }
+            100% {
+                -webkit-transform:rotate(180deg);
+            }
+        }
+
+        @-moz-keyframes bian2 /* Firefox */
+        {
+            0% {
+                -webkit-transform:rotate(0deg);
+            }
+            25% {
+                -webkit-transform:rotate(36deg);
+            }
+            50% {
+                -webkit-transform:rotate(90deg);
+            }
+            75% {
+                -webkit-transform:rotate(135deg);
+            }
+            100% {
+                -webkit-transform:rotate(180deg);
+            }
+        }
+
+        @-webkit-keyframes bian2 /* Safari 和 Chrome */
+        {
+            0% {
+                -webkit-transform:rotate(0deg);
+            }
+            25% {
+                -webkit-transform:rotate(36deg);
+            }
+            50% {
+                -webkit-transform:rotate(90deg);
+            }
+            75% {
+                -webkit-transform:rotate(135deg);
+            }
+            100% {
+                -webkit-transform:rotate(180deg);
+            }
+        }
+
+        @-o-keyframes bian2 /* Opera */
+        {
+            0% {
+                -webkit-transform:rotate(0deg);
+            }
+            25% {
+                -webkit-transform:rotate(36deg);
+            }
+            50% {
+                -webkit-transform:rotate(90deg);
+            }
+            75% {
+                -webkit-transform:rotate(135deg);
+            }
+            100% {
+                -webkit-transform:rotate(180deg);
+            }
+        }
+
+        @-webkit-keyframes bian4{
+            0% {
+                -webkit-transform:rotate(0deg);
+            }
+            25% {
+                -webkit-transform:rotate(22.5deg);
+            }
+            50% {
+                -webkit-transform:rotate(45deg);
+            }
+            75% {
+                -webkit-transform:rotate(77.5deg);
+            }
+            100% {
+                -webkit-transform:rotate(90deg);
+            }
+        }
+        @keyframes bian4
+        {
+            0% {
+                -webkit-transform:rotate(0deg);
+            }
+            25% {
+                -webkit-transform:rotate(22.5deg);
+            }
+            50% {
+                -webkit-transform:rotate(45deg);
+            }
+            75% {
+                -webkit-transform:rotate(77.5deg);
+            }
+            100% {
+                -webkit-transform:rotate(90deg);
+            }
+        }
+
+        @-moz-keyframes bian4 /* Firefox */
+        {
+            0% {
+                -webkit-transform:rotate(0deg);
+            }
+            25% {
+                -webkit-transform:rotate(22.5deg);
+            }
+            50% {
+                -webkit-transform:rotate(45deg);
+            }
+            75% {
+                -webkit-transform:rotate(77.5deg);
+            }
+            100% {
+                -webkit-transform:rotate(90deg);
+            }
+        }
+
+        @-o-keyframes bian4 /* Opera */
+        {
+            0% {
+                -webkit-transform:rotate(0deg);
+            }
+            25% {
+                -webkit-transform:rotate(22.5deg);
+            }
+            50% {
+                -webkit-transform:rotate(45deg);
+            }
+            75% {
+                -webkit-transform:rotate(77.5deg);
+            }
+            100% {
+                -webkit-transform:rotate(90deg);
+            }
+        }
+    </style>
+</head>
+<body>
+<div id="warp">
+    <nav id="nav" class="col-sm-12 col-lg-12 navbar">
+        <a class="logo" href="javascript:void(0);"></a>
+        <span class="AuditText">运营平台</span>
+        <ul class="navbar-right">
+            <input type="hidden" id="username" value="wuyingjiao">
+            <li class="login_name">
+                <a class="state" href="javascript:void(0);"><span class="caret tx_fr"></span><span class="busNmae">吴英骄</span></a>
+                <ul class="quit" onclick="logout()">
+                    <li><a href="javascript:void(0);" >退出</a></li>
+                </ul>
+            </li>
+        </ul>
+        <ul class="navbar-right">
+            <input type="hidden" id="ssoUrl" value="http://sso.daiyutech.com/">
+            <li class="login_name" onclick="ssoTurn()">
+              <a class="state" href="javascript:void(0);"><span id="ssoTurn" class="busNmae">SSO系统</span></a>
+              <!-- <span class="busNmae" onclick="ssoTurn()">SSO系统</span> -->
+            </li>
+        </ul>
+        <ul class="navbar-right" id="signStatusUl">                
+            <li class="login_name1 qianLi">
+                <a class="navbar-right qian" href="javascript:void(0);" onclick="signStatus('18760dec-f53b-4a6b-9bf8-2cf322da9a35','1');">未签到</a>
+            <li>   
+        </ul>
+    </nav>
+    <div id="content">
+        <div class="sidebar">
+            <li class="sideConller"><span class="glyphicon glyphicon-resize-horizontal listSou" aria-hidden="true"></span></li>
+            <div class="side_top"><i class="menu-icon fa fa-desktop"></i>菜单列表</div>
+            <ul class="one">
+                <li class="u_Li open">
+                    <a href="#" class="onSt" onclick="zan(this);" >
+                        <img class="side_icon" src="picture/list_active.png"/>
+                        <span class="side_text co_wt">基础信息管理</span>
+                        <img class="side_up"
+                             src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAABA0lEQVRYR+2V0RGCMBBEdysQO7AzpQNLsQMpzRKwgnOOCZjBQC4hDH4kv4S8x17uIA5ePJiPKlAT+J8ERKQB0JB87dkZInIB0JPslTMkICI3AE8H7ki2e0iISAfg6s5uSXajgNqcPGhxiRlcUZrCeUlANxSTCMD1/DfJJlQCP/3NEgtwZXxLELgHRSRi8OkSjrTZZdwkYYH/CJRKwgoPCmyVSIEvCuRKpMJXBVIlcuBRAatELtwkEJNwraKjfL6GPo+NdPPfcKVFQwwT3JyAYU74EmZ4skCkHNN4jcXuPzeXwH9poRxJXz6elyXgJfFwB90tFy6UTLZASsxre6tATaAm8AGChpYh3uCC0AAAAABJRU5ErkJggg==">
+                        <div class="clear"></div>
+                    </a>
+
+                    <ul class="two">
+                        <li class="u_Li">
+                            <a href="#" title="教育商户列表" class="acLi" onclick="zan(this);" msg="jiaoyushanghuliebiao">
+                                <img class="side_icon fs_12" src="picture/jiantou.png"/>
+                                <span class="side_text">教育商户列表</span>
+                                <div class="clear"></div>
+                            </a>
+                         
+                        </li>
+
+                    </ul>
+                    <ul class="two">
+                        <li class="u_Li">
+                            <a href="#" title="商户管理" class="acLi" onclick="zan(this);" msg="shanghuguanli">
+                                <img class="side_icon fs_12" src="picture/jiantou.png"/>
+                                <span class="side_text">商户管理</span>
+                                <div class="clear"></div>
+                            </a>
+                       </li>
+                    </ul>
+
+                    <ul class="two">
+                        <li class="u_Li">
+                            <a href="#" title="风险保证金管理" class="acLi" onclick="zan(this);" msg="fengxianbaozhengjinguanli">
+                                <img class="side_icon fs_12" src="picture/jiantou.png"/>
+                                <span class="side_text">风险保证金管理</span>
+                                <div class="clear"></div>
+                            </a>
+                        </li>
+                    </ul>
+                    
+                </li>
+              
+                <li class="u_Li open">
+                    <a href="#" class="onSt" onclick="zan(this);" msg="guanliliebiao" >
+                        <img class="side_icon" src="picture/list_active.png"/>
+                        <span class="side_text co_wt">管理列表</span>
+                        <img class="side_up"
+                             src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAABA0lEQVRYR+2V0RGCMBBEdysQO7AzpQNLsQMpzRKwgnOOCZjBQC4hDH4kv4S8x17uIA5ePJiPKlAT+J8ERKQB0JB87dkZInIB0JPslTMkICI3AE8H7ki2e0iISAfg6s5uSXajgNqcPGhxiRlcUZrCeUlANxSTCMD1/DfJJlQCP/3NEgtwZXxLELgHRSRi8OkSjrTZZdwkYYH/CJRKwgoPCmyVSIEvCuRKpMJXBVIlcuBRAatELtwkEJNwraKjfL6GPo+NdPPfcKVFQwwT3JyAYU74EmZ4skCkHNN4jcXuPzeXwH9poRxJXz6elyXgJfFwB90tFy6UTLZASsxre6tATaAm8AGChpYh3uCC0AAAAABJRU5ErkJggg==">
+                        <div class="clear"></div>
+                    </a>
+
+                </li>
+            
+                <li class="u_Li open">
+                    <a href="#" class="onSt" onclick="zan(this);" msg="chushenliebiao">
+                        <img class="side_icon" src="picture/list_active.png"/>
+                        <span class="side_text co_wt">初审列表</span>
+                        <img class="side_up"
+                             src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAABA0lEQVRYR+2V0RGCMBBEdysQO7AzpQNLsQMpzRKwgnOOCZjBQC4hDH4kv4S8x17uIA5ePJiPKlAT+J8ERKQB0JB87dkZInIB0JPslTMkICI3AE8H7ki2e0iISAfg6s5uSXajgNqcPGhxiRlcUZrCeUlANxSTCMD1/DfJJlQCP/3NEgtwZXxLELgHRSRi8OkSjrTZZdwkYYH/CJRKwgoPCmyVSIEvCuRKpMJXBVIlcuBRAatELtwkEJNwraKjfL6GPo+NdPPfcKVFQwwT3JyAYU74EmZ4skCkHNN4jcXuPzeXwH9poRxJXz6elyXgJfFwB90tFy6UTLZASsxre6tATaAm8AGChpYh3uCC0AAAAABJRU5ErkJggg==">
+                        <div class="clear"></div>
+                    </a>
+
+                </li>
+            
+                <li class="u_Li open">
+                    <a href="#" class="onSt" onclick="zan(this);" >
+                        <img class="side_icon" src="picture/list_active.png"/>
+                        <span class="side_text co_wt">日常业务处理</span>
+                        <img class="side_up"
+                             src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAABA0lEQVRYR+2V0RGCMBBEdysQO7AzpQNLsQMpzRKwgnOOCZjBQC4hDH4kv4S8x17uIA5ePJiPKlAT+J8ERKQB0JB87dkZInIB0JPslTMkICI3AE8H7ki2e0iISAfg6s5uSXajgNqcPGhxiRlcUZrCeUlANxSTCMD1/DfJJlQCP/3NEgtwZXxLELgHRSRi8OkSjrTZZdwkYYH/CJRKwgoPCmyVSIEvCuRKpMJXBVIlcuBRAatELtwkEJNwraKjfL6GPo+NdPPfcKVFQwwT3JyAYU74EmZ4skCkHNN4jcXuPzeXwH9poRxJXz6elyXgJfFwB90tFy6UTLZASsxre6tATaAm8AGChpYh3uCC0AAAAABJRU5ErkJggg==">
+                        <div class="clear"></div>
+                    </a>
+
+                    <ul class="two">
+                        <li class="u_Li">
+                            <a href="#" title="待放款列表" class="acLi" onclick="zan(this);" msg="daifangkuanliebiao">
+                                <img class="side_icon fs_12" src="picture/jiantou.png"/>
+                                <span class="side_text">待放款列表</span>
+                                <div class="clear"></div>
+                            </a>
+                        
+                        </li>
+
+                    </ul>
+                    <ul class="two">
+                        <li class="u_Li">
+                            <a href="#" title="批扣列表" class="acLi" onclick="zan(this);" msg="pikouliebiao">
+                                <img class="side_icon fs_12" src="picture/jiantou.png"/>
+                                <span class="side_text">批扣列表</span>
+                                <div class="clear"></div>
+                            </a>
+                           
+                        </li>
+
+                    </ul>
+                    <ul class="two">
+                        <li class="u_Li">
+                            <a href="#" title="批扣流水列表" class="acLi" onclick="zan(this);" msg="pikouliushuiliebiao">
+                                <img class="side_icon fs_12" src="picture/jiantou.png"/>
+                                <span class="side_text">批扣流水列表</span>
+                                <div class="clear"></div>
+                            </a>
+                           
+                        </li>
+
+                    </ul>
+                    <ul class="two">
+                        <li class="u_Li">
+                            <a href="#" title="发送还款提示短信" class="acLi" onclick="zan(this);" msg="huankuantishiduanxin">
+                                <img class="side_icon fs_12" src="picture/jiantou.png"/>
+                                <span class="side_text">发送还款提示短信</span>
+                                <div class="clear"></div>
+                            </a>
+                           
+                        </li>
+
+                    </ul>
+                    
+                    <ul class="two">
+                        <li class="u_Li">
+                            <a href="#" title="退货处理" class="acLi" onclick="zan(this);" msg="tuihuochuli">
+                                <img class="side_icon fs_12" src="picture/jiantou.png"/>
+                                <span class="side_text">退货处理</span>
+                                <div class="clear"></div>
+                            </a>
+                          
+                        </li>
+                    </ul>
+                    
+                    <ul class="two">
+                        <li class="u_Li">
+                            <a href="#" title="意见反馈" class="acLi" onclick="zan(this);" msg="yijianfankui">
+                                <img class="side_icon fs_12" src="picture/jiantou.png"/>
+                                <span class="side_text">意见反馈</span>
+                                <div class="clear"></div>
+                            </a>
+                        </li>
+                    </ul>
+                    
+                    <ul class="two">
+                        <li class="u_Li">
+                            <a href="#" title="91待放款列表" class="acLi" onclick="zan(this);" msg="91daifangkuan">
+                                <img class="side_icon fs_12" src="picture/jiantou.png"/>
+                                <span class="side_text">91待放款列表</span>
+                                <div class="clear"></div>
+                            </a>
+                           
+                        </li>
+
+                    </ul>
+                    <ul class="two">
+                        <li class="u_Li">
+                            <a href="#" title="客户绑卡列表" class="acLi" onclick="zan(this);" msg="kehubangka">
+                                <img class="side_icon fs_12" src="picture/jiantou.png"/>
+                                <span class="side_text">客户绑卡列表</span>
+                                <div class="clear"></div>
+                            </a>
+                        </li>
+
+                    </ul>
+                </li>
+                <li class="u_Li open">
+                    <a href="#" class="onSt" onclick="zan(this);" >
+                        <img class="side_icon" src="picture/list_active.png"/>
+                        <span class="side_text co_wt">查询统计</span>
+                        <img class="side_up"
+                             src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAABA0lEQVRYR+2V0RGCMBBEdysQO7AzpQNLsQMpzRKwgnOOCZjBQC4hDH4kv4S8x17uIA5ePJiPKlAT+J8ERKQB0JB87dkZInIB0JPslTMkICI3AE8H7ki2e0iISAfg6s5uSXajgNqcPGhxiRlcUZrCeUlANxSTCMD1/DfJJlQCP/3NEgtwZXxLELgHRSRi8OkSjrTZZdwkYYH/CJRKwgoPCmyVSIEvCuRKpMJXBVIlcuBRAatELtwkEJNwraKjfL6GPo+NdPPfcKVFQwwT3JyAYU74EmZ4skCkHNN4jcXuPzeXwH9poRxJXz6elyXgJfFwB90tFy6UTLZASsxre6tATaAm8AGChpYh3uCC0AAAAABJRU5ErkJggg==">
+                        <div class="clear"></div>
+                    </a>
+                    <ul class="two">
+                        <li class="u_Li">
+                            <a href="#" title="逾期表查询" class="acLi" onclick="zan(this);" msg="yuqibiaochaxun">
+                                <img class="side_icon fs_12" src="picture/jiantou.png"/>
+                                <span class="side_text">逾期表查询</span>
+                                <div class="clear"></div>
+                            </a>
+                           
+                        </li>
+
+                    </ul>
+                    <ul class="two">
+                        <li class="u_Li">
+                            <a href="#" title="还款数据统计查询" class="acLi" onclick="zan(this);" msg="huankuanshujuchaxun">
+                                <img class="side_icon fs_12" src="picture/jiantou.png"/>
+                                <span class="side_text">还款数据统计查询</span>
+                                <div class="clear"></div>
+                            </a>
+                        </li>
+                    </ul>
+                    <ul class="two">
+                        <li class="u_Li">
+                            <a href="#" title="已放款查询" class="acLi" onclick="zan(this);" msg="yifangkuanchaxun">
+                                <img class="side_icon fs_12" src="picture/jiantou.png"/>
+                                <span class="side_text">已放款查询</span>
+                                <div class="clear"></div>
+                            </a>
+                        </li>
+
+                    </ul>
+                    <ul class="two">
+                        <li class="u_Li">
+                            <a href="#" title="贷款情况查询" class="acLi" onclick="zan(this);" msg="daikuanqingkuangchaxun">
+                                <img class="side_icon fs_12" src="picture/jiantou.png"/>
+                                <span class="side_text">贷款情况查询</span>
+                                <div class="clear"></div>
+                            </a>
+                        </li>
+
+                    </ul>
+                    <ul class="two">
+                        <li class="u_Li">
+                            <a href="#" title="进件来源查询" class="acLi" onclick="zan(this);" msg="jinjianlaiyuan">
+                                <img class="side_icon fs_12" src="picture/jiantou.png"/>
+                                <span class="side_text">进件来源查询</span>
+                                <div class="clear"></div>
+                            </a>
+                        </li>
+                    </ul>
+                    
+                    <ul class="two">
+                        <li class="u_Li">
+                            <a href="#" title="提前结清查询" class="acLi" onclick="zan(this);" msg="tiqianjieqingchaxun">
+                                <img class="side_icon fs_12" src="picture/jiantou.png"/>
+                                <span class="side_text">提前结清查询</span>
+                                <div class="clear"></div>
+                            </a>
+                        </li>
+                    </ul>
+                    <ul class="two">
+                        <li class="u_Li">
+                            <a href="#" title="信审统计报表" class="acLi" onclick="zan(this);" msg="xinshentongjibaobiao">
+                                <img class="side_icon fs_12" src="picture/jiantou.png"/>
+                                <span class="side_text">信审统计报表</span>
+                                <div class="clear"></div>
+                            </a>
+                        </li>
+                    </ul>
+             <!--        <ul class="two">
+                        <li class="u_Li">
+                            <a href="#" title="风险监控数据" class="acLi" onclick="zan(this);" msg="fengxianjiankong">
+                                <img class="side_icon fs_12" src="picture/jiantou.png"/>
+                                <span class="side_text">风险监控数据</span>
+                                <div class="clear"></div>
+                            </a>
+                        </li>
+                    </ul>
+                    
+                    <ul class="two">
+                        <li class="u_Li">
+                            <a href="#" title="资产质量数据表" class="acLi" onclick="zan(this);" msg="zichanzhiliang">
+                                <img class="side_icon fs_12" src="picture/jiantou.png"/>
+                                <span class="side_text">资产质量数据表</span>
+                                <div class="clear"></div>
+                            </a>
+                        </li>
+                    </ul>
+                    <ul class="two">
+                        <li class="u_Li">
+                            <a href="#" title="客户列表" class="acLi" onclick="zan(this);" msg="kehuliebiao">
+                                <img class="side_icon fs_12" src="picture/jiantou.png"/>
+                                <span class="side_text">客户列表</span>
+                                <div class="clear"></div>
+                            </a>
+                        </li>
+
+                    </ul>
+                    <ul class="two">
+                        <li class="u_Li">
+                            <a href="#" title="放款明细" class="acLi" onclick="zan(this);" msg="fangkuanmingxi">
+                                <img class="side_icon fs_12" src="picture/jiantou.png"/>
+                                <span class="side_text">放款明细</span>
+                                <div class="clear"></div>
+                            </a>
+                        </li>
+                    </ul>
+                   
+                    <ul class="two">
+                        <li class="u_Li">
+                            <a href="#" title="商户交易风险监控" class="acLi" onclick="zan(this);" msg="shanghujiaoyifengxian">
+                                <img class="side_icon fs_12" src="picture/jiantou.png"/>
+                                <span class="side_text">商户交易风险监控</span>
+                                <div class="clear"></div>
+                            </a>
+                        </li>
+                    </ul>
+                    <ul class="two">
+                        <li class="u_Li">
+                            <a href="#" title="信审逾期统计" class="acLi" onclick="zan(this);" msg="xinshenyuqitongji">
+                                <img class="side_icon fs_12" src="picture/jiantou.png"/>
+                                <span class="side_text">信审逾期统计</span>
+                                <div class="clear"></div>
+                            </a>
+                        </li>
+                    </ul>
+                    <ul class="two">
+                        <li class="u_Li">
+                            <a href="#" title="资方风险监控数据" class="acLi" onclick="zan(this);" msg="zifangfenxianjiankong">
+                                <img class="side_icon fs_12" src="picture/jiantou.png"/>
+                                <span class="side_text">资方风险监控数据</span>
+                                <div class="clear"></div>
+                            </a>
+                        </li>
+
+                    </ul> -->
+                                    
+                                
+                </li>
+               <!--  <li class="u_Li open">
+                    <a href="#" class="onSt" onclick="zan(this);" msg="fushenliebiao">
+                        <img class="side_icon" src="picture/list_active.png"/>
+                        <span class="side_text co_wt">复审列表</span>
+                        <img class="side_up"
+                             src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAABA0lEQVRYR+2V0RGCMBBEdysQO7AzpQNLsQMpzRKwgnOOCZjBQC4hDH4kv4S8x17uIA5ePJiPKlAT+J8ERKQB0JB87dkZInIB0JPslTMkICI3AE8H7ki2e0iISAfg6s5uSXajgNqcPGhxiRlcUZrCeUlANxSTCMD1/DfJJlQCP/3NEgtwZXxLELgHRSRi8OkSjrTZZdwkYYH/CJRKwgoPCmyVSIEvCuRKpMJXBVIlcuBRAatELtwkEJNwraKjfL6GPo+NdPPfcKVFQwwT3JyAYU74EmZ4skCkHNN4jcXuPzeXwH9poRxJXz6elyXgJfFwB90tFy6UTLZASsxre6tATaAm8AGChpYh3uCC0AAAAABJRU5ErkJggg==">
+                        <div class="clear"></div>
+                    </a>
+                </li> -->
+                <li class="u_Li open">
+                    <a href="#" class="onSt" onclick="zan(this);" msg="daikuanqingkuangchaxun_list">
+                        <img class="side_icon" src="picture/list_active.png"/>
+                        <span class="side_text co_wt">贷款情况查询(风控)</span>
+                        <img class="side_up"
+                             src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAABA0lEQVRYR+2V0RGCMBBEdysQO7AzpQNLsQMpzRKwgnOOCZjBQC4hDH4kv4S8x17uIA5ePJiPKlAT+J8ERKQB0JB87dkZInIB0JPslTMkICI3AE8H7ki2e0iISAfg6s5uSXajgNqcPGhxiRlcUZrCeUlANxSTCMD1/DfJJlQCP/3NEgtwZXxLELgHRSRi8OkSjrTZZdwkYYH/CJRKwgoPCmyVSIEvCuRKpMJXBVIlcuBRAatELtwkEJNwraKjfL6GPo+NdPPfcKVFQwwT3JyAYU74EmZ4skCkHNN4jcXuPzeXwH9poRxJXz6elyXgJfFwB90tFy6UTLZASsxre6tATaAm8AGChpYh3uCC0AAAAABJRU5ErkJggg==">
+                        <div class="clear"></div>
+                    </a>
+                </li>
+                <li class="u_Li open">
+                    <a href="#" class="onSt" onclick="zan(this);" msg="yuqiliebiao">
+                        <img class="side_icon" src="picture/list_active.png"/>
+                        <span class="side_text co_wt">逾期列表</span>
+                        <img class="side_up"
+                             src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAABA0lEQVRYR+2V0RGCMBBEdysQO7AzpQNLsQMpzRKwgnOOCZjBQC4hDH4kv4S8x17uIA5ePJiPKlAT+J8ERKQB0JB87dkZInIB0JPslTMkICI3AE8H7ki2e0iISAfg6s5uSXajgNqcPGhxiRlcUZrCeUlANxSTCMD1/DfJJlQCP/3NEgtwZXxLELgHRSRi8OkSjrTZZdwkYYH/CJRKwgoPCmyVSIEvCuRKpMJXBVIlcuBRAatELtwkEJNwraKjfL6GPo+NdPPfcKVFQwwT3JyAYU74EmZ4skCkHNN4jcXuPzeXwH9poRxJXz6elyXgJfFwB90tFy6UTLZASsxre6tATaAm8AGChpYh3uCC0AAAAABJRU5ErkJggg==">
+                        <div class="clear"></div>
+                    </a> 
+                </li>
+                <li class="u_Li open">
+                    <a href="#" class="onSt" onclick="zan(this);">
+                        <img class="side_icon" src="picture/list_active.png"/>
+                        <span class="side_text co_wt">信审日报表</span>
+                        <img class="side_up"
+                             src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAABA0lEQVRYR+2V0RGCMBBEdysQO7AzpQNLsQMpzRKwgnOOCZjBQC4hDH4kv4S8x17uIA5ePJiPKlAT+J8ERKQB0JB87dkZInIB0JPslTMkICI3AE8H7ki2e0iISAfg6s5uSXajgNqcPGhxiRlcUZrCeUlANxSTCMD1/DfJJlQCP/3NEgtwZXxLELgHRSRi8OkSjrTZZdwkYYH/CJRKwgoPCmyVSIEvCuRKpMJXBVIlcuBRAatELtwkEJNwraKjfL6GPo+NdPPfcKVFQwwT3JyAYU74EmZ4skCkHNN4jcXuPzeXwH9poRxJXz6elyXgJfFwB90tFy6UTLZASsxre6tATaAm8AGChpYh3uCC0AAAAABJRU5ErkJggg==">
+                        <div class="clear"></div>
+                    </a>
+                    <ul class="two">
+                        <li class="u_Li">
+                            <a href="#" title="资方日报表" class="acLi" onclick="zan(this);" msg="zifangribaobiao">
+                                <img class="side_icon fs_12" src="picture/jiantou.png"/>
+                                <span class="side_text">资方日报表</span>
+                                <div class="clear"></div>
+                            </a>
+                        </li>
+                    </ul>
+                    <ul class="two">
+                        <li class="u_Li">
+                            <a href="#" title="商户日报表" class="acLi" onclick="zan(this);" msg="shanghuribaobiao">
+                                <img class="side_icon fs_12" src="picture/jiantou.png"/>
+                                <span class="side_text">商户日报表</span>
+                                <div class="clear"></div>
+                            </a>
+                        </li>
+                    </ul>   
+                </li>
+               
+                
+                <li class="u_Li open">
+                    <a href="#" class="onSt" onclick="zan(this);" msg="xinshenqingkuang">
+                        <img class="side_icon" src="picture/list_active.png"/>
+                        <span class="side_text co_wt">信审情况统计</span>
+                        <img class="side_up"
+                             src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAABA0lEQVRYR+2V0RGCMBBEdysQO7AzpQNLsQMpzRKwgnOOCZjBQC4hDH4kv4S8x17uIA5ePJiPKlAT+J8ERKQB0JB87dkZInIB0JPslTMkICI3AE8H7ki2e0iISAfg6s5uSXajgNqcPGhxiRlcUZrCeUlANxSTCMD1/DfJJlQCP/3NEgtwZXxLELgHRSRi8OkSjrTZZdwkYYH/CJRKwgoPCmyVSIEvCuRKpMJXBVIlcuBRAatELtwkEJNwraKjfL6GPo+NdPPfcKVFQwwT3JyAYU74EmZ4skCkHNN4jcXuPzeXwH9poRxJXz6elyXgJfFwB90tFy6UTLZASsxre6tATaAm8AGChpYh3uCC0AAAAABJRU5ErkJggg==">
+                        <div class="clear"></div>
+                    </a>
+                </li>
+                <li class="u_Li open">
+                    <a href="#" class="onSt" onclick="zan(this);" >
+                        <img class="side_icon" src="picture/list_active.png"/>
+                        <span class="side_text co_wt">审核平台</span>
+                        <img class="side_up"
+                             src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAABA0lEQVRYR+2V0RGCMBBEdysQO7AzpQNLsQMpzRKwgnOOCZjBQC4hDH4kv4S8x17uIA5ePJiPKlAT+J8ERKQB0JB87dkZInIB0JPslTMkICI3AE8H7ki2e0iISAfg6s5uSXajgNqcPGhxiRlcUZrCeUlANxSTCMD1/DfJJlQCP/3NEgtwZXxLELgHRSRi8OkSjrTZZdwkYYH/CJRKwgoPCmyVSIEvCuRKpMJXBVIlcuBRAatELtwkEJNwraKjfL6GPo+NdPPfcKVFQwwT3JyAYU74EmZ4skCkHNN4jcXuPzeXwH9poRxJXz6elyXgJfFwB90tFy6UTLZASsxre6tATaAm8AGChpYh3uCC0AAAAABJRU5ErkJggg==">
+                        <div class="clear"></div>
+                    </a>
+                    <ul class="two">
+                        <li class="u_Li">
+                            <a href="#" title="我的审批列表" class="acLi" onclick="zan(this);" msg="wodeshenpi">
+                                <img class="side_icon fs_12" src="picture/jiantou.png"/>
+                                <span class="side_text">我的审批列表</span>
+                                <div class="clear"></div>
+                            </a>
+                        </li>
+                    </ul>
+                    <ul class="two">
+                        <li class="u_Li">
+                            <a href="#" title="待审批列表" class="acLi" onclick="zan(this);" msg="daishenpi">
+                                <img class="side_icon fs_12" src="picture/jiantou.png"/>
+                                <span class="side_text">待审批列表</span>
+                                <div class="clear"></div>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        
+        <iframe id="iframe" class="iframe" src="jiaoyushanghuliebiao.html"  height="100%" border="0" scrolling="no"></iframe>
+        
+    </div>
+</div>
+<script src="js/html5shiv.js"></script>
+<script src="js/jquery-2.1.1.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<!-- <script src="js/icheck.min.js"></script> -->
+<!-- <script src="js/layer.js"></script> -->
+<!-- <script src="js/dragzoom-1.0.js"></script> -->
+<!-- <script src="js/imgcontroller.js"></script> -->
+<script src="js/bootstrap-datetimepicker.js"></script>
+<script src="js/controllertop.js"></script>
+<!-- <script src="js/jquery.datatables.min.js"></script> -->
+
+<!-- <script src="js/datatables.bootstrap.min.js"></script> -->
+<!-- <script src="js/sockjs.min.js"></script> -->
+
+
+
+<script type="text/javascript">
+//     var layerWin;
+// $(function(){
+// 	if ($.fn.dataTable) {
+// 			$.extend(true, $.fn.dataTable.defaults, {
+//                 "pageLength": 10,
+// 				serverSide: true,
+//                 offsetY:50,
+// 				"pagingType": "full_numbers",
+// 				"language": {
+// 			        "processing": "处理中...",
+// 			        "lengthMenu": " _MENU_ ",
+// 			        "zeroRecords": "没有匹配结果",
+// 			        "info": "显示第 _START_ - _END_ 条记录，共_TOTAL_ 条",
+// 			        "infoEmpty": "显示第 0 至 0 项结果，共 0 项",
+// 			        "infoFiltered": "(由 _MAX_ 项结果过滤)",
+// 			        "infoPostFix": "",
+// 			        "search": "搜索:",
+// 			        "url": "",
+// 			        "emptyTable": "没有符合您搜索条件的信息",
+// 			        "loadingRecords": "载入中...",
+// 			        "infoThousands": ",",
+// 			        "paginate": {
+// 			            "first": "首页",
+// 			            "previous": "上页",
+// 			            "next": "下页",
+// 			            "last": "末页"
+// 			        }
+			        
+// 			    }
+// 			});
+// 		}
+// });
+
+//全局的ajax访问，处理ajax清求时sesion超时
+// $.ajaxSetup({
+//     contentType:"application/x-www-form-urlencoded;charset=utf-8",
+//     complete:function(XMLHttpRequest,textStatus){
+//         //通过XMLHttpRequest取得响应头，sessionstatus，
+//          if(XMLHttpRequest.status==401){
+//             //如果超时就处理 ，指定要跳转的页面
+//             window.location = "/hd/approve/login";
+//          }
+//     }
+// });
+
+</script>
+
+<script>
+   var conentWin;//定义内容对象
+    $(function(){
+        conentWin = $(".content1");
+        // if(false){
+        //     conentWin.load("/hd/loan/auditList");
+        // }else if(false){
+        //     conentWin.load("/hd/loan/managerList");
+        // }else if(false){
+        //     conentWin.load("/hd/loan/reviewList");
+        // }else if(false){
+        //     conentWin.load("/hd/import_apply/to_import_apply_page");
+        // }else if(false){
+        //     conentWin.load("/hd/import_apply/reviewList");
+        // } else if(true){
+        //     conentWin.load("/hd/import_apply/reportLoanList");
+        // }else if(false){
+        //     conentWin.load("/hd/lending/lendingList");
+        // }
+
+    })
+
+    function clickForward(url){
+        if("#" != url && 'null' != url  ){
+            conentWin.load("/hd"+url);
+        }
+
+    }
+
+   
+</script>
+<script>
+// 左侧导航
+    function zan(data) {
+        if($(data).hasClass("acLi")){
+            $(".u_Li a").removeClass("activeBg");
+            $(data).addClass("activeBg");
+            $(".fs_12").removeClass("activeIcon");
+            $(data).children("img").addClass("activeIcon");
+            if(!$(data).parents(".third").length){
+                $(".third").slideUp();
+            }
+        }
+        if ($(data).siblings(".two").length) {
+            if($(data).siblings(".two").css("display")=="block"){
+                $(data).siblings(".two").slideUp();
+                $(data).children(".side_up").removeClass("activeImg");
+                $(".third").slideUp();
+            }else {
+                $(data).siblings(".two").slideDown().end().parent().siblings(".u_Li").children(".two").slideUp();
+                $(data).children(".side_up").addClass("activeImg");
+            }
+        } else {
+            if($(data).siblings(".third").css("display")=="block"){
+                $(data).siblings(".third").slideUp();
+                $(data).children(".side_up").removeClass("activeImg");
+                $(data).children("img").removeClass("activeIcon");
+            }else {
+                $(data).siblings(".third").slideDown().end().parent().siblings(".u_Li").children(".third").slideUp();
+                $(data).children(".side_up").addClass("activeImg");
+            }
+        }
+    }
+    $(function(){
+        $(".u_Li").delegate(".onSt","click",function(){
+            var twoDom=$(".two");
+            $.each(twoDom,function(index,twodm){
+                var kaka=$(twodm).find(".third").length;
+                if(!kaka){
+                    $(twodm).find(".side_icon").attr("src","images/img/jiantou_.png")
+                }else {
+                $(twodm).find(".side_icon").attr("src","images/img/jiantou.png")
+                }
+            });
+        });
+    })
+</script>
+
+<script>
+
+</script>
+</body>
+</html>

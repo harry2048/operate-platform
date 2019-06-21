@@ -1,0 +1,321 @@
+<div class="content1" href="">
+
+
+    <meta http-equiv="content-type" content="text/html;charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <title>商户门店列表页面</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/base.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/skin/layer.css" rel="stylesheet">
+    <link href="css/pagination.css" rel="styleshe
+    et">
+    <link href="css/bootstrap-datetimepicker.css" rel="stylesheet">
+    <link href="Plug-ins/DataTables/css/dataTables.bootstrap.min.css" rel="stylesheet">
+    <link href="jedate/skin/jedate.css" rel="stylesheet">
+    <style>
+        #loanDetail{
+            background-color: #fff;
+            margin-bottom: 15px;
+        }
+        #loanDetail p{
+            padding-left:0 ;
+            padding-right: 0;
+            margin: 6px 0 ;
+        }
+        #loanDetail .wd_60{
+            display: inline-block;
+            width: 102px;
+            text-align: right;
+            font-size: 12px;
+            font-family: "微软雅黑";
+        }
+        #loanDetail .c13 .wd_60{
+            float: left;
+            margin-top: 5px;
+        }
+        #loanDetail .c13 input{
+            float: left;
+            font-size: 12px;
+            font-family: "微软雅黑";
+        }
+        #loanDetail .col-lg-3 ,#loanDetail .c13{
+            margin:5px 0;
+            padding-left:5px;
+            padding-right: 5px;
+        }
+
+        #loanDetail select option{
+            font-size: 12px;
+            font-family: "微软雅黑";
+        }
+        .search_btn {
+            font-size: 12px;
+            background-color: #09C;
+            padding: 5px 16px;
+            margin-top: 3px;
+            margin-bottom: 5px;
+        }
+        .ta_r{
+            text-align: right;
+        }
+        .mr_25{
+            margin-right: 25px;
+        }
+    </style>
+
+<div class="hui"><img src="images/ajax-loader.gif"></div>
+<div class="content">
+    <!--面包屑导航start-->
+    <ol class="breadcrumb">
+        <li class="active">商户门店列表</li>
+    </ol>
+    <div id="loanDetail" class="col-lg-12 col-md-12 col-sm-12">
+    	
+        <div class="col-lg-3 col-md-3 col-sm-3"><span class="wd_60">门店名称&nbsp;&nbsp;</span><input type="text" name="name" id="name"></div>
+        
+        <div class="col-lg-3 col-md-3 col-sm-3"><span class="wd_60">门店状态&nbsp;&nbsp;</span><select id="status">
+            <option value="">---请选择---</option>
+            <option value="0">未启用</option>
+            <option value="1">已启用</option>
+            <option value="2">已过期</option>
+        </select></div>
+        <div class="col-lg-3 col-md-3 col-sm-3 ta_r">
+            <button class="btn btn-primary btn-sm search_btn" type="button" id="btn-search">查询</button>
+            <button class="btn btn-primary btn-sm search_btn mr_25" id="addBizShop" type="button">添加门店</button>
+           <button class="btn btn-primary btn-sm search_btn mr_25" type="button" id="btn-import">导入</button>
+            
+        </div>
+        <div class="clear"></div>
+    </div>
+    <div class="table-responsive">
+        <div id="bizShopList_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer"><div class="top"><div class="clear"></div></div><div id="bizShopList_processing" class="dataTables_processing panel panel-default" style="display: none;">处理中...</div><table id="bizShopList" style="width: 100%;" class="table table-bordered table-striped table-hover bg_wt dataTable no-footer" role="grid" aria-describedby="bizShopList_info">
+            <thead style="border-bottom: 0;background-color: #fff;">
+            <tr role="row"><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 124px;">商户名称</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 98px;">所在地</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 125px;">业务类型</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 125px;">渠道维护</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 177px;">合作开始日期</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 177px;">合作结束日期</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 126px;">商户状态</th><th class="text-center sorting_disabled" rowspan="1" colspan="1" style="width: 72px;">操作</th></tr>
+            </thead>
+        <tbody><tr class="odd"><td valign="top" colspan="8" class="dataTables_empty">没有符合您搜索条件的信息</td></tr></tbody></table><div class="bottom"><div class="dataTables_info" id="bizShopList_info" role="status" aria-live="polite">显示第 0 至 0 项结果，共 0 项</div><div class="dataTables_length" id="bizShopList_length"><label> <select name="bizShopList_length" aria-controls="bizShopList" class="form-control input-sm"><option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select> </label></div><div class="dataTables_paginate paging_full_numbers" id="bizShopList_paginate"><ul class="pagination"><li class="paginate_button first disabled" id="bizShopList_first"><a href="javascript:void(0);" aria-controls="bizShopList" data-dt-idx="0" tabindex="0">首页</a></li><li class="paginate_button previous disabled" id="bizShopList_previous"><a href="javascript:void(0);" aria-controls="bizShopList" data-dt-idx="1" tabindex="0">上页</a></li><li class="paginate_button next disabled" id="bizShopList_next"><a href="javascript:void(0);" aria-controls="bizShopList" data-dt-idx="2" tabindex="0">下页</a></li><li class="paginate_button last disabled" id="bizShopList_last"><a href="javascript:void(0);" aria-controls="bizShopList" data-dt-idx="3" tabindex="0">末页</a></li></ul></div><div class="clear"></div></div></div>
+    </div>
+    <!--正文内容end-->
+</div>
+<script src="jedate/jedate.min.js"></script>
+<script>
+
+
+</script>
+
+<script>
+    $(function(){
+    	$('#btn-import').on('click', function(){
+             var bizId='6534388078183455745';
+             
+            
+             var content='<div style="margin-top:12px;margin-left: 10px;font-size: 14px; color: #e8b10d;text-align: center">请导入门店数据</div>';
+             content+='<div style="margin-top:20px;margin-left: 10px;"><span style="font-size: 12px;">选择文件&nbsp;:&nbsp;</span><input type="file" style="font-size: 12px; display: inline-block;margin-left: 15px;" id="uploadFile"/></div>';
+             layer.open({
+                 type: 1,
+                 area: ['400px', '200px'],
+                 title: '导入文件',
+                 btn: ['导入','清空','取消'],
+                 yes: function (index, layero) {
+                     var formData = new FormData();
+                     formData.append("file",$("#uploadFile")[0].files[0]);
+                   
+                     formData.append("bizId",bizId);
+                     $.ajax({
+                         type: 'POST',
+                         url: '/hd/bizShop/uploadFile' ,
+                         data:formData ,
+                         processData: false,
+                         contentType: false,
+                         async: true,
+                         success:function(data){
+                             if("200"==data.code){
+                                 layer.msg("文件导入成功");
+                                 dt.api().draw();
+                             }else{
+                                 layer.msg(data.msg);
+                             }
+                         }
+                     });
+                     //按钮【按钮一】的回调
+                     layer.close(index);
+                 },
+                 btn2: function (index, layero) {
+                     //按钮【按钮二】的回调
+                     $(".sousuo input").val("");
+                     return false;
+                 },
+                 btn3: function (index, layero) {
+                     //按钮【按钮三】的回调
+                     layer.close(index);
+                 },
+                 shadeClose: true, //点击遮罩关闭
+                 content:  content
+             });
+         });
+   
+    	
+
+        var dt = $("#bizShopList").dataTable({
+            "sDom":'<"top"<"clear">>rt<"bottom"ilp<"clear">>',
+            bProcessing:true,
+            searching: false, // 禁用dataTables自带的查询框
+            ordering: false, // 禁用排序
+
+            ajax: {
+                type: "POST",
+                url: "/hd/bizShop/bizShopListData",
+                data:function(d) {
+                	d.bussinessId = '6534388078183455745';
+                    d.name = $("#name").val();
+                    d.status=$("#status").val();
+                }
+            },
+            columns: [
+                {data:"name",default:''},
+                {data:"address",default:''},
+                {data:"sourceTypeDisplay",default:'' },
+                {data:"channelManagerName",default:''},
+                {data:"startDate",default:''},
+                {data:"endDate",default:''},
+                {data:"status",default:'',render:function(data,type,row){
+                    if (data=='0') {
+                        return '未启用';
+                    }else if (data=='1') {
+                        return '已启用';
+                    }else if (data=='2') {
+                        return '已到期';
+                    }
+                } },
+                {data: "id",render:function(data,type,row){
+                    var operation = "<button type='button'  data-id="+data+" class='btn btn-primary btn-sm ' name='biz-modify'>修改</button>&nbsp;&nbsp;" +
+                            "<button type='button'  data-id="+data+" class='btn btn-primary btn-sm ' name='biz-delete'>删除</button>&nbsp;&nbsp;";
+                    return operation;
+                }}
+            ]
+        });
+        $("#btn-search").click(function(e){
+            dt.api().draw();
+        });
+//给行绑定双击事件
+        $('#bizList tbody').on('dblclick', 'tr', function () {
+            var item = dt.api().row(this).data();
+            conentWin.load("/hd/biz/bizDetail?bizId="+item.id);
+        });
+//高级搜索弹出层
+        $("#bizList").on("click","button[name='add-case']",function(e){
+            var $current = $(e.currentTarget);
+            var bizId = $current.data("id");
+            var url='/hd/biz/case/detail?bizId='+bizId;
+            layer.open({
+                type: 2,
+                area: ['1150px', '600px'],
+                title: '商户专案配置',
+                shadeClose: true, //点击遮罩关闭
+                content: url
+            });
+
+        });
+        $('#addBizShop').on('click', function(){
+            conentWin.load("/hd/bizShop/toAddBizShop?bizId=6534388078183455745");
+        });
+        $("#bizShopList").on("click","button[name='biz-modify']",function(e){
+            var $current = $(e.currentTarget);
+            var bizId = $current.data("id");
+            var pageIndex=dt.api().page();
+            var pageSize=dt.api().page.len();
+            pageIndex=pageIndex*pageSize;
+            conentWin.load("/hd/bizShop/toModifyBizShop?bizId="+bizId+"&pageIndex="+pageIndex+"&pageSize="+pageSize);
+        });
+
+        
+            
+            
+            
+        
+
+        $("#bizShopList").on("click","button[name='biz-delete']",function(e){
+            layer.confirm("确定要删除该商户吗?", {
+                btn: ['确认','取消'], //按钮
+                yes:function (index, layero) {
+                    var $current = $(e.currentTarget);
+                    $current.attr("disabled","disabled");
+                    var bizId = $current.data("id");
+                    $.ajax({
+                        type: 'POST',
+                        url: '/hd/bizShop/deleteBizShop' ,
+                        data: {id:bizId},
+                        success:function(data){
+                            if("200"==data.code){
+                                layer.msg("商户删除成功");
+                                $current.removeAttr("disabled");
+                                dt.api(dt.api().page()).draw(false);
+                            }else{
+                                layer.msg("商户删除失败");
+                                $current.removeAttr("disabled");
+                            }
+                        }
+                    });
+                    layer.close(index);
+                },
+                cancel:function(index){
+                    //按钮【按钮二】的回调
+                    layer.close(index);
+                },
+            });
+        });
+
+
+
+    });
+
+
+
+</script>
+
+
+<script>
+    //分页方法
+    function page(n,s){
+        $("#pageNo").val(n);
+        $("#pageSize").val(s);
+        $("#searchForm").submit();
+        return false;
+    }
+
+
+</script>
+
+<script>
+    var time = 100000;
+    var interval; //调度器对象。
+    function run(){
+        interval = setInterval("fun()",time);
+    }
+    function fun(){
+        $(".hui").css("display","none");
+    }
+    $(function(){
+        $("#reviewList").delegate('tr td button','click',function(){
+            $(this).html("加载中...").attr("disabled","disabled");
+            $(".hui").css("display","block");
+            run();
+        })
+    })
+</script>
+
+<script>
+    $(document).ready(function(e) {
+        var counter = 0;
+        if (window.history && window.history.pushState) {
+            $(window).on('popstate', function () {
+                window.history.pushState('forward', null, '#');
+                window.history.forward(1);
+            });
+        }
+        window.history.pushState('forward', null, '#'); //在IE中必须得有这两行
+        window.history.forward(1);
+    });
+</script>
+
+</div>

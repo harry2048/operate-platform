@@ -1,0 +1,304 @@
+<div class="content1" href="">
+
+    <meta http-equiv="content-type" content="text/html;charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <title>逾期查询页面</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/base.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/skin/layer.css" rel="stylesheet">
+    <link href="css/pagination.css" rel="stylesheet">
+    <link href="css/bootstrap-datetimepicker.css" rel="stylesheet">
+    <link href="css/dataTables.bootstrap.min.css" rel="stylesheet">
+    <link href="css/jedate.css" rel="stylesheet">
+    <style>
+        #loanDetail{
+            background-color: #fff;
+            margin-bottom: 15px;
+        }
+        #loanDetail p{
+            padding-left:0 ;
+            padding-right: 0;
+            margin: 6px 0 ;
+        }
+        #loanDetail .wd_60{
+            display: inline-block;
+            width: 102px;
+            text-align: right;
+            font-size: 12px;
+            font-family: "微软雅黑";
+        }
+        #loanDetail .c13 .wd_60{
+            float: left;
+            margin-top: 5px;
+        }
+        #loanDetail .c13 input{
+            float: left;
+            font-size: 12px;
+            font-family: "微软雅黑";
+        }
+        #loanDetail .col-lg-3 ,#loanDetail .c13{
+            margin:5px 0;
+            padding-left:5px;
+            padding-right: 5px;
+        }
+
+        #loanDetail select option{
+            font-size: 12px;
+            font-family: "微软雅黑";
+        }
+        .search_btn {
+            font-size: 12px;
+            background-color: #09C;
+            padding: 5px 16px;
+            margin-top: 3px;
+            margin-bottom: 5px;
+        }
+        .ta_r{
+            text-align: right;
+        }
+        .mr_25{
+            margin-right: 25px;
+        }
+        .phoneStyle:hover{
+            cursor: pointer;
+            color: #09C;
+        }
+        .phoneStyle{
+            cursor: pointer;
+        }
+    </style>
+
+<div class="hui"><img src="/hd/static/images/ajax-loader.gif"></div>
+        <div class="content">
+            <!--面包屑导航start-->
+            <ol class="breadcrumb">
+                <li class="active">逾期列表查询</li>
+            </ol>
+            <div id="loanDetail" class="col-lg-12 col-md-12 col-sm-12">
+                <div class="col-lg-3 col-md-3 col-sm-3"><span class="wd_60">身份证号&nbsp;&nbsp;</span><input type="text" id="idNo"></div>
+                <div class="col-lg-3 col-md-3 col-sm-3"><span class="wd_60">姓名&nbsp;&nbsp;</span><input type="text" id="userName"></div>
+                <div class="col-lg-3 col-md-3 col-sm-3"><span class="wd_60">手机号&nbsp;&nbsp;</span><input type="text" id="phoneNo"></div>
+                <div class="col-lg-3 col-md-3 col-sm-3"><span class="wd_60">商户&nbsp;&nbsp;</span><input type="text" id="bizName"></div>
+                <div class="col-lg-3 col-md-3 col-sm-3"><span class="wd_60">资方&nbsp;&nbsp;</span><select id="fundSource"><option value="">请选择</option><option value="1">北银</option><option value="14">91金融</option><option value="13">沃付分期</option><option value="22">医美</option><option value="30">苏宁</option><option value="100">mini循环贷</option><option value="3">海尔教育</option><option value="4">安信小贷</option><option value="5">百度</option><option value="7">海尔租房</option><option value="8">华融</option><option value="11">贷鱼教育</option><option value="15">湖北消费金融</option><option value="16">91旺财</option><option value="18">晋商租房</option><option value="17">晋商教育</option></select></div>
+                <div class="col-lg-3 col-md-3 col-sm-3"><span class="wd_60">借据号&nbsp;&nbsp;</span><input type="text" id="loanNo"></div>
+                <div class="col-lg-3 col-md-3 col-sm-3"><span class="wd_60">逾期期数&nbsp;&nbsp;</span><input type="text" id="currOvdueTerm"></div>
+                <div class="col-lg-3 col-md-3 col-sm-3"><span class="wd_60">生成日期&nbsp;&nbsp;</span><input type="text" id="applyDateStart2" value="2019-05-20" placeholder="请选择时间" readonly=""></div>
+                <div class="col-lg-4 col-md-4 col-sm-4 col-lg-offset-3  col-md-offset-3 col-sm-offset-3 ta_r text-center">
+                    <button class="btn btn-primary btn-sm search_btn" type="button" id="btn-search">查询</button>
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <button class="btn btn-primary btn-sm search_btn mr_25" type="button" id="btn-export" onclick="exportResult();">导出</button>
+                    <button class="btn btn-primary btn-sm search_btn mr_25" type="button" id="btn-exportNew" onclick="exportResult1();">逾期列表导出</button>
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div class="table-responsive">
+                <div id="lendingList_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer"><div class="top"><div class="clear"></div></div><div id="lendingList_processing" class="dataTables_processing panel panel-default" style="display: none;">处理中...</div><table id="lendingList" style="width: 100%;" class="table table-bordered table-striped table-hover bg_wt dataTable no-footer" role="grid" aria-describedby="lendingList_info">
+                    <thead style="border-bottom: 0;background-color: #fff;">
+                    <tr role="row"><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 21px;">资方</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 123px;">商户名称</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 46px;">客户姓名</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 78px;">手机号</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 53px;">申请金额</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 53px;">逾期金额</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 22px;">期限</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 64px;">放款时间</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 46px;">逾期天数</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 69px;">当前逾期期数</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 64px;">数据日期</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 242px;">逾期原因</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 58px;">操作</th></tr>
+                    </thead>
+                <tbody><tr role="row" class="odd"><td>华融</td><td>GO窝公寓广州大石分店</td><td>朱学洪</td><td>13580327821</td><td>7500.00</td><td>9852.00</td><td>5</td><td>2017-04-14</td><td>737</td><td>5</td><td>2019-05-20</td><td></td><td><button type="button" data-id="6536012480275022849" data-phone="13580327821" class="btn btn-primary btn-sm mt_3" name="overdure_phone">打电话</button></td></tr><tr role="row" class="even"><td>华融</td><td>武汉银河晋昌公寓</td><td>张维胜</td><td>13387561230</td><td>30800.00</td><td>48836.40</td><td>11</td><td>2017-03-13</td><td>707</td><td>9</td><td>2019-05-20</td><td>单笔金额超限，该银行单笔可支付5000.00元！</td><td><button type="button" data-id="6536012465913725953" data-phone="13387561230" class="btn btn-primary btn-sm mt_3" name="overdure_phone">打电话</button></td></tr><tr role="row" class="odd"><td>华融</td><td>武汉银河晋昌公寓</td><td>张长兵</td><td>18871353940</td><td>44000.00</td><td>65966.00</td><td>11</td><td>2017-03-14</td><td>706</td><td>9</td><td>2019-05-20</td><td>单笔金额超限，该银行单笔可支付5000.00元！</td><td><button type="button" data-id="6536012466886804481" data-phone="18871353940" class="btn btn-primary btn-sm mt_3" name="overdure_phone">打电话</button></td></tr><tr role="row" class="even"><td>华融</td><td>武汉银河晋昌公寓</td><td>姚思</td><td>13720299982</td><td>38500.00</td><td>58789.00</td><td>11</td><td>2017-03-14</td><td>706</td><td>9</td><td>2019-05-20</td><td>单笔金额超限，该银行单笔可支付5000.00元！</td><td><button type="button" data-id="6536012467021022209" data-phone="13720299982" class="btn btn-primary btn-sm mt_3" name="overdure_phone">打电话</button></td></tr><tr role="row" class="odd"><td>华融</td><td>武汉银河晋昌公寓</td><td>陈威</td><td>15926245963</td><td>28600.00</td><td>45960.40</td><td>11</td><td>2017-03-14</td><td>706</td><td>9</td><td>2019-05-20</td><td>单笔金额超限，该银行单笔可支付5000.00元！</td><td><button type="button" data-id="6536012467159434241" data-phone="15926245963" class="btn btn-primary btn-sm mt_3" name="overdure_phone">打电话</button></td></tr><tr role="row" class="even"><td>华融</td><td>武汉银河晋昌公寓</td><td>罗世明</td><td>15827379361</td><td>31900.00</td><td>50210.50</td><td>11</td><td>2017-03-16</td><td>705</td><td>9</td><td>2019-05-20</td><td>单笔金额超限，该银行单笔可支付5000.00元！</td><td><button type="button" data-id="6536012467700499457" data-phone="15827379361" class="btn btn-primary btn-sm mt_3" name="overdure_phone">打电话</button></td></tr><tr role="row" class="odd"><td>华融</td><td>武汉银河晋昌公寓</td><td>黄自伟</td><td>13886184548</td><td>48400.00</td><td>71578.00</td><td>11</td><td>2017-03-16</td><td>705</td><td>9</td><td>2019-05-20</td><td>单笔金额超限，该银行单笔可支付5000.00元！</td><td><button type="button" data-id="6536012467968934913" data-phone="13886184548" class="btn btn-primary btn-sm mt_3" name="overdure_phone">打电话</button></td></tr><tr role="row" class="even"><td>华融</td><td>武汉银河晋昌公寓</td><td>李明轩</td><td>18602723378</td><td>29700.00</td><td>47361.50</td><td>11</td><td>2017-03-16</td><td>705</td><td>9</td><td>2019-05-20</td><td>单笔金额超限，该银行单笔可支付5000.00元！</td><td><button type="button" data-id="6536012468098958337" data-phone="18602723378" class="btn btn-primary btn-sm mt_3" name="overdure_phone">打电话</button></td></tr><tr role="row" class="odd"><td>华融</td><td>武汉银河晋昌公寓</td><td>张文中</td><td>18595385646</td><td>29700.00</td><td>47337.20</td><td>11</td><td>2017-03-16</td><td>704</td><td>9</td><td>2019-05-20</td><td>单笔金额超限，该银行单笔可支付5000.00元！</td><td><button type="button" data-id="6536012468367393793" data-phone="18595385646" class="btn btn-primary btn-sm mt_3" name="overdure_phone">打电话</button></td></tr><tr role="row" class="even"><td>华融</td><td>武汉银河晋昌公寓</td><td>孙飞虎</td><td>13026334708</td><td>24200.00</td><td>40249.40</td><td>11</td><td>2017-03-20</td><td>703</td><td>9</td><td>2019-05-20</td><td>单笔金额超限，该银行单笔可支付5000.00元！</td><td><button type="button" data-id="6536012469986395137" data-phone="13026334708" class="btn btn-primary btn-sm mt_3" name="overdure_phone">打电话</button></td></tr></tbody></table><div class="bottom"><div class="dataTables_info" id="lendingList_info" role="status" aria-live="polite">显示第 1 - 10 条记录，共1,009 条</div><div class="dataTables_length" id="lendingList_length"><label> <select name="lendingList_length" aria-controls="lendingList" class="form-control input-sm"><option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select> </label></div><div class="dataTables_paginate paging_full_numbers" id="lendingList_paginate"><ul class="pagination"><li class="paginate_button first disabled" id="lendingList_first"><a href="javascript:void(0);" aria-controls="lendingList" data-dt-idx="0" tabindex="0">首页</a></li><li class="paginate_button previous disabled" id="lendingList_previous"><a href="javascript:void(0);" aria-controls="lendingList" data-dt-idx="1" tabindex="0">上页</a></li><li class="paginate_button active"><a href="javascript:void(0);" aria-controls="lendingList" data-dt-idx="2" tabindex="0">1</a></li><li class="paginate_button "><a href="javascript:void(0);" aria-controls="lendingList" data-dt-idx="3" tabindex="0">2</a></li><li class="paginate_button "><a href="javascript:void(0);" aria-controls="lendingList" data-dt-idx="4" tabindex="0">3</a></li><li class="paginate_button "><a href="javascript:void(0);" aria-controls="lendingList" data-dt-idx="5" tabindex="0">4</a></li><li class="paginate_button "><a href="javascript:void(0);" aria-controls="lendingList" data-dt-idx="6" tabindex="0">5</a></li><li class="paginate_button disabled" id="lendingList_ellipsis"><a href="javascript:void(0);" aria-controls="lendingList" data-dt-idx="7" tabindex="0">…</a></li><li class="paginate_button "><a href="javascript:void(0);" aria-controls="lendingList" data-dt-idx="8" tabindex="0">101</a></li><li class="paginate_button next" id="lendingList_next"><a href="javascript:void(0);" aria-controls="lendingList" data-dt-idx="9" tabindex="0">下页</a></li><li class="paginate_button last" id="lendingList_last"><a href="javascript:void(0);" aria-controls="lendingList" data-dt-idx="10" tabindex="0">末页</a></li></ul></div><div class="clear"></div></div></div>
+            </div>
+            <!--正文内容end-->
+        </div>
+<script src="js/jedate.min.js"></script>
+<script>
+    jeDate({
+        dateCell:"#applyDateStart2", //目标元素。由于jedate.js封装了一个轻量级的选择器，因此dateCell还允许你传入class、tag这种方式 '#id .class'
+        format:"YYYY-MM-DD", //日期格式
+        minDate:"1900-01-01", //最小日期
+        maxDate:"2099-12-31", //最大日期
+        isinitVal:false, //是否初始化时间
+        isTime:true, //是否开启时间选择
+        isClear:true, //是否显示清空
+        festival:false, //是否显示节日
+        zIndex:999,  //弹出层的层级高度
+        marks:null, //给日期做标注
+        choosefun:function(val) {},  //选中日期后的回调
+        clearfun:function(val) {},   //清除日期后的回调
+        okfun:function(val) {}       //点击确定后的回调
+    });
+
+</script>
+
+<script>
+     $(function(){
+
+    	 var dt = $("#lendingList").dataTable({
+	         "sDom":'<"top"<"clear">>rt<"bottom"ilp<"clear">>', 
+	         bProcessing:true,
+	         pageLength: 10,
+	         searching: false, // 禁用dataTables自带的查询框
+	         ordering: false, // 禁用排序
+	         ajax: {
+	             type: "POST",
+	             url: "/hd/overdure/getOverdureData",
+	             data:function(d) {
+	           	  d.idNo = $("#idNo").val();
+	           	  d.userName = $("#userName").val();
+	           	  d.bizName = $("#bizName").val();
+                  d.phoneNo = $("#phoneNo").val();
+                 d.loanNo = $("#loanNo").val();
+                  d.currOvdueTerm = $("#currOvdueTerm").val();
+                  d.dataDt = $("#applyDateStart2").val();
+                  d.fundSource = $("#fundSource").val();
+	             }
+	         },
+	         columns: [
+//	             {data:"loanNo"},
+                 {data: "fundSource"},
+	             {data:"bizName"},
+	             {data:"userName"},
+//	             {data:"idNo" },
+	             {data:"phoneNo"},
+	             {data:"actvAmt"},
+	             {data:"ovdueAmt"},
+	             {data: "loanTerm"},
+	             {data: "distrDt"},
+	             {data: "ovdueDays"},
+	             {data: "currOvdueTerm"},
+//                 {data: "appDt"},
+                 {data: "dataDt"},
+                 {data: "retnRslt"},
+                 {data: "id",render:function(data,type,row){
+//                     var operation = "<span data-id="+data+" data-phone="+row.phoneNo+" class='glyphicon glyphicon-earphone phoneIcon phoneStyle'></span>";
+                     var  operation="<button type='button'  data-id="+data+" data-phone="+row.phoneNo+"  class='btn btn-primary btn-sm mt_3' name='overdure_phone'>打电话</button>";
+                     return operation;
+                 }}
+	         ]
+	     });
+
+         $("#lendingList").on("click","button[name='overdure_phone']",function(e) {
+             var $current = $(e.currentTarget);
+             var loanContNo = $current.data("id");
+             var id=$current.data("id");
+             var teleNum=$current.data("phone");
+             call(id,teleNum);
+         });
+
+    	 $("#btn-search").click(function(e){
+             dt.api().draw();
+         });
+
+         //给行绑定双击事件
+         $('#lendingList tbody').on('dblclick', 'tr', function () {
+             var item = dt.api().row(this).data();
+             var applyId = item.loanNo;
+             var url = '/hd/lending/getRepayPlan/'+applyId;
+             layer.open({
+                 type: 2,
+                 area: ['1280px', '600px'],
+                 title: '贷款情况详情页面',
+                 shadeClose: true, //点击遮罩关闭
+                 content: url
+             });
+         });
+    });
+
+     function exportResult(){
+         layer.confirm("确定要导出结果到excel中吗？", {
+             btn: ['确认','取消'], //按钮
+             yes:function (index, layero) {
+                 var idNo = $("#idNo").val();
+                 var userName = $("#userName").val();
+                 var bizName = $("#bizName").val();
+                 var phoneNo=$("#phoneNo").val();
+                 var loanNo=$("#loanNo").val();
+                 var currOvdueTerm=$("#currOvdueTerm").val();
+                 var dataDt=$("#applyDateStart2").val();
+                 var url="/hd/overdure/overdureExport/?idNo="+idNo+"&userName="+userName+"&bizName="+bizName+"&phoneNo="+phoneNo+"&loanNo="+loanNo+"&currOvdueTerm="+currOvdueTerm+"&dataDt="+dataDt;
+                 window.open(url);
+                 layer.close(index);
+             },
+             cancel:function(index){
+                 //按钮【按钮二】的回调
+                 layer.close(index);
+             },
+         });
+     }
+
+     function exportResult1(){
+         layer.confirm("确定要导出结果到excel中吗？", {
+             btn: ['确认','取消'], //按钮
+             yes:function (index, layero) {
+                 var idNo = $("#idNo").val();
+                 var userName = $("#userName").val();
+                 var bizName = $("#bizName").val();
+                 var phoneNo=$("#phoneNo").val();
+                 var loanNo=$("#loanNo").val();
+                 var currOvdueTerm=$("#currOvdueTerm").val();
+                 var dataDt=$("#applyDateStart2").val();
+                 var url="/hd/overdure/overdureExportNew/?idNo="+idNo+"&userName="+userName+"&bizName="+bizName+"&phoneNo="+phoneNo+"&loanNo="+loanNo+"&currOvdueTerm="+currOvdueTerm+"&dataDt="+dataDt;
+                 window.open(url);
+                 layer.close(index);
+             },
+             cancel:function(index){
+                 //按钮【按钮二】的回调
+                 layer.close(index);
+             },
+         });
+     }
+
+     function call(id,teleNum){
+         var loginName = '8022@hdjf';
+         var password = '8022';
+         var loginType = 'gateway';
+         var applyNo = id;
+         var creditId = '18760dec-f53b-4a6b-9bf8-2cf322da9a35';
+         var url='http://123.57.14.26:8088/stcash/edb_bar/phoneBar/phonebar.html?loginName=' + loginName + '&password=' + password + '&loginType=' + loginType + '&teleNum=' + teleNum + '&aid=' + applyNo + '&cid=' + creditId;
+         layer.open({
+             type: 2,
+             area: ['500px', '250px'],
+             title: '软电话条',
+             shadeClose: true, //点击遮罩关闭
+             content: url
+         });
+     }
+</script>
+
+
+<script>
+    //分页方法
+    function page(n,s){
+        $("#pageNo").val(n);
+        $("#pageSize").val(s);
+        $("#searchForm").submit();
+        return false;
+    }
+
+
+</script>
+
+<script>
+    var time = 100000;
+    var interval; //调度器对象。
+    function run(){
+        interval = setInterval("fun()",time);
+    }
+    function fun(){
+        $(".hui").css("display","none");
+    }
+    $(function(){
+//        $("#lendingList").delegate('tr td button','click',function(){
+//            $(this).html("加载中...").attr("disabled","disabled");
+//            $(".hui").css("display","block");
+//            run();
+//        })
+    })
+</script>
+
+<script>
+    $(document).ready(function(e) {
+        var counter = 0;
+        if (window.history && window.history.pushState) {
+            $(window).on('popstate', function () {
+                window.history.pushState('forward', null, '#');
+                window.history.forward(1);
+            });
+        }
+        window.history.pushState('forward', null, '#'); //在IE中必须得有这两行
+        window.history.forward(1);
+    });
+</script>
+
+</div>

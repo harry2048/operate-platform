@@ -1,0 +1,326 @@
+<div class="content1" href="">
+
+
+
+
+
+
+
+
+
+
+
+    <meta http-equiv="content-type" content="text/html;charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <title>还款统计查询</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/base.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/layer.css" rel="stylesheet">
+    <link href="css/pagination.css" rel="stylesheet">
+    <link href="css/bootstrap-datetimepicker.css" rel="stylesheet">
+    <link href="css/dataTables.bootstrap.min.css" rel="stylesheet">
+    <link href="css/jedate.css" rel="stylesheet">
+    <style>
+        #loanDetail{
+            background-color: #fff;
+            margin-bottom: 15px;
+        }
+        #loanDetail p{
+            padding-left:0 ;
+            padding-right: 0;
+            margin: 6px 0 ;
+        }
+        #loanDetail .wd_60{
+            display: inline-block;
+            width: 102px;
+            text-align: right;
+            font-size: 12px;
+            font-family: "微软雅黑";
+        }
+        #loanDetail .c13 .wd_60{
+            float: left;
+            margin-top: 5px;
+        }
+        #loanDetail .c13 input{
+            float: left;
+            font-size: 12px;
+            font-family: "微软雅黑";
+        }
+        #loanDetail .col-lg-3 ,#loanDetail .c13{
+            margin:5px 0;
+            padding-left:5px;
+            padding-right: 5px;
+        }
+
+        #loanDetail select option{
+            font-size: 12px;
+            font-family: "微软雅黑";
+        }
+        .search_btn {
+            font-size: 12px;
+            background-color: #09C;
+            padding: 5px 16px;
+            margin-top: 3px;
+            margin-bottom: 5px;
+        }
+        .ta_r{
+            text-align: right;
+        }
+        .mr_25{
+            margin-right: 25px;
+        }
+        #lateFee{
+            border: 1px solid #ccc;
+            height: 25px;
+            line-height: 25px;
+            text-indent: 5px;
+            width: 120px;
+            font-size: 13px;
+        }
+        .mt_3{
+            margin: 3px 0;
+        }
+        .phoneStyle:hover{
+            cursor: pointer;
+            color: #09C;
+        }
+        .phoneStyle{
+            cursor: pointer;
+        }
+    </style>
+
+<div class="hui"><img src="images/ajax-loader.gif"></div>
+        <div class="content">
+            <!--面包屑导航start-->
+            <ol class="breadcrumb">
+                <li class="active">还款统计查询</li>
+            </ol>
+            <div id="loanDetail" class="col-lg-12 col-md-12 col-sm-12">
+                <div class="col-lg-3 col-md-3 col-sm-3 c13"><span class="wd_60">还款日期(开始)&nbsp;&nbsp;</span><input type="text" id="applyDateStart1" value="2019-05-20 00:00:00" placeholder="请选择时间" readonly=""></div>
+                <div class="col-lg-3 col-md-3 col-sm-3 c13"><span class="wd_60">还款日期(结束)&nbsp;&nbsp;</span><input type="text" id="applyDateStart2" value="2019-05-20 23:59:59" placeholder="请选择时间" readonly=""></div>
+                <div class="col-lg-3 col-md-3 col-sm-3 ta_r">
+                    <button class="btn btn-primary btn-sm search_btn" style="margin-right: 30px;" type="button" id="btn-search">查询</button>
+                    <button class="btn btn-primary btn-sm search_btn" type="button" id="btn-export-excel" onclick="exportExcel();">导出excel</button>
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div class="table-responsive">
+                <div id="repayTotalList_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer"><div class="top"><div class="clear"></div></div><div id="repayTotalList_processing" class="dataTables_processing panel panel-default" style="display: none;">处理中...</div><table id="repayTotalList" style="width: 100%;" class="table table-bordered table-striped table-hover bg_wt dataTable no-footer" role="grid" aria-describedby="repayTotalList_info">
+                    <thead style="border-bottom: 0;background-color: #fff;">
+                    <tr role="row"><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 34px;">序号</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 94px;">提前还款笔数</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 94px;">提前还款金额</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 94px;">正常还款笔数</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 94px;">正常还款金额</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 94px;">逾期还款笔数</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 95px;">逾期还款金额</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 95px;">累计还款笔数</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 95px;">累计还款金额</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 58px;">占比(%)</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 126px;">还款渠道</th></tr>
+                    </thead>
+                <tbody><tr role="row" class="odd"><td>1</td><td>7</td><td>5779.5</td><td>6</td><td>4730.6</td><td>7</td><td>5248.5</td><td>15758.6</td><td>20</td><td>100</td><td>微信支付还款成功</td></tr></tbody></table><div class="bottom"><div class="dataTables_info" id="repayTotalList_info" role="status" aria-live="polite">显示第 1 - 1 条记录，共1 条</div><div class="dataTables_length" id="repayTotalList_length"><label> <select name="repayTotalList_length" aria-controls="repayTotalList" class="form-control input-sm"><option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select> </label></div><div class="dataTables_paginate paging_full_numbers" id="repayTotalList_paginate"><ul class="pagination"><li class="paginate_button first disabled" id="repayTotalList_first"><a href="javascript:void(0);" aria-controls="repayTotalList" data-dt-idx="0" tabindex="0">首页</a></li><li class="paginate_button previous disabled" id="repayTotalList_previous"><a href="javascript:void(0);" aria-controls="repayTotalList" data-dt-idx="1" tabindex="0">上页</a></li><li class="paginate_button active"><a href="javascript:void(0);" aria-controls="repayTotalList" data-dt-idx="2" tabindex="0">1</a></li><li class="paginate_button next disabled" id="repayTotalList_next"><a href="javascript:void(0);" aria-controls="repayTotalList" data-dt-idx="3" tabindex="0">下页</a></li><li class="paginate_button last disabled" id="repayTotalList_last"><a href="javascript:void(0);" aria-controls="repayTotalList" data-dt-idx="4" tabindex="0">末页</a></li></ul></div><div class="clear"></div></div></div>
+            </div>
+            <div class="row center">
+						<div class="col-sm-6">
+							<!-- <h3 class="header smaller  green">还款金额统计</h3> -->
+							<div id="repayCountChart" style="width: 550px; height: 400px; -webkit-tap-highlight-color: transparent; user-select: none; position: relative; background: transparent;" _echarts_instance_="ec_1558332456038"><div style="position: relative; overflow: hidden; width: 550px; height: 400px; padding: 0px; margin: 0px; border-width: 0px; cursor: pointer;"><canvas width="550" height="400" data-zr-dom-id="zr_0" style="position: absolute; left: 0px; top: 0px; width: 550px; height: 400px; user-select: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); padding: 0px; margin: 0px; border-width: 0px;"></canvas></div><div style="position: absolute; display: block; border-style: solid; white-space: nowrap; z-index: 9999999; transition: left 0.4s cubic-bezier(0.23, 1, 0.32, 1) 0s, top 0.4s cubic-bezier(0.23, 1, 0.32, 1) 0s; background-color: rgba(50, 50, 50, 0.7); border-width: 0px; border-color: rgb(51, 51, 51); border-radius: 4px; color: rgb(255, 255, 255); font: 14px/21px &quot;Microsoft YaHei&quot;; padding: 5px; left: 243px; top: 234px;">微信支付还款成功<br><span style="display:inline-block;margin-right:5px;border-radius:10px;width:9px;height:9px;background-color:#c23531"></span>还款金额 : 15,758.60</div></div>
+							
+						</div>
+						
+			</div>
+            <!--正文内容end-->
+        </div>
+<script src="js/jquery-2.1.1.min.js"></script>
+<script src="js/jedate.min.js"></script>
+<script src="js/echarts.min.js"></script>
+<!-- <script src="js/bootstrap-datetimepicker_1.js"></script>
+<script src="js/jquery.datatables.min.js"></script>
+ -->
+
+<script>
+    jeDate({
+        dateCell:"#applyDateStart1", //目标元素。由于jedate.js封装了一个轻量级的选择器，因此dateCell还允许你传入class、tag这种方式 '#id .class'
+        format:"YYYY-MM-DD hh:mm:ss", //日期格式
+        minDate:"1900-01-01 00:00:00", //最小日期
+        maxDate:"2099-12-31 23:59:59", //最大日期
+        isinitVal:false, //是否初始化时间
+        isTime:true, //是否开启时间选择
+        isClear:true, //是否显示清空
+        festival:false, //是否显示节日
+        zIndex:999,  //弹出层的层级高度
+        marks:null, //给日期做标注
+        choosefun:function(val) {},  //选中日期后的回调
+        clearfun:function(val) {},   //清除日期后的回调
+        okfun:function(val) {}       //点击确定后的回调
+    });
+    jeDate({
+        dateCell:"#applyDateStart2", //目标元素。由于jedate.js封装了一个轻量级的选择器，因此dateCell还允许你传入class、tag这种方式 '#id .class'
+        format:"YYYY-MM-DD hh:mm:ss", //日期格式
+        minDate:"1900-01-01 00:00:00", //最小日期
+        maxDate:"2099-12-31 23:59:59", //最大日期
+        isinitVal:false, //是否初始化时间
+        isTime:true, //是否开启时间选择
+        isClear:true, //是否显示清空
+        festival:false, //是否显示节日
+        zIndex:999,  //弹出层的层级高度
+        marks:null, //给日期做标注
+        choosefun:function(val) {},  //选中日期后的回调
+        clearfun:function(val) {},   //清除日期后的回调
+        okfun:function(val) {}       //点击确定后的回调
+    });
+
+</script>
+
+<script>
+    var dt;
+    function refresh(){
+        dt.api().draw();
+    }
+
+     $(function(){
+    	 dt = $("#repayTotalList").dataTable({
+	         "sDom":'<"top"<"clear">>rt<"bottom"ilp<"clear">>', 
+	         bProcessing:true,
+	         pageLength: 10,
+	         searching: false, // 禁用dataTables自带的查询框
+	         ordering: false, // 禁用排序
+	         ajax: {
+	             type: "POST",
+	             url: "/hd/loan/repayCount",
+	             data:function(d) {
+	           	  d.repayBeginDate = $("#applyDateStart1").val();
+	           	  d.repayEndDate = $("#applyDateStart2").val();
+	             }
+	         },
+	         columns: [
+				 {data:"id"},
+                 {data:"preRepayCount"},
+                 {data:"preRepayAmt"},
+                 {data:"norRepayCount"},
+                 {data:"norRepayAmt"},
+                 {data:"overRepayCount"},
+                 {data:"overRepayAmt"},
+	             {data:"totalAmt"},
+	             {data:"repayCount"},
+	             {data:"scale"},
+	             {data:"retnRslt"}
+                 ],
+             fnDrawCallback:function(oSettings) {
+                 for (var i=0, iLen=oSettings.aiDisplay.length; i<iLen; i++) {
+                    $('td:eq(0)', oSettings.aoData[ oSettings.aiDisplay[i] ].nTr).html(oSettings['_iDisplayStart']+i+1);
+                 }
+             }     
+	     });
+
+    	 $("#btn-search").click(function(e){
+             dt.api().draw();
+             initrepayCountChart();
+         });
+    	 initrepayCountChart();
+    });
+
+     function exportExcel(){
+         layer.confirm("确定要导出还款统计列表吗？", {
+             btn: ['确认','取消'], //按钮
+             yes:function (index, layero) {
+                 var repayBeginDate = $("#applyDateStart1").val();
+                 var repayEndDate = $("#applyDateStart2").val();
+                 var url="/hd/loan/repayCountExport?repayBeginDate="+repayBeginDate+"&repayEndDate="+repayEndDate;
+                 window.open(url);
+                 layer.close(index);
+             },
+             cancel:function(index){
+                 //按钮【按钮二】的回调
+                 layer.close(index);
+             },
+         });
+     }
+     
+ 	function initrepayCountChart(){
+		var repayCountChart = echarts.init(document.getElementById('repayCountChart'));
+		 var option = {
+    		title: {
+       		text: '还款金额统计',
+        	subtext: ''
+			    },
+			    tooltip: {
+			        trigger: 'axis',
+			        axisPointer: {
+			            type: 'shadow'
+			        }
+			    },
+			    legend: {
+			        data: ['还款金额'],
+			        selected: {  
+	                    '还款金额' : true
+	                    //不想显示的都设置成false  
+	                } 
+			    },
+			    grid: {
+			        left: '3%',
+			        right: '4%',
+			        bottom: '3%',
+			        containLabel: true
+			    },
+			    xAxis: {
+			        type: 'value',
+			        boundaryGap: [0, 0.01]
+			    },
+			    yAxis: {
+			        type: 'category',
+			        data: []
+			    },
+			    series: [
+			        {
+			            name: '还款金额',
+			            type: 'bar',
+			            data: []
+			        }
+			    ]
+			};
+		 repayCountChart.setOption(option);
+		 repayCountChart.showLoading();
+		 var param = {};
+		 param.repayBeginDate = $("#applyDateStart1").val();
+		 param.repayEndDate = $("#applyDateStart2").val();
+		 $.get('/hd/loan/getRepayCountChartChartData', param, function (data) {
+			//su 返回数组是否存在
+			repayCountChart.hideLoading();
+			repayCountChart.setOption({
+				yAxis: {
+			        type: 'category',
+			        data: data.fundSourceList
+			    },
+			    series: [
+			        {
+			            name: '还款金额',
+			            type: 'bar',
+			            data: data.loanAmountList
+			        }
+			    ]
+			});
+		});
+	}
+</script>
+
+
+<script>
+    //分页方法
+    function page(n,s){
+        $("#pageNo").val(n);
+        $("#pageSize").val(s);
+        $("#searchForm").submit();
+        return false;
+    }
+
+
+</script>
+
+
+<script>
+    $(document).ready(function(e) {
+        var counter = 0;
+        if (window.history && window.history.pushState) {
+            $(window).on('popstate', function () {
+                window.history.pushState('forward', null, '#');
+                window.history.forward(1);
+            });
+        }
+        window.history.pushState('forward', null, '#'); //在IE中必须得有这两行
+        window.history.forward(1);
+    });
+</script>
+
+</div>

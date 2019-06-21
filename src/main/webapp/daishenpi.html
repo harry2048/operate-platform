@@ -1,0 +1,508 @@
+ <!DOCTYPE html>
+ <html>
+ <head>
+    <title>逾期查询页面</title>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/base.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/layer.css" rel="stylesheet">
+    <link href="css/pagination.css" rel="stylesheet">
+    <link href="css/bootstrap-datetimepicker.css" rel="stylesheet">
+    <link href="css/jedate.css" rel="stylesheet">
+    <link href="css/AuditSystem.css" rel="stylesheet">
+	
+
+    <style>
+        select{
+            border: 1px solid #ccc;
+        }
+    </style>
+
+    <style>
+        /*@charset "utf-8";*/
+        /* CSS Document */
+        html,body,div,span,h1,h2,h3,h4,h5,h6,p,pre,a,code,em,img,small,strong,sub,sup,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label{
+            margin:0;
+            padding:0;
+            border:0;
+            outline:0;
+            font-size:12px;
+            vertical-align:baseline;
+            background:transparent;
+        }
+        h2{ text-align:center; padding:10px; font-size:20px;}
+        a{color:#007bc4; text-decoration:none;}
+        a:hover{text-decoration:underline}
+        ol,ul{list-style:none}
+        table{border-collapse:collapse;border-spacing:0}
+        body{height:100%; font:12px; sans-serif; color:#51555C; background:#fff }
+        img{border:none}
+        .bigshenHeBox{
+            width: 100%;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+        .searchBox{
+            width: 100%;
+            overflow: auto;
+        }
+        .searchBox .sertchBtn{
+            float: right;
+            width: 60px;
+            height: 30px;
+            border:none;
+            color: #fff;
+            background: #1196DB;
+            border-radius: 5px;
+        }
+        .inputShuru{
+            width: 100%;
+            /*margin-top: 20px;*/
+        }
+        .inputlistUl{
+            width: 100%;
+            overflow: auto;
+        }
+        .inputlistUl li{
+            float: left;
+            width: 25%;
+        }
+        .inputlistUl li span{
+            display: inline-block;
+            width: 42%;
+            text-align: right;
+        }
+        .inputlistUl li input{
+            width: 50%;
+            height: 25px;
+            text-align: left;
+            border-radius: 5px;
+            border:1px solid #ccc;
+            padding-left: 5px;
+            box-sizing: border-box;
+        }
+        .inputlistUl li select{
+            width: 50%;
+            height: 25px;
+            border-radius: 5px;
+            border:1px solid #ccc;
+            color: #776969;
+        }
+        .boxZongtiao{
+            margin-top: 50px;
+            border-top: 1px solid #ccc;
+        }
+        .boxZongtiao{
+            padding-top: 30px;
+            padding-left: 30px;
+            padding-right: 30px;
+            box-sizing: border-box;
+        }
+        .boxZongtiao .valText{
+            width: 30px;
+        }
+        .tTable{
+            width: 100%;
+            margin-top: 20px;
+            padding: 0 30px;
+            box-sizing: border-box;
+            margin-bottom: 20px;
+        }
+        .tTableTable{
+            width: 100%;
+            border:1px solid #F4F4F4;
+        }
+        .tTableTable tr{
+            line-height: 35px;
+            border:1px solid #F4F4F4;
+        }
+        .tTableTable .tTableHead tr th{
+            font-weight: normal;
+            text-align: center;
+            border:1px solid #F4F4F4;
+        }
+        .tTableTable .tTableBody tr td{
+            font-weight: normal;
+            text-align: center;
+            border:1px solid #F4F4F4;
+        }
+    </style>
+    
+</head>
+<body>
+	<div class="content1" href="">
+
+<!-- 
+
+<script type="text/javascript">
+    var postpath ='';
+</script>
+ -->
+	<div class="content">
+
+      <div id="wra" style="padding: 10px 0; background: #FFF;">
+          <div class="inputShuru">
+              <ul class="inputlistUl">
+                  <li><span>货款类型：</span>
+                      <select id="dkType">
+                          <option value="03">全部</option>
+                          <option value="00">租房贷</option>
+                          <option value="01">教育贷</option>
+                      </select>
+                  </li>
+                  <li><span>客户姓名：</span>
+                      <input id="idName" type="text" name="">
+                  </li>
+                  <li><span>渠道名称：</span>
+                      <input id="busName" type="text" name="">
+                  </li>
+                  <li><span>资方名称：</span>
+                      <select id="fundSource">
+                          <option value="">请选择</option>
+                          
+                              <option value="1">北银</option>
+                          
+                              <option value="14">91金融</option>
+                          
+                              <option value="13">沃付分期</option>
+                          
+                              <option value="22">医美</option>
+                          
+                              <option value="30">苏宁</option>
+                          
+                              <option value="100">mini循环贷</option>
+                          
+                              <option value="3">海尔教育</option>
+                          
+                              <option value="4">安信小贷</option>
+                          
+                              <option value="5">百度</option>
+                          
+                              <option value="7">海尔租房</option>
+                          
+                              <option value="8">华融</option>
+                          
+                              <option value="11">贷鱼教育</option>
+                          
+                              <option value="15">湖北消费金融</option>
+                          
+                              <option value="16">91旺财</option>
+                          
+                              <option value="18">晋商租房</option>
+                          
+                              <option value="17">晋商教育</option>
+                          
+                      </select>
+                  </li>
+              </ul>
+              <ul class="inputlistUl" style="margin-top: 15px;">
+                  <li><span>订单状态：</span>
+                      <select id="orderStatus">
+                          <option value="">请选择</option>
+                          
+                              <option value="in(0,1000)">审批中</option>
+                          
+                              <option value=">=4500">通过</option>
+                          
+                              <option value="=2000">已打回</option>
+                          
+                              <option value="=-3000">已取消</option>
+                          
+                              <option value="=-1000">已拒绝</option>
+                          
+                              <option value=">=7000">已放款</option>
+                          
+                              <option value="=9000">已完结</option>
+                          
+                              <option value="=8000">提前结清</option>
+                          
+                      </select>
+                  </li>
+                  <li><span>进件开始时间：</span><input style="margin-left: 4px;padding-left: 4px;" type="text" id="applyDateStart1" placeholder="请选择时间" readonly=""></li>
+                  <li><span>进件结束时间：</span><input style="margin-left: 4px;padding-left: 4px;" type="text" id="applyDateStart2" placeholder="请选择时间" readonly=""></li>
+              </ul>
+          </div>
+
+          <div class="cxBtn">
+              <button type="button" id="btn-search" class="btn btn-primary btn-sm sertchBtn">查询</button>
+          </div>
+
+          
+              
+          
+          <div class="tTable">
+              <div id="managerList_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer"><div class="top"><div class="clear"></div></div><div id="managerList_processing" class="dataTables_processing panel panel-default" style="display: none;">处理中...</div><table id="managerList" class="table table-bordered table-striped table-hover tTableTable dataTable no-footer" role="grid" aria-describedby="managerList_info" style="width: 1082px;">
+                  <thead class="tTableHead">
+                  <tr role="row"><th class="sorting_asc" tabindex="0" aria-controls="managerList" rowspan="1" colspan="1" aria-sort="ascending" aria-label="进件时间: 以降序排列此列" style="width: 105px;">进件时间</th><th class="sorting" tabindex="0" aria-controls="managerList" rowspan="1" colspan="1" aria-label="客户姓名: 以升序排列此列" style="width: 58px;">客户姓名</th><th class="sorting" tabindex="0" aria-controls="managerList" rowspan="1" colspan="1" aria-label="渠道名称: 以升序排列此列" style="width: 168px;">渠道名称</th><th class="sorting" tabindex="0" aria-controls="managerList" rowspan="1" colspan="1" aria-label="货款类型: 以升序排列此列" style="width: 58px;">货款类型</th><th class="sorting" tabindex="0" aria-controls="managerList" rowspan="1" colspan="1" aria-label="资金方: 以升序排列此列" style="width: 45px;">资金方</th><th class="sorting" tabindex="0" aria-controls="managerList" rowspan="1" colspan="1" aria-label="推送状态: 以升序排列此列" style="width: 58px;">推送状态</th><th class="sorting" tabindex="0" aria-controls="managerList" rowspan="1" colspan="1" aria-label="历史审核人: 以升序排列此列" style="width: 72px;">历史审核人</th><th class="sorting" tabindex="0" aria-controls="managerList" rowspan="1" colspan="1" aria-label="累计用时: 以升序排列此列" style="width: 59px;">累计用时</th><th class="sorting" tabindex="0" aria-controls="managerList" rowspan="1" colspan="1" aria-label="操作: 以升序排列此列" style="width: 100px;">操作</th></tr>
+                  </thead>
+                  <tbody class="tTableBody">
+                  <tr role="row" class="odd"><td class="sorting_1">2019-05-25 10:07:28</td><td>郭淑芳</td><td>广东明世在线教育科技有限公司</td><td>教育贷</td><td>晋商教育</td><td></td><td>zhangrongxin</td><td>10分钟42秒</td><td><button type="button" data-id="6537686126979712001" class="btn btn-primary btn-sm" name="receiveOrderBtn" disabled="">领单</button>&nbsp;&nbsp;&nbsp;&nbsp;<button type="button" data-id="6537686126979712001" class="btn btn-primary btn-sm" name="resetBtn">重置</button></td></tr></tbody>
+              </table><div class="bottom"><div class="dataTables_info" id="managerList_info" role="status" aria-live="polite">显示第 1 至 1 项结果，共 1 项</div><div class="dataTables_length" id="managerList_length"><label>显示 <select name="managerList_length" aria-controls="managerList" class="form-control input-sm"><option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select> 项结果</label></div><div class="dataTables_paginate paging_simple_numbers" id="managerList_paginate"><ul class="pagination"><li class="paginate_button previous disabled" id="managerList_previous"><a href="javascript:void(0);" aria-controls="managerList" data-dt-idx="0" tabindex="0">上页</a></li><li class="paginate_button active"><a href="javascript:void(0);" aria-controls="managerList" data-dt-idx="1" tabindex="0">1</a></li><li class="paginate_button next disabled" id="managerList_next"><a href="javascript:void(0);" aria-controls="managerList" data-dt-idx="2" tabindex="0">下页</a></li></ul></div><div class="clear"></div></div></div>
+          </div>
+      </div>
+	</div>
+<script src="js/jquery-2.1.1.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/icheck.min.js"></script>
+<script src="js/layer.js"></script>
+<script src="js/dragZoom-1.0.js"></script>
+<script src="js/imgController.js"></script>
+<script src="js/bootstrap-datetimepicker.js"></script>
+<script src="js/controllerTop.js"></script>
+<script src="js/jquery.dataTables.min.js"></script>
+
+<script src="js/dataTables.bootstrap.min.js"></script>
+<script src="js/sockjs.min.js"></script>
+
+<script src="js/jedate.min.js"></script>
+<script src="js/AuditSystem.js"></script>
+<script src="js/MyAuditSystem.js"></script>
+<script src="js/CaseMyAuditSystem.js"></script>
+<script src="js/html5shiv.js"></script>
+<script>
+var dt;
+function refresh(){
+    dt.api(dt.api().page()).draw(false);
+}
+$(function(){
+   dt = $("#managerList").dataTable({
+        "sDom":'<"top"<"clear">>rt<"bottom"ilp<"clear">>',
+       language: {
+           "sProcessing": "处理中...",
+           "sLengthMenu": "显示 _MENU_ 项结果",
+           "sZeroRecords": "没有匹配结果",
+           "sInfo": "显示第 _START_ 至 _END_ 项结果，共 _TOTAL_ 项",
+           "sInfoEmpty": "显示第 0 至 0 项结果，共 0 项",
+           "sInfoFiltered": "(由 _MAX_ 项结果过滤)",
+           "sInfoPostFix": "",
+           "sSearch": "搜索:",
+           "sUrl": "",
+           "sEmptyTable": "表中数据为空",
+           "sLoadingRecords": "载入中...",
+           "sInfoThousands": ",",
+           "oPaginate": {
+               "sFirst": "首页",
+               "sPrevious": "上页",
+               "sNext": "下页",
+               "sLast": "末页"
+           },
+           "oAria": {
+               "sSortAscending": ": 以升序排列此列",
+               "sSortDescending": ": 以降序排列此列"
+           }
+       },
+        serverSide:true,
+        bProcessing:true,
+        searching: false, // 禁用dataTables自带的查询框
+        ordering: true, // 禁用排序
+        displayStart: 0,
+        pageLength: 10,
+        ajax: {
+            type: "POST",
+            dataType:"json",
+            'contentType': 'application/json',
+            url: "/loan/getApprovalListData",
+            data:function(od) {
+				var d = {};
+                d.listType = '0';
+                d.idName = $("#idName").val();
+                d.dkType=$("#dkType").val();
+                d.businessCustomerName=$("#busName").val();
+                d.fundSource=$("#fundSource").val();
+                d.orderStatus=$("#orderStatus").val();
+                d.applyDateStart1=$("#applyDateStart1").val();
+                d.applyDateStart2=$("#applyDateStart2").val();
+                od.customParam = d;
+                return JSON.stringify(od);
+                
+            }
+        },
+        columns: [
+            {data:"importTime"},
+            {data:"idName"},
+            {data:"businessCustomerName"},
+            {data:"dkType",render: function(data, type, row) {
+                    if('00'==data){
+                        return "租房贷";
+                    }else if('01'==data){
+                        return "教育贷";
+                    }else if(row.fundSource == '4' || row.fundSource == '5' || row.fundSource == '7'|| row.fundSource == '8'|| row.fundSource == '18'|| row.fundSource == '19'){
+                        return "租房贷";
+                    }else if(row.fundSource == '3' || row.fundSource == '13' || row.fundSource == '14'|| row.fundSource == '16'|| row.fundSource == '17'|| row.fundSource == '15'){
+                        return "教育贷";
+                    }else if(row.fundSource == '100'){
+                        return "现金贷";
+                    }else if(row.fundSource == '22'){
+                        return "医美";
+                    }
+                    return data;
+                }},
+            {data:"fundSource",render: function(data, type, row) {
+                if(1==data){
+                    return "北银";
+                }else if(2==data){
+                    return "晋城";
+                }else if(3==data){
+                    return "海尔";
+                }else if(4==data){
+                    return "安信小贷";
+                }else if(5==data){
+                    return "百度";
+                }else if(6==data){
+                    return "闪银3c";
+                }else if(7==data){
+                    return "海尔租房";
+                }else if(11==data){
+                    return "贷鱼教育";
+                }else if(13==data){
+                    return "沃付分期";
+                }else if(14==data){
+                    return "91金融";
+                }else if(100==data){
+                    return "Mini循环贷";
+                }else if(15==data){
+                    return "湖北消费金融";
+                }else if(16==data){
+                    return "91旺财";
+                }else if(17==data){
+                    return "晋商教育";
+                }else if(18==data){
+                    return "晋商租房";
+                }else if(19==data){
+                    return "91旺财-租房";
+                }else if(21==data){
+                    return "笑脸金融";
+                }else if(22==data){
+                    return "医美";
+                }
+                return data;
+            }},
+            {data:"pushStatus",render: function(data, type, row) {
+                if(row.fundSource == '3' || row.fundSource == '17' || row.fundSource == '18'){
+                    if(0==data){
+                        return "未推送";
+                    }else if(1==data){
+                        return "推送成功";
+                    }else if(2==data){
+                        return "推送失败";
+                    }else if(3==data){
+                        return "待推送";
+                    }
+                }
+                return "";
+            }},
+            {data:"allocExamineUserName"},
+            {data: "examineTime"},
+            {data: "id",render: function(data, type, row) {
+               if(row.allocExamineUser != null && row.allocExamineUser != 'undefined' && row.allocExamineUser != '') {
+                   return '<button type="button" data-id="' + data + '" class="btn btn-primary btn-sm"  name = "receiveOrderBtn" disabled>领单</button>&nbsp;&nbsp;&nbsp;&nbsp;<button type="button"  data-id="' + data + '" class="btn btn-primary btn-sm" name = "resetBtn">重置</button>';
+               }
+               return '<button type="button" data-id="' + data + '" class="btn btn-primary btn-sm"  name = "receiveOrderBtn">领单</button>&nbsp;&nbsp;&nbsp;&nbsp;<button type="button" data-id="' + data + '"  class="btn btn-primary btn-sm" name = "resetBtn" disabled>重置</button>';
+            }},
+
+        ],
+        
+        fnDrawCallback:function(oSettings) {
+//            for (var i=0, iLen=oSettings.aiDisplay.length; i<iLen; i++) {
+//                $('td:eq(0)', oSettings.aoData[ oSettings.aiDisplay[i] ].nTr).html(oSettings['_iDisplayStart']+i+1);
+//            }
+        }
+
+
+    });
+
+    $("#btn-search").click(function(e){
+        $("#searchType").val("0");
+        dt.api().draw();
+    });
+
+    $("#managerList").on("click","button[name='receiveOrderBtn']",function(e){
+        var $current = $(e.currentTarget);
+        $current.attr("disabled","disabled");
+        var applyId = $current.data("id");
+        // alert('receiveOrderBtn' + applyId);
+        $.ajax({
+            type: 'POST',
+            url: '/loan/receiveOrder' ,
+            data: {applyId:applyId},
+            success:function(data){
+                if("200"==data.code){
+                    layer.msg("领单成功");
+                    $current.removeAttr("disabled");
+                    var pageIndex=dt.api().page();
+                    var pageSize=dt.api().page.len();
+                    pageIndex=pageIndex*pageSize;
+                    conentWin.load("/loan/hdAuditDetail?id="+applyId+"&pageIndex="+pageIndex+"&pageSize="+pageSize);
+                    // refresh();
+                }else{
+                    layer.msg(data.msg);
+                    $current.removeAttr("disabled");
+                }
+            }
+        });
+    })
+
+    $("#managerList").on("click","button[name='resetBtn']",function(e){
+        var $current = $(e.currentTarget);
+        $current.attr("disabled","disabled");
+        var applyId = $current.data("id");
+        $.ajax({
+            type: 'POST',
+            url: '/loan/resetOrder' ,
+            data: {applyId:applyId},
+            success:function(data){
+                if("200"==data.code){
+                    layer.msg("重置成功");
+                    $current.removeAttr("disabled");
+                    refresh();
+                }else{
+                    layer.msg(data.msg);
+                    $current.removeAttr("disabled");
+                }
+            }
+        });
+    })
+});
+</script>
+
+<script>
+
+
+
+jeDate({
+    dateCell:"#applyDateStart1", //目标元素。由于jedate.js封装了一个轻量级的选择器，因此dateCell还允许你传入class、tag这种方式 '#id .class'
+    format:"YYYY-MM-DD hh:mm:ss", //日期格式
+    minDate:"1900-01-01 00:00:00", //最小日期
+    maxDate:"2099-12-31 23:59:59", //最大日期
+    isinitVal:false, //是否初始化时间
+    isTime:true, //是否开启时间选择
+    isClear:true, //是否显示清空
+    festival:false, //是否显示节日
+    zIndex:999,  //弹出层的层级高度
+    marks:null, //给日期做标注
+    choosefun:function(val) {},  //选中日期后的回调
+    clearfun:function(val) {},   //清除日期后的回调
+    okfun:function(val) {}       //点击确定后的回调
+});
+jeDate({
+    dateCell:"#applyDateStart2", //目标元素。由于jedate.js封装了一个轻量级的选择器，因此dateCell还允许你传入class、tag这种方式 '#id .class'
+    format:"YYYY-MM-DD hh:mm:ss", //日期格式
+    minDate:"1900-01-01 00:00:00", //最小日期
+    maxDate:"2099-12-31 23:59:59", //最大日期
+    isinitVal:false, //是否初始化时间
+    isTime:true, //是否开启时间选择
+    isClear:true, //是否显示清空
+    festival:false, //是否显示节日
+    zIndex:999,  //弹出层的层级高度
+    marks:null, //给日期做标注
+    choosefun:function(val) {},  //选中日期后的回调
+    clearfun:function(val) {},   //清除日期后的回调
+    okfun:function(val) {}       //点击确定后的回调
+});
+</script>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,438 @@
+<div class="content1" href="">
+
+
+
+
+
+
+
+
+
+
+
+    <meta http-equiv="content-type" content="text/html;charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <title>信用卡退货订单页面</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/base.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/layer.css" rel="stylesheet">
+    <link href="css/pagination.css" rel="stylesheet">
+    <link href="css/bootstrap-datetimepicker.css" rel="stylesheet">
+    <link href="css/dataTables.bootstrap.min.css" rel="stylesheet">
+    <link href="css/jedate.css" rel="stylesheet">
+    <style>
+        #loanDetail{
+            background-color: #fff;
+            margin-bottom: 15px;
+        }
+        #loanDetail p{
+            padding-left:0 ;
+            padding-right: 0;
+            margin: 6px 0 ;
+        }
+        #loanDetail .wd_60{
+            display: inline-block;
+            width: 102px;
+            text-align: right;
+            font-size: 12px;
+            font-family: "微软雅黑";
+        }
+        #loanDetail .c13 .wd_60{
+            float: left;
+            margin-top: 5px;
+        }
+        #loanDetail .c13 input{
+            float: left;
+            font-size: 12px;
+            font-family: "微软雅黑";
+        }
+        #loanDetail .col-lg-3 ,#loanDetail .c13{
+            margin:5px 0;
+            padding-left:5px;
+            padding-right: 5px;
+        }
+
+        #loanDetail select option{
+            font-size: 12px;
+            font-family: "微软雅黑";
+        }
+        .search_btn {
+            font-size: 12px;
+            background-color: #09C;
+            padding: 5px 16px;
+            margin-top: 3px;
+            margin-bottom: 5px;
+        }
+        .cardSelect{
+            border: 1px solid #ddd;
+            height: 25px;
+            width: 150px;
+            font-size: 12px;
+        }
+
+    </style>
+
+<div class="hui"><img src="images/ajax-loader.gif"></div>
+        <div class="content">
+            <!--面包屑导航start-->
+            <ol class="breadcrumb">
+                <li class="active">信用卡退货订单查询</li>
+            </ol>
+            <div id="loanDetail" class="col-lg-12 col-md-12 col-sm-12">
+                <div class="col-lg-3 col-md-3 col-sm-3"><span class="wd_60">身份证号&nbsp;&nbsp;</span><input type="text" id="certNo"></div>
+                <div class="col-lg-3 col-md-3 col-sm-3"><span class="wd_60">姓名&nbsp;&nbsp;</span><input type="text" id="name"></div>
+                <div class="col-lg-3 col-md-3 col-sm-3"><span class="wd_60">手机号&nbsp;&nbsp;</span><input type="text" id="mobile"></div>
+                <div class="col-lg-3 col-md-3 col-sm-3"><span class="wd_60">商户&nbsp;&nbsp;</span><input type="text" id="hdBussinessCustomerName"></div>
+                <div class="col-lg-3 col-md-3 col-sm-3 cl3"><span class="wd_60">退货申请时间(开始)&nbsp;&nbsp;</span>
+                    <input type="text" id="applyDateStart1" placeholder="请选择时间" readonly=""></div>
+                <div class="col-lg-3 col-md-3 col-sm-3 c13"><span class="wd_60">退货申请时间(结束)&nbsp;&nbsp;</span>
+                    <input type="text" id="applyDateStart2" placeholder="请选择时间" readonly=""></div>
+                <div class="col-lg-3 col-md-3 col-sm-3 cl3"><span class="wd_60">退货完成时间(开始)&nbsp;&nbsp;</span>
+                    <input type="text" id="applyDateStart3" placeholder="请选择时间" readonly=""></div>
+                <div class="col-lg-3 col-md-3 col-sm-3 c13"><span class="wd_60">退货完成时间(结束)&nbsp;&nbsp;</span>
+                    <input type="text" id="applyDateStart4" placeholder="请选择时间" readonly=""></div>
+                <div class="col-lg-3 col-md-3 col-sm-3"><span class="wd_60">退货状态&nbsp;&nbsp;</span>
+                    <select id="status">
+                        <option value="">请选择</option>
+                        <option value="0">待审批</option>
+                     
+                        <option value="9000">退货成功</option>
+                        <option value="2000">退货失败</option>
+                    </select>
+                </div>
+                <div class="col-lg-2 col-md-2 col-sm-2"></div>
+                <div class="col-lg-7 col-md-7 col-sm-7">
+                    <button class="btn btn-primary btn-sm search_btn" type="button" id="btn-search">查询</button>&nbsp;&nbsp;
+                    <button class="btn btn-primary btn-sm search_btn mr_25" type="button" id="btn-clear">重置</button>
+                    
+                    	
+                </div>
+					
+                
+                <div class="clear"></div>
+            </div>
+            <div class="table-responsive">
+                <div id="reviewList_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer"><div class="top"><div class="clear"></div></div><div id="reviewList_processing" class="dataTables_processing panel panel-default" style="display: none;">处理中...</div><div class="dataTables_scroll"><div class="dataTables_scrollHead" style="overflow: hidden; position: relative; border: 0px; width: 100%;"><div class="dataTables_scrollHeadInner" style="box-sizing: content-box; width: 1700px; padding-right: 0px;"><table style="overflow: auto; width: 1700px; margin-left: 0px;" class="table table-bordered table-striped table-hover bg_wt dataTable no-footer" role="grid"><thead style="border-bottom: 0;background-color: #fff;">
+                    <tr role="row"><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 159px;">退货单号</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 159px;">原订单编号</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 142px;">申请时间</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 122px;">商户名称</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 122px;">客户姓名</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 151px;">身份证号</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 122px;">手机号</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 122px;">订单金额</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 122px;">申请退货金额</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 150px;">退货备注</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 123px;">退货状态</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 145px;">退货完成时间</th></tr>
+                    </thead></table></div></div><div class="dataTables_scrollBody" style="position: relative; overflow: auto; width: 100%;"><table id="reviewList" style="overflow: auto;width:1700px;" class="table table-bordered table-striped table-hover bg_wt dataTable no-footer" role="grid" aria-describedby="reviewList_info"><thead style="border-bottom: 0;background-color: #fff;">
+                    <tr role="row" style="height: 0px;"><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px; width: 159px;"><div class="dataTables_sizing" style="height:0;overflow:hidden;">退货单号</div></th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px; width: 159px;"><div class="dataTables_sizing" style="height:0;overflow:hidden;">原订单编号</div></th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px; width: 142px;"><div class="dataTables_sizing" style="height:0;overflow:hidden;">申请时间</div></th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px; width: 122px;"><div class="dataTables_sizing" style="height:0;overflow:hidden;">商户名称</div></th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px; width: 122px;"><div class="dataTables_sizing" style="height:0;overflow:hidden;">客户姓名</div></th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px; width: 151px;"><div class="dataTables_sizing" style="height:0;overflow:hidden;">身份证号</div></th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px; width: 122px;"><div class="dataTables_sizing" style="height:0;overflow:hidden;">手机号</div></th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px; width: 122px;"><div class="dataTables_sizing" style="height:0;overflow:hidden;">订单金额</div></th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px; width: 122px;"><div class="dataTables_sizing" style="height:0;overflow:hidden;">申请退货金额</div></th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px; width: 150px;"><div class="dataTables_sizing" style="height:0;overflow:hidden;">退货备注</div></th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px; width: 123px;"><div class="dataTables_sizing" style="height:0;overflow:hidden;">退货状态</div></th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px; width: 145px;"><div class="dataTables_sizing" style="height:0;overflow:hidden;">退货完成时间</div></th></tr>
+                    </thead>
+                    
+                <tbody><tr role="row" class="odd"><td>6481349502174233601</td><td>6481345123849339905</td><td>2018-12-20 10:48:59</td><td>贷鱼科技</td><td>王栋</td><td>130683199102171315</td><td>15028108565</td><td>1000</td><td>1000</td><td>1048</td><td>退货成功</td><td>2018-12-20 10:49:00</td></tr><tr role="row" class="even"><td>6481346710172861441</td><td>6481345501693215745</td><td>2018-12-20 10:37:54</td><td>贷鱼科技</td><td>王栋</td><td>130683199102171315</td><td>15028108565</td><td>1000</td><td>1000</td><td>退款1000---12201037</td><td>退货成功</td><td></td></tr><tr role="row" class="odd"><td>6481122590634017793</td><td>6481119427218637825</td><td>2018-12-19 19:47:20</td><td>贷鱼科技</td><td>王栋</td><td>130683199102171315</td><td>15028108565</td><td>1000</td><td>1000</td><td>退款</td><td>退货成功</td><td></td></tr></tbody></table></div></div><div class="bottom"><div class="dataTables_info" id="reviewList_info" role="status" aria-live="polite">显示第 1 - 3 条记录，共3 条</div><div class="dataTables_length" id="reviewList_length"><label> <select name="reviewList_length" aria-controls="reviewList" class="form-control input-sm"><option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select> </label></div><div class="dataTables_paginate paging_full_numbers" id="reviewList_paginate"><ul class="pagination"><li class="paginate_button first disabled" id="reviewList_first"><a href="javascript:void(0);" aria-controls="reviewList" data-dt-idx="0" tabindex="0">首页</a></li><li class="paginate_button previous disabled" id="reviewList_previous"><a href="javascript:void(0);" aria-controls="reviewList" data-dt-idx="1" tabindex="0">上页</a></li><li class="paginate_button active"><a href="javascript:void(0);" aria-controls="reviewList" data-dt-idx="2" tabindex="0">1</a></li><li class="paginate_button next disabled" id="reviewList_next"><a href="javascript:void(0);" aria-controls="reviewList" data-dt-idx="3" tabindex="0">下页</a></li><li class="paginate_button last disabled" id="reviewList_last"><a href="javascript:void(0);" aria-controls="reviewList" data-dt-idx="4" tabindex="0">末页</a></li></ul></div><div class="clear"></div></div></div>
+            </div>
+            <!--正文内容end-->
+        </div>
+<script src="jedate/jedate.min.js"></script>
+<script>
+    jeDate({
+        dateCell:"#applyDateStart1", //目标元素。由于jedate.js封装了一个轻量级的选择器，因此dateCell还允许你传入class、tag这种方式 '#id .class'
+        format:"YYYY-MM-DD hh:mm:ss", //日期格式
+        minDate:"1900-01-01 00:00:00", //最小日期
+        maxDate:"2099-12-31 23:59:59", //最大日期
+        isinitVal:false, //是否初始化时间
+        isTime:true, //是否开启时间选择
+        isClear:true, //是否显示清空
+        festival:false, //是否显示节日
+        zIndex:999,  //弹出层的层级高度
+        marks:null, //给日期做标注
+        choosefun:function(val) {},  //选中日期后的回调
+        clearfun:function(val) {},   //清除日期后的回调
+        okfun:function(val) {}       //点击确定后的回调
+    });
+    jeDate({
+        dateCell:"#applyDateStart2", //目标元素。由于jedate.js封装了一个轻量级的选择器，因此dateCell还允许你传入class、tag这种方式 '#id .class'
+        format:"YYYY-MM-DD hh:mm:ss", //日期格式
+        minDate:"1900-01-01 00:00:00", //最小日期
+        maxDate:"2099-12-31 23:59:59", //最大日期
+        isinitVal:false, //是否初始化时间
+        isTime:true, //是否开启时间选择
+        isClear:true, //是否显示清空
+        festival:false, //是否显示节日
+        zIndex:999,  //弹出层的层级高度
+        marks:null, //给日期做标注
+        choosefun:function(val) {},  //选中日期后的回调
+        clearfun:function(val) {},   //清除日期后的回调
+        okfun:function(val) {}       //点击确定后的回调
+    });
+    jeDate({
+        dateCell:"#applyDateStart3", //目标元素。由于jedate.js封装了一个轻量级的选择器，因此dateCell还允许你传入class、tag这种方式 '#id .class'
+        format:"YYYY-MM-DD hh:mm:ss", //日期格式
+        minDate:"1900-01-01 00:00:00", //最小日期
+        maxDate:"2099-12-31 23:59:59", //最大日期
+        isinitVal:false, //是否初始化时间
+        isTime:true, //是否开启时间选择
+        isClear:true, //是否显示清空
+        festival:false, //是否显示节日
+        zIndex:999,  //弹出层的层级高度
+        marks:null, //给日期做标注
+        choosefun:function(val) {},  //选中日期后的回调
+        clearfun:function(val) {},   //清除日期后的回调
+        okfun:function(val) {}       //点击确定后的回调
+    });
+    jeDate({
+        dateCell:"#applyDateStart4", //目标元素。由于jedate.js封装了一个轻量级的选择器，因此dateCell还允许你传入class、tag这种方式 '#id .class'
+        format:"YYYY-MM-DD hh:mm:ss", //日期格式
+        minDate:"1900-01-01 00:00:00", //最小日期
+        maxDate:"2099-12-31 23:59:59", //最大日期
+        isinitVal:false, //是否初始化时间
+        isTime:true, //是否开启时间选择
+        isClear:true, //是否显示清空
+        festival:false, //是否显示节日
+        zIndex:999,  //弹出层的层级高度
+        marks:null, //给日期做标注
+        choosefun:function(val) {},  //选中日期后的回调
+        clearfun:function(val) {},   //清除日期后的回调
+        okfun:function(val) {}       //点击确定后的回调
+    });
+</script>
+
+<script>
+    var dt;
+     $(function(){
+
+         $("#applyDateStart1").on("blur",function(){
+             var startTime=$(this).val();
+             var endTime=$("#applyDateStart2").val();
+             if(startTime&&endTime){
+                 var idTermBghTime= new Date(startTime.replace("-", "/").replace("-", "/"));
+                 var idTermEndTime = new Date(endTime.replace("-", "/").replace("-", "/"));
+                 if(idTermBghTime >= idTermEndTime)
+                 {
+                     layer.msg("退货申请结束时间必须大于退货申请开始日期!");
+                     return false;
+                 }
+             }
+         });
+
+         $("#applyDateStart4").on("blur",function(){
+             var startTime=$("#applyDateStart3").val();
+             var endTime=$(this).val();
+             if(startTime&&endTime){
+                 var idTermBghTime= new Date(startTime.replace("-", "/").replace("-", "/"));
+                 var idTermEndTime = new Date(endTime.replace("-", "/").replace("-", "/"));
+                 if(idTermBghTime >= idTermEndTime)
+                 {
+                     layer.msg("退货完成结束时间必须大于退货完成开始日期!");
+                     return false;
+                 }
+             }
+         });
+
+
+
+
+
+    	dt = $("#reviewList").dataTable({
+	         "sDom":'<"top"<"clear">>rt<"bottom"ilp<"clear">>', 
+	         bProcessing:true,
+	         pageLength: 10,
+	         searching: false, // 禁用dataTables自带的查询框
+	         ordering: false, // 禁用排序
+            "autoWidth":false,
+            autoHeigth:false,
+             "scrollX": true,
+            "scrollX": 1700,
+            "scrollY": true,
+            "scrollX": 500,
+	         ajax: {
+	             type: "POST",
+	             url: "/hd/skquery/skqueryRefundListdata",
+	             data:function(d) {
+	           	  d.idNo = $("#certNo").val();
+	           	  d.idName = $("#name").val();
+	           	  d.phoneNo = $("#mobile").val();
+	           	  d.hdBussinessCustomerName = $("#hdBussinessCustomerName").val();
+	           	  d.startTime = $("#applyDateStart1").val();
+	           	  d.endTime = $("#applyDateStart2").val();
+	           	  d.completeStartTime = $("#applyDateStart3").val();
+	           	  d.completeEndTime = $("#applyDateStart4").val();
+	           		
+	           	  d.status = $("#status").find("option:selected").val();
+
+	             }
+	         },
+	         columns: [
+	             {data:"id",defaultContent:'--'},
+	             {data:"hdKbtOrderInfoId",defaultContent:'--'},
+	             {data:"importTime",defaultContent:'--',render: function(data, type, row) {
+                         return formatDate(data);
+                     }
+                 },
+	             {data:"hdBussinessCustomerName",defaultContent:'--'},
+	             {data:"idName",defaultContent:'--' },
+	             {data:"idNo",defaultContent:'--'},
+	             {data:"phoneNo",defaultContent:'--'},
+	             {data:"payAmount",defaultContent:'--'},
+
+	             {data: "refundAmount",defaultContent:'--'},
+                 {data: "reason",defaultContent:'--'},
+	         /*    {data: "payAmount",defaultContent:'--'},*/
+	             {data: "status",defaultContent:'--',render: function(data, type, row) {
+                         return getrefoundType(data);
+                     }},
+	             {data: "completeTime",defaultContent:'--',render: function(data, type, row) {
+                         return formatDate(data);
+                     }}
+            /*     {data:"mobile",defaultContent:'--'},
+                 {data:"certNo",defaultContent:'--'},formatDate
+	             {data: "status",defaultContent:'--'}*/
+	         ]
+	     });
+    	 $("#btn-search").click(function(e){
+             var startTime=$("#applyDateStart1").val();
+             var endTime=$("#applyDateStart2").val();
+
+             if(startTime&&endTime){
+                 var idTermBghTime= new Date(startTime.replace("-", "/").replace("-", "/"));
+                 var idTermEndTime = new Date(endTime.replace("-", "/").replace("-", "/"));
+                 if(idTermBghTime >= idTermEndTime)
+                 {
+                     layer.msg("交易结束日期必须大于交易开始日期!");
+                     return false;
+                 }
+             }
+             
+             // var examineDateStart = $("#applyDateStart3").val();
+          	//  var examineDateEnd = $("#applyDateStart4").val();
+             // if(examineDateStart&&examineDateEnd){
+             //     if(examineDateStart >=examineDateEnd){
+             //         layer.msg("支付结束日期必须大于信审开始日期!");
+             //         return false;
+             //     }
+             // }
+             dt.api().draw();
+         });
+         $("#btn-clear").click(function(e){
+             $("#certNo").val("");
+             $("#name").val("");
+             $("#mobile").val("");
+             $("#hdBussinessCustomerName").val("");
+             $("#applyDateStart1").val("");
+             $("#applyDateStart2").val("");
+            $("#applyDateStart3").val("");
+             $("#applyDateStart4").val("");
+
+             $("#status").val("");
+             dt.api().draw();
+         });
+
+
+    });
+function getrefoundType(obj) {
+    if(obj=="0"){
+        return "待审批"
+    }
+/*    else if(obj=="200"){
+        return "申请失败"
+    }else if(obj=="300"){
+        return "退货处理中"
+    }else if(obj=="400"){
+        return "审批失败"
+    }*/
+
+    else if(obj=="9000"){
+        return "退货成功"
+    }
+    else if(obj=="2000"){
+        return "退货失败"
+    }else{
+        return obj;
+    }
+}
+    function formatDate(time){
+        if(null !=time && time !=''){
+            var date = new Date(time);
+
+            var year = date.getFullYear(),
+                month = date.getMonth()+1,//月份是从0开始的
+                day = date.getDate(),
+                hour = date.getHours(),
+                min = date.getMinutes(),
+                sec = date.getSeconds();
+            var newTime = year + '-' +
+                (month < 10? '0' + month : month) + '-' +
+                (day < 10? '0' + day : day) + ' ' +
+                (hour < 10? '0' + hour : hour) + ':' +
+                (min < 10? '0' + min : min) + ':' +
+                (sec < 10? '0' + sec : sec);
+
+            return newTime;
+        }else{
+            return "";
+        }
+
+    }
+
+     function exportResult(){
+         layer.confirm("确定要导出结果到excel中吗？", {
+             btn: ['确认','取消'], //按钮
+             yes:function (index, layero) {
+                 var certNo = $("#certNo").val();
+                 var name = $("#name").val();
+                 var mobile = $("#mobile").val();
+                 var hdBussinessCustomerName = $("#hdBussinessCustomerName").val();
+                 var importStartTime = $("#applyDateStart1").val();
+                 var importEndTime = $("#applyDateStart2").val();
+                 var payStartTime = $("#applyDateStart3").val();
+                 var payEndTime = $("#applyDateStart4").val();
+
+                 var status = $("#status").find("option:selected").val();
+                 var params="certNo="+certNo+"&name="+name+"&mobile="+mobile+"&hdBussinessCustomerName="+hdBussinessCustomerName;
+                 params+="&importStartTime="+importStartTime+"&importEndTime="+importEndTime+"&payStartTime="+payStartTime+"&payEndTime="+payEndTime;
+                 params+="&status="+status;
+                 var url="/hd/alipay/export?"+params;
+                 window.open(url);
+                 layer.close(index);
+             },
+             cancel:function(index){
+                 //按钮【按钮二】的回调
+                 layer.close(index);
+             },
+         });
+     }
+</script>
+<script>
+
+</script>
+<!--按钮弹出层-->
+<script>
+
+
+
+</script>
+
+
+<script>
+    var time = 100000;
+    var interval; //调度器对象。
+    function run(){
+        interval = setInterval("fun()",time);
+    }
+    function fun(){
+        $(".hui").css("display","none");
+    }
+//    $(function(){
+//        $("#reviewList").delegate('tr td button','click',function(){
+//            $(this).html("加载中...").attr("disabled","disabled");
+//            $(".hui").css("display","block");
+//            run();
+//        })
+//    })
+</script>
+
+<script>
+    $(document).ready(function(e) {
+        var counter = 0;
+        if (window.history && window.history.pushState) {
+            $(window).on('popstate', function () {
+                window.history.pushState('forward', null, '#');
+                window.history.forward(1);
+            });
+        }
+        window.history.pushState('forward', null, '#'); //在IE中必须得有这两行
+        window.history.forward(1);
+    });
+</script>
+
+</div>

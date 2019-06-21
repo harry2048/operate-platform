@@ -1,0 +1,71 @@
+ <!DOCTYPE html>
+ <html>
+ <head>
+     <title></title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/base.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/layer.css" rel="stylesheet">
+    <link href="css/pagination.css" rel="stylesheet">
+    <link href="css/bootstrap-datetimepicker.css" rel="stylesheet">
+ </head>
+ <body>
+ 	 <div class="content1" href="">
+            <div class="content">
+                 <!--面包屑导航start-->
+                <ol class="breadcrumb">
+                    <li class="active">商户列表</li>
+                </ol>
+                <div id="loanDetail" class="col-lg-12 col-md-12 col-sm-12">
+                    <div class="col-lg-3 col-md-3 col-sm-3"><span class="wd_60">商户名称&nbsp;&nbsp;</span><input type="text" name="name" id="name"></div>
+                    <div class="col-lg-3 col-md-3 col-sm-3"><span class="wd_60">渠道维护&nbsp;&nbsp;</span><select id="channelManagerId">
+                        <option value="">---请选择---</option>
+                        
+                            <option value="18760dec-f53b-4a6b-9bf8-2cf322da9a35">吴英骄</option>
+                        
+                            <option value="36d938bf-58d5-4a7e-a7e6-2ae7e28efbb7">肖俊骞</option>
+                        
+                            <option value="8a86bc56-55af-4957-9eea-61e34a778232">楚鹏</option>
+                        
+                            <option value="92c4dfed-e665-4e98-9afe-4bc01f9dc525">林燚填</option>
+                        
+                            <option value="931937a3-e374-469f-8977-e8373bb7ab34">张咏</option>
+                        
+                            <option value="bc4e53ba-a7f0-4abf-a1a3-e4e0630ab1c6">张雍昊</option>
+                        
+                            <option value="cfef2ca9-3805-45c3-b7aa-c1aab257294e">李家欢</option>
+                        
+                            <option value="f9b2f164-691b-42aa-8d0b-bb3f06478edc">李文明</option>
+                        
+                    </select></div>
+                    
+                        
+                        
+                        
+                        
+                        
+                    
+                    <div class="col-lg-3 col-md-3 col-sm-3"><span class="wd_60">商户状态&nbsp;&nbsp;</span><select id="status">
+                        <option value="">---请选择---</option>
+                        <option value="0">未启用</option>
+                        <option value="1">已启用</option>
+                        <option value="2">已过期</option>
+                    </select></div>
+                    <div class="col-lg-3 col-md-3 col-sm-3 ta_r">
+                        <button class="btn btn-primary btn-sm search_btn" type="button" id="btn-search">查询</button>&nbsp;&nbsp;&nbsp;&nbsp;
+                        <button class="btn btn-primary btn-sm search_btn mr_25" id="addBiz" type="button">添加商户</button>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div class="table-responsive">
+                    <div id="bizList_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer"><div class="top"><div class="clear"></div></div><div id="bizList_processing" class="dataTables_processing panel panel-default" style="display: none;">处理中...</div><table id="bizList" style="width: 100%;" class="table table-bordered table-striped table-hover bg_wt dataTable no-footer" role="grid" aria-describedby="bizList_info">
+                        <thead style="border-bottom: 0;background-color: #fff;">
+                        <tr role="row"><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 247px;">商户名称</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 47px;">所在地</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 61px;">业务类型</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 61px;">渠道维护</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 91px;">合作开始日期</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 91px;">合作结束日期</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 61px;">商户状态</th><th class="text-center sorting_disabled td_align_left" rowspan="1" colspan="1" style="width: 365px;">操作</th></tr>
+                        </thead>
+                    <tbody><tr role="row" class="odd"><td>医美月付测试商户</td><td>北京市</td><td>教育</td><td>吴英骄</td><td>2019-05-15</td><td>2022-05-28</td><td>已启用</td><td class=" td_align_left"><button type="button" data-id="6534388078183455745" class="btn btn-primary btn-sm " name="biz-modify">修改</button>&nbsp;&nbsp;<button type="button" data-id="6534388078183455745" class="btn btn-primary btn-sm " name="add-case">配置专案</button>&nbsp;&nbsp;<button type="button" data-id="6534388078183455745" class="btn btn-primary btn-sm " name="add-shop">配置门店</button>&nbsp;&nbsp;<button type="button" data-id="6534388078183455745" class="btn btn-primary btn-sm " name="init-commodity">初始化商品</button>&nbsp;&nbsp;</td></tr><tr role="row" class="even"><td>医美月付测试商户2</td><td>北京市</td><td>教育</td><td>吴英骄</td><td>2019-05-09</td><td>2020-05-14</td><td>已启用</td><td class=" td_align_left"><button type="button" data-id="6534393848802694145" class="btn btn-primary btn-sm " name="biz-modify">修改</button>&nbsp;&nbsp;<button type="button" data-id="6534393848802694145" class="btn btn-primary btn-sm " name="add-case">配置专案</button>&nbsp;&nbsp;<button type="button" data-id="6534393848802694145" class="btn btn-primary btn-sm " name="add-shop">配置门店</button>&nbsp;&nbsp;<button type="button" data-id="6534393848802694145" class="btn btn-primary btn-sm " name="init-commodity">初始化商品</button>&nbsp;&nbsp;</td></tr><tr role="row" class="odd"><td>郑州法商专修学院</td><td>河南省</td><td>教育</td><td>吴英骄</td><td>2019-05-08</td><td>2020-05-08</td><td>已启用</td><td class=" td_align_left"><button type="button" data-id="6531783008843260929" class="btn btn-primary btn-sm " name="biz-modify">修改</button>&nbsp;&nbsp;<button type="button" data-id="6531783008843260929" class="btn btn-primary btn-sm " name="add-case">配置专案</button>&nbsp;&nbsp;<button type="button" data-id="6531783008843260929" class="btn btn-primary btn-sm " name="add-shop">配置门店</button>&nbsp;&nbsp;<button type="button" data-id="6531783008843260929" class="btn btn-primary btn-sm " name="init-commodity">初始化商品</button>&nbsp;&nbsp;</td></tr><tr role="row" class="even"><td>阁瑞钛伦特软件（北京）有限公司</td><td>北京市</td><td>教育</td><td>吴英骄</td><td>2019-05-07</td><td>2020-05-07</td><td>已启用</td><td class=" td_align_left"><button type="button" data-id="6531406268260794369" class="btn btn-primary btn-sm " name="biz-modify">修改</button>&nbsp;&nbsp;<button type="button" data-id="6531406268260794369" class="btn btn-primary btn-sm " name="add-case">配置专案</button>&nbsp;&nbsp;<button type="button" data-id="6531406268260794369" class="btn btn-primary btn-sm " name="add-shop">配置门店</button>&nbsp;&nbsp;<button type="button" data-id="6531406268260794369" class="btn btn-primary btn-sm " name="init-commodity">初始化商品</button>&nbsp;&nbsp;</td></tr><tr role="row" class="odd"><td>北京风驰劲速科技有限公司</td><td>北京市</td><td>教育</td><td>吴英骄</td><td>2019-05-06</td><td>2020-05-06</td><td>已启用</td><td class=" td_align_left"><button type="button" data-id="6530978664420621313" class="btn btn-primary btn-sm " name="biz-modify">修改</button>&nbsp;&nbsp;<button type="button" data-id="6530978664420621313" class="btn btn-primary btn-sm " name="add-case">配置专案</button>&nbsp;&nbsp;<button type="button" data-id="6530978664420621313" class="btn btn-primary btn-sm " name="add-shop">配置门店</button>&nbsp;&nbsp;<button type="button" data-id="6530978664420621313" class="btn btn-primary btn-sm " name="init-commodity">初始化商品</button>&nbsp;&nbsp;</td></tr><tr role="row" class="even"><td>上海育创网络科技股份有限公司</td><td>上海市</td><td>教育</td><td>张雍昊</td><td>2019-05-06</td><td>2019-05-06</td><td>已启用</td><td class=" td_align_left"><button type="button" data-id="6531001976221247489" class="btn btn-primary btn-sm " name="biz-modify">修改</button>&nbsp;&nbsp;<button type="button" data-id="6531001976221247489" class="btn btn-primary btn-sm " name="add-case">配置专案</button>&nbsp;&nbsp;<button type="button" data-id="6531001976221247489" class="btn btn-primary btn-sm " name="add-shop">配置门店</button>&nbsp;&nbsp;<button type="button" data-id="6531001976221247489" class="btn btn-primary btn-sm " name="init-commodity">初始化商品</button>&nbsp;&nbsp;</td></tr><tr role="row" class="odd"><td>北京光环交互科技发展有限公司</td><td>北京市</td><td>教育</td><td>吴英骄</td><td>2019-04-28</td><td>2019-04-28</td><td>已启用</td><td class=" td_align_left"><button type="button" data-id="6528112563624813569" class="btn btn-primary btn-sm " name="biz-modify">修改</button>&nbsp;&nbsp;<button type="button" data-id="6528112563624813569" class="btn btn-primary btn-sm " name="add-case">配置专案</button>&nbsp;&nbsp;<button type="button" data-id="6528112563624813569" class="btn btn-primary btn-sm " name="add-shop">配置门店</button>&nbsp;&nbsp;<button type="button" data-id="6528112563624813569" class="btn btn-primary btn-sm " name="init-commodity">初始化商品</button>&nbsp;&nbsp;</td></tr><tr role="row" class="even"><td>晶核（上海）网络科技有限公司</td><td>上海市</td><td>教育</td><td>吴英骄</td><td>2019-04-28</td><td>2019-04-28</td><td>已启用</td><td class=" td_align_left"><button type="button" data-id="6528114669040071681" class="btn btn-primary btn-sm " name="biz-modify">修改</button>&nbsp;&nbsp;<button type="button" data-id="6528114669040071681" class="btn btn-primary btn-sm " name="add-case">配置专案</button>&nbsp;&nbsp;<button type="button" data-id="6528114669040071681" class="btn btn-primary btn-sm " name="add-shop">配置门店</button>&nbsp;&nbsp;<button type="button" data-id="6528114669040071681" class="btn btn-primary btn-sm " name="init-commodity">初始化商品</button>&nbsp;&nbsp;</td></tr><tr role="row" class="odd"><td>森纵艾德(北京)教育科技股份有限公司</td><td>北京市</td><td>教育</td><td>吴英骄</td><td>2019-04-25</td><td>2020-04-25</td><td>已启用</td><td class=" td_align_left"><button type="button" data-id="6527089187879135233" class="btn btn-primary btn-sm " name="biz-modify">修改</button>&nbsp;&nbsp;<button type="button" data-id="6527089187879135233" class="btn btn-primary btn-sm " name="add-case">配置专案</button>&nbsp;&nbsp;<button type="button" data-id="6527089187879135233" class="btn btn-primary btn-sm " name="add-shop">配置门店</button>&nbsp;&nbsp;<button type="button" data-id="6527089187879135233" class="btn btn-primary btn-sm " name="init-commodity">初始化商品</button>&nbsp;&nbsp;</td></tr><tr role="row" class="even"><td>重庆盛国科技有限公司</td><td>重庆市</td><td>教育</td><td>吴英骄</td><td>2019-04-25</td><td>2020-04-25</td><td>已启用</td><td class=" td_align_left"><button type="button" data-id="6527084406151720961" class="btn btn-primary btn-sm " name="biz-modify">修改</button>&nbsp;&nbsp;<button type="button" data-id="6527084406151720961" class="btn btn-primary btn-sm " name="add-case">配置专案</button>&nbsp;&nbsp;<button type="button" data-id="6527084406151720961" class="btn btn-primary btn-sm " name="add-shop">配置门店</button>&nbsp;&nbsp;<button type="button" data-id="6527084406151720961" class="btn btn-primary btn-sm " name="init-commodity">初始化商品</button>&nbsp;&nbsp;</td></tr></tbody></table><div class="bottom"><div class="dataTables_info" id="bizList_info" role="status" aria-live="polite">显示第 1 - 10 条记录，共739 条</div><div class="dataTables_length" id="bizList_length"><label> <select name="bizList_length" aria-controls="bizList" class="form-control input-sm"><option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select> </label></div><div class="dataTables_paginate paging_full_numbers" id="bizList_paginate"><ul class="pagination"><li class="paginate_button first disabled" id="bizList_first"><a href="javascript:void(0);" aria-controls="bizList" data-dt-idx="0" tabindex="0">首页</a></li><li class="paginate_button previous disabled" id="bizList_previous"><a href="javascript:void(0);" aria-controls="bizList" data-dt-idx="1" tabindex="0">上页</a></li><li class="paginate_button active"><a href="javascript:void(0);" aria-controls="bizList" data-dt-idx="2" tabindex="0">1</a></li><li class="paginate_button "><a href="javascript:void(0);" aria-controls="bizList" data-dt-idx="3" tabindex="0">2</a></li><li class="paginate_button "><a href="javascript:void(0);" aria-controls="bizList" data-dt-idx="4" tabindex="0">3</a></li><li class="paginate_button "><a href="javascript:void(0);" aria-controls="bizList" data-dt-idx="5" tabindex="0">4</a></li><li class="paginate_button "><a href="javascript:void(0);" aria-controls="bizList" data-dt-idx="6" tabindex="0">5</a></li><li class="paginate_button disabled" id="bizList_ellipsis"><a href="javascript:void(0);" aria-controls="bizList" data-dt-idx="7" tabindex="0">…</a></li><li class="paginate_button "><a href="javascript:void(0);" aria-controls="bizList" data-dt-idx="8" tabindex="0">74</a></li><li class="paginate_button next" id="bizList_next"><a href="javascript:void(0);" aria-controls="bizList" data-dt-idx="9" tabindex="0">下页</a></li><li class="paginate_button last" id="bizList_last"><a href="javascript:void(0);" aria-controls="bizList" data-dt-idx="10" tabindex="0">末页</a></li></ul></div><div class="clear"></div></div></div>
+                </div>
+                <!--正文内容end-->
+            </div>
+        </div>
+ </body>
+ </html>

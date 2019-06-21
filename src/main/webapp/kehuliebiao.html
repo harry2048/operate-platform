@@ -1,0 +1,297 @@
+<div class="content1" href="">
+
+
+
+
+
+
+
+
+
+
+
+    <meta http-equiv="content-type" content="text/html;charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <title>客户列表页面</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/base.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/layer.css" rel="stylesheet">
+    <link href="css/pagination.css" rel="stylesheet">
+    <link href="css/bootstrap-datetimepicker.css" rel="stylesheet">
+    <link href="css/dataTables.bootstrap.min.css" rel="stylesheet">
+    <link href="css/jedate.css" rel="stylesheet">
+    <style>
+        #loanDetail{
+            background-color: #fff;
+            margin-bottom: 15px;
+        }
+        #loanDetail p{
+            padding-left:0 ;
+            padding-right: 0;
+            margin: 6px 0 ;
+        }
+        #loanDetail .wd_60{
+            display: inline-block;
+            width: 102px;
+            text-align: right;
+            font-size: 12px;
+            font-family: "微软雅黑";
+        }
+        #loanDetail .c13 .wd_60{
+            float: left;
+            margin-top: 5px;
+        }
+        #loanDetail .c13 input{
+            float: left;
+            font-size: 12px;
+            font-family: "微软雅黑";
+        }
+        #loanDetail .col-lg-3 ,#loanDetail .c13{
+            margin:5px 0;
+            padding-left:5px;
+            padding-right: 5px;
+        }
+
+        #loanDetail select option{
+            font-size: 12px;
+            font-family: "微软雅黑";
+        }
+        .search_btn {
+            font-size: 12px;
+            background-color: #09C;
+            padding: 5px 16px;
+            margin-top: 3px;
+            margin-bottom: 5px;
+        }
+        .ta_r{
+            text-align: right;
+        }
+        .mr_25{
+            margin-right: 25px;
+        }
+    </style>
+
+<div class="hui"><img src="images/ajax-loader.gif"></div>
+<div class="content">
+    <!--面包屑导航start-->
+    <ol class="breadcrumb">
+        <li class="active">客户列表</li>
+    </ol>
+    <div id="loanDetail" class="col-lg-12 col-md-12 col-sm-12">
+        <div class="col-lg-3 col-md-3 col-sm-3"><span class="wd_60">身份证号&nbsp;&nbsp;</span><input type="text" id="idNo"></div>
+        <div class="col-lg-3 col-md-3 col-sm-3"><span class="wd_60">手机号&nbsp;&nbsp;</span><input type="text" id="phoneNo"></div>
+        <div class="col-lg-3 col-md-3 col-sm-3"></div>
+
+        <div class="col-lg-3 col-md-3 col-sm-3"></div>
+        <div class="col-lg-3 col-md-3 col-sm-3 ta_r">
+            <button class="btn btn-primary btn-sm search_btn" type="button" id="btn-search">查询</button>&nbsp;&nbsp;&nbsp;&nbsp;
+        </div>
+        <div class="clear"></div>
+    </div>
+    <div class="table-responsive">
+        <div id="capitalList_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer"><div class="top"><div class="clear"></div></div><div id="capitalList_processing" class="dataTables_processing panel panel-default" style="display: none;">处理中...</div><table id="capitalList" style="width: 100%;" class="table table-bordered table-striped table-hover bg_wt dataTable no-footer" role="grid" aria-describedby="capitalList_info">
+            <thead style="border-bottom: 0;background-color: #fff;">
+            <tr role="row"><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 134px;">客户编号</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 48px;">客户名称</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 127px;">身份证号</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 78px;">手机号</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 60px;">运营商授权</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 60px;">学信网授权</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 60px;">公积金授权</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 48px;">社保授权</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 91px;">人脸识别</th><th class="text-center sorting_disabled" rowspan="1" colspan="1" style="width: 284px;">操作</th></tr>
+            </thead>
+        <tbody><tr role="row" class="odd"><td>6536127453447299073</td><td></td><td></td><td>13418645992</td><td>未授权</td><td>未授权</td><td>未授权</td><td>未授权</td><td>未识别/识别失败</td><td><button type="button" data-id="null" class="btn btn-primary btn-sm " name="faceId">查询人脸失败原因</button>&nbsp;&nbsp;<button type="button" data-id="6536127453447299073" class="btn btn-primary btn-sm " name="jump_faceId">跳过人脸</button>&nbsp;&nbsp;<button type="button" data-id="6536127453447299073" class="btn btn-primary btn-sm " name="reset_faceId">人脸重置</button>&nbsp;&nbsp;</td></tr><tr role="row" class="even"><td>6536124259114079233</td><td></td><td></td><td>18811409333</td><td>未授权</td><td>未授权</td><td>未授权</td><td>未授权</td><td>未识别/识别失败</td><td><button type="button" data-id="null" class="btn btn-primary btn-sm " name="faceId">查询人脸失败原因</button>&nbsp;&nbsp;<button type="button" data-id="6536124259114079233" class="btn btn-primary btn-sm " name="jump_faceId">跳过人脸</button>&nbsp;&nbsp;<button type="button" data-id="6536124259114079233" class="btn btn-primary btn-sm " name="reset_faceId">人脸重置</button>&nbsp;&nbsp;</td></tr><tr role="row" class="odd"><td>6536123864772705281</td><td>陈雄</td><td>460103198905230019</td><td>13876027071</td><td>已授权</td><td>未授权</td><td>未授权</td><td>未授权</td><td>识别成功</td><td><button type="button" data-id="460103198905230019" class="btn btn-primary btn-sm " name="faceId">查询人脸失败原因</button>&nbsp;&nbsp;<button type="button" data-id="6536123864772705281" class="btn btn-primary btn-sm " name="jump_faceId">跳过人脸</button>&nbsp;&nbsp;<button type="button" data-id="6536123864772705281" class="btn btn-primary btn-sm " name="reset_faceId">人脸重置</button>&nbsp;&nbsp;</td></tr><tr role="row" class="even"><td>6536122763763884033</td><td>程霞</td><td>411528199901277149</td><td>15800999784</td><td>已授权</td><td>未授权</td><td>未授权</td><td>未授权</td><td>识别成功</td><td><button type="button" data-id="411528199901277149" class="btn btn-primary btn-sm " name="faceId">查询人脸失败原因</button>&nbsp;&nbsp;<button type="button" data-id="6536122763763884033" class="btn btn-primary btn-sm " name="jump_faceId">跳过人脸</button>&nbsp;&nbsp;<button type="button" data-id="6536122763763884033" class="btn btn-primary btn-sm " name="reset_faceId">人脸重置</button>&nbsp;&nbsp;</td></tr><tr role="row" class="odd"><td>6536111682027378689</td><td>刘地秀</td><td>360732199301072625</td><td>13346173302</td><td>未授权</td><td>未授权</td><td>未授权</td><td>未授权</td><td>识别成功</td><td><button type="button" data-id="360732199301072625" class="btn btn-primary btn-sm " name="faceId">查询人脸失败原因</button>&nbsp;&nbsp;<button type="button" data-id="6536111682027378689" class="btn btn-primary btn-sm " name="jump_faceId">跳过人脸</button>&nbsp;&nbsp;<button type="button" data-id="6536111682027378689" class="btn btn-primary btn-sm " name="reset_faceId">人脸重置</button>&nbsp;&nbsp;</td></tr><tr role="row" class="even"><td>6536106369955482625</td><td>王存良</td><td>410782199404279555</td><td>18839144275</td><td>未授权</td><td>未授权</td><td>未授权</td><td>未授权</td><td>识别成功</td><td><button type="button" data-id="410782199404279555" class="btn btn-primary btn-sm " name="faceId">查询人脸失败原因</button>&nbsp;&nbsp;<button type="button" data-id="6536106369955482625" class="btn btn-primary btn-sm " name="jump_faceId">跳过人脸</button>&nbsp;&nbsp;<button type="button" data-id="6536106369955482625" class="btn btn-primary btn-sm " name="reset_faceId">人脸重置</button>&nbsp;&nbsp;</td></tr><tr role="row" class="odd"><td>6536101434857714689</td><td>李福生</td><td>622323199405230234</td><td>16609371997</td><td>已授权</td><td>未授权</td><td>未授权</td><td>未授权</td><td>识别成功</td><td><button type="button" data-id="622323199405230234" class="btn btn-primary btn-sm " name="faceId">查询人脸失败原因</button>&nbsp;&nbsp;<button type="button" data-id="6536101434857714689" class="btn btn-primary btn-sm " name="jump_faceId">跳过人脸</button>&nbsp;&nbsp;<button type="button" data-id="6536101434857714689" class="btn btn-primary btn-sm " name="reset_faceId">人脸重置</button>&nbsp;&nbsp;</td></tr><tr role="row" class="even"><td>6536099097010628609</td><td>张雷</td><td>230204198706230234</td><td>18566874234</td><td>已授权</td><td>未授权</td><td>未授权</td><td>未授权</td><td>识别成功</td><td><button type="button" data-id="230204198706230234" class="btn btn-primary btn-sm " name="faceId">查询人脸失败原因</button>&nbsp;&nbsp;<button type="button" data-id="6536099097010628609" class="btn btn-primary btn-sm " name="jump_faceId">跳过人脸</button>&nbsp;&nbsp;<button type="button" data-id="6536099097010628609" class="btn btn-primary btn-sm " name="reset_faceId">人脸重置</button>&nbsp;&nbsp;</td></tr><tr role="row" class="odd"><td>6536094711078926337</td><td></td><td></td><td>18505915086</td><td>未授权</td><td>未授权</td><td>未授权</td><td>未授权</td><td>未识别/识别失败</td><td><button type="button" data-id="null" class="btn btn-primary btn-sm " name="faceId">查询人脸失败原因</button>&nbsp;&nbsp;<button type="button" data-id="6536094711078926337" class="btn btn-primary btn-sm " name="jump_faceId">跳过人脸</button>&nbsp;&nbsp;<button type="button" data-id="6536094711078926337" class="btn btn-primary btn-sm " name="reset_faceId">人脸重置</button>&nbsp;&nbsp;</td></tr><tr role="row" class="even"><td>6536093044837054465</td><td>李艳丽</td><td>410421199608041021</td><td>15617350270</td><td>未授权</td><td>未授权</td><td>未授权</td><td>未授权</td><td>未识别/识别失败</td><td><button type="button" data-id="410421199608041021" class="btn btn-primary btn-sm " name="faceId">查询人脸失败原因</button>&nbsp;&nbsp;<button type="button" data-id="6536093044837054465" class="btn btn-primary btn-sm " name="jump_faceId">跳过人脸</button>&nbsp;&nbsp;<button type="button" data-id="6536093044837054465" class="btn btn-primary btn-sm " name="reset_faceId">人脸重置</button>&nbsp;&nbsp;</td></tr></tbody></table><div class="bottom"><div class="dataTables_info" id="capitalList_info" role="status" aria-live="polite">显示第 1 - 10 条记录，共606,842 条</div><div class="dataTables_length" id="capitalList_length"><label> <select name="capitalList_length" aria-controls="capitalList" class="form-control input-sm"><option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select> </label></div><div class="dataTables_paginate paging_full_numbers" id="capitalList_paginate"><ul class="pagination"><li class="paginate_button first disabled" id="capitalList_first"><a href="javascript:void(0);" aria-controls="capitalList" data-dt-idx="0" tabindex="0">首页</a></li><li class="paginate_button previous disabled" id="capitalList_previous"><a href="javascript:void(0);" aria-controls="capitalList" data-dt-idx="1" tabindex="0">上页</a></li><li class="paginate_button active"><a href="javascript:void(0);" aria-controls="capitalList" data-dt-idx="2" tabindex="0">1</a></li><li class="paginate_button "><a href="javascript:void(0);" aria-controls="capitalList" data-dt-idx="3" tabindex="0">2</a></li><li class="paginate_button "><a href="javascript:void(0);" aria-controls="capitalList" data-dt-idx="4" tabindex="0">3</a></li><li class="paginate_button "><a href="javascript:void(0);" aria-controls="capitalList" data-dt-idx="5" tabindex="0">4</a></li><li class="paginate_button "><a href="javascript:void(0);" aria-controls="capitalList" data-dt-idx="6" tabindex="0">5</a></li><li class="paginate_button disabled" id="capitalList_ellipsis"><a href="javascript:void(0);" aria-controls="capitalList" data-dt-idx="7" tabindex="0">…</a></li><li class="paginate_button "><a href="javascript:void(0);" aria-controls="capitalList" data-dt-idx="8" tabindex="0">60685</a></li><li class="paginate_button next" id="capitalList_next"><a href="javascript:void(0);" aria-controls="capitalList" data-dt-idx="9" tabindex="0">下页</a></li><li class="paginate_button last" id="capitalList_last"><a href="javascript:void(0);" aria-controls="capitalList" data-dt-idx="10" tabindex="0">末页</a></li></ul></div><div class="clear"></div></div></div>
+    </div>
+    <!--正文内容end-->
+</div>
+<script src="jedate/jedate.min.js"></script>
+<script>
+
+
+</script>
+
+<script>
+    $(function(){
+
+        var dt = $("#capitalList").dataTable({
+            "sDom":'<"top"<"clear">>rt<"bottom"ilp<"clear">>',
+            bProcessing:true,
+            pageLength: 10,
+            searching: false, // 禁用dataTables自带的查询框
+            ordering: false, // 禁用排序
+            ajax: {
+                type: "POST",
+                url: "/hd/cust/custListData",
+                data:function(d) {
+                    d.idNo = $("#idNo").val();
+                    d.phone = $("#phoneNo").val();
+                }
+            },
+            columns: [
+                {data:"id"},
+                {data:"idName"},
+                {data:"idNo"},
+                {data:"phone"},
+                {data:"operatorAuthorizeStatus", render:function(data,type,row){
+                    if(data == '1'){
+                        return '已授权';
+                    }
+                    return '未授权';
+                 }},
+                {data:"learningAuthorizeStatus", render:function(data,type,row){
+                        if(data == '1'){
+                            return '已授权';
+                        }
+                        return '未授权';
+                    }},
+                {data:"ggjAuthorizeStatus", render:function(data,type,row){
+                        if(data == '1'){
+                            return '已授权';
+                        }
+                        return '未授权';
+                    }},
+                {data:"securityAuthorizeStatus", render:function(data,type,row){
+                        if(data == '1'){
+                            return '已授权';
+                        }
+                        return '未授权';
+                    }},
+                {data:"faceVerified", render:function(data,type,row){
+                        if(data == '1'){
+                            return '识别成功';
+                        }
+                        return '未识别/识别失败';
+                    }},
+                {data: "idNo",render:function(data,type,row){
+                    var operation = "<button type='button' data-id="+data+" class='btn btn-primary btn-sm ' name='faceId'>查询人脸失败原因</button>&nbsp;&nbsp;" +
+                        "<button type='button' data-id="+row.id+" class='btn btn-primary btn-sm ' name='jump_faceId'>跳过人脸</button>&nbsp;&nbsp;" +
+                        "<button type='button' data-id="+row.id+" class='btn btn-primary btn-sm ' name='reset_faceId'>人脸重置</button>&nbsp;&nbsp;"
+                        return operation;
+                }}
+            ]
+        });
+
+        $("#btn-search").click(function(e){
+            dt.api().draw();
+        });
+
+        $("#capitalList").on("click","button[name='faceId']",function(e){
+            var $current = $(e.currentTarget);
+            var id = $current.data("id");
+            $.ajax({
+                type: 'POST',
+                url: '/hd/cust/getFaceIdInfo' ,
+                data: {idNo:id},
+                success:function(data){
+                    if(data.code == '200'){
+                        layer.msg(data.result);
+                    }else{
+                        layer.msg(data.msg);
+                    }
+                }
+            });
+        });
+
+        $("#capitalList").on("click","button[name='reset_faceId']",function(e){
+            var $current = $(e.currentTarget);
+            var id = $current.data("id");
+
+            layer.confirm("确定重置人脸识别吗？", {
+                btn: ['确认','取消'], //按钮
+                yes:function (index, layero) {
+                    $.ajax({
+                        type: 'POST',
+                        url: '/hd/cust/resetFaceId' ,
+                        data: {id:id},
+                        success:function(data){
+                            if(data.code == '200'){
+                                layer.msg("修改成功");
+                                dt.api().draw();
+                            }else{
+                                layer.msg(data.msg);
+                            }
+                        }
+                    });
+                    layer.close(index);
+                },
+                cancel:function(index){
+                    //按钮【按钮二】的回调
+                    layer.close(index);
+                },
+            });
+        });
+
+        $("#capitalList").on("click","button[name='jump_faceId']",function(e){
+            var $current = $(e.currentTarget);
+            var id = $current.data("id");
+
+            layer.confirm("确定跳过人脸识别吗？如需跳过请确保客户填写完除人脸识别外的其他信息", {
+                btn: ['确认','取消'], //按钮
+                yes:function (index, layero) {
+                    $.ajax({
+                        type: 'POST',
+                        url: '/hd/cust/jumpFaceId' ,
+                        data: {id:id},
+                        success:function(data){
+                            if(data.code == '200'){
+                                layer.msg("修改成功");
+                                dt.api().draw();
+                            }else{
+                                layer.msg(data.msg);
+                            }
+                        }
+                    });
+                    layer.close(index);
+                },
+                cancel:function(index){
+                    //按钮【按钮二】的回调
+                    layer.close(index);
+                },
+            });
+        });
+    });
+
+
+
+</script>
+
+
+<script>
+    //分页方法
+    function page(n,s){
+        $("#pageNo").val(n);
+        $("#pageSize").val(s);
+        $("#searchForm").submit();
+        return false;
+    }
+
+
+</script>
+
+<script>
+    var time = 100000;
+    var interval; //调度器对象。
+    function run(){
+        interval = setInterval("fun()",time);
+    }
+    function fun(){
+        $(".hui").css("display","none");
+    }
+    $(function(){
+        $("#reviewList").delegate('tr td button','click',function(){
+            $(this).html("加载中...").attr("disabled","disabled");
+            $(".hui").css("display","block");
+            run();
+        })
+    })
+</script>
+
+<script>
+    $(document).ready(function(e) {
+        var counter = 0;
+        if (window.history && window.history.pushState) {
+            $(window).on('popstate', function () {
+                window.history.pushState('forward', null, '#');
+                window.history.forward(1);
+            });
+        }
+        window.history.pushState('forward', null, '#'); //在IE中必须得有这两行
+        window.history.forward(1);
+    });
+</script>
+
+</div>

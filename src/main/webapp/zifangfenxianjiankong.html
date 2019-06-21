@@ -1,0 +1,318 @@
+<div class="content1" href="">
+    <meta http-equiv="content-type" content="text/html;charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <title>风险监控数据查询</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/base.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/layer.css" rel="stylesheet">
+    <link href="css/pagination.css" rel="stylesheet">
+    <link href="css/bootstrap-datetimepicker.css" rel="stylesheet">
+    <link href="css/dataTables.bootstrap.min.css" rel="stylesheet">
+    <link href="css/jedate.css" rel="stylesheet">
+    <style>
+        #loanDetail{
+            background-color: #fff;
+            margin-bottom: 15px;
+        }
+        #loanDetail p{
+            padding-left:0 ;
+            padding-right: 0;
+            margin: 6px 0 ;
+        }
+        #loanDetail .wd_60{
+            display: inline-block;
+            width: 102px;
+            text-align: right;
+            font-size: 12px;
+            font-family: "微软雅黑";
+        }
+        #loanDetail .c13 .wd_60{
+            float: left;
+            margin-top: 5px;
+        }
+        #loanDetail .c13 input{
+            float: left;
+            font-size: 12px;
+            font-family: "微软雅黑";
+        }
+        #loanDetail .col-lg-3 ,#loanDetail .c13{
+            margin:5px 0;
+            padding-left:5px;
+            padding-right: 5px;
+        }
+
+        #loanDetail select option{
+            font-size: 12px;
+            font-family: "微软雅黑";
+        }
+        .search_btn {
+            font-size: 12px;
+            background-color: #09C;
+            padding: 5px 16px;
+            margin-top: 3px;
+            margin-bottom: 5px;
+        }
+        .ta_r{
+            text-align: right;
+        }
+        .mr_25{
+            margin-right: 25px;
+        }
+    </style>
+
+<div class="hui"><img src="images/ajax-loader.gif"></div>
+<div class="content">
+    <!--面包屑导航start-->
+    <ol class="breadcrumb">
+        <li class="active">风险监控数据查询</li>
+    </ol>
+    <div id="loanDetail" class="col-lg-12 col-md-12 col-sm-12">
+        <div class="col-lg-3 col-md-3 col-sm-3"><span class="wd_60">资方名称&nbsp;&nbsp;</span>
+            <select id="capitalid">
+                <option value="">---请选择---</option>
+                
+                    <option value="1">北银</option>
+                
+                    <option value="14">91金融</option>
+                
+                    <option value="13">沃付分期</option>
+                
+                    <option value="22">医美</option>
+                
+                    <option value="30">苏宁</option>
+                
+                    <option value="100">mini循环贷</option>
+                
+                    <option value="3">海尔教育</option>
+                
+                    <option value="4">安信小贷</option>
+                
+                    <option value="5">百度</option>
+                
+                    <option value="7">海尔租房</option>
+                
+                    <option value="8">华融</option>
+                
+                    <option value="11">贷鱼教育</option>
+                
+                    <option value="15">湖北消费金融</option>
+                
+                    <option value="16">91旺财</option>
+                
+                    <option value="18">晋商租房</option>
+                
+                    <option value="17">晋商教育</option>
+                
+            </select></div>
+        <div class="col-lg-3 col-md-3 col-sm-3 cl3"><span class="wd_60">业务日期&nbsp;&nbsp;</span><input type="text" id="bussinessDate" placeholder="请选择时间" value="2019-05-20" readonly=""></div>
+        <div class="col-lg-3 col-md-3 col-sm-3"></div>
+
+        <div class="col-lg-3 col-md-3 col-sm-3"></div>
+        <div class="col-lg-3 col-md-3 col-sm-3 ta_r">
+            <button class="btn btn-primary btn-sm search_btn" type="button" id="btn-search">查询</button>&nbsp;&nbsp;&nbsp;&nbsp;
+        </div>
+        <div class="clear"></div>
+    </div>
+    <div class="table-responsive">
+        <div id="capitalList_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer"><div class="top"><div class="clear"></div></div><div id="capitalList_processing" class="dataTables_processing panel panel-default" style="display: none;">处理中...</div><table id="capitalList" style="width: 100%;" class="table table-bordered table-striped table-hover bg_wt dataTable no-footer" role="grid" aria-describedby="capitalList_info">
+            <thead style="border-bottom: 0;background-color: #fff;">
+            <tr role="row"><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 26px;">资方名称</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 29px;">放款笔数</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 74px;">放款金额</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 74px;">贷款余额</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 29px;">提前结清笔数</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 67px;">提前结清金额</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 22px;">逾期笔数</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 22px;">逾期笔数较前一日增加</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 67px;">逾期余额</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 67px;">逾期余额较前一日增加</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 15px;">新增逾期笔数</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 53px;">新增逾期余额</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 53px;">笔均</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 32px;">通过率(%)</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 32px;">逾期率(%)</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 32px;">退货率(%)</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 32px;">余额比(%)</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 39px;">M1(%)</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 39px;">3D+逾期率(%)</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 39px;">6D+逾期率(%)</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 39px;">M2(%)</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 39px;">M3(%)</th></tr>
+            </thead>
+        <tbody><tr role="row" class="odd"><td>晋商教育</td><td>7677</td><td>112178086.2</td><td>89635433.36</td><td>616</td><td>10645401</td><td>303</td><td>259</td><td>4209209.91</td><td>3637045.59</td><td>26</td><td>379650.7</td><td>14612.23</td><td>61.3</td><td>3.75</td><td>8.02</td><td>79.9</td><td>0.0181</td><td>0.0308</td><td>0.0291</td><td>0.0069</td><td>0.0064</td></tr><tr role="row" class="even"><td>华融</td><td>6422</td><td>108616985</td><td>2501902.94</td><td>4366</td><td>69827891</td><td>158</td><td>158</td><td>2501902.94</td><td>2501902.94</td><td>0</td><td>0</td><td>16913.26</td><td>83.46</td><td>2.3</td><td>67.99</td><td>2.3</td><td>0</td><td>0.023</td><td>0.023</td><td>0</td><td>0</td></tr><tr role="row" class="odd"><td>海尔教育</td><td>4193</td><td>57084842.6</td><td>9603644.23</td><td>409</td><td>6257976</td><td>133</td><td>123</td><td>1203636.68</td><td>1123830.49</td><td>0</td><td>0</td><td>13614.32</td><td>53.66</td><td>2.11</td><td>9.75</td><td>16.82</td><td>0.0017</td><td>0.0211</td><td>0.0211</td><td>0.0005</td><td>0.0005</td></tr><tr role="row" class="even"><td>安信小贷</td><td>3118</td><td>43502992</td><td>2095819.15</td><td>1965</td><td>26322800</td><td>154</td><td>154</td><td>2095819.15</td><td>2095819.15</td><td>0</td><td>0</td><td>13952.21</td><td>76.63</td><td>4.82</td><td>63.02</td><td>4.82</td><td>0</td><td>0.0482</td><td>0.0482</td><td>0</td><td>0</td></tr><tr role="row" class="odd"><td>百度</td><td>3446</td><td>37409163.2</td><td>130900</td><td>1737</td><td>20939775.7</td><td>15</td><td>15</td><td>129100</td><td>129100</td><td>0</td><td>0</td><td>10855.82</td><td>61.81</td><td>0.35</td><td>50.41</td><td>0.35</td><td>0</td><td>0.0035</td><td>0.0035</td><td>0</td><td>0</td></tr><tr role="row" class="even"><td>沃付分期</td><td>2317</td><td>24531005</td><td>12335439.24</td><td>244</td><td>3705985</td><td>144</td><td>144</td><td>1305573.76</td><td>1335569.48</td><td>14</td><td>55915.85</td><td>10587.4</td><td>91.94</td><td>5.32</td><td>10.53</td><td>50.29</td><td>0.0177</td><td>0.0489</td><td>0.045</td><td>0.0072</td><td>0.0065</td></tr><tr role="row" class="odd"><td>海尔租房</td><td>1317</td><td>20464152.5</td><td>129826</td><td>792</td><td>12356448.5</td><td>51</td><td>52</td><td>129826</td><td>130706</td><td>0</td><td>0</td><td>15538.46</td><td>82.11</td><td>0.63</td><td>60.14</td><td>0.63</td><td>0</td><td>0.0063</td><td>0.0063</td><td>0</td><td>0</td></tr><tr role="row" class="even"><td>91旺财</td><td>198</td><td>2672500</td><td>716697.09</td><td>2</td><td>14480</td><td>32</td><td>37</td><td>377199.22</td><td>402249.55</td><td>0</td><td>0</td><td>13497.47</td><td>64.08</td><td>14.11</td><td>1.01</td><td>26.82</td><td>0.0031</td><td>0.1411</td><td>0.1411</td><td>0.0034</td><td>0.0037</td></tr><tr role="row" class="odd"><td>mini循环贷</td><td>179</td><td>1650500</td><td>375000</td><td>2</td><td>200000</td><td>17</td><td>17</td><td>375000</td><td>375000</td><td>0</td><td>0</td><td>9220.67</td><td>82.49</td><td>22.72</td><td>1.12</td><td>22.72</td><td>0</td><td>0.2272</td><td>0.2272</td><td>0.1563</td><td>0.0254</td></tr><tr role="row" class="even"><td>91金融</td><td>105</td><td>1279288</td><td>15130</td><td>3</td><td>16944</td><td>2</td><td>2</td><td>10330</td><td>10330</td><td>0</td><td>0</td><td>12183.7</td><td>46.26</td><td>0.81</td><td>2.86</td><td>1.18</td><td>0</td><td>0.0081</td><td>0.0081</td><td>0</td><td>0.0024</td></tr></tbody></table><div class="bottom"><div class="dataTables_info" id="capitalList_info" role="status" aria-live="polite">显示第 1 - 10 条记录，共16 条</div><div class="dataTables_length" id="capitalList_length"><label> <select name="capitalList_length" aria-controls="capitalList" class="form-control input-sm"><option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select> </label></div><div class="dataTables_paginate paging_full_numbers" id="capitalList_paginate"><ul class="pagination"><li class="paginate_button first disabled" id="capitalList_first"><a href="javascript:void(0);" aria-controls="capitalList" data-dt-idx="0" tabindex="0">首页</a></li><li class="paginate_button previous disabled" id="capitalList_previous"><a href="javascript:void(0);" aria-controls="capitalList" data-dt-idx="1" tabindex="0">上页</a></li><li class="paginate_button active"><a href="javascript:void(0);" aria-controls="capitalList" data-dt-idx="2" tabindex="0">1</a></li><li class="paginate_button "><a href="javascript:void(0);" aria-controls="capitalList" data-dt-idx="3" tabindex="0">2</a></li><li class="paginate_button next" id="capitalList_next"><a href="javascript:void(0);" aria-controls="capitalList" data-dt-idx="4" tabindex="0">下页</a></li><li class="paginate_button last" id="capitalList_last"><a href="javascript:void(0);" aria-controls="capitalList" data-dt-idx="5" tabindex="0">末页</a></li></ul></div><div class="clear"></div></div></div>
+    </div>
+    <!--正文内容end-->
+</div>
+<script src="jedate/jedate.min.js"></script>
+<script>
+    jeDate({
+        dateCell:"#bussinessDate", //目标元素。由于jedate.js封装了一个轻量级的选择器，因此dateCell还允许你传入class、tag这种方式 '#id .class'
+        format:"YYYY-MM-DD", //日期格式
+        minDate:"1900-01-01", //最小日期
+        maxDate:"2099-12-31", //最大日期
+        isinitVal:false, //是否初始化时间
+        isTime:true, //是否开启时间选择
+        isClear:true, //是否显示清空
+        festival:false, //是否显示节日
+        zIndex:999,  //弹出层的层级高度
+        marks:null, //给日期做标注
+        choosefun:function(val) {},  //选中日期后的回调
+        clearfun:function(val) {},   //清除日期后的回调
+        okfun:function(val) {}       //点击确定后的回调
+    });
+
+</script>
+
+<script>
+    $(function(){
+
+        var dt = $("#capitalList").dataTable({
+            "sDom":'<"top"<"clear">>rt<"bottom"ilp<"clear">>',
+            bProcessing:true,
+            pageLength: 10,
+            searching: false, // 禁用dataTables自带的查询框
+            ordering: false, // 禁用排序
+            ajax: {
+                type: "POST",
+                url: "/hd/hdStatisticalReportBiz/getHdStatisticalReportFundData",
+                data:function(d) {
+                    d.bussinessDate = $("#bussinessDate").val();
+                    d.fundSource = $("#capitalid").val();
+                }
+            },
+            columns: [
+                {data:"fundSourceName"},
+                {data:"loanNum"},
+                {data:"loanAmount"},
+                {data:"totalLoanBalance"},
+                {data:"prepaymentNum"},
+                {data:"prepaymentAmount"},
+                {data:"overdueNum"},
+                {data:"overdueAdd"},
+                {data:"overdueLoanBalance"},
+                {data:"overdueLoanBalanceAdd"},
+                {data:"newOverdueNum"},
+                {data:"newOverdueLoanBalance"},
+                {data:"perAmount"},
+                {data:"passRate"},
+                {data:"overdueRate"},
+                {data:"refundRate"},
+                {data:"balanceRate"},
+                {data:"m1"},
+                {data:"m3d"},
+                {data:"m6d"},
+                {data:"m2"},
+                {data:"m3"}
+            ]
+        });
+
+        $("#btn-search").click(function(e){
+            dt.api().draw();
+        });
+
+        $("#capitalList").on("click","button[name='faceId']",function(e){
+            var $current = $(e.currentTarget);
+            var id = $current.data("id");
+            $.ajax({
+                type: 'POST',
+                url: '/hd/cust/getFaceIdInfo' ,
+                data: {idNo:id},
+                success:function(data){
+                    if(data.code == '200'){
+                        layer.msg(data.result);
+                    }else{
+                        layer.msg(data.msg);
+                    }
+                }
+            });
+        });
+
+        $("#capitalList").on("click","button[name='reset_faceId']",function(e){
+            var $current = $(e.currentTarget);
+            var id = $current.data("id");
+
+            layer.confirm("确定重置人脸识别吗？", {
+                btn: ['确认','取消'], //按钮
+                yes:function (index, layero) {
+                    $.ajax({
+                        type: 'POST',
+                        url: '/hd/cust/resetFaceId' ,
+                        data: {id:id},
+                        success:function(data){
+                            if(data.code == '200'){
+                                layer.msg("修改成功");
+                                dt.api().draw();
+                            }else{
+                                layer.msg(data.msg);
+                            }
+                        }
+                    });
+                    layer.close(index);
+                },
+                cancel:function(index){
+                    //按钮【按钮二】的回调
+                    layer.close(index);
+                },
+            });
+        });
+
+        $("#capitalList").on("click","button[name='jump_faceId']",function(e){
+            var $current = $(e.currentTarget);
+            var id = $current.data("id");
+
+            layer.confirm("确定跳过人脸识别吗？如需跳过请确保客户填写完除人脸识别外的其他信息", {
+                btn: ['确认','取消'], //按钮
+                yes:function (index, layero) {
+                    $.ajax({
+                        type: 'POST',
+                        url: '/hd/cust/jumpFaceId' ,
+                        data: {id:id},
+                        success:function(data){
+                            if(data.code == '200'){
+                                layer.msg("修改成功");
+                                dt.api().draw();
+                            }else{
+                                layer.msg(data.msg);
+                            }
+                        }
+                    });
+                    layer.close(index);
+                },
+                cancel:function(index){
+                    //按钮【按钮二】的回调
+                    layer.close(index);
+                },
+            });
+        });
+    });
+
+
+
+</script>
+
+
+<script>
+    //分页方法
+    function page(n,s){
+        $("#pageNo").val(n);
+        $("#pageSize").val(s);
+        $("#searchForm").submit();
+        return false;
+    }
+
+
+</script>
+
+<script>
+    var time = 100000;
+    var interval; //调度器对象。
+    function run(){
+        interval = setInterval("fun()",time);
+    }
+    function fun(){
+        $(".hui").css("display","none");
+    }
+    $(function(){
+        $("#reviewList").delegate('tr td button','click',function(){
+            $(this).html("加载中...").attr("disabled","disabled");
+            $(".hui").css("display","block");
+            run();
+        })
+    })
+</script>
+
+<script>
+    $(document).ready(function(e) {
+        var counter = 0;
+        if (window.history && window.history.pushState) {
+            $(window).on('popstate', function () {
+                window.history.pushState('forward', null, '#');
+                window.history.forward(1);
+            });
+        }
+        window.history.pushState('forward', null, '#'); //在IE中必须得有这两行
+        window.history.forward(1);
+    });
+</script>
+
+</div>

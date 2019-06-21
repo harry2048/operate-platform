@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zr.mechant.mapper.MechantMapper">
+    <select id="queryPage" parameterType="com.zr.mechant.model.MechantSelectVo" resultType="com.zr.mechant.model.MechantInfo">
+        select a.merchantName,a.merchantAddress,b.channelMaintenance,c.startTime,c.endTime,d.status,a.id
+        FROM mechant a LEFT JOIN mechant_configure b ON a.merchantName = b.landingAccount
+        LEFT JOIN mechant_pic c ON a.id = c.mechant_id
+        LEFT JOIN mechant_speedprogress d ON a.id = d.mechant_id
+        <if test="merchantName!=null and merchantName!=''">
+            and merchantName=#{merchantName}
+        </if>
+        <if test="channelMaintenance!=null and channelMaintenance!=''">
+            and channelMaintenance=#{channelMaintenance}
+        </if>
+        <if test="status!=null">
+            and status=#{status}
+        </if>
+        limit #{offset},#{pageSize}
+    </select>
+
+    <!--总条数-->
+    <select id="queryCount" parameterType="com.zr.mechant.model.MechantSelectVo" resultType="java.lang.Integer">
+        select count(*)
+    FROM mechant WHERE 1=1
+        <if test="merchantName!=null and merchantName!=''">
+            and merchantName=#{merchantName}
+        </if>
+        <if test="channelMaintenance!=null and channelMaintenance!=''">
+            and channelMaintenance=#{channelMaintenance}
+        </if>
+        <if test="status!=null">
+            and status=#{status}
+        </if>
+    </select>
+
+
+</mapper>
+
+

@@ -1,0 +1,213 @@
+<div class="content1" href="">
+
+
+
+
+
+
+
+
+
+
+
+    <meta http-equiv="content-type" content="text/html;charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <title>信审逾期统计</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/base.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/layer.css" rel="stylesheet">
+    <link href="css/pagination.css" rel="stylesheet">
+    <link href="css/bootstrap-datetimepicker.css" rel="stylesheet">
+    <link href="css/dataTables.bootstrap.min.css" rel="stylesheet">
+    <link href="css/jedate.css" rel="stylesheet">
+    <style>
+        #loanDetail{
+            background-color: #fff;
+            margin-bottom: 15px;
+        }
+        #loanDetail p{
+            padding-left:0 ;
+            padding-right: 0;
+            margin: 6px 0 ;
+        }
+        #loanDetail .wd_60{
+            display: inline-block;
+            width: 102px;
+            text-align: right;
+            font-size: 12px;
+            font-family: "微软雅黑";
+        }
+        #loanDetail .c13 .wd_60{
+            float: left;
+            margin-top: 5px;
+        }
+        #loanDetail .c13 input{
+            float: left;
+            font-size: 12px;
+            font-family: "微软雅黑";
+        }
+        #loanDetail .col-lg-3 ,#loanDetail .c13{
+            margin:5px 0;
+            padding-left:5px;
+            padding-right: 5px;
+        }
+
+        #loanDetail select option{
+            font-size: 12px;
+            font-family: "微软雅黑";
+        }
+        .search_btn {
+            font-size: 12px;
+            background-color: #09C;
+            padding: 5px 16px;
+            margin-top: 3px;
+            margin-bottom: 5px;
+        }
+        .ta_r{
+            text-align: right;
+        }
+        .mr_25{
+            margin-right: 25px;
+        }
+        .cardSelect{
+            border: 1px solid #ddd;
+            height: 25px;
+            width: 150px;
+            font-size: 12px;
+        }
+        .text-center{
+            text-align:center;
+            white-space: nowrap;
+        }
+    </style>
+
+<div class="hui"><img src="images/ajax-loader.gif"></div>
+<div class="content">
+    <!--面包屑导航start-->
+    <ol class="breadcrumb">
+        <li class="active">信审逾期统计</li>
+    </ol>
+    <div id="loanDetail" class="col-lg-12 col-md-12 col-sm-12">
+        <div class="col-lg-9 col-md-9 col-sm-9 col-lg-offset-3  col-md-offset-3 col-sm-offset-3 ta_r text-center">
+            <button class="btn btn-primary btn-sm search_btn mr_25" type="button" id="btn-export" onclick="exportResult();">导出</button>
+        </div>
+        <div class="clear"></div>
+    </div>
+    <div style="overflow-x: auto;">
+        <div class="table-responsive">
+            <div id="lendingList_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer"><div class="top"><div class="clear"></div></div><div id="lendingList_processing" class="dataTables_processing panel panel-default" style="display: none;">处理中...</div><table id="lendingList" style="width: 100%;" class="table table-bordered table-striped table-hover bg_wt dataTable no-footer" role="grid" aria-describedby="lendingList_info">
+                <thead style="border-bottom: 0;background-color: #fff;">
+                <tr role="row"><th class="sorting_disabled text-center fs_13" rowspan="1" colspan="1" style="width: 63px;">信审人员</th><th class="sorting_disabled text-center fs_13" rowspan="1" colspan="1" style="width: 65px;">总逾期率</th><th class="sorting_disabled text-center fs_13" rowspan="1" colspan="1" style="width: 96px;">审批通过总额</th><th class="sorting_disabled text-center fs_13" rowspan="1" colspan="1" style="width: 138px;">逾期贷款总申请金额</th><th class="sorting_disabled text-center fs_13" rowspan="1" colspan="1" style="width: 64px;">2017-06</th><th class="sorting_disabled text-center fs_13" rowspan="1" colspan="1" style="width: 64px;">2017-05</th><th class="sorting_disabled text-center fs_13" rowspan="1" colspan="1" style="width: 64px;">2017-04</th><th class="sorting_disabled text-center fs_13" rowspan="1" colspan="1" style="width: 64px;">2017-03</th><th class="sorting_disabled text-center fs_13" rowspan="1" colspan="1" style="width: 64px;">2017-02</th><th class="sorting_disabled text-center fs_13" rowspan="1" colspan="1" style="width: 64px;">2017-01</th><th class="sorting_disabled text-center fs_13" rowspan="1" colspan="1" style="width: 64px;">2016-12</th><th class="sorting_disabled text-center fs_13" rowspan="1" colspan="1" style="width: 64px;">2016-11</th><th class="sorting_disabled text-center fs_13" rowspan="1" colspan="1" style="width: 65px;">2016-10</th></tr></thead>
+            <tbody><tr role="row" class="odd"><td class=" text-center fs_13">刘源鹏</td><td class=" text-center fs_13">100.00%</td><td class=" text-center fs_13">27920.00</td><td class=" text-center fs_13">27920.00</td><td class=" text-center fs_13">0.00％</td><td class=" text-center fs_13">0.00%</td><td class=" text-center fs_13">0.00%</td><td class=" text-center fs_13">0.00%</td><td class=" text-center fs_13">0.00%</td><td class=" text-center fs_13">0.00%</td><td class=" text-center fs_13">0.00%</td><td class=" text-center fs_13">0.00%</td><td class=" text-center fs_13">0.00%</td></tr><tr role="row" class="even"><td class=" text-center fs_13">陈凤琦</td><td class=" text-center fs_13">11.89%</td><td class=" text-center fs_13">3866666.00</td><td class=" text-center fs_13">459651.00</td><td class=" text-center fs_13">0.00％</td><td class=" text-center fs_13">0.00%</td><td class=" text-center fs_13">0.00%</td><td class=" text-center fs_13">0.00%</td><td class=" text-center fs_13">0.00%</td><td class=" text-center fs_13">0.00%</td><td class=" text-center fs_13">0.00%</td><td class=" text-center fs_13">0.00%</td><td class=" text-center fs_13">0.00%</td></tr><tr role="row" class="odd"><td class=" text-center fs_13">邢炜炜</td><td class=" text-center fs_13">10.01%</td><td class=" text-center fs_13">19624190.00</td><td class=" text-center fs_13">1963575.00</td><td class=" text-center fs_13">0.00％</td><td class=" text-center fs_13">0.00%</td><td class=" text-center fs_13">0.00%</td><td class=" text-center fs_13">0.00%</td><td class=" text-center fs_13">0.00%</td><td class=" text-center fs_13">0.00%</td><td class=" text-center fs_13">0.00%</td><td class=" text-center fs_13">0.00%</td><td class=" text-center fs_13">0.00%</td></tr><tr role="row" class="even"><td class=" text-center fs_13">徐童</td><td class=" text-center fs_13">7.51%</td><td class=" text-center fs_13">44552056.00</td><td class=" text-center fs_13">3346115.00</td><td class=" text-center fs_13">0.00％</td><td class=" text-center fs_13">0.00%</td><td class=" text-center fs_13">0.00%</td><td class=" text-center fs_13">0.00%</td><td class=" text-center fs_13">0.00%</td><td class=" text-center fs_13">0.00%</td><td class=" text-center fs_13">0.00%</td><td class=" text-center fs_13">0.00%</td><td class=" text-center fs_13">0.00%</td></tr><tr role="row" class="odd"><td class=" text-center fs_13">祝珠珠</td><td class=" text-center fs_13">6.11%</td><td class=" text-center fs_13">56464059.70</td><td class=" text-center fs_13">3451060.00</td><td class=" text-center fs_13">0.00％</td><td class=" text-center fs_13">0.00%</td><td class=" text-center fs_13">0.53%</td><td class=" text-center fs_13">3.29%</td><td class=" text-center fs_13">5.98%</td><td class=" text-center fs_13">6.07%</td><td class=" text-center fs_13">7.98%</td><td class=" text-center fs_13">11.38%</td><td class=" text-center fs_13">9.36%</td></tr><tr role="row" class="even"><td class=" text-center fs_13">赵云芳</td><td class=" text-center fs_13">5.72%</td><td class=" text-center fs_13">65048501.00</td><td class=" text-center fs_13">3723915.00</td><td class=" text-center fs_13">0.00％</td><td class=" text-center fs_13">0.00%</td><td class=" text-center fs_13">0.38%</td><td class=" text-center fs_13">0.56%</td><td class=" text-center fs_13">3.76%</td><td class=" text-center fs_13">5.67%</td><td class=" text-center fs_13">6.56%</td><td class=" text-center fs_13">7.17%</td><td class=" text-center fs_13">7.74%</td></tr><tr role="row" class="odd"><td class=" text-center fs_13">董艳涛</td><td class=" text-center fs_13">5.01%</td><td class=" text-center fs_13">795616.00</td><td class=" text-center fs_13">39840.00</td><td class=" text-center fs_13">0.00%</td><td class=" text-center fs_13">0.00%</td><td class=" text-center fs_13">0.00%</td><td class=" text-center fs_13">0.00%</td><td class=" text-center fs_13">0.00%</td><td class=" text-center fs_13">0.00%</td><td class=" text-center fs_13">0.00%</td><td class=" text-center fs_13">58.23%</td><td class=" text-center fs_13">0.00%</td></tr><tr role="row" class="even"><td class=" text-center fs_13">田儒莹</td><td class=" text-center fs_13">4.63%</td><td class=" text-center fs_13">6366747.60</td><td class=" text-center fs_13">295064.00</td><td class=" text-center fs_13">0.00％</td><td class=" text-center fs_13">7.97%</td><td class=" text-center fs_13">10.13%</td><td class=" text-center fs_13">0.00%</td><td class=" text-center fs_13">0.00%</td><td class=" text-center fs_13">3.79%</td><td class=" text-center fs_13">3.56%</td><td class=" text-center fs_13">1.16%</td><td class=" text-center fs_13">0.00%</td></tr><tr role="row" class="odd"><td class=" text-center fs_13">杨凯丽</td><td class=" text-center fs_13">4.56%</td><td class=" text-center fs_13">51193746.50</td><td class=" text-center fs_13">2332488.00</td><td class=" text-center fs_13">0.00％</td><td class=" text-center fs_13">0.00%</td><td class=" text-center fs_13">2.44%</td><td class=" text-center fs_13">1.37%</td><td class=" text-center fs_13">4.16%</td><td class=" text-center fs_13">3.08%</td><td class=" text-center fs_13">8.02%</td><td class=" text-center fs_13">6.96%</td><td class=" text-center fs_13">7.18%</td></tr><tr role="row" class="even"><td class=" text-center fs_13">林燚填</td><td class=" text-center fs_13">4.49%</td><td class=" text-center fs_13">11804352.00</td><td class=" text-center fs_13">529652.00</td><td class=" text-center fs_13">0.00％</td><td class=" text-center fs_13">0.00%</td><td class=" text-center fs_13">0.00%</td><td class=" text-center fs_13">0.00%</td><td class=" text-center fs_13">0.00%</td><td class=" text-center fs_13">0.00%</td><td class=" text-center fs_13">0.00%</td><td class=" text-center fs_13">0.00%</td><td class=" text-center fs_13">0.00%</td></tr></tbody></table><div class="bottom"><div class="dataTables_info" id="lendingList_info" role="status" aria-live="polite">显示第 1 - 10 条记录，共30 条</div><div class="dataTables_length" id="lendingList_length"><label> <select name="lendingList_length" aria-controls="lendingList" class="form-control input-sm"><option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select> </label></div><div class="dataTables_paginate paging_full_numbers" id="lendingList_paginate"><ul class="pagination"><li class="paginate_button first disabled" id="lendingList_first"><a href="javascript:void(0);" aria-controls="lendingList" data-dt-idx="0" tabindex="0">首页</a></li><li class="paginate_button previous disabled" id="lendingList_previous"><a href="javascript:void(0);" aria-controls="lendingList" data-dt-idx="1" tabindex="0">上页</a></li><li class="paginate_button active"><a href="javascript:void(0);" aria-controls="lendingList" data-dt-idx="2" tabindex="0">1</a></li><li class="paginate_button "><a href="javascript:void(0);" aria-controls="lendingList" data-dt-idx="3" tabindex="0">2</a></li><li class="paginate_button "><a href="javascript:void(0);" aria-controls="lendingList" data-dt-idx="4" tabindex="0">3</a></li><li class="paginate_button next" id="lendingList_next"><a href="javascript:void(0);" aria-controls="lendingList" data-dt-idx="5" tabindex="0">下页</a></li><li class="paginate_button last" id="lendingList_last"><a href="javascript:void(0);" aria-controls="lendingList" data-dt-idx="6" tabindex="0">末页</a></li></ul></div><div class="clear"></div></div></div>
+        </div>
+    </div>
+
+    <!--正文内容end-->
+</div>
+<script src="jedate/jedate.min.js"></script>
+<script>
+
+
+</script>
+
+<script>
+    var dt;
+    function refresh(){
+        dt.api(dt.api().page()).draw(false);
+    }
+    $(function(){
+
+        var columns = new Array();
+
+        $.ajax({
+            type: 'GET',
+            url:"/hd/hdStatisticalReportBiz/getHdStatisticalReportColumns",
+            dataType: "json",
+            data: {
+                tableName: "hd_statistical_alloc_past9_report"
+            },
+            async:false,
+            success: function (data) {
+                columns = data;
+            }
+        });
+
+        dt = $("#lendingList").dataTable({
+            "sDom":'<"top"<"clear">>rt<"bottom"ilp<"clear">>',
+            bProcessing:true,
+            pageLength: 10,
+            searching: false, // 禁用dataTables自带的查询框
+            ordering: false, // 禁用排序
+            ajax: {
+                type: "POST",
+                url: "/hd/hdStatisticalReportBiz/getHdStatisticalReportAllocData",
+                data:function(d) {
+                    d.tableName = "hd_statistical_alloc_past9_report";
+                }
+            },
+            columns:columns
+        });
+    })
+</script>
+
+
+<script>
+    //分页方法
+    function page(n,s){
+        $("#pageNo").val(n);
+        $("#pageSize").val(s);
+        $("#searchForm").submit();
+        return false;
+    }
+
+    function exportResult(){
+        layer.confirm("确定要导出结果到excel中吗？", {
+            btn: ['确认','取消'], //按钮
+            yes:function (index, layero) {
+                var url="/hd/hdStatisticalReportBiz/hdStatisticalReportAllocExport?tableName=hd_statistical_alloc_past9_report";
+                window.open(url);
+                layer.close(index);
+            },
+            cancel:function(index){
+                //按钮【按钮二】的回调
+                layer.close(index);
+            },
+        });
+    }
+
+</script>
+
+<script>
+    var time = 100000;
+    var interval; //调度器对象。
+    function run(){
+        interval = setInterval("fun()",time);
+    }
+    function fun(){
+        $(".hui").css("display","none");
+    }
+    $(function(){
+        $("#reviewList").delegate('tr td button','click',function(){
+            $(this).html("加载中...").attr("disabled","disabled");
+            $(".hui").css("display","block");
+            run();
+        })
+    })
+</script>
+
+<script>
+    $(document).ready(function(e) {
+        var counter = 0;
+        if (window.history && window.history.pushState) {
+            $(window).on('popstate', function () {
+                window.history.pushState('forward', null, '#');
+                window.history.forward(1);
+            });
+        }
+        window.history.pushState('forward', null, '#'); //在IE中必须得有这两行
+        window.history.forward(1);
+    });
+</script>
+
+</div>

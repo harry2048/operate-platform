@@ -1,0 +1,288 @@
+ <!DOCTYPE html>
+ <html>
+ <head>
+    <title>信审日报表页面</title>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/base.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/layer.css" rel="stylesheet">
+    <link href="css/pagination.css" rel="stylesheet">
+    <link href="css/bootstrap-datetimepicker.css" rel="stylesheet">
+    <link href="css/jedate.css" rel="stylesheet">
+    <style>
+        #loanDetail{
+            background-color: #fff;
+            margin-bottom: 15px;
+        }
+        #loanDetail p{
+            padding-left:0 ;
+            padding-right: 0;
+            margin: 6px 0 ;
+        }
+        #loanDetail .wd_60{
+            display: inline-block;
+            width: 102px;
+            text-align: right;
+            font-size: 12px;
+            font-family: "微软雅黑";
+        }
+        #loanDetail .c13 .wd_60{
+            float: left;
+            margin-top: 5px;
+        }
+        #loanDetail .c13 input{
+            float: left;
+            font-size: 12px;
+            font-family: "微软雅黑";
+        }
+        #loanDetail .col-lg-3 ,#loanDetail .c13{
+            margin:5px 0;
+            padding-left:5px;
+            padding-right: 5px;
+        }
+
+        #loanDetail select option{
+            font-size: 12px;
+            font-family: "微软雅黑";
+        }
+        .search_btn {
+            font-size: 12px;
+            background-color: #09C;
+            padding: 5px 16px;
+            margin-top: 3px;
+            margin-bottom: 5px;
+        }
+        .ta_r{
+            text-align: right;
+        }
+        .mr_25{
+            margin-right: 25px;
+        }
+        .cardSelect{
+            border: 1px solid #ddd;
+            height: 25px;
+            width: 150px;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <div class="content1" href="">
+<!-- <div class="hui"><img src="/hd/static/images/ajax-loader.gif"></div> -->
+        <div class="content">
+            <!--面包屑导航start-->
+            <ol class="breadcrumb">
+                <li class="active">信审日报表查询</li>
+            </ol>
+            <div id="loanDetail" class="col-lg-12 col-md-12 col-sm-12">
+                <div class="col-lg-3 col-md-3 col-sm-3 c13"><span class="wd_60">商户名称&nbsp;&nbsp;</span><input type="text" id="bizName"></div>
+                <div class="col-lg-3 col-md-3 col-sm-3 c13"><span class="wd_60">复审开始日期&nbsp;&nbsp;</span><input type="text" id="applyDateStart" value="2019-05-27 00:00:00" placeholder="请选择时间"></div>
+                <div class="col-lg-3 col-md-3 col-sm-3 c13"><span class="wd_60">复审结束日期&nbsp;&nbsp;</span><input type="text" id="applyDateStart1" value="2019-05-27 59:59:59" placeholder="请选择时间"></div>
+
+                
+                <div class="col-lg-3 col-md-3 col-sm-3 ta_r">
+                    <button class="btn btn-primary btn-sm search_btn" type="button" id="btn-search">查询</button>
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <button class="btn btn-primary btn-sm search_btn mr_25" type="button" id="btn-export" onclick="exportExcel();">导出</button>
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div class="table-responsive" style="overflow-x: auto;">
+                <div id="lendingList_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer"><div class="top"><div class="clear"></div></div><div id="lendingList_processing" class="dataTables_processing panel panel-default" style="display: none;">处理中...</div><div class="dataTables_scroll"><div class="dataTables_scrollHead" style="overflow: hidden; position: relative; border: 0px; width: 100%;"><div class="dataTables_scrollHeadInner" style="box-sizing: content-box; width: 4500px; padding-right: 0px;"><table style="overflow: auto; width: 4500px; margin-left: 0px;" class="table table-bordered table-striped table-hover bg_wt dataTable no-footer" role="grid"><thead style="border-bottom: 0;background-color: #fff;">
+                    <tr role="row"><th rowspan="3" style="width: 25px;" align="center" class="sorting_disabled" colspan="1">序号</th><th rowspan="3" style="width: 219px;" align="center" class="sorting_disabled" colspan="1">商户名称</th><th colspan="8" align="center" rowspan="1">审核情况</th><th colspan="29" align="center" rowspan="1">原因统计</th></tr>
+                    <tr role="row"><th rowspan="2" align="center" class="sorting_disabled" colspan="1" style="width: 50px;">通过金额</th><th rowspan="2" align="center" class="sorting_disabled" colspan="1" style="width: 50px;">审批总数</th><th rowspan="2" align="center" class="sorting_disabled" colspan="1" style="width: 50px;">通过数量</th><th rowspan="2" align="center" class="sorting_disabled" colspan="1" style="width: 50px;">拒绝数量</th><th rowspan="2" align="center" class="sorting_disabled" colspan="1" style="width: 50px;">打回数量</th><th rowspan="2" align="center" class="sorting_disabled" colspan="1" style="width: 50px;">取消数量</th><th rowspan="2" align="center" class="sorting_disabled" colspan="1" style="width: 51px;">通过率</th><th rowspan="2" align="center" class="sorting_disabled" colspan="1" style="width: 50px;">金额比例</th><th colspan="15" align="center" rowspan="1">拒绝原因</th><th colspan="7" align="center" rowspan="1">取消原因</th><th colspan="7" align="center" rowspan="1">打回原因</th></tr>
+                    <tr role="row"><th class="sorting_disabled" rowspan="1" colspan="1" style="width: 50px;">信息虚假</th><th class="sorting_disabled" rowspan="1" colspan="1" style="width: 87px;">关机/空号/停机</th><th class="sorting_disabled" rowspan="1" colspan="1" style="width: 88px;">不符合进件标准</th><th class="sorting_disabled" rowspan="1" colspan="1" style="width: 88px;">产品与申请不符</th><th class="sorting_disabled" rowspan="1" colspan="1" style="width: 132px;">临时身份证/身份证过期</th><th class="sorting_disabled" rowspan="1" colspan="1" style="width: 132px;">非本人使用/非本人申请</th><th class="sorting_disabled" rowspan="1" colspan="1" style="width: 174px;">多时段拨打占线/无人接听/拒接</th><th class="sorting_disabled" rowspan="1" colspan="1" style="width: 132px;">申请人无业/工作不稳定</th><th class="sorting_disabled" rowspan="1" colspan="1" style="width: 50px;">限制行业</th><th class="sorting_disabled" rowspan="1" colspan="1" style="width: 63px;">不配合审核</th><th class="sorting_disabled" rowspan="1" colspan="1" style="width: 63px;">高风险客户</th><th class="sorting_disabled" rowspan="1" colspan="1" style="width: 305px;">通讯录信息无效/未授权通讯录/非实名手机/在网时间短</th><th class="sorting_disabled" rowspan="1" colspan="1" style="width: 76px;">还款能力不足</th><th class="sorting_disabled" rowspan="1" colspan="1" style="width: 50px;">其他原因</th><th class="sorting_disabled" rowspan="1" colspan="1" style="width: 25px;">其他</th><th class="sorting_disabled" rowspan="1" colspan="1" style="width: 162px;">多次拨打占线/无人接听/拒接</th><th class="sorting_disabled" rowspan="1" colspan="1" style="width: 151px;">申请人主动取消办理此业务</th><th class="sorting_disabled" rowspan="1" colspan="1" style="width: 137px;">资料不全/不清晰/不合规</th><th class="sorting_disabled" rowspan="1" colspan="1" style="width: 170px;">申请人需要与业务/联系人沟通</th><th class="sorting_disabled" rowspan="1" colspan="1" style="width: 76px;">信息填写错误</th><th class="sorting_disabled" rowspan="1" colspan="1" style="width: 88px;">银行卡无法绑定</th><th class="sorting_disabled" rowspan="1" colspan="1" style="width: 51px;">其他原因</th><th class="sorting_disabled" rowspan="1" colspan="1" style="width: 163px;">多次拨打占线/无人接听/拒接</th><th class="sorting_disabled" rowspan="1" colspan="1" style="width: 152px;">申请人主动取消办理此业务</th><th class="sorting_disabled" rowspan="1" colspan="1" style="width: 138px;">资料不全/不清晰/不合规</th><th class="sorting_disabled" rowspan="1" colspan="1" style="width: 171px;">申请人需要与业务/联系人沟通</th><th class="sorting_disabled" rowspan="1" colspan="1" style="width: 76px;">信息填写错误</th><th class="sorting_disabled" rowspan="1" colspan="1" style="width: 89px;">银行卡无法绑定</th><th class="sorting_disabled" rowspan="1" colspan="1" style="width: 52px;">其他原因</th></tr>
+                    </thead></table></div></div><div class="dataTables_scrollBody" style="position: relative; overflow: auto; width: 100%;"><table id="lendingList" style="overflow: auto; width: 4500px;" class="table table-bordered table-striped table-hover bg_wt dataTable no-footer" role="grid" aria-describedby="lendingList_info"><thead style="border-bottom: 0;background-color: #fff;">
+                    <tr role="row" style="height: 0px;"><th rowspan="3" style="padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px; width: 25px;" align="center" class="sorting_disabled" colspan="1"><div class="dataTables_sizing" style="height:0;overflow:hidden;">序号</div></th><th rowspan="3" style="width: 219px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;" align="center" class="sorting_disabled" colspan="1"><div class="dataTables_sizing" style="height:0;overflow:hidden;">商户名称</div></th><th colspan="8" align="center" rowspan="1" style="padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px; width: 520px;"><div class="dataTables_sizing" style="height:0;overflow:hidden;">审核情况</div></th><th colspan="29" align="center" rowspan="1" style="padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px; width: 3667px;"><div class="dataTables_sizing" style="height:0;overflow:hidden;">原因统计</div></th></tr>
+                    <tr role="row" style="height: 0px;"><th rowspan="2" align="center" class="sorting_disabled" colspan="1" style="padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px; width: 50px;"><div class="dataTables_sizing" style="height:0;overflow:hidden;">通过金额</div></th><th rowspan="2" align="center" class="sorting_disabled" colspan="1" style="padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px; width: 50px;"><div class="dataTables_sizing" style="height:0;overflow:hidden;">审批总数</div></th><th rowspan="2" align="center" class="sorting_disabled" colspan="1" style="padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px; width: 50px;"><div class="dataTables_sizing" style="height:0;overflow:hidden;">通过数量</div></th><th rowspan="2" align="center" class="sorting_disabled" colspan="1" style="padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px; width: 50px;"><div class="dataTables_sizing" style="height:0;overflow:hidden;">拒绝数量</div></th><th rowspan="2" align="center" class="sorting_disabled" colspan="1" style="padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px; width: 50px;"><div class="dataTables_sizing" style="height:0;overflow:hidden;">打回数量</div></th><th rowspan="2" align="center" class="sorting_disabled" colspan="1" style="padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px; width: 50px;"><div class="dataTables_sizing" style="height:0;overflow:hidden;">取消数量</div></th><th rowspan="2" align="center" class="sorting_disabled" colspan="1" style="padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px; width: 51px;"><div class="dataTables_sizing" style="height:0;overflow:hidden;">通过率</div></th><th rowspan="2" align="center" class="sorting_disabled" colspan="1" style="padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px; width: 50px;"><div class="dataTables_sizing" style="height:0;overflow:hidden;">金额比例</div></th><th colspan="15" align="center" rowspan="1" style="padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px; width: 1753px;"><div class="dataTables_sizing" style="height:0;overflow:hidden;">拒绝原因</div></th><th colspan="7" align="center" rowspan="1" style="padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px; width: 937px;"><div class="dataTables_sizing" style="height:0;overflow:hidden;">取消原因</div></th><th colspan="7" align="center" rowspan="1" style="padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px; width: 943px;"><div class="dataTables_sizing" style="height:0;overflow:hidden;">打回原因</div></th></tr>
+                    <tr role="row" style="height: 0px;"><th class="sorting_disabled" rowspan="1" colspan="1" style="padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px; width: 50px;"><div class="dataTables_sizing" style="height:0;overflow:hidden;">信息虚假</div></th><th class="sorting_disabled" rowspan="1" colspan="1" style="padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px; width: 87px;"><div class="dataTables_sizing" style="height:0;overflow:hidden;">关机/空号/停机</div></th><th class="sorting_disabled" rowspan="1" colspan="1" style="padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px; width: 88px;"><div class="dataTables_sizing" style="height:0;overflow:hidden;">不符合进件标准</div></th><th class="sorting_disabled" rowspan="1" colspan="1" style="padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px; width: 88px;"><div class="dataTables_sizing" style="height:0;overflow:hidden;">产品与申请不符</div></th><th class="sorting_disabled" rowspan="1" colspan="1" style="padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px; width: 132px;"><div class="dataTables_sizing" style="height:0;overflow:hidden;">临时身份证/身份证过期</div></th><th class="sorting_disabled" rowspan="1" colspan="1" style="padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px; width: 132px;"><div class="dataTables_sizing" style="height:0;overflow:hidden;">非本人使用/非本人申请</div></th><th class="sorting_disabled" rowspan="1" colspan="1" style="padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px; width: 174px;"><div class="dataTables_sizing" style="height:0;overflow:hidden;">多时段拨打占线/无人接听/拒接</div></th><th class="sorting_disabled" rowspan="1" colspan="1" style="padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px; width: 132px;"><div class="dataTables_sizing" style="height:0;overflow:hidden;">申请人无业/工作不稳定</div></th><th class="sorting_disabled" rowspan="1" colspan="1" style="padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px; width: 50px;"><div class="dataTables_sizing" style="height:0;overflow:hidden;">限制行业</div></th><th class="sorting_disabled" rowspan="1" colspan="1" style="padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px; width: 63px;"><div class="dataTables_sizing" style="height:0;overflow:hidden;">不配合审核</div></th><th class="sorting_disabled" rowspan="1" colspan="1" style="padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px; width: 63px;"><div class="dataTables_sizing" style="height:0;overflow:hidden;">高风险客户</div></th><th class="sorting_disabled" rowspan="1" colspan="1" style="padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px; width: 305px;"><div class="dataTables_sizing" style="height:0;overflow:hidden;">通讯录信息无效/未授权通讯录/非实名手机/在网时间短</div></th><th class="sorting_disabled" rowspan="1" colspan="1" style="padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px; width: 76px;"><div class="dataTables_sizing" style="height:0;overflow:hidden;">还款能力不足</div></th><th class="sorting_disabled" rowspan="1" colspan="1" style="padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px; width: 50px;"><div class="dataTables_sizing" style="height:0;overflow:hidden;">其他原因</div></th><th class="sorting_disabled" rowspan="1" colspan="1" style="padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px; width: 25px;"><div class="dataTables_sizing" style="height:0;overflow:hidden;">其他</div></th><th class="sorting_disabled" rowspan="1" colspan="1" style="padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px; width: 162px;"><div class="dataTables_sizing" style="height:0;overflow:hidden;">多次拨打占线/无人接听/拒接</div></th><th class="sorting_disabled" rowspan="1" colspan="1" style="padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px; width: 151px;"><div class="dataTables_sizing" style="height:0;overflow:hidden;">申请人主动取消办理此业务</div></th><th class="sorting_disabled" rowspan="1" colspan="1" style="padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px; width: 137px;"><div class="dataTables_sizing" style="height:0;overflow:hidden;">资料不全/不清晰/不合规</div></th><th class="sorting_disabled" rowspan="1" colspan="1" style="padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px; width: 170px;"><div class="dataTables_sizing" style="height:0;overflow:hidden;">申请人需要与业务/联系人沟通</div></th><th class="sorting_disabled" rowspan="1" colspan="1" style="padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px; width: 76px;"><div class="dataTables_sizing" style="height:0;overflow:hidden;">信息填写错误</div></th><th class="sorting_disabled" rowspan="1" colspan="1" style="padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px; width: 88px;"><div class="dataTables_sizing" style="height:0;overflow:hidden;">银行卡无法绑定</div></th><th class="sorting_disabled" rowspan="1" colspan="1" style="padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px; width: 51px;"><div class="dataTables_sizing" style="height:0;overflow:hidden;">其他原因</div></th><th class="sorting_disabled" rowspan="1" colspan="1" style="padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px; width: 163px;"><div class="dataTables_sizing" style="height:0;overflow:hidden;">多次拨打占线/无人接听/拒接</div></th><th class="sorting_disabled" rowspan="1" colspan="1" style="padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px; width: 152px;"><div class="dataTables_sizing" style="height:0;overflow:hidden;">申请人主动取消办理此业务</div></th><th class="sorting_disabled" rowspan="1" colspan="1" style="padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px; width: 138px;"><div class="dataTables_sizing" style="height:0;overflow:hidden;">资料不全/不清晰/不合规</div></th><th class="sorting_disabled" rowspan="1" colspan="1" style="padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px; width: 171px;"><div class="dataTables_sizing" style="height:0;overflow:hidden;">申请人需要与业务/联系人沟通</div></th><th class="sorting_disabled" rowspan="1" colspan="1" style="padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px; width: 76px;"><div class="dataTables_sizing" style="height:0;overflow:hidden;">信息填写错误</div></th><th class="sorting_disabled" rowspan="1" colspan="1" style="padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px; width: 89px;"><div class="dataTables_sizing" style="height:0;overflow:hidden;">银行卡无法绑定</div></th><th class="sorting_disabled" rowspan="1" colspan="1" style="padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px; width: 52px;"><div class="dataTables_sizing" style="height:0;overflow:hidden;">其他原因</div></th></tr>
+                    </thead>
+                    
+                <tbody><tr role="row" class="odd"><td>1</td><td>上海海同优才教育培训有限责任公司</td><td>112000</td><td>7</td><td>6</td><td>0</td><td>1</td><td>0</td><td>85.71%</td><td>19.22%</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr><tr role="row" class="even"><td>2</td><td>广东明世在线教育科技有限公司</td><td>91469</td><td>14</td><td>13</td><td>0</td><td>0</td><td>1</td><td>92.86%</td><td>15.7%</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr><tr role="row" class="odd"><td>3</td><td>成都沃尔德教育咨询有限公司-富力校区</td><td>79740</td><td>3</td><td>2</td><td>0</td><td>0</td><td>1</td><td>66.67%</td><td>13.68%</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr><tr role="row" class="even"><td>4</td><td>深圳市宝安区卓文教育培训中心</td><td>54200</td><td>6</td><td>4</td><td>1</td><td>0</td><td>1</td><td>66.67%</td><td>9.3%</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr><tr role="row" class="odd"><td>5</td><td>千易云(北京)教育科技有限公司</td><td>53600</td><td>2</td><td>2</td><td>0</td><td>0</td><td>0</td><td>100.00%</td><td>9.2%</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr><tr role="row" class="even"><td>6</td><td>上海育创网络科技股份有限公司</td><td>45960</td><td>5</td><td>2</td><td>1</td><td>0</td><td>2</td><td>40.00%</td><td>7.89%</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>2</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr><tr role="row" class="odd"><td>7</td><td>上海易说教育科技有限公司</td><td>29600</td><td>2</td><td>2</td><td>0</td><td>0</td><td>0</td><td>100.00%</td><td>5.08%</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr><tr role="row" class="even"><td>8</td><td>重庆沃尔得英语</td><td>27720</td><td>2</td><td>1</td><td>0</td><td>0</td><td>1</td><td>50.00%</td><td>4.76%</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr><tr role="row" class="odd"><td>9</td><td>阁瑞钛伦特软件（北京）有限公司</td><td>25800</td><td>1</td><td>1</td><td>0</td><td>0</td><td>0</td><td>100.00%</td><td>4.43%</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr><tr role="row" class="even"><td>10</td><td>励牛课思（北京）信息技术有限公司</td><td>25000</td><td>3</td><td>1</td><td>0</td><td>0</td><td>2</td><td>33.33%</td><td>4.29%</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>2</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr></tbody></table></div></div><div class="bottom"><div class="dataTables_info" id="lendingList_info" role="status" aria-live="polite">显示第 1 - 10 条记录，共18 条</div><div class="dataTables_length" id="lendingList_length"><label> <select name="lendingList_length" aria-controls="lendingList" class="form-control input-sm"><option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select> </label></div><div class="dataTables_paginate paging_full_numbers" id="lendingList_paginate"><ul class="pagination"><li class="paginate_button first disabled" id="lendingList_first"><a href="javascript:void(0);" aria-controls="lendingList" data-dt-idx="0" tabindex="0">首页</a></li><li class="paginate_button previous disabled" id="lendingList_previous"><a href="javascript:void(0);" aria-controls="lendingList" data-dt-idx="1" tabindex="0">上页</a></li><li class="paginate_button active"><a href="javascript:void(0);" aria-controls="lendingList" data-dt-idx="2" tabindex="0">1</a></li><li class="paginate_button "><a href="javascript:void(0);" aria-controls="lendingList" data-dt-idx="3" tabindex="0">2</a></li><li class="paginate_button next" id="lendingList_next"><a href="javascript:void(0);" aria-controls="lendingList" data-dt-idx="4" tabindex="0">下页</a></li><li class="paginate_button last" id="lendingList_last"><a href="javascript:void(0);" aria-controls="lendingList" data-dt-idx="5" tabindex="0">末页</a></li></ul></div><div class="clear"></div></div></div>
+            </div>
+            <!--正文内容end-->
+        </div>
+<script src="js/jquery.min.js"></script>
+<script src="js/jedate.min.js"></script>
+<script>
+    jeDate({
+        dateCell:"#applyDateStart", //目标元素。由于jedate.js封装了一个轻量级的选择器，因此dateCell还允许你传入class、tag这种方式 '#id .class'
+        format:"YYYY-MM-DD hh:mm:ss", //日期格式
+        minDate:"1900-01-01 00:00:00", //最小日期
+        maxDate:"2099-12-31 23:59:59", //最大日期
+        isinitVal:false, //是否初始化时间
+        isTime:true, //是否开启时间选择
+        isClear:true, //是否显示清空
+        festival:false, //是否显示节日
+        zIndex:999,  //弹出层的层级高度
+        marks:null, //给日期做标注
+        choosefun:function(val) {},  //选中日期后的回调
+        clearfun:function(val) {},   //清除日期后的回调
+        okfun:function(val) {}       //点击确定后的回调
+    });
+    jeDate({
+        dateCell:"#applyDateStart1", //目标元素。由于jedate.js封装了一个轻量级的选择器，因此dateCell还允许你传入class、tag这种方式 '#id .class'
+        format:"YYYY-MM-DD hh:mm:ss", //日期格式
+        minDate:"1900-01-01 00:00:00", //最小日期
+        maxDate:"2099-12-31 23:59:59", //最大日期
+        isinitVal:false, //是否初始化时间
+        isTime:true, //是否开启时间选择
+        isClear:true, //是否显示清空
+        festival:false, //是否显示节日
+        zIndex:999,  //弹出层的层级高度
+        marks:null, //给日期做标注
+        choosefun:function(val) {},  //选中日期后的回调
+        clearfun:function(val) {},   //清除日期后的回调
+        okfun:function(val) {}       //点击确定后的回调
+    });
+
+</script>
+
+<script>
+
+     $(function(){
+        var dt = $("#lendingList").dataTable({
+             "sDom":'<"top"<"clear">>rt<"bottom"ilp<"clear">>', 
+             bProcessing:true,
+             pageLength: 10,
+             searching: false, // 禁用dataTables自带的查询框
+             ordering: false, // 禁用排序
+            "autoWidth":false,
+            autoHeight:false,
+            "scrollX": true,
+            "scrollX": 4500,
+            "scrollY": 700,
+            "scrollY": true,
+//            "jQueryUI": true,
+             ajax: {
+                 type: "POST",
+                 url: "/hd/report/getExamineReportPage",
+                 data:function(d) {
+                  d.examineBeginDate = $("#applyDateStart").val();
+                  d.examineEndDate = $("#applyDateStart1").val();
+                  d.bizName=$("#bizName").val();
+                  d.type = "customer";//为区分商户和资金方，customer表商户，capital表资金方
+                 }
+             },
+             columns: [
+                 {data:"total" },
+                 {data:"bizName",'width':"250px;"},
+                 {data:"amounts"},
+                 {data:"total"},
+                 {data:"passedTotal" },
+                 {data:"refuseTotal"},
+                 {data:"callbackTotal"},
+                 {data:"cancelTotal"},
+                 {data: "passedPre"},
+                 {data: "amtPre"},
+                 {data:"refuse1"},
+                 {data:"refuse2"},
+                 {data:"refuse3"},
+                 {data:"refuse4" },
+                 {data:"refuse5"},
+                 {data:"refuse6"},
+                 {data:"refuse7"},
+                 {data: "refuse8"},
+                 {data: "refuse9"},
+                 {data:"refuse10" },
+                 {data:"refuse11"},
+                 {data:"refuse12"},
+                 {data:"refuse13"},
+                 {data:"refuse14"},
+                 {data: "refuse15"},
+                 {data: "cancel1"},
+                 {data: "cancel2"},
+                 {data: "cancel3"},
+                 {data: "cancel4"},
+                 {data: "cancel5"},
+                 {data: "cancel6"},
+                 {data: "cancel7"},
+                 {data: "callback1"},
+                 {data: "callback2"},
+                 {data: "callback3"},
+                 {data: "callback4"},
+                 {data: "callback5"},
+                 {data: "callback6"},
+                 {data: "callback7"}
+             ],
+            fnDrawCallback:function() {
+                var api = this.api();
+                var startIndex= api.context[0]._iDisplayStart;//获取到本页开始的条数
+                api.column(0).nodes().each(function(cell, i) {
+                    cell.innerHTML = startIndex + i + 1;
+                });
+            }
+         });
+         $("#btn-search").click(function(e){
+             dt.api().draw();
+         });
+
+    });
+
+     function exportExcel(){
+         layer.confirm("确定要导出信审日报表吗？", {
+             btn: ['确认','取消'], //按钮
+             yes:function (index, layero) {
+                 var examineBeginDate = $("#applyDateStart").val();
+                 var examineEndDate = $("#applyDateStart1").val();
+                 var url="/hd/report/examineReportExport?examineBeginDate="+examineBeginDate+"&examineEndDate="+examineEndDate+"&type=shop";
+                 window.open(url);
+                 layer.close(index);
+             },
+             cancel:function(index){
+                 //按钮【按钮二】的回调
+                 layer.close(index);
+             },
+         });
+     }
+</script>
+
+
+<script>
+    //分页方法
+    function page(n,s){
+        $("#pageNo").val(n);
+        $("#pageSize").val(s);
+        $("#searchForm").submit();
+        return false;
+    }
+
+
+</script>
+
+<script>
+    var time = 100000;
+    var interval; //调度器对象。
+    function run(){
+        interval = setInterval("fun()",time);
+    }
+    function fun(){
+        $(".hui").css("display","none");
+    }
+    $(function(){
+        $("#reviewList").delegate('tr td button','click',function(){
+            $(this).html("加载中...").attr("disabled","disabled");
+            $(".hui").css("display","block");
+            run();
+        })
+    })
+</script>
+
+<script>
+    $(document).ready(function(e) {
+        var counter = 0;
+        if (window.history && window.history.pushState) {
+            $(window).on('popstate', function () {
+                window.history.pushState('forward', null, '#');
+                window.history.forward(1);
+            });
+        }
+        window.history.pushState('forward', null, '#'); //在IE中必须得有这两行
+        window.history.forward(1);
+    });
+</script>
+
+</div>
+</body>
