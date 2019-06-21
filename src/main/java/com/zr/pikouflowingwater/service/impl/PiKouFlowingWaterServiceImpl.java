@@ -26,9 +26,10 @@ public class PiKouFlowingWaterServiceImpl implements PiKouFlowingWaterService {
     @Override
     public ResultVO queryPage(PiKouFlowingWaterSelectVo piKouFlowingWaterSelectVo) {
         if (piKouFlowingWaterSelectVo.getPageIndex() == 0) {
-            return ResultVOBuilder.error("500", "当前页不能为0");
+            return ResultVOBuilder.error("500", "当前页不能为空");
+            // 想修改pageSize类型为Integer，这样就能判断是否为null
         } else if (piKouFlowingWaterSelectVo.getPageSize() == 0) {
-            return ResultVOBuilder.error("500", "每页记录数不能为0");
+            return ResultVOBuilder.error("500", "每页记录数不能为空");
         }
 
         //查询数据

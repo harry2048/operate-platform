@@ -31,9 +31,9 @@ public class JinJianSourceServiceImpl implements JinJianSourceService {
     @Override
     public ResultVO queryPage(JinJianSourceSelectVo jinJianSourceSelectVo) {
         if (jinJianSourceSelectVo.getPageIndex() == 0) {
-            return ResultVOBuilder.error("500", "当前页不能为0");
+            return ResultVOBuilder.error("500", "当前页不能为空");
         } else if (jinJianSourceSelectVo.getPageSize() == 0) {
-            return ResultVOBuilder.error("500", "每页记录数不能为0");
+            return ResultVOBuilder.error("500", "每页记录数不能为空");
         }
 
         //查询数据
