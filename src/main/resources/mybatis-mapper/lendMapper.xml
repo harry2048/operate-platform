@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zr.lendinglist.mapper.LendingListMapper">
+    <select id="queryPage" parameterType="com.zr.lendinglist.model.LendingListSelectVo" resultType="com.zr.lendinglist.model.LendingList">
+        select  le.id,le.fundingParty,le.merchant,le.customerName,le.idCode,le.applyTime,le.examineTime,le.lendingTime
+        FROM lendinglist le
+        where 1=1
+        <if test="fundingParty!=null and fundingParty!=''">
+            and le.fundingParty=#{fundingParty}
+        </if>
+        <if test="merchant!=null and merchant!=''">
+            and le.merchant=#{merchant}
+        </if>
+        <if test="customerName!=null and customerName!=''">
+            and le.customerName=#{customerName}
+        </if>
+        <if test="idCode!=null and idCode!=''">
+            and le.idCode=#{idCode}
+        </if>
+        limit #{offset},#{pageSize}
+    </select>
+
+    <!--总条数-->
+    <select id="queryCount" parameterType="com.zr.lendinglist.model.LendingListSelectVo" resultType="java.lang.Integer">
+        select count(*)
+    FROM lendinglist WHERE 1=1
+        <if test="fundingParty!=null and fundingParty!=''">
+            and fundingParty=#{fundingParty}
+        </if>
+        <if test="merchant!=null and merchant!=''">
+            and merchant=#{merchant}
+        </if>
+        <if test="customerName!=null and customerName!=''">
+            and customerName=#{customerName}
+        </if>
+        <if test="idCode!=null and idCode!=''">
+            and idCode=#{idCode}
+        </if>
+    </select>
+
+
+    <select id="queryBySelectVo" parameterType="com.zr.lendinglist.model.LendingListSelectVo" resultType="com.zr.lendinglist.model.LendingList">
+        select  le.id,le.fundingParty,le.merchant,le.customerName,le.idCode,le.applyTime,le.examineTime,le.lendingTime
+        FROM lendinglist le
+        where 1=1
+        <if test="fundingParty!=null and fundingParty!=''">
+            and le.fundingParty=#{fundingParty}
+        </if>
+        <if test="merchant!=null and merchant!=''">
+            and le.merchant=#{merchant}
+        </if>
+        <if test="customerName!=null and customerName!=''">
+            and le.customerName=#{customerName}
+        </if>
+        <if test="idCode!=null and idCode!=''">
+            and le.idCode=#{idCode}
+        </if>
+    </select>
+
+    <!--<select id="queryPage" parameterType="com.zr.sourceofinput.pojo.SourceofinputSelectVo"
+        resultType="com.zr.sourceofinput.pojo.Sourceofinput">
+    select s.orderNum,s.merchant,s.customerName,s.idCode,s.incomingPartsTime,incomingPartsProvince,
+     s.incomingPartsCity,s.specificAddress
+     from sourceofinput s
+     where 1=1
+    <if test="merchant!=null and merchant!=''">
+        and s.merchant =#{merchant}
+    </if>
+    <if test="customerName!=null and customerName!=''">
+    and s.customerName =#{customerName}
+    </if>
+    <if test="incomingPartsTimeStart!=null ">
+        and s.incomingPartsTime > #{incomingPartsTimeStart}
+    </if>
+    <if test="incomingPartsTimeEnd!=null ">
+        and #{incomingPartsTimeEnd} > s.incomingPartsTime
+    </if>
+    limit #{offset} , #{pageSize}
+</select>
+
+<select id="queryCount" parameterType="com.zr.sourceofinput.pojo.SourceofinputSelectVo"
+        resultType="java.lang.Integer">
+    select count(s.id)
+    FROM sourceofinput s
+    where 1=1
+    <if test="merchant!=null and merchant!=''">
+        and s.merchant =#{merchant}
+    </if>
+    <if test="customerName!=null and customerName!=''">
+        and s.customerName =#{customerName}
+    </if>
+</select>
+
+<select id="queryBySelectVo" parameterType="com.zr.sourceofinput.pojo.SourceofinputSelectVo"
+        resultType="com.zr.sourceofinput.pojo.Sourceofinput">
+    select s.id,s.orderNum,s.merchant,s.customerName,s.idCode,s.incomingPartsTime,incomingPartsProvince,
+    s.incomingPartsCity,s.specificAddress
+    from sourceofinput s
+    where 1=1
+    <if test="merchant!=null and merchant!=''">
+        and s.merchant =#{merchant}
+    </if>
+    <if test="customerName!=null and customerName!=''">
+        and s.customerName =#{customerName}
+    </if>
+</select>
+-->
+</mapper>
+
+
