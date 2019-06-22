@@ -34,8 +34,6 @@ public class PiKouFlowingWaterServiceImpl implements PiKouFlowingWaterService {
 
         //查询数据
         List<PiKouFlowingWater> piKouFlowingWaterList = piKouFlowingWaterMapper.queryPage(piKouFlowingWaterSelectVo);
-//        SimpleDateFormat shifenmiao = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-//        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         for (PiKouFlowingWater p : piKouFlowingWaterList) {
             p.setDeductionResultsName(DeductionResultsEnum.getMsg(p.getDeductionResults()));
             p.setDeductionStatusName(DeductionStatusEnum.getMsg(p.getDeductionStatus()));

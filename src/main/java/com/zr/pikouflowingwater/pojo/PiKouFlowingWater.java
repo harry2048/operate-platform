@@ -6,6 +6,7 @@ import lombok.Data;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Transient;
 import java.util.Date;
 
 @Data
@@ -27,11 +28,13 @@ public class PiKouFlowingWater {
     private Date deductionTimeReceived;
 
     private Integer deductionStatus;//扣款状态
+    @Transient
     private String deductionStatusName;
 
 
 
     private Integer deductionResults;// 扣款结果
+    @Transient
     private String deductionResultsName;
 
 
