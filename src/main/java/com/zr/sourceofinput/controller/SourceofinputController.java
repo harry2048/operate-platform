@@ -25,7 +25,7 @@ public class SourceofinputController {
      */
     @PostMapping("sourceofinput/queryPage")
     public ResultVO<AllRecords> queryPage(@RequestBody SourceofinputSelectVo sourceofinputSelectVo) {
-
+        System.out.println("aaa");
         return sourceofinputService.queryPage(sourceofinputSelectVo);
     }
 
