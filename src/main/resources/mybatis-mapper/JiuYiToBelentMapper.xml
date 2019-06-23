@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zr.jiuyitobelent.mapper.JiuYiToBelentMapper">
+    <select id="queryPage" parameterType="com.zr.jiuyitobelent.model.JiuYiToBelentSelectVo" resultType="com.zr.jiuyitobelent.model.JiuYiToBelent">
+        select j.id,j.applyTime,j.channel,j.amountOfApplication,j.applicationDeadline,j.periodicContributions,j.customerName,j.idCode,j.managementLoanAmount,j.managementStatus
+        FROM jiuyitobelent j
+        WHERE 1=1
+        <if test="customerName!=null and customerName!=''">
+            and j.customerName=#{customerName}
+        </if>
+        <if test="channel!=null and channel!=''">
+            and j.channel=#{channel}
+        </if>
+        <if test="managementStatus!=null">
+            and j.managementStatus=#{managementStatus}
+        </if>
+        limit #{offset},#{pageSize}
+    </select>
+
+    <select id="queryByJiuYiToBelentSelectVo" parameterType="com.zr.jiuyitobelent.model.JiuYiToBelentSelectVo" resultType="com.zr.jiuyitobelent.model.JiuYiToBelent">
+        select j.id,j.applyTime,j.channel,j.amountOfApplication,j.applicationDeadline,j.periodicContributions,j.customerName,j.idCode,j.managementLoanAmount,j.managementStatus
+        FROM jiuyitobelent j
+        WHERE 1=1
+        <if test="customerName!=null and customerName!=''">
+            and j.customerName=#{customerName}
+        </if>
+        <if test="channel!=null and channel!=''">
+            and j.channel=#{channel}
+        </if>
+        <if test="managementStatus!=null">
+            and j.managementStatus=#{managementStatus}
+        </if>
+    </select>
+
+    <!--总条数-->
+    <select id="queryCount" parameterType="com.zr.jiuyitobelent.model.JiuYiToBelentSelectVo" resultType="java.lang.Integer">
+        select count(*)
+        FROM jiuyitobelent WHERE 1=1
+        <if test="customerName!=null and customerName!=''">
+            and customerName=#{customerName}
+        </if>
+        <if test="channel!=null and channel!=''">
+            and channel=#{channel}
+        </if>
+        <if test="managementStatus!=null">
+            and managementStatus=#{managementStatus}
+        </if>
+    </select>
+
+</mapper>
+
+
