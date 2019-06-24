@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zr.pikouflowingwater.mapper.PiKouFlowingWaterMapper">
+
+    <!--分页查询 -->
+    <select id="queryPage" parameterType="com.zr.pikouflowingwater.dto.PiKouFlowingWaterSelectVo" resultType="com.zr.pikouflowingwater.pojo.PiKouFlowingWater">
+        select id,
+            daiKouNum,
+            daiKuanHetongNum,
+            customerName,
+            idCode,
+            deductible,
+            issuanceOfWithholdingTime,
+            deductionTimeReceived,
+            deductionStatus,
+            deductionResults,
+            createTime,
+            createName,
+            updateTime,
+            updateName
+        FROM pikouflowingwater
+        <where>
+            <if test="daiKouNum!=null and daiKouNum!=''">
+                and daiKouNum = #{daiKouNum}
+            </if>
+            <if test="daiKuanHetongNum!=null and daiKuanHetongNum!=''">
+                and daiKuanHetongNum = #{daiKuanHetongNum}
+            </if>
+            <if test="createTime!=null">
+                and createTime = #{createTime}
+            </if>
+            <if test="deductionStatus!=null">
+                and #{deductionStatus} = deductionStatus
+            </if>
+        </where>
+        limit #{offset},#{pageSize}
+    </select>
+
+    <!-- 带条件查询总数量 -->
+    <select id="queryCount" parameterType="com.zr.pikouflowingwater.dto.PiKouFlowingWaterSelectVo" resultType="java.lang.Integer">
+        select count(id) FROM pikouflowingwater
+        <where>
+            <if test="daiKouNum!=null and daiKouNum!=''">
+                and daiKouNum = #{daiKouNum}
+            </if>
+            <if test="daiKuanHetongNum!=null and daiKuanHetongNum!=''">
+                and daiKuanHetongNum = #{daiKuanHetongNum}
+            </if>
+            <if test="createTime!=null">
+                and createTime = #{createTime}
+            </if>
+            <if test="deductionStatus!=null">
+                and #{deductionStatus} = deductionStatus
+            </if>
+        </where>
+    </select>
+
+</mapper>
+
+

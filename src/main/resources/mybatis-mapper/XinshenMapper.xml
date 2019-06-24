@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zr.xinshendaily.mapper.CreditDailyMapper">
+    <select id="queryPage" parameterType="com.zr.xinshendaily.pojo.CapitalSelectVo" resultType="com.zr.xinshendaily.pojo.Xinshendaily">
+        select x.typeName,x.merchant,x.passAmount,x.shenPiNum,x.passNum,x.juJueNum,x.dahuiNum,x.quXiaoNum,x.tongGuoLu,x.amountBiLi,x.createTime
+        FROM  xinshendaily x WHERE 1=1
+        <if test="typeName!=null and typeName!=''">
+            and typeName =#{typeName}
+        </if>
+        <if test="merchant!=null and merchant!=''">
+            and merchant=#{merchant}
+        </if>
+        <if test="startTime!=null ">
+            and createTime  >= #{startTime}
+        </if>
+        <if test="endTime!=null ">
+          and  #{endTime} >=createTime
+        </if>
+        limit #{offset},#{pageSize}
+    </select>
+    <select id="queryBySelectVo" parameterType="com.zr.xinshendaily.pojo.CapitalSelectVo" resultType="com.zr.xinshendaily.pojo.Xinshendaily">
+        select x.typeName,x.merchant,x.passAmount,x.shenPiNum,x.passNum,x.juJueNum,x.dahuiNum,x.quXiaoNum,x.tongGuoLu,x.amountBiLi,x.createTime
+        FROM  xinshendaily x WHERE 1=1
+        <if test="typeName!=null and typeName!=''">
+            and typeName =#{typeName}
+        </if>
+        <if test="merchant!=null and merchant!=''">
+            and merchant=#{merchant}
+        </if>
+        <if test="startTime!=null ">
+            and createTime  >= #{startTime}
+        </if>
+        <if test="endTime!=null ">
+          and  #{endTime} >=createTime
+        </if>
+    </select>
+    <!--总条数-->
+    <select id="queryCount" parameterType="com.zr.xinshendaily.pojo.CapitalSelectVo" resultType="java.lang.Integer">
+        select count(id)
+         FROM xinshendaily  WHERE 1=1
+        <if test="typeName!=null and typeName!=''">
+            and typeName=#{typeName}
+        </if>
+        <if test="merchant!=null and merchant!=''">
+            and merchant=#{merchant}
+        </if>
+        <if test="startTime!=null ">
+            and createTime  >= #{startTime}
+        </if>
+        <if test="endTime!=null ">
+            and  #{endTime} >=createTime
+        </if>
+    </select>
+    <select id="queryTenantPage" parameterType="com.zr.xinshendaily.pojo.TenantSelectVo" resultType="com.zr.xinshendaily.pojo.Xinshendaily">
+        select x.typeName,x.merchant,x.passAmount,x.shenPiNum,x.passNum,x.juJueNum,x.dahuiNum,x.quXiaoNum,x.tongGuoLu,x.amountBiLi,x.createTime
+        FROM  xinshendaily x WHERE 1=1
+        <if test="typeName!=null and typeName!=''">
+            and typeName =#{typeName}
+        </if>
+        <if test="merchant!=null and merchant!=''">
+            and merchant=#{merchant}
+        </if>
+        <if test="startTime!=null ">
+            and createTime  >= #{startTime}
+        </if>
+        <if test="endTime!=null ">
+           and  #{endTime} >=createTime
+        </if>
+        limit #{offset},#{pageSize}
+    </select>
+
+    <select id="queryTenantCount" parameterType="com.zr.xinshendaily.pojo.TenantSelectVo" resultType="java.lang.Integer">
+        select count(id)
+        FROM xinshendaily  WHERE 1=1
+        <if test="typeName!=null and typeName!=''">
+            and typeName=#{typeName}
+        </if>
+        <if test="merchant!=null and merchant!=''">
+            and merchant=#{merchant}
+        </if>
+        <if test="startTime!=null ">
+            and createTime  >= #{startTime}
+        </if>
+        <if test="endTime!=null ">
+            and  #{endTime} >=createTime
+        </if>
+    </select>
+    <select id="queryByTenantSelectVo" parameterType="com.zr.xinshendaily.pojo.TenantSelectVo" resultType="com.zr.xinshendaily.pojo.Xinshendaily">
+        select x.typeName,x.merchant,x.passAmount,x.shenPiNum,x.passNum,x.juJueNum,x.dahuiNum,x.quXiaoNum,x.tongGuoLu,x.amountBiLi,x.createTime
+        FROM  xinshendaily x WHERE 1=1
+        <if test="typeName!=null and typeName!=''">
+            and typeName =#{typeName}
+        </if>
+        <if test="merchant!=null and merchant!=''">
+            and merchant=#{merchant}
+        </if>
+        <if test="startTime!=null ">
+            and createTime  >= #{startTime}
+        </if>
+        <if test="endTime!=null ">
+        and  #{endTime} >=createTime
+        </if>
+    </select>
+
+</mapper>
+
+
