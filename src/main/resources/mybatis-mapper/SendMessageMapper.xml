@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zr.sendrepaymentmessage.mapper.SendMessageMapper">
+    <select id="querySendMessagePage" parameterType="com.zr.sendrepaymentmessage.pojo.SendMessageSelectVo"
+            resultType="com.zr.sendrepaymentmessage.pojo.SendRepaymentMessage">
+        select id,orderNum,name,idCode,phone,numberOfPeriods,deductionDate,deliveryTime,
+        sendingStatus from sendrepaymentmessage
+        <where>
+            <if test="deliveryTime != null and deliveryTime != ''">
+                and deliveryTime=#{deliveryTime}
+            </if>
+        </where>
+        limit #{offset},#{pageSize}
+    </select>
+    <select id="queryTotalNumber" parameterType="com.zr.sendrepaymentmessage.pojo.SendMessageSelectVo"
+            resultType="java.lang.Integer">
+        select count(id) from sendrepaymentmessage
+        <where>
+            <if test="deliveryTime != null and deliveryTime != ''">
+                and deliveryTime=#{deliveryTime}
+            </if>
+        </where>
+    </select>
+</mapper>
+
+
