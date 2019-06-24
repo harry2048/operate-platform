@@ -32,7 +32,7 @@ public class DaiFangKuanController {
     /**
      * 导出
      */
-    @GetMapping("/daifangkuan/InquiryIntroduction")
+    @PostMapping("/daifangkuan/InquiryIntroduction")
     public ResultVO exportDFK(HttpServletResponse response,String statusName, String name, Integer phone, String merchant){
         DaiFangKuanSelectVo daiFangKuanSelectVo = new DaiFangKuanSelectVo();
         daiFangKuanSelectVo.setStatusName(statusName);
