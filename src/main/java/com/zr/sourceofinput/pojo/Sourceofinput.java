@@ -19,7 +19,7 @@ public class Sourceofinput {
     private String merchant;//'商户
     private String customerName;//客户姓名
     private String orderNum;//订单编号
-    private Integer idCode;//身份证号码
+    private String idCode;//身份证号码
     private Date incomingPartsTime;//进件时间
     private String incomingPartsProvince;//进件省份
     private String incomingPartsCity;//进件城市

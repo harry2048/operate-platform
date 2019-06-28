@@ -17,6 +17,11 @@ public class JinJianSourceController {
     @Autowired
     private JinJianSourceService jinJianSourceService;
 
+    /**
+     * 按条件分页查询
+     * @param jinJianSourceSelectVo
+     * @return
+     */
     @PostMapping("/queryBySelect")
     public ResultVO queryPage(@RequestBody JinJianSourceSelectVo jinJianSourceSelectVo) {
         return jinJianSourceService.queryPage(jinJianSourceSelectVo);
