@@ -119,9 +119,9 @@
                 <option value="11">翼支付</option>
             </select></div>
             <div class="col-lg-3 col-md-3 col-sm-3"><span class="wd_60">是否可批扣&nbsp;&nbsp;</span><select id="deductStatus">
-                <option value="">---请选择---</option>
+                <!--<option value="">-&#45;&#45;请选择-&#45;&#45;</option>
                 <option value="0">可批扣</option>
-                <option value="1">不可批扣</option>
+                <option value="1">不可批扣</option>-->
             </select></div>
             <div class="col-lg-12 col-md-6 col-sm-6 ta_r">
                 <button class="btn btn-primary btn-sm search_btn" type="button" id="btn-search">查询</button>
@@ -168,6 +168,24 @@
 <script src="js/jquery-2.1.1.min.js"></script>
 <script src="js/common.js"></script>
 <script>
+    $(function(){
+        $.ajax({
+            type: 'POST',
+            url: 'http://localhost:8010/pikou/isApprovalSpinner',
+            dataType: 'JSON',
+            contentType: "application/json;charset=utf-8",
+            success: function (res) {
+                _list = res.data;
+                console.log(_list)
+                alert(_list)
+                $.each(_list,function(index,ele){
+                    var optionTd = $("<option value='ele.isApprovalValue'></option>").append(ele.isApprovalName)
+
+                    $("#deductStatus").append(optionTd)
+                })
+            }
+        })
+    })
 
     function _search(_page) {
         var loanContractNum,customerName,idCode,paymentAccount,pageIndex,pageSize;
