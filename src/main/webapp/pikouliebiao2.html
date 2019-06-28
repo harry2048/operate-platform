@@ -176,8 +176,6 @@
             contentType: "application/json;charset=utf-8",
             success: function (res) {
                 _list = res.data;
-                console.log(_list)
-                alert(_list)
                 $.each(_list,function(index,ele){
 
                     var optionTd = $("<option></option>").attr("value",ele.isApprovalValue).append(ele.isApprovalName)
@@ -273,6 +271,7 @@
 
     //分页点击事件
     $(".btn-search").on("click","a",function(){
+        alert("bbb")
         console.log($(this));
         $(this).addClass("active");
         $(this).siblings().removeClass("active");
