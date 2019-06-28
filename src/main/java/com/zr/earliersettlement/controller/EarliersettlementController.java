@@ -22,6 +22,7 @@ import java.util.List;
  */
 @CrossOrigin
 @RestController
+@RequestMapping("earliersettlement")
 public class EarliersettlementController {
 
     @Autowired
