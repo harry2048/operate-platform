@@ -269,21 +269,10 @@
         _search(_page)
     })
 
-    //分页点击事件
-    $(".btn-search").on("click","a",function(){
-        alert("bbb")
-        console.log($(this));
-        $(this).addClass("active");
-        $(this).siblings().removeClass("active");
-        var _index = parseInt($(this).attr("page"));
-        if(_index==1){
-            $(".prev_page").attr("disabled","disabled");
-        }else{
-            $(".prev_page").attr("page",_index-1);
-            $(".last_page").attr("page",_index+1);
-        }
-        var _page = $(this).attr("page");
-        _search(_page)
+
+    //多条件查询点击事件
+    $("#btn-search").on("click",function(){
+        _search()
     })
 </script>
 </html>
