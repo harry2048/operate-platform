@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <meta http-equiv="content-type" content="text/html;charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <title>提前结清查询页面</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/base.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/layer.css" rel="stylesheet">
+    <link href="css/pagination.css" rel="stylesheet">
+    <link href="css/bootstrap-datetimepicker.css" rel="stylesheet">
+    <link href="css/dataTables.bootstrap.min.css" rel="stylesheet">
+    <link href="css/jedate.css" rel="stylesheet">
+    <style>
+        #loanDetail{
+            background-color: #fff;
+            margin-bottom: 15px;
+        }
+        #loanDetail p{
+            padding-left:0 ;
+            padding-right: 0;
+            margin: 6px 0 ;
+        }
+        #loanDetail .wd_60{
+            display: inline-block;
+            width: 102px;
+            text-align: right;
+            font-size: 12px;
+            font-family: "微软雅黑";
+        }
+        #loanDetail .c13 .wd_60{
+            float: left;
+            margin-top: 5px;
+        }
+        #loanDetail .c13 input{
+            float: left;
+            font-size: 12px;
+            font-family: "微软雅黑";
+        }
+        #loanDetail .col-lg-3 ,#loanDetail .c13{
+            margin:5px 0;
+            padding-left:5px;
+            padding-right: 5px;
+        }
+
+        #loanDetail select option{
+            font-size: 12px;
+            font-family: "微软雅黑";
+        }
+        .search_btn {
+            font-size: 12px;
+            background-color: #09C;
+            padding: 5px 16px;
+            margin-top: 3px;
+            margin-bottom: 5px;
+        }
+        .ta_r{
+            text-align: right;
+        }
+        .mr_25{
+            margin-right: 25px;
+        }
+        .cardSelect{
+            border: 1px solid #ddd;
+            height: 25px;
+            width: 150px;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <div class="content1" href="">
+    <div class="hui"><img src="images/ajax-loader.gif"></div>
+    <div class="content">
+        <!--面包屑导航start-->
+        <ol class="breadcrumb">
+            <li class="active">提前结清列表查询</li>
+        </ol>
+        <div id="loanDetail" class="col-lg-12 col-md-12 col-sm-12">
+            <div class="col-lg-3 col-md-3 col-sm-3"><span class="wd_60">身份证号&nbsp;&nbsp;</span><input type="text" id="idCardNo"></div>
+            <div class="col-lg-3 col-md-3 col-sm-3"><span class="wd_60">姓名&nbsp;&nbsp;</span><input type="text" id="idName"></div>
+            <div class="col-lg-3 col-md-3 col-sm-3"><span class="wd_60">渠道名称&nbsp;&nbsp;</span><input type="text" id="bcName"></div>
+            <div class="col-lg-3 col-md-3 col-sm-3"><span class="wd_60">业务类型&nbsp;&nbsp;</span>
+                <select id="sourceType">
+                    <option value="">---请选择---</option>
+                    <option value="1">教育</option>
+                    <option value="2">租房</option>
+                    <option value="4">数码</option>
+                    <option value="3">碧水源</option>
+                </select>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-3"><span class="wd_60">贷款状态&nbsp;&nbsp;</span>
+                <select id="loanStatus">
+                    <option value="">---请选择---</option>
+                    <option value="9000">订单完结</option>
+                    <option value="7000">已放款</option>
+                    <option value="8000" selected="">提前结清</option>
+                    <option value="9500">退货</option>
+                </select>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-3"><span class="wd_60">联系方式&nbsp;&nbsp;</span><input type="text" id="phoneNo"></div>
+            <div class="col-lg-3 col-md-3 col-sm-3"><span class="wd_60">放款时间(开始)&nbsp;&nbsp;</span><input type="text" id="lendingDateStart" value="" placeholder="请选择时间" readonly=""></div>
+            <div class="col-lg-3 col-md-3 col-sm-3"><span class="wd_60">放款时间(结束)&nbsp;&nbsp;</span><input type="text" id="lendingDateEnd" value="" placeholder="请选择时间" readonly=""></div>
+            <div class="col-lg-3 col-md-3 col-sm-3"><span class="wd_60">资方&nbsp;&nbsp;</span><select id="fundSource"><option value="">请选择</option><option value="1">北银</option><option value="14">91金融</option><option value="13">沃付分期</option><option value="22">医美</option><option value="30">苏宁</option><option value="100">mini循环贷</option><option value="3">海尔教育</option><option value="4">安信小贷</option><option value="5">百度</option><option value="7">海尔租房</option><option value="8">华融</option><option value="11">贷鱼教育</option><option value="15">湖北消费金融</option><option value="16">91旺财</option><option value="18">晋商租房</option><option value="17">晋商教育</option></select></div>
+            <div class="col-lg-3 col-md-3 col-sm-3 c13"><span class="wd_60">结清日期(开始)&nbsp;&nbsp;</span><input type="text" id="applyDateStart" value="2019-05-20 00:00:00" placeholder="请选择时间" readonly=""></div>
+            <div class="col-lg-3 col-md-3 col-sm-3 c13"><span class="wd_60">结清日期(结束)&nbsp;&nbsp;</span><input type="text" id="applyDateEnd" value="2019-05-20 23:59:59" placeholder="请选择时间" readonly=""></div>
+            <div class="col-lg-3 col-md-3 col-sm-3">
+
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-3 ta_r">
+                <button class="btn btn-primary btn-sm search_btn" type="button" id="btn-search">查询</button>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <button class="btn btn-primary btn-sm search_btn mr_25" type="button" id="btn-export" onclick="exportResult();">导出</button>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <div class="table-responsive">
+            <div id="lendingList_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer"><div class="top"><div class="clear"></div></div><div id="lendingList_processing" class="dataTables_processing panel panel-default" style="display: none;">处理中...</div><table id="lendingList" style="overflow: auto; width: 2998px;" class="table table-bordered table-striped table-hover bg_wt dataTable no-footer" role="grid" aria-describedby="lendingList_info">
+                <thead style="border-bottom: 0;background-color: #fff;">
+                <tr role="row"><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 94px;">业务类型</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 94px;">订单编号</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 94px;">结清日期</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 94px;">放款日期</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 53px;">资方</th><th class="text-center fs_13 sorting_disabled" style="width: 120px" rowspan="1" colspan="1">渠道</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 94px;">客户姓名</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 114px;">身份证号码</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 94px;">申请金额</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 94px;">申请期数</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 73px;">期供款</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 94px;">剩余期数</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 115px;">已还款金额</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 73px;">滞纳金</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 53px;">罚息</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 53px;">复利</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 115px;">逾期管理费</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 94px;">逾期天数</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 94px;">逾期期数</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 115px;">退贴息金额</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 53px;">利率</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 177px;">商户应退贷鱼金额</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 177px;">贷鱼应退资方金额</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 136px;">资方放款金额</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 136px;">贷鱼放款金额</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 54px;">状态</th></tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+            </div>
+            <div class="bottom">
+                <div class="dataTables_info" id="bizList_info" role="status" aria-live="polite">
+
+                </div>
+                <div class="common_page"></div>
+
+                <div class="clear"></div>
+            </div>
+                <!--<tbody><tr class="odd"><td valign="top" colspan="26" class="dataTables_empty">没有符合您搜索条件的信息</td></tr></tbody></table><div class="bottom"><div class="dataTables_info" id="lendingList_info" role="status" aria-live="polite">显示第 0 至 0 项结果，共 0 项</div><div class="dataTables_length" id="lendingList_length"><label> <select name="lendingList_length" aria-controls="lendingList" class="form-control input-sm"><option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select> </label></div><div class="dataTables_paginate paging_full_numbers" id="lendingList_paginate"><ul class="pagination"><li class="paginate_button first disabled" id="lendingList_first"><a href="javascript:void(0);" aria-controls="lendingList" data-dt-idx="0" tabindex="0">首页</a></li><li class="paginate_button previous disabled" id="lendingList_previous"><a href="javascript:void(0);" aria-controls="lendingList" data-dt-idx="1" tabindex="0">上页</a></li><li class="paginate_button next disabled" id="lendingList_next"><a href="javascript:void(0);" aria-controls="lendingList" data-dt-idx="2" tabindex="0">下页</a></li><li class="paginate_button last disabled" id="lendingList_last"><a href="javascript:void(0);" aria-controls="lendingList" data-dt-idx="3" tabindex="0">末页</a></li></ul></div><div class="clear"></div></div></div>-->
+        </div>
+        <!--正文内容end-->
+    </div>
+    </div>
+</body>
+    <script src="js/jquery-2.1.1.min.js"></script>
+    <script src="js/jedate.min.js"></script>
+    <script src="js/common.js"></script>
+<script>
+
+    function _search(_page) {
+        var idCode,customerName,channelName,businessType,status,phone,managemen,pageIndex,pageSize;
+        idCode = $("#idCardNo").val();
+        customerName = $("#idName").val();
+        channelName = $("#bcName").val();
+        businessType = $("#sourceType").val();
+        statusName = $("#loanStatus").val();
+        phone = $("#phoneNo").val();
+        managemen = $("#fundSource").val();
+        if(_page!=""){
+            var tmp={
+                "idCode":idCode,
+                "customerName":customerName,
+                "channelName":channelName,
+                "businessType":businessType,
+                "statusName":statusName,
+                "phone":phone,
+                "managemen":managemen,
+                "pageIndex":_page,
+                "pageSize":1
+            };
+        }else{
+            var tmp={
+                "idCode":idCode,
+                "customerName":customerName,
+                "channelName":channelName,
+                "businessType":businessType,
+                "statusName":statusName,
+                "phone":phone,
+                "managemen":managemen,
+                "pageIndex":0,
+                "pageSize":1
+            };
+        }
+
+
+        $.ajax({
+            type: 'POST',
+            url: 'http://localhost:8010/earliersettlement/queryPage',
+            dataType: 'JSON',
+            data: JSON.stringify(tmp),
+            contentType: "application/json;charset=utf-8",
+            success: function (res) {
+                _list = res.data.dataList;
+                var _html = "";
+                if(res.success){
+                    $("#bizList_info").html("当前是第"+res.data.pageIndex+"页，共"+res.data.totalPage+"页")
+                    if(_list.length>0){
+                        page(2,1);
+                    }
+                    for(var i = 0;i<_list.length;i++){
+                        _html+="<tr>"+
+                            "<td>"+_list[i].businessType+"</td>"+
+                            "<td>"+_list[i].orderNum+"</td>"+
+                            "<td>"+_list[i].settleTime+"</td>"+
+                            "<td>"+_list[i].loanTime+"</td>"+
+                            "<td>"+_list[i].managemen+"</td>"+
+                            "<td>"+_list[i].channel+"</td>"+
+                            "<td>"+_list[i].customerName+"</td>"+
+                            "<td>"+_list[i].idCode+"</td>"+
+                            "<td>"+_list[i].shenQingAmount+"</td>"+
+                            "<td>"+_list[i].shenQingNum+"</td>"+
+                            "<td>"+_list[i].qiGongKuan+"</td>"+
+                            "<td>"+_list[i].surplusNum+"</td>"+
+                            "<td>"+_list[i].yiHuanAmount+"</td>"+
+                            "<td>"+_list[i].zhinaAmount+"</td>"+
+                            "<td>"+_list[i].penaltyInterest+"</td>"+
+                            "<td>"+_list[i].compoundInterest+"</td>"+
+                            "<td>"+_list[i].yuQiAmount+"</td>"+
+                            "<td>"+_list[i].yuQiDay+"</td>"+
+                            "<td>"+_list[i].yuQiPeriods+"</td>"+
+                            "<td>"+_list[i].amountOfRefundinterest+"</td>"+
+                            "<td>"+_list[i].interestRate+"</td>"+
+                            "<td>"+_list[i].merchantTuiDaiYuAmount+"</td>"+
+                            "<td>"+_list[i].daiYuTuiZiFangAmount+"</td>"+
+                            "<td>"+_list[i].managemenLoanAmount+"</td>"+
+                            "<td>"+_list[i].DaiYuLoanAmount+"</td>"+
+                            "<td>"+_list[i].statusName+"</td>";
+                        _html+="<tr/>";
+                    }
+                    $("#lendingList tbody").html(_html);
+
+                }else{
+                    console.log(res.errorMessage);
+                }
+            }
+        })
+    }
+    _search()
+
+    //分页点击事件
+    $(".common_page").on("click","a",function(){
+        console.log($(this));
+        $(this).addClass("active");
+        $(this).siblings().removeClass("active");
+        var _index = parseInt($(this).attr("page"));
+        if(_index==1){
+            $(".prev_page").attr("disabled","disabled");
+        }else{
+            $(".prev_page").attr("page",_index-1);
+            $(".last_page").attr("page",_index+1);
+        }
+        var _page = $(this).attr("page");
+        _search(_page)
+    })
+
+    //分页点击事件
+    $(".btn-search").on("click","a",function(){
+        console.log($(this));
+        $(this).addClass("active");
+        $(this).siblings().removeClass("active");
+        var _index = parseInt($(this).attr("page"));
+        if(_index==1){
+            $(".prev_page").attr("disabled","disabled");
+        }else{
+            $(".prev_page").attr("page",_index-1);
+            $(".last_page").attr("page",_index+1);
+        }
+        var _page = $(this).attr("page");
+        _search(_page)
+    })
+</script>
+</html>
