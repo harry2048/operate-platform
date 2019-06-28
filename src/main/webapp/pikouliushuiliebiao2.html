@@ -16,6 +16,8 @@
      <script src="js/jedate.min.js"></script>
      <script src="js/datatables.bootstrap.min.js"></script>
      <script src="js/common.js"></script>
+     <script type="text/javascript" src="js/bootstrap.min.js"></script>
+     <script type="text/javascript" src="js/bootstrap-datetimepicker.js"></script>
     <style>
         #loanDetail{
             background-color: #fff;
@@ -64,6 +66,12 @@
         }
         .mr_25{
             margin-right: 25px;
+        }
+        .common_page{
+            margin-right: 300px;
+        }
+        .dataTables_info{
+            margin-left: 200px;
         }
     </style>
  </head>
@@ -269,10 +277,15 @@
 </script>
 <script src="js/jquery-2.1.1.min.js"></script>
 <script src="js/common.js"></script>
+<script src="js/pageHelperTest.js"></script>
 <script>
     $(function () {
-        queryByPage(1);
+        // 条件分页查询
+        queryBySelect(1);
+
+        // 查询所有下拉框
         queryDeductionStatusAll();
+
     })
 
     /* 查询所有下拉框 */
@@ -295,7 +308,7 @@
     }
 
     /*多条件分页查询*/
-    function queryByPage(pageIndex) {
+    function queryBySelect(pageIndex) {
         var daiKouNum,daiKuanHetongNum,createTime,deductionStatus;
         daiKouNum = $("#thdSeq").val();
         daiKuanHetongNum = $("#loanContNo").val();
@@ -322,7 +335,8 @@
                 if(res.success){
                     $("#bizList_info").html("当前是第"+res.data.pageIndex+"页，共"+res.data.totalPage+"页")
                     if(_list.length>0){
-                        page(res.data.totalNumber,res.data.pageSize);
+                        // 分页条
+                        build_nav_page(res)
                     }
 
                     for(var i = 0;i<_list.length;i++){
@@ -351,11 +365,11 @@
 
     //多条件查询点击事件
     $("#btn-search").on("click",function(){
-        queryByPage(1)
+        queryBySelect(1)
     })
 
     //分页点击事件
-    $(".common_page").on("click","a",function(){
+    /*$(".common_page").on("click","a",function(){
         $(this).addClass("active");
         $(this).siblings().removeClass("active");
         var _index = parseInt($(this).attr("page"));
@@ -367,8 +381,74 @@
         }
         var _page = $(this).attr("page");
         queryByPage(_page)
-    })
+    })*/
 
+
+    /*//分页条
+    function build_nav_page(result){
+        $(".common_page").empty()
+        var ul = $("<ul></ul>").addClass("pagination")//为ul添加属性pagination，其就变为分页条，就这么神奇
+
+        //构建首页和前一页
+        var firstLi = $("<li></li>").append($("<a>首页</a>"))
+        var preLi = $("<li></li>").append($("<a></a>").append("&laquo;"))
+        if(result.pageIndex > 1){
+            firstLi.click(function(){
+                queryBySelect(1)
+            })
+            preLi.click(function(){
+                queryBySelect(result.pageIndex-1)
+            })
+        }else{
+            firstLi.addClass("disabled")
+            preLi.addClass("disabled")
+        }
+
+        //构建下一页和尾页
+        var nextLi = $("<li></li>").append($("<a></a>").append("&raquo;"))
+        var lastLi = $("<li></li>").append($("<a>尾页</a>"))
+        if(result.pageIndex < result.totalPage){
+            nextLi.click(function(){
+                queryBySelect(result.pageIndex+1)
+            })
+            lastLi.click(function(){
+                queryBySelect(result.totalNumber)
+            })
+        }else{
+            nextLi.addClass("disabled")
+            lastLi.addClass("disabled")
+        }
+
+        //添加首页和前一页到ul中
+        ul.append(firstLi).append(preLi)
+
+
+        //构建页数并添加到ul中
+        var num = new Array();
+        for(var x =0;x<result.pageSize;x++) {
+            num[x]=x;
+        }
+        $.each(num,function(index,ele){
+            var pageNum = index +1;
+            var numLi = $("<li></li>").append($("<a></a>").append(pageNum))
+            if(result.pageIndex == pageNum){
+                numLi.addClass("active")
+            }else{
+                //为每页添加点击事件(为非当前页添加点击事件)
+                numLi.click(function(){
+                    queryBySelect(pageNum)
+                })
+            }
+            //将页码添加到ul中
+            ul.append(numLi)
+        })
+
+        //将下一页和尾页添加到ul中
+        ul.append(nextLi).append(lastLi)
+
+        //把ul添加到<nav>中，再添加到分页条区域
+        $("<nav></nav>").append(ul).appendTo($(".common_page"))
+    }*/
 </script>
 
 </div>
