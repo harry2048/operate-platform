@@ -12,6 +12,10 @@
     <link href="css/bootstrap-datetimepicker.css" rel="stylesheet">
     <link href="css/jedate.css" rel="stylesheet">
     <link href="css/dataTables.bootstrap.min.css" rel="stylesheet">
+     <script src="js/jquery-2.1.1.min.js"></script>
+     <script src="js/jedate.min.js"></script>
+     <script src="js/datatables.bootstrap.min.js"></script>
+     <script src="js/common.js"></script>
     <style>
         #loanDetail{
             background-color: #fff;
@@ -98,21 +102,32 @@
                 <div class="clear"></div>
             </div>
             <div class="table-responsive">
-                <div id="sendDetailList_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer"><div class="top"><div class="clear"></div></div><div id="sendDetailList_processing" class="dataTables_processing panel panel-default" style="display: none;">处理中...</div><table id="sendDetailList" style="width: 100%;" class="table table-bordered table-striped table-hover bg_wt dataTable no-footer" role="grid" aria-describedby="sendDetailList_info">
-                    <thead style="border-bottom: 0;background-color: #fff;">
-                    <tr role="row"><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 144px;">代扣流水号</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 72px;">生成日期</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 144px;">贷款合同号</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 52px;">客户姓名</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 136px;">证件号</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 42px;">应扣款</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 121px;">发出代扣时间</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 121px;">收到代扣时间</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 53px;">扣款状态</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 105px;">扣款结果</th></tr>
-                    </thead>
-                <tbody id="tbody"><!--<tr role="row" class="odd"><td>6536635612895642625</td><td>2019-05-22</td><td>6460777522599560193</td><td>秦文进</td><td>140931199412020039</td><td>1680</td><td>2019-5-22 12:16:15</td><td>2019-5-22 12:16:15</td><td>601</td><td></td></tr><tr role="row" class="even"><td>6536636411239465985</td><td>2019-05-22</td><td>6460777522599560193</td><td>秦文进</td><td>140931199412020039</td><td>1680</td><td>2019-5-22 12:19:25</td><td>2019-5-22 12:19:37</td><td>还款成功</td><td>微信支付还款成功</td></tr><tr role="row" class="odd"><td>6536649002816898049</td><td>2019-05-22</td><td>6473880122542785537</td><td>叶锦程</td><td>35021219931112202X</td><td>448.5</td><td>2019-5-22 01:09:27</td><td>2019-5-22 01:09:35</td><td>还款成功</td><td>微信支付还款成功</td></tr><tr role="row" class="even"><td>6536700731679835137</td><td>2019-05-22</td><td>6427755259014153217</td><td>张科举</td><td>370681198711080627</td><td>750</td><td>2019-5-22 04:35:00</td><td>2019-5-22 04:35:12</td><td>还款成功</td><td>微信支付还款成功</td></tr><tr role="row" class="odd"><td>6536735460554703873</td><td>2019-05-22</td><td>6473010528211960833</td><td>李强</td><td>510521198909165858</td><td>830</td><td>2019-5-22 06:53:00</td><td>2019-5-22 06:53:15</td><td>还款成功</td><td>微信支付还款成功</td></tr><tr role="row" class="even"><td>6536736976896263169</td><td>2019-05-22</td><td>6482431810675409921</td><td>姜竹杰</td><td>371624199910063676</td><td>198</td><td>2019-5-22 06:59:02</td><td>2019-5-22 06:59:14</td><td>还款成功</td><td>微信支付还款成功</td></tr><tr role="row" class="odd"><td>6536750015741690881</td><td>2019-05-22</td><td>6418031609719555073</td><td>周海洋</td><td>420528199608312516</td><td>373.5</td><td>2019-5-22 07:50:51</td><td>2019-5-22 07:50:59</td><td>还款成功</td><td>微信支付还款成功</td></tr><tr role="row" class="even"><td>6536756915908641793</td><td>2019-05-22</td><td>6483708982639723521</td><td>蔡杰伟</td><td>441522199801097973</td><td>253.83</td><td>2019-5-22 08:18:16</td><td>2019-5-22 08:20:06</td><td>还款成功</td><td>微信支付还款成功</td></tr><tr role="row" class="odd"><td>6536760974875034625</td><td>2019-05-22</td><td>6525905482204316673</td><td>苏世豪</td><td>362301199609180011</td><td>1848</td><td>2019-5-22 08:34:24</td><td>2019-5-22 08:34:33</td><td>还款成功</td><td>微信支付还款成功</td></tr><tr role="row" class="even"><td>6536762150563611649</td><td>2019-05-22</td><td>6516895933963174913</td><td>马倩</td><td>430304198509122069</td><td>1497</td><td>2019-5-22 08:39:04</td><td>2019-5-22 08:39:12</td><td>还款成功</td><td>微信支付还款成功</td></tr>-->
+                <div id="sendDetailList_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer"><div class="top"><div class="clear"></div></div><div id="sendDetailList_processing" class="dataTables_processing panel panel-default" style="display: none;">处理中...</div>
+                    <table id="sendDetailList" style="width: 100%;" class="table table-bordered table-striped table-hover bg_wt dataTable no-footer" role="grid" aria-describedby="sendDetailList_info">
+                        <thead style="border-bottom: 0;background-color: #fff;">
+                            <tr role="row"><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 144px;">代扣流水号</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 72px;">生成日期</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 144px;">贷款合同号</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 52px;">客户姓名</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 136px;">证件号</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 42px;">应扣款</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 121px;">发出代扣时间</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 121px;">收到代扣时间</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 53px;">扣款状态</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 105px;">扣款结果</th></tr>
+                        </thead>
+                        <tbody id="tbody"><!--<tr role="row" class="odd"><td>6536635612895642625</td><td>2019-05-22</td><td>6460777522599560193</td><td>秦文进</td><td>140931199412020039</td><td>1680</td><td>2019-5-22 12:16:15</td><td>2019-5-22 12:16:15</td><td>601</td><td></td></tr><tr role="row" class="even"><td>6536636411239465985</td><td>2019-05-22</td><td>6460777522599560193</td><td>秦文进</td><td>140931199412020039</td><td>1680</td><td>2019-5-22 12:19:25</td><td>2019-5-22 12:19:37</td><td>还款成功</td><td>微信支付还款成功</td></tr><tr role="row" class="odd"><td>6536649002816898049</td><td>2019-05-22</td><td>6473880122542785537</td><td>叶锦程</td><td>35021219931112202X</td><td>448.5</td><td>2019-5-22 01:09:27</td><td>2019-5-22 01:09:35</td><td>还款成功</td><td>微信支付还款成功</td></tr><tr role="row" class="even"><td>6536700731679835137</td><td>2019-05-22</td><td>6427755259014153217</td><td>张科举</td><td>370681198711080627</td><td>750</td><td>2019-5-22 04:35:00</td><td>2019-5-22 04:35:12</td><td>还款成功</td><td>微信支付还款成功</td></tr><tr role="row" class="odd"><td>6536735460554703873</td><td>2019-05-22</td><td>6473010528211960833</td><td>李强</td><td>510521198909165858</td><td>830</td><td>2019-5-22 06:53:00</td><td>2019-5-22 06:53:15</td><td>还款成功</td><td>微信支付还款成功</td></tr><tr role="row" class="even"><td>6536736976896263169</td><td>2019-05-22</td><td>6482431810675409921</td><td>姜竹杰</td><td>371624199910063676</td><td>198</td><td>2019-5-22 06:59:02</td><td>2019-5-22 06:59:14</td><td>还款成功</td><td>微信支付还款成功</td></tr><tr role="row" class="odd"><td>6536750015741690881</td><td>2019-05-22</td><td>6418031609719555073</td><td>周海洋</td><td>420528199608312516</td><td>373.5</td><td>2019-5-22 07:50:51</td><td>2019-5-22 07:50:59</td><td>还款成功</td><td>微信支付还款成功</td></tr><tr role="row" class="even"><td>6536756915908641793</td><td>2019-05-22</td><td>6483708982639723521</td><td>蔡杰伟</td><td>441522199801097973</td><td>253.83</td><td>2019-5-22 08:18:16</td><td>2019-5-22 08:20:06</td><td>还款成功</td><td>微信支付还款成功</td></tr><tr role="row" class="odd"><td>6536760974875034625</td><td>2019-05-22</td><td>6525905482204316673</td><td>苏世豪</td><td>362301199609180011</td><td>1848</td><td>2019-5-22 08:34:24</td><td>2019-5-22 08:34:33</td><td>还款成功</td><td>微信支付还款成功</td></tr><tr role="row" class="even"><td>6536762150563611649</td><td>2019-05-22</td><td>6516895933963174913</td><td>马倩</td><td>430304198509122069</td><td>1497</td><td>2019-5-22 08:39:04</td><td>2019-5-22 08:39:12</td><td>还款成功</td><td>微信支付还款成功</td></tr>-->
 
-                </tbody></table><div class="bottom"><div class="dataTables_info" id="sendDetailList_info" role="status" aria-live="polite">显示第 1 - 10 条记录，共40 条</div><div class="dataTables_length" id="sendDetailList_length"><label> <select name="sendDetailList_length" aria-controls="sendDetailList" class="form-control input-sm"><option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select> </label></div><div class="dataTables_paginate paging_full_numbers" id="sendDetailList_paginate"><ul class="pagination"><li class="paginate_button first disabled" id="sendDetailList_first"><a href="javascript:void(0);" aria-controls="sendDetailList" data-dt-idx="0" tabindex="0">首页</a></li><li class="paginate_button previous disabled" id="sendDetailList_previous"><a href="javascript:void(0);" aria-controls="sendDetailList" data-dt-idx="1" tabindex="0">上页</a></li><li class="paginate_button active"><a href="javascript:void(0);" aria-controls="sendDetailList" data-dt-idx="2" tabindex="0">1</a></li><li class="paginate_button "><a href="javascript:void(0);" aria-controls="sendDetailList" data-dt-idx="3" tabindex="0">2</a></li><li class="paginate_button "><a href="javascript:void(0);" aria-controls="sendDetailList" data-dt-idx="4" tabindex="0">3</a></li><li class="paginate_button "><a href="javascript:void(0);" aria-controls="sendDetailList" data-dt-idx="5" tabindex="0">4</a></li><li class="paginate_button next" id="sendDetailList_next"><a href="javascript:void(0);" aria-controls="sendDetailList" data-dt-idx="6" tabindex="0">下页</a></li><li class="paginate_button last" id="sendDetailList_last"><a href="javascript:void(0);" aria-controls="sendDetailList" data-dt-idx="7" tabindex="0">末页</a></li></ul></div><div class="clear"></div></div></div>
+                        </tbody>
+                    </table>
+                </div>
+                    <!--<div class="bottom">
+                        <div class="dataTables_info" id="sendDetailList_info" role="status" aria-live="polite">显示第 1 - 10 条记录，共40 条</div>
+                        <div class="dataTables_length" id="sendDetailList_length"><label>
+                        <select name="sendDetailList_length" aria-controls="sendDetailList" class="form-control input-sm"><option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select> </label></div><div class="dataTables_paginate paging_full_numbers" id="sendDetailList_paginate"><ul class="pagination"><li class="paginate_button first disabled" id="sendDetailList_first"><a href="javascript:void(0);" aria-controls="sendDetailList" data-dt-idx="0" tabindex="0">首页</a></li><li class="paginate_button previous disabled" id="sendDetailList_previous"><a href="javascript:void(0);" aria-controls="sendDetailList" data-dt-idx="1" tabindex="0">上页</a></li><li class="paginate_button active"><a href="javascript:void(0);" aria-controls="sendDetailList" data-dt-idx="2" tabindex="0">1</a></li><li class="paginate_button "><a href="javascript:void(0);" aria-controls="sendDetailList" data-dt-idx="3" tabindex="0">2</a></li><li class="paginate_button "><a href="javascript:void(0);" aria-controls="sendDetailList" data-dt-idx="4" tabindex="0">3</a></li><li class="paginate_button "><a href="javascript:void(0);" aria-controls="sendDetailList" data-dt-idx="5" tabindex="0">4</a></li><li class="paginate_button next" id="sendDetailList_next"><a href="javascript:void(0);" aria-controls="sendDetailList" data-dt-idx="6" tabindex="0">下页</a></li><li class="paginate_button last" id="sendDetailList_last"><a href="javascript:void(0);" aria-controls="sendDetailList" data-dt-idx="7" tabindex="0">末页</a></li></ul></div><div class="clear"></div></div></div>-->
+                <div class="bottom">
+                    <div class="dataTables_info" id="bizList_info" role="status" aria-live="polite"></div>
+
+                    <div class="common_page"></div>
+
+                    <div class="clear"></div>
+                </div>
             </div>
             <!--正文内容end-->
+
         </div>
-<script src="js/jquery-2.1.1.min.js"></script>
-<script src="js/jedate.min.js"></script>
-<script src="js/datatables.bootstrap.min.js"></script>
-<script src="js/jquery-2.1.1.min.js"></script>
-<script src="js/common.js"></script>
+
 <script>
     jeDate({
         dateCell:"#applyDateStart2", //目标元素。由于jedate.js封装了一个轻量级的选择器，因此dateCell还允许你传入class、tag这种方式 '#id .class'
@@ -252,7 +267,8 @@
         window.history.forward(1);
     });
 </script>
-
+<script src="js/jquery-2.1.1.min.js"></script>
+<script src="js/common.js"></script>
 <script>
     $(function () {
         queryByPage(1);
@@ -304,10 +320,10 @@
                 console.log(_list)
                 var _html = "";
                 if(res.success){
-                    // $("#bizList_info").html("当前是第"+res.data.pageIndex+"页，共"+res.data.totalPage+"页")
-                    /*if(_list.length>0){
-                        page(2,1);
-                    }*/
+                    $("#bizList_info").html("当前是第"+res.data.pageIndex+"页，共"+res.data.totalPage+"页")
+                    if(_list.length>0){
+                        page(res.data.totalNumber,res.data.pageSize);
+                    }
 
                     for(var i = 0;i<_list.length;i++){
                         _html+="<tr>"+
@@ -328,6 +344,7 @@
                 }else{
                     console.log(res.errorMessage);
                 }
+
             }
         })
     }
@@ -339,7 +356,6 @@
 
     //分页点击事件
     $(".common_page").on("click","a",function(){
-        console.log($(this));
         $(this).addClass("active");
         $(this).siblings().removeClass("active");
         var _index = parseInt($(this).attr("page"));
@@ -350,8 +366,9 @@
             $(".last_page").attr("page",_index+1);
         }
         var _page = $(this).attr("page");
-        _search(_page)
+        queryByPage(_page)
     })
+
 </script>
 
 </div>
