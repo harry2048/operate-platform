@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zr.returnhandling.mapper.ReturnHandlingMapper">
+    <select id="queryPage" parameterType="com.zr.returnhandling.model.ReturnHandlingSelectVo"
+            resultType="com.zr.returnhandling.model.ReturnHandlingVo">
+        select rh.id,rh.merchant,rh.customerName,s.sendingStatusName,rh.refundAmount,
+        DATE_FORMAT(rh.createTime, '%Y-%m-%d %H:%i:%S') createTime,
+        DATE_FORMAT(rh.examineTime, '%Y-%m-%d %H:%i:%S') examineTime
+        FROM returnhandling rh
+        left join status s on rh.sendingStatus = s.id
+        <if test="merchant!=null and merchant!=''">
+            and merchant=#{merchant}
+        </if>
+        <if test="customerName!=null and customerName!=''">
+            and customerName=#{customerName}
+        </if>
+        <if test="sendingStatus!=null">
+            and rh.sendingStatus=#{sendingStatus}
+        </if>
+        limit #{offset},#{pageSize}
+    </select>
+
+    <!--总条数-->
+    <select id="queryCount" parameterType="com.zr.returnhandling.model.ReturnHandlingSelectVo" resultType="java.lang.Integer">
+        select count(*)
+        FROM returnhandling
+        <where>
+            <if test="merchant!=null and merchant!=''">
+                and merchant=#{merchant}
+            </if>
+            <if test="customerName!=null and customerName!=''">
+                and customerName=#{customerName}
+            </if>
+            <if test="sendingStatus!=null">
+                and sendingStatus=#{sendingStatus}
+            </if>
+        </where>
+    </select>
+
+</mapper>
+
+

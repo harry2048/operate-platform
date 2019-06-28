@@ -18,6 +18,7 @@ public class PageVo {
     //默认每页条数
     private int pageSize;
 
+
     public  void  setPageIndex(int pageIndex){
         this.pageIndex = pageIndex;
         initParamter();

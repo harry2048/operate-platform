@@ -38,7 +38,6 @@ public class Loansituation {
     private String pushStatusName; //推送状态名称
 
 
-
     private Integer incomingPartsChannel;   //进件渠道
 
     private Integer signatureStatus;    //签章状态

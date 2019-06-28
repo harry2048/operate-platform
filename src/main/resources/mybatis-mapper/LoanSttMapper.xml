@@ -5,48 +5,48 @@
         select *
         FROM loansituation
         WHERE  1=1
-        <if test="idCode!=null and idCode!=''">
+        <if test="idCode != null and idCode != ''">
             and idCode = #{idCode}
         </if>
-        <if test=" customerName != null and customerName!=''">
+        <if test=" customerName != null and customerName != ''">
             and customerName = #{customerName}
         </if>
         <if test=" contactNumber != null ">
             and contactNumber = #{contactNumber}
         </if>
-        <if test="merchant!=null and merchant!=''">
+        <if test="merchant != null and merchant != ''">
             and merchant = #{merchant}
         </if>
-        <!--<if test="managementNum!=null and management!=''">
-            and management=#{management}
+        <if test="managementNum != null and management != ''">
+            and management = #{management}
         </if>
-        <if test="loanFishStatus!=null ">
-            and loanFishStatus=#{loanFishStatus}
+        <if test="loanFishStatus != null ">
+            and loanFishStatus = #{loanFishStatus}
         </if>
-        <if test="pushStatus!=null ">
-            and pushStatus=#{pushStatus}
+        <if test="pushStatus != null ">
+            and pushStatus = #{pushStatus}
         </if>
-        <if test="incomingPartsChannel!=null ">
-            and incomingPartsChannel=#{incomingPartsChannel}
+        <if test="incomingPartsChannel != null ">
+            and incomingPartsChannel = #{incomingPartsChannel}
         </if>
-        <if test="incomingPartsTimeStart!=null ">
-            and incomingPartsTimeStart=#{incomingPartsTimeStart}
-        </if>-->
-   <!--     <if test="incomingPartsTimeEnd!=null ">
-            and incomingPartsTimeEnd=#{incomingPartsTimeEnd}
+        <if test="incomingPartsTimeStart != null ">
+            and incomingPartsTimeStart = #{incomingPartsTimeStart}
         </if>
-        <if test="letterTrialTimeStart!=null ">
-            and letterTrialTimeStart=#{letterTrialTimeStart}
+        <if test="incomingPartsTimeEnd != null ">
+            and incomingPartsTimeEnd = #{incomingPartsTimeEnd}
         </if>
-        <if test="letterTrialTimeEnd!=null ">
-            and letterTrialTimeEnd=#{letterTrialTimeEnd}
+        <if test="letterTrialTimeStart != null ">
+            and letterTrialTimeStart = #{letterTrialTimeStart}
         </if>
-        <if test="managementNum!=null ">
-            and managementNum=#{managementNum}
+        <if test="letterTrialTimeEnd != null ">
+            and letterTrialTimeEnd = #{letterTrialTimeEnd}
         </if>
-        <if test="signatureStatus!=null ">
-            and signatureStatus=#{signatureStatus}
-        </if>-->
+        <if test="managementNum != null ">
+            and managementNum = #{managementNum}
+        </if>
+        <if test="signatureStatus != null ">
+            and signatureStatus = #{signatureStatus}
+        </if>
         limit #{offset},#{pageSize}
     </select>
 
@@ -55,48 +55,48 @@
         select count(*)
         FROM loansituation
         WHERE  1=1
-        <if test="idCode!=null and idCode!=''">
+        <if test="idCode != null and idCode != ''">
             and idCode = #{idCode}
         </if>
-         <if test=" customerName != null and customerName!=''">
+         <if test=" customerName != null and customerName != ''">
              and customerName = #{customerName}
          </if>
          <if test=" contactNumber != null ">
             and contactNumber = #{contactNumber}
         </if>
-        <if test="merchant!=null and merchant!=''">
+        <if test="merchant != null and merchant != ''">
              and merchant = #{merchant}
          </if>
-         <!--<if test="managementNum!=null and management!=''">
-             and management=#{management}
+         <if test="managementNum != null and management != ''">
+             and management = #{management}
          </if>
-         <if test="loanFishStatus!=null ">
-             and loanFishStatus=#{loanFishStatus}
+         <if test="loanFishStatus != null ">
+             and loanFishStatus = #{loanFishStatus}
          </if>
-         <if test="pushStatus!=null ">
-             and pushStatus=#{pushStatus}
+         <if test="pushStatus != null ">
+             and pushStatus = #{pushStatus}
          </if>
-         <if test="incomingPartsChannel!=null ">
-             and incomingPartsChannel=#{incomingPartsChannel}
+         <if test="incomingPartsChannel != null ">
+             and incomingPartsChannel = #{incomingPartsChannel}
          </if>
-         <if test="incomingPartsTimeStart!=null ">
-             and incomingPartsTimeStart=#{incomingPartsTimeStart}
-         </if>-->
-        <!-- <if test="incomingPartsTimeEnd!=null ">
-             and incomingPartsTimeEnd=#{incomingPartsTimeEnd}
+         <if test="incomingPartsTimeStart != null ">
+             and incomingPartsTimeStart = #{incomingPartsTimeStart}
          </if>
-         <if test="letterTrialTimeStart!=null ">
-             and letterTrialTimeStart=#{letterTrialTimeStart}
+        <if test="incomingPartsTimeEnd != null ">
+             and incomingPartsTimeEnd = #{incomingPartsTimeEnd}
          </if>
-         <if test="letterTrialTimeEnd!=null ">
-             and letterTrialTimeEnd=#{letterTrialTimeEnd}
+         <if test="letterTrialTimeStart != null ">
+             and letterTrialTimeStart = #{letterTrialTimeStart}
          </if>
-         <if test="managementNum!=null ">
-             and managementNum=#{managementNum}
+         <if test="letterTrialTimeEnd != null ">
+             and letterTrialTimeEnd = #{letterTrialTimeEnd}
          </if>
-         <if test="signatureStatus!=null ">
-             and signatureStatus=#{signatureStatus}
-         </if>-->
+         <if test="managementNum != null ">
+             and managementNum = #{managementNum}
+         </if>
+         <if test="signatureStatus != null ">
+             and signatureStatus = #{signatureStatus}
+         </if>
     </select>
 
 
