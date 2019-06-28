@@ -3,12 +3,16 @@ server:
 spring:
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql:///0611-boot?serverTimezone=GMT%2B8&allowMultiQueries=true&characterEncoding=UTF-8
+    url: jdbc:mysql://localhost:3306/operate_platform2?serverTimezone=GMT%2B8&allowMultiQueries=true&characterEncoding=UTF-8
     username: root
     password: root
   application:
     name: matadata
-
+  jpa:
+      show-sql: true
+      hibernate:
+        ddl-auto: none
+        naming.physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
 logging:
   level:
     com:
