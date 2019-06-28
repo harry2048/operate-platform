@@ -20,5 +20,9 @@ public class DaiFangKuanSelectVo extends PageVo {
     private String  name;//姓名',
     private Integer phone;//手机号',
     private String  merchant;//商户',
+    //当前页数
+//    private int pageIndex;
+    //默认每页条数
+//    private int pageSize;
 
 }

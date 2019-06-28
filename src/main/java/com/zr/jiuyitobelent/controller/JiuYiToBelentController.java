@@ -21,6 +21,7 @@ import java.util.List;
  */
 @RestController
 @CrossOrigin
+@RequestMapping("jiuyitu")
 public class JiuYiToBelentController {
     @Autowired
     private JiuYiToBelentService jiuYiToBelentService;
@@ -97,7 +98,6 @@ public class JiuYiToBelentController {
         return ResultVOBuilder.success(xiaLaVoList);
     }
     //导出
-
     @GetMapping("/exportExcel/master")
     public ResultVO exportExcel(HttpServletResponse resp, String channel, Integer managementStatus, String customerName) throws Exception{
         JiuYiToBelentSelectVo jiuYiToBelentSelectVo = new JiuYiToBelentSelectVo();
