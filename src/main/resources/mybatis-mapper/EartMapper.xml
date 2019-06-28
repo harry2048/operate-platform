@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zr.earliersettlement.mapper.EarliersettlementMapper">
+    <select id="queryPage" parameterType="com.zr.earliersettlement.pojo.EarliersettlementSelectVo" resultType="com.zr.earliersettlement.pojo.Earliersettlement">
+        select * from earliersettlement
+        where 1=1
+
+         <if test="idCode!=null and idCode!=''">
+                and idCode =#{idCode}
+            </if>
+
+            <if test="phone!=null and phone!=''">
+                and phone =#{phone}
+            </if>
+
+            <if test="customerName!=null and customerName!=''">
+                and customerName =#{customerName}
+            </if>
+
+            <if test="channelName!=null and channelName!=''">
+                and channelName =#{channelName}
+            </if>
+
+            <if test="managemen!=null and managemen!=''">
+                and managemen =#{managemen}
+            </if>
+
+            <if test="status!=null">
+                and status =#{status}
+            </if>
+
+            <if test="settleTimeStart!=null ">
+                and settleTimeStart > #{settleTimeStart}
+            </if>
+
+            <if test="settleTimeEnd!=null ">
+                and #{settleTimeEnd} > settleTimeEnd
+            </if>
+
+            <if test="loanTimeStart!=null ">
+                and loanTimeStart > #{loanTimeStart}
+            </if>
+
+            <if test="loanTimeEnd!=null ">
+                and #{loanTimeEnd} > loanTimeEnd
+            </if>
+        limit #{offset},#{pageSize}
+    </select>
+
+    <!--总条数-->
+    <select id="queryCount" parameterType="com.zr.earliersettlement.pojo.EarliersettlementSelectVo" resultType="java.lang.Integer">
+        select count(*)
+    FROM earliersettlement WHERE 1=1
+        <if test="idCode!=null and idCode!=''">
+            and idCode =#{idCode}
+        </if>
+
+        <if test="phone!=null and phone!=''">
+            and phone =#{phone}
+        </if>
+
+        <if test="customerName!=null and customerName!=''">
+            and customerName =#{customerName}
+        </if>
+
+        <if test="channelName!=null and channelName!=''">
+            and channelName =#{channelName}
+        </if>
+
+        <if test="managemen!=null and managemen!=''">
+            and managemen =#{managemen}
+        </if>
+
+        <if test="status!=null">
+            and status =#{status}
+        </if>
+
+        <if test="settleTimeStart!=null ">
+            and settleTimeStart > #{settleTimeStart}
+        </if>
+
+        <if test="settleTimeEnd!=null ">
+            and #{settleTimeEnd} > settleTimeEnd
+        </if>
+
+        <if test="loanTimeStart!=null ">
+            and loanTimeStart > #{loanTimeStart}
+        </if>
+
+        <if test="loanTimeEnd!=null ">
+            and #{loanTimeEnd} > loanTimeEnd
+        </if>
+    </select>
+
+    <select id="queryBySelectVo" parameterType="com.zr.earliersettlement.pojo.EarliersettlementSelectVo" resultType="com.zr.earliersettlement.pojo.Earliersettlement">
+        select * from earliersettlement
+        where 1=1
+
+        <if test="idCode!=null and idCode!=''">
+            and idCode =#{idCode}
+        </if>
+
+        <if test="phone!=null and phone!=''">
+            and phone =#{phone}
+        </if>
+
+        <if test="customerName!=null and customerName!=''">
+            and customerName =#{customerName}
+        </if>
+
+        <if test="channelName!=null and channelName!=''">
+            and channelName =#{channelName}
+        </if>
+
+        <if test="managemen!=null and managemen!=''">
+            and managemen =#{managemen}
+        </if>
+
+        <if test="status!=null">
+            and status =#{status}
+        </if>
+
+        <if test="settleTimeStart!=null ">
+            and settleTimeStart > #{settleTimeStart}
+        </if>
+
+        <if test="settleTimeEnd!=null ">
+            and #{settleTimeEnd} > settleTimeEnd
+        </if>
+
+        <if test="loanTimeStart!=null ">
+            and loanTimeStart > #{loanTimeStart}
+        </if>
+
+        <if test="loanTimeEnd!=null ">
+            and #{loanTimeEnd} > loanTimeEnd
+        </if>
+    </select>
+
+</mapper>
+
+
