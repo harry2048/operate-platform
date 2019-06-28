@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zr.approval.mapper.ApprovalByPageMapper">
+    <select id="queryByPage" parameterType="com.zr.approval.pojo.ApprovalSelectVo" resultType="com.zr.approval.pojo.ApprovalSelectVo">
+        select *
+        FROM approval
+        WHERE 1=1
+        <if test="loanContractNum!=null and loanContractNum!=''">
+            and loanContractNum=#{loanContractNum}
+        </if>
+        <if test="customerName!=null and customerName!=''">
+            and customerName=#{customerName}
+        </if>
+        <if test="idCode!=null and idCode!=''">
+            and idCode=#{idCode}
+        </if>
+        <if test="paymentAccount!=null and paymentAccount!=''">
+            and paymentAccount=#{paymentAccount}
+        </if>
+        <if test="createTime!=null and createTime!=''">
+            and createTime=#{createTime}
+        </if>
+        <if test="approvalChannel!=null and approvalChannel!=''">
+            and approvalChannel=#{approvalChannel}
+        </if>
+        <if test="isApproval!=null">
+            and isApproval=#{isApproval}
+        </if>
+        <if test="status!=null">
+            and status=#{status}
+        </if>
+        limit #{offset},#{pageSize}
+    </select>
+
+    <!--总条数-->
+    <select id="queryCount" parameterType="com.zr.approval.pojo.ApprovalSelectVo" resultType="java.lang.Integer">
+        select count(*)
+    FROM approval WHERE 1=1
+        <if test="loanContractNum!=null and loanContractNum!=''">
+            and loanContractNum=#{loanContractNum}
+        </if>
+        <if test="customerName!=null and customerName!=''">
+            and customerName=#{customerName}
+        </if>
+        <if test="idCode!=null and idCode!=''">
+            and idCode=#{idCode}
+        </if>
+        <if test="paymentAccount!=null and paymentAccount!=''">
+            and paymentAccount=#{paymentAccount}
+        </if>
+        <if test="createTime!=null and createTime!=''">
+            and createTime=#{createTime}
+        </if>
+        <if test="approvalChannel!=null and approvalChannel!=''">
+            and approvalChannel=#{approvalChannel}
+        </if>
+        <if test="isApproval!=null">
+            and isApproval=#{isApproval}
+        </if>
+        <if test="status!=null">
+            and status=#{status}
+        </if>
+    </select>
+
+
+</mapper>
+
+
