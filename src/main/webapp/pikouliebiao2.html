@@ -179,7 +179,8 @@
                 console.log(_list)
                 alert(_list)
                 $.each(_list,function(index,ele){
-                    var optionTd = $("<option value='ele.isApprovalValue'></option>").append(ele.isApprovalName)
+
+                    var optionTd = $("<option></option>").attr("value",ele.isApprovalValue).append(ele.isApprovalName)
 
                     $("#deductStatus").append(optionTd)
                 })
