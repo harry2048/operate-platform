@@ -17,6 +17,7 @@ import java.util.Date;
 public class DaiFangKuanSelectVo extends PageVo {
 
     private String statusName;//资方状态
+    private Integer status;
     private String  name;//姓名',
     private Integer phone;//手机号',
     private String  merchant;//商户',
