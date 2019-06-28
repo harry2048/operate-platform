@@ -80,14 +80,14 @@
                 <div class="col-lg-3 col-md-3 col-sm-3"><span class="wd_60">交易日期&nbsp;&nbsp;</span><input type="text" id="applyDateStart2" value="2019-05-22" placeholder="请选择时间" readonly=""></div>
                 <div class="col-lg-3 col-md-3 col-sm-3"><span class="wd_60">批扣状态&nbsp;&nbsp;</span>
                     <select id="paySts">
-                        <option value="">---请选择---</option>
+                        <!--<option value="">-&#45;&#45;请选择-&#45;&#45;</option>
                         <option value="00">待发送</option>
                         <option value="02">扣款中</option>
                         <option value="03">代扣成功</option>
                         <option value="04">代扣失败</option>
                         <option value="05">JD签约中</option>
                         <option value="06">JD签约失败</option>
-                        <option value="07">JD签约成功</option>
+                        <option value="07">JD签约成功</option>-->
                     </select></div>
                 <div class="col-lg-3 col-md-3 col-sm-3">
 
@@ -111,6 +111,8 @@
 <script src="js/jquery-2.1.1.min.js"></script>
 <script src="js/jedate.min.js"></script>
 <script src="js/datatables.bootstrap.min.js"></script>
+<script src="js/jquery-2.1.1.min.js"></script>
+<script src="js/common.js"></script>
 <script>
     jeDate({
         dateCell:"#applyDateStart2", //目标元素。由于jedate.js封装了一个轻量级的选择器，因此dateCell还允许你传入class、tag这种方式 '#id .class'
@@ -130,8 +132,8 @@
 
 </script>
 
-<script>
-     /*$(function(){
+<!--<script>
+     $(function(){
          var dt = $("#sendDetailList").dataTable({
              "sDom":'<"top"<"clear">>rt<"bottom"ilp<"clear">>', 
              bProcessing:true,
@@ -201,10 +203,10 @@
              });
          });
 
-    });*/
+    });
 
 
-</script>
+</script>-->
 
 
 <script>
@@ -250,14 +252,33 @@
         window.history.forward(1);
     });
 </script>
-<script src="js/jquery-2.1.1.min.js"></script>
-<script src="js/common.js"></script>
+
 <script>
     $(function () {
         queryByPage(1);
-        alert("abasdlfjl")
+        queryDeductionStatusAll();
     })
 
+    /* 查询所有下拉框 */
+    function queryDeductionStatusAll() {
+        $.ajax({
+            type: 'GET',
+            url: 'http://localhost:8010/pikouflowingwater/queryDeductionStatusAll',
+            dataType: 'JSON',
+            contentType: "application/json;charset=utf-8",
+            success: function (res) {
+                _list = res.data;
+                $.each(_list,function(index,ele){
+
+                    var optionTd = $("<option></option>").attr("value",ele.label).append(ele.value)
+
+                    $("#paySts").append(optionTd)
+                })
+            }
+        })
+    }
+
+    /*多条件分页查询*/
     function queryByPage(pageIndex) {
         var daiKouNum,daiKuanHetongNum,createTime,deductionStatus;
         daiKouNum = $("#thdSeq").val();
@@ -279,7 +300,8 @@
             data: JSON.stringify(tmp),
             contentType: "application/json;charset=utf-8",
             success: function (res) {
-                _list = res.data;
+                _list = res.data.dataList;
+                console.log(_list)
                 var _html = "";
                 if(res.success){
                     // $("#bizList_info").html("当前是第"+res.data.pageIndex+"页，共"+res.data.totalPage+"页")
@@ -287,22 +309,6 @@
                         page(2,1);
                     }*/
 
-                    /*"id": 1,
-                        "daiKouNum": "6536635612895642625",
-                        "daiKuanHetongNum": "6460777522599560193\t",
-                        "customerName": "秦文进",
-                        "idCode": "140931199412020039",
-                        "deductible": 1680,
-                        "issuanceOfWithholdingTime": "2019-05-22 12:16:15",
-                        "deductionTimeReceived": "2019-05-22 12:16:15",
-                        "deductionStatus": 7,
-                        "deductionStatusName": "还款成功",
-                        "deductionResults": 1,
-                        "deductionResultsName": "微信支付成功",
-                        "createTime": "2019-05-22 00:00:00",
-                        "createName": "李四",
-                        "updateTime": "2019-05-22 00:00:00",
-                        "updateName": "李四"*/
                     for(var i = 0;i<_list.length;i++){
                         _html+="<tr>"+
                             "<td>"+_list[i].daiKouNum+"</td>"+
@@ -325,6 +331,27 @@
             }
         })
     }
+
+    //多条件查询点击事件
+    $("#btn-search").on("click",function(){
+        queryByPage(1)
+    })
+
+    //分页点击事件
+    $(".common_page").on("click","a",function(){
+        console.log($(this));
+        $(this).addClass("active");
+        $(this).siblings().removeClass("active");
+        var _index = parseInt($(this).attr("page"));
+        if(_index==1){
+            $(".prev_page").attr("disabled","disabled");
+        }else{
+            $(".prev_page").attr("page",_index-1);
+            $(".last_page").attr("page",_index+1);
+        }
+        var _page = $(this).attr("page");
+        _search(_page)
+    })
 </script>
 
 </div>
