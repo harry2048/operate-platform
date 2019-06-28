@@ -1,107 +1,631 @@
- <!DOCTYPE html>
- <html>
- <head>
-     <title>初审列表</title>
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/base.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
     <link href="css/layer.css" rel="stylesheet">
     <link href="css/pagination.css" rel="stylesheet">
     <link href="css/bootstrap-datetimepicker.css" rel="stylesheet">
-   
- </head>
- <style>
-        #loanDetail{
-            background-color: #fff;
-            margin-bottom: 15px;
-        }
-        #loanDetail p{
-            padding-left:0 ;
-            padding-right: 0;
-            margin: 6px 0 ;
-        }
-        #loanDetail .wd_60{
-            display: inline-block;
-            width: 102px;
-            text-align: right;
-            font-size: 12px;
-            font-family: "微软雅黑";
-        }
-        #loanDetail .c13 .wd_60{
-            float: left;
-            margin-top: 5px;
-        }
-        #loanDetail .c13 input{
-            float: left;
-            font-size: 12px;
-            font-family: "微软雅黑";
-        }
-        #loanDetail .col-lg-3 ,#loanDetail .c13{
-            margin:5px 0;
-            padding-left:5px;
-            padding-right: 5px;
-        }
+</head>
 
-        #loanDetail select option{
-            font-size: 12px;
-            font-family: "微软雅黑";
-        }
-        .search_btn {
-            font-size: 12px;
-            background-color: #09C;
-            padding: 5px 16px;
-            margin-top: 3px;
-            margin-bottom: 5px;
-        }
-        .ta_r{
-            text-align: right;
-        }
-        .mr_25{
-            margin-right: 25px;
-        }
-        .cardSelect{
-            border: 1px solid #ddd;
-            height: 25px;
-            width: 150px;
-            font-size: 12px;
-        }
-    </style>
- <body>
-    <div class="content1">
+<style>
+
+    .shenXinSpan{
+        display: inline-block;
+        width: 80px;
+        color: #428bca;
+    }
+    .shenXinSpan2{
+        display: inline-block;
+        width: 120px;
+        color: #428bca;
+    }
+    .shenXinSpan3{
+        display: inline-block;
+        width: 100px;
+        color: #428bca;
+    }
+
+    .upLoad {
+        display: inline-block;
+        width: 146px;
+        height: 146px;
+        background-image: url("images/addPic.png");
+        background-size: 146px 146px;
+        position: relative;
+        overflow: hidden;
+        margin-left: 0;
+        margin-top: 20px;
+    }
+    .upLoad img{
+        width: 146px;
+        height: 146px;
+    }
+    .fileImg {
+        width: 146px;
+        height: 146px;
+        position: absolute;
+        right: 0;
+        top: 0;
+        opacity: 0;
+        filter: alpha(opacity=0);
+    }
+    .otherImg{
+        width: 100%;
+        height: 420px;
+        overflow-y: auto;
+        margin-top: 15px;
+    }
+    .otherImg p{
+        height: 30px;
+        line-height: 30px;
+        font-size: 16px;
+        margin: 0;
+        text-align: center;
+    }
+    .clear{
+        clear: both;
+    }
+    .IDCard{
+        height: 230px;
+        text-align: center;
+        border: 1px solid #ddd;
+        margin-top: 15px;
+    }
+    .IDCard p{
+        height: 30px;
+        line-height: 30px;
+        font-size: 16px;
+        margin: 0;
+    }
+    .ml-50{
+        margin-left: 50px;
+    }
+    .selec ,#hdBussinessCustomerId{
+        height: 25px;
+        line-height: 25px;
+        border: 1px solid #ddd;
+    }
+    .selec ,.selec option{
+        font-size: 12px;
+    }
+    .jobInfo input{
+        height: 25px;
+        line-height: 25px;
+    }
+    .nnn input{
+        height: 25px;
+        line-height: 25px;
+    }
+    .bankArea input{
+        height: 25px;
+        line-height: 25px;
+    }
+    .bankArea{
+        margin-top: 2px;
+        height: 85px;
+        background-color: #fff;
+    }
+    .contactsList p{
+        margin: 11px 0;
+    }
+    .upLoad{
+        width: 269px;
+        height: 170px;
+        background-image: url("images/addID.png");
+        background-size: cover;
+        margin-top: 5px;
+        margin-bottom: 5px;
+    }
+    .fileImg{
+        width: 269px;
+        height: 170px;
+    }
+    .lab{
+        font-weight: normal;
+        margin: 0 5px;
+    }
+    .mwt_150{
+        min-width: 150px;
+    }
+
+    .content .ListTips{
+        font-size: 13px;
+    }
+    .contactFirst{
+        font-size: 12px;
+        color: #428bca;
+    }
+    .fs_12{
+        font-size: 12px;
+    }
+    .shenXin p input{
+        width: 370px;
+        height: 25px;
+        line-height: 25px;
+        border: 1px solid #ddd;
+        text-indent: 5px;
+    }
+    .shenXinSpan{
+        display: inline-block;
+        width: 100px;
+        color: #428bca;
+    }
+    .spanBtn{
+        font-size: 14px;
+        /*background-color: #0a9dc7;*/
+        color: #0a9dc7;
+        margin-left: 800px;
+        cursor: pointer;
+        width:100px;
+        height: 25px;
+        line-height: 25px;
+        text-align: center;
+    }
+
+    .shenXin a:hover{ color:red; }
+
+    .shenXin a:active{
+        color: #00A1CB;
+    }
+    .shenXin a {
+        color: #0a9dc7;
+    }
+
+
+</style>
+<body>
+<div class="content1">
+    <div class="content shanghulist">
+        <!--面包屑导航start-->
+        <ol class="breadcrumb">
+            <li class="active">商户列表</li>
+        </ol>
+        <div id="loanDetail" class="col-lg-12 col-md-12 col-sm-12">
+            <div class="col-lg-3 col-md-3 col-sm-3"><span class="wd_60">商户名称&nbsp;&nbsp;</span><input type="text" name="name" id="name"></div>
+            <div class="col-lg-3 col-md-3 col-sm-3"><span class="wd_60">渠道维护&nbsp;&nbsp;</span><select id="channelManagerId">
+                <option value="">---请选择---</option>
+
+                <option value="18760dec-f53b-4a6b-9bf8-2cf322da9a35">吴英骄</option>
+
+                <option value="36d938bf-58d5-4a7e-a7e6-2ae7e28efbb7">肖俊骞</option>
+
+                <option value="8a86bc56-55af-4957-9eea-61e34a778232">楚鹏</option>
+
+                <option value="92c4dfed-e665-4e98-9afe-4bc01f9dc525">林燚填</option>
+
+                <option value="931937a3-e374-469f-8977-e8373bb7ab34">张咏</option>
+
+                <option value="bc4e53ba-a7f0-4abf-a1a3-e4e0630ab1c6">张雍昊</option>
+
+                <option value="cfef2ca9-3805-45c3-b7aa-c1aab257294e">李家欢</option>
+
+                <option value="f9b2f164-691b-42aa-8d0b-bb3f06478edc">李文明</option>
+
+            </select></div>
+            <div class="col-lg-3 col-md-3 col-sm-3"><span class="wd_60">商户状态&nbsp;&nbsp;</span><select id="status">
+                <option value="">---请选择---</option>
+                <option value="0">未启用</option>
+                <option value="1">已启用</option>
+                <option value="2">已过期</option>
+            </select></div>
+            <div class="col-lg-3 col-md-3 col-sm-3 ta_r">
+                <button class="btn btn-primary btn-sm search_btn" type="button" id="btn-search">查询</button>&nbsp;&nbsp;&nbsp;&nbsp;
+                <button class="btn btn-primary btn-sm search_btn mr_25" id="addBiz" type="button" >添加商户</button>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <div class="table-responsive">
+            <div id="bizList_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer">
+                <div class="top">
+                    <div class="clear"></div>
+                </div>
+                <div id="bizList_processing" class="dataTables_processing panel panel-default" style="display: none;">处理中...</div>
+                <table id="bizList" style="width: 100%;" class="table table-bordered table-striped table-hover bg_wt dataTable no-footer" role="grid" aria-describedby="bizList_info">
+                    <thead style="border-bottom: 0;background-color: #fff;">
+                    <tr role="row">
+                        <th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 247px;">商户名称</th>
+                        <th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 47px;">所在地</th>
+                        <th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 61px;">业务类型</th>
+                        <th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 61px;">渠道维护</th>
+                        <th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 91px;">合作开始日期</th>
+                        <th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 91px;">合作结束日期</th>
+                        <th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 61px;">商户状态</th>
+                        <th class="text-center sorting_disabled td_align_left" rowspan="1" colspan="1" style="width: 365px;">操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                </table>
+                <div class="bottom">
+                    <div class="dataTables_info" id="bizList_info" role="status" aria-live="polite">
+                        显示第 1 - 10 条记录，共739 条
+                    </div>
+                    <div class="common_page"></div>
+
+                    <div class="clear"></div>
+                </div>
+            </div>
+        </div>
+        <!--正文内容end-->
+    </div>
+
+
+    <form id="saveForm" class="form-horizontal hidden1" action="/hd/biz/saveBiz/" method="post">
         <div class="content">
             <!--面包屑导航start-->
             <ol class="breadcrumb">
-                <li class="active">待放款列表查询</li>
+                <li><a href="#">商户列表</a></li>
+                <li class="active">商户信息录入</li>
             </ol>
-            <div id="loanDetail" class="col-lg-12 col-md-12 col-sm-12">
-                <div class="col-lg-3 col-md-3 col-sm-3"><span class="wd_60">资方状态&nbsp;&nbsp;</span><select id="capitalStatus">
-                    <option value="">请选择</option>
-                    <option value="2">已放款</option>
-                    <option value="3">已拒绝</option>
-                    <option value="4">打款失败</option>
-                </select></div>
-                <div class="col-lg-3 col-md-3 col-sm-3"><span class="wd_60">姓名&nbsp;&nbsp;</span><input type="text" id="idName"></div>
-                <div class="col-lg-3 col-md-3 col-sm-3"><span class="wd_60">手机号&nbsp;&nbsp;</span><input type="text" id="phoneNo"></div>
-                <div class="col-lg-3 col-md-3 col-sm-3"><span class="wd_60">商户&nbsp;&nbsp;</span><input type="text" id="bcName"></div>
+            <!--面包屑导航end-->
 
-                
-                <div class="col-lg-3 col-md-3 col-sm-3"></div>
-                <div class="col-lg-3 col-md-3 col-sm-3 ta_r">
-                    <button class="btn btn-primary btn-sm search_btn" type="button" id="btn-search">查询</button>
-                    &nbsp;&nbsp;&nbsp;&nbsp;
-                    <button class="btn btn-primary btn-sm search_btn mr_25" type="button" id="btn-export" onclick="exportResult();">导出</button>
-                </div>
-                <div class="clear"></div>
+            <!--正文内容start-->
+            <div class="panel panel-default">
+                <ul class="list-group">
+                    <!--基本信息start-->
+                    <li class="list-group-item con_title" id="mao2">基本信息</li>
+                    <div class="col-sm-12 col-lg-12 mt_10">
+                        <!--申请人信息start-->
+                        <div class="col-sm-12 col-lg-12 shenXin">
+                            <p class="col-lg-6 col-sm-6"><span class="shenXinSpan">商户名称:</span><input type="text" class="nameIpt" name="name" id="name"></p>
+                            <p class="col-lg-6 col-sm-6"><span class="shenXinSpan">对外联系电话:</span><input type="text" class="nameIpt" id="contactTelNo" name="contactTelNo"></p>
+                            <div class="clear"></div>
+                            <p class="col-lg-6 col-sm-6"><span class="shenXinSpan">商户法人:</span><input type="text" class="nameIpt" name="contacts" id="contacts"></p>
+                            <p class="col-lg-6 col-sm-6"><span class="shenXinSpan">联系电话:</span><input type="text" class="nameIpt" id="tel" name="tel"></p>
+                            <div class="clear"></div>
+                            <p class="col-lg-6 col-sm-6"><span class="shenXinSpan">商户地址:</span><input type="text" class="nameIpt" id="bizAddrDetail" name="bizAddrDetail"></p>
+                            <p class="col-lg-6 col-sm-6"><a style="margin-top:3px;" href="javascript:getBizPosition()">[从地图中搜索]</a></p>
+                            <div class="clear"></div>
+                            <p class="col-lg-12 col-sm-12" style="height:60px;"><span class="shenXinSpan">商户简介:</span><textarea style="width:874px;height: 60px;" placeholder="请输入商户简介" id="intro" name="intro"></textarea></p>
+                            <div class="clear"></div>
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                    <!--基本信息end-->
+                    <li class="list-group-item con_title" id="mao2">生成合同所需信息</li>
+                    <div class="col-sm-12 col-lg-12 mt_10">
+                        <!--申请人信息start-->
+                        <div class="col-sm-12 col-lg-12 shenXin">
+                            <p class="col-lg-6 col-sm-6"><span class="shenXinSpan">出借人银行卡号:</span><input type="text" class="nameIpt" name="outBankCardNo" id="outBankCardNo"></p>
+                            <p class="col-lg-6 col-sm-6"><span class="shenXinSpan">出借人户名:</span><input type="text" class="nameIpt" id="outBankIdName" name="outBankIdName"></p>
+                            <div class="clear"></div>
+                            <p class="col-lg-6 col-sm-6"><span class="shenXinSpan">所属银行及支行:</span><input type="text" class="nameIpt" name="outBankName" id="outBankName"></p>
+                            <p class="col-lg-6 col-sm-6"><span class="shenXinSpan">出借人地址:</span><input type="text" class="nameIpt" id="outAddress" name="outAddress"></p>
+                            <div class="clear"></div>
+                            <p class="col-lg-6 col-sm-6"><span class="shenXinSpan">出借人邮箱:</span><input type="text" class="nameIpt" name="outEmail" id="outEmail"></p>
+                            <p class="col-lg-6 col-sm-6"><span class="shenXinSpan">出借人手机号:</span><input type="text" class="nameIpt" id="outPhoneNo" name="outPhoneNo"></p>
+                            <p class="col-lg-6 col-sm-6"><span class="shenXinSpan">开户行所在省:</span><input type="text" class="nameIpt" id="outbankprovince" name="outbankprovince"></p>
+                            <p class="col-lg-6 col-sm-6"><span class="shenXinSpan">开户行所在市:</span><input type="text" class="nameIpt" id="outbankcity" name="outbankcity"></p>
+                            <div class="clear"></div>
+                            <p class="col-lg-6 col-sm-6"><span class="shenXinSpan">开户银行联行号:</span><input type="text" class="nameIpt" id="outBankNo" name="outBankNo"></p>
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                    <!--进度信息【资金方准入】start-->
+                    <li class="list-group-item con_title">进度信息【资金方准入】<span class="spanBtn" id="addCapital">添加</span></li>
+                    <div class="contacts">
+                        <div class="col-lg-12 col-sm-12 col-md-12 pt_15">
+                            <table class="table table-bordered ta_bm">
+                                <tbody><tr>
+                                    <th class="text-center">序号</th>
+                                    <th class="text-center">资方</th>
+                                    <th class="text-center">描述</th>
+                                    <th class="text-center">状态</th>
+                                    <th class="text-center">机构码</th>
+                                    <th class="text-center">操作</th>
+                                </tr>
+                                </tbody></table>
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                    <!--进度信息【资金方准入】end-->
+                    <!--合同信息start-->
+                    <li class="list-group-item con_title">合同信息</li>
+                    <div class="col-sm-12 col-lg-12 mt_10">
+                        <div class="col-sm-12 col-lg-12 shenXin">
+                            <p class="col-lg-6 col-sm-6"><span class="shenXinSpan">开始日期:</span><input type="text" class="nameIpt" readonly="" placeholder="请选择时间" id="startDate" name="startDate"></p>
+                            <p class="col-lg-6 col-sm-6"><span class="shenXinSpan">结束日期:</span><input type="text" class="nameIpt" readonly="" placeholder="请选择时间" id="endDate" name="endDate"></p>
+                            <div class="clear"></div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-lg-12 otherData">
+                        <div class="col-lg-3 col-sm-3 imgBox _img_box contractImgDiv">
+                            <a class="addPicBtn">
+                                <input type="file" class="upLoadImg" onchange="contractImg(this)" multiple="multiple">
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="clear"></div>
+                    <!--合同信息end-->
+                    <!--配置信息start-->
+                    <li class="list-group-item con_title" id="mao5">配置信息</li>
+                    <div class="col-sm-12 col-lg-12 mt_10">
+                        <div class="col-sm-12 col-lg-12 col-md-12 shenXin">
+                            <p class="col-lg-6 col-sm-6"><span class="shenXinSpan">商户登录账号 :</span><input type="text" class="nameIpt" name="account" id="account"></p>
+                            <p class="col-lg-6 col-sm-6"><span class="shenXinSpan">商户登录密码:</span><input type="password" class="nameIpt" id="accountpwd" name="accountpwd"></p>
+                            <div class="clear"></div>
+
+                            <p class="col-lg-6 col-sm-6"><span class="shenXinSpan">商户类型:</span>
+                                <select class="selec" style="min-width: 370px" name="bussinessType" id="bussinessType">
+                                    <option value="0" selected="">商户</option>
+                                    <option value="1">代理</option> </select></p>
+                            <p class="col-lg-6 col-sm-6"><span class="shenXinSpan">是否有门店:</span>
+                                <select class="selec" style="min-width: 370px" name="shopFlag" id="shopFlag">
+                                    <option value="0">是</option>
+                                    <option value="1" selected="">否</option></select></p>
+                            <div class="clear"></div>
+                            <p class="col-lg-6 col-sm-6"><span class="shenXinSpan">是否能自建门店:</span>
+                                <select class="selec" style="min-width: 370px" name="createShopFlag" id="createShopFlag">
+                                    <option value="0" selected="">否</option>
+                                    <option value="1">是</option> </select></p>
+                            <p class="col-lg-6 col-sm-6"><span class="shenXinSpan">是否商户扣款:</span>
+                                <select class="selec" style="min-width: 370px" name="bussinessCustomerDeductionFlag" id="bussinessCustomerDeductionFlag">
+                                    <option value="01" selected="">互动扣款</option>
+                                    <option value="02">资方扣款</option>
+                                    <option value="03">商户扣款</option></select></p>
+                            <div class="clear"></div>
+                            <p class="col-lg-6 col-sm-6"><span class="shenXinSpan">是否强制授权:</span>
+                                <select class="selec" style="min-width: 370px" name="authFlag" id="authFlag">
+                                    <option value="N" selected="">否</option>
+                                    <option value="Y">是</option> </select></p>
+                            <p class="col-lg-6 col-sm-6"><span class="shenXinSpan">是否能主动还款:</span>
+                                <select class="selec" style="min-width: 370px" name="paymentMethod" id="paymentMethod">
+                                    <option value="0" selected="">否</option>
+                                    <option value="1">是</option> </select></p>
+                            <div class="clear"></div>
+                            <p class="col-lg-6 col-sm-6"><span class="shenXinSpan">商户标识:</span>
+                                <label><input style="width:20px;" type="checkbox" value="1" name="sourceTpe">教育</label>
+                                <label><input style="width:20px;" type="checkbox" value="2" name="sourceTpe" onclick="rentingHoustChecked(this)">租房</label>
+                                <label><input style="width:20px;" type="checkbox" value="4" name="sourceTpe">数码</label>
+                                <label><input style="width:20px;" type="checkbox" value="3" name="sourceTpe">碧水源</label>
+                                <label><input style="width:20px;" type="checkbox" value="6" name="sourceTpe">花呗</label>
+                                <label><input style="width:20px;" type="checkbox" value="10" name="sourceTpe">房租月付</label>
+
+                            </p>
+                            <p class="col-lg-6 col-sm-6"><span class="shenXinSpan">渠道维护 :</span>
+                                <select class="selec" style="min-width: 370px" name="channelManagerId" id="channelManagerId">
+
+                                    <option value="18760dec-f53b-4a6b-9bf8-2cf322da9a35">吴英骄</option>
+
+                                    <option value="36d938bf-58d5-4a7e-a7e6-2ae7e28efbb7">肖俊骞</option>
+
+                                    <option value="8a86bc56-55af-4957-9eea-61e34a778232">楚鹏</option>
+
+                                    <option value="92c4dfed-e665-4e98-9afe-4bc01f9dc525">林燚填</option>
+
+                                    <option value="931937a3-e374-469f-8977-e8373bb7ab34">张咏</option>
+
+                                    <option value="bc4e53ba-a7f0-4abf-a1a3-e4e0630ab1c6">张雍昊</option>
+
+                                    <option value="cfef2ca9-3805-45c3-b7aa-c1aab257294e">李家欢</option>
+
+                                    <option value="f9b2f164-691b-42aa-8d0b-bb3f06478edc">李文明</option>
+
+                                </select>
+                            </p>
+                            <div class="clear"></div>
+                            <div id="sourceTpyDel" style="display: none">
+                                <p class="col-lg-6 col-sm-6"><span class="shenXinSpan">公寓类型 :</span>
+                                    <select class="selec" style="min-width: 370px" name="houseType" id="houseType">
+                                        <option value="1">集中式</option>
+                                        <option value="2">分散式</option>
+                                        <option value="1,2">集中/分散式</option> </select></p>
+                                <p class="col-lg-6 col-sm-6"><span class="shenXinSpan">是否添加房源 :</span>
+                                    <select class="selec" style="min-width: 370px" name="addHouseFlag" id="addHouseFlag">
+                                        <option value="0">不允许</option>
+                                        <option value="1">允许</option>
+                                    </select>
+                                </p>
+                                <div class="clear"></div>
+                            </div>
+                            <div class="clear"></div>
+                            <div id="isCaptialDiv" style="display: none">
+                                <p class="col-lg-6 col-sm-6"><span class="shenXinSpan">机构类型 :</span>
+                                    <select class="selec" style="min-width: 370px" name="isCapital" id="isCapital">
+                                        <option value="1">机构</option>
+                                        <option value="2">资金</option> </select></p>
+
+                                <div class="clear"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                    <!--配置信息end-->
+                    <li class="list-group-item con_title" id="mao6">资金信息</li>
+                    <div class="col-sm-12 col-lg-12 mt_10">
+                        <div class="col-sm-12 col-lg-12 col-md-12 shenXin">
+                            <p class="col-lg-6 col-sm-6"><span class="shenXinSpan">账户类型:</span>
+                                <select class="selec" style="min-width: 370px" name="accountType" id="accountType">
+                                    <option value="0">对公</option>
+                                    <option value="1">对私</option></select></p>
+                            <p class="col-lg-6 col-sm-6"><span class="shenXinSpan">账户名称:</span><input type="text" class="nameIpt" id="comName" name="comName"></p>
+                            <div class="clear"></div>
+                            <p class="col-lg-6 col-sm-6"><span class="shenXinSpan">开户银行:</span><input type="text" class="nameIpt" id="bankName" name="bankName"></p>
+                            <p class="col-lg-6 col-sm-6"><span class="shenXinSpan">银行账号:</span><input type="text" class="nameIpt" id="bankAccountNo" name="bankAccountNo"></p>
+                            <div class="clear"></div>
+                            <p class="col-lg-6 col-sm-6"><span class="shenXinSpan">提前扣款天数:</span><input type="text" class="nameIpt" name="prepaymentDay" id="prepaymentDay"></p>
+                            <p class="col-lg-6 col-sm-6"><span class="shenXinSpan">一次性服务费率:</span><input type="text" class="nameIpt" name="disposableFeeRate" id="disposableFeeRate"></p>
+                            <div class="clear"></div>
+                            <p class="col-lg-6 col-sm-6"><span class="shenXinSpan">服务费率:</span><input type="text" class="nameIpt" name="serviceFeeRate" id="serviceFeeRate"></p>
+                            <div class="clear"></div>
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+
+                    <!--配置信息end-->
+                    <li class="list-group-item con_title" id="mao6">支付宝信息</li>
+                    <div class="col-sm-12 col-lg-12 mt_10">
+                        <div class="col-sm-12 col-lg-12 col-md-12 shenXin">
+                            <p class="col-lg-6 col-sm-6"><span class="shenXinSpan">支付宝账号:</span><input type="text" class="nameIpt" id="alipayNo" name="alipayNo"></p>
+                            <p class="col-lg-6 col-sm-6"><span class="shenXinSpan">支付宝PID:</span><input type="text" class="nameIpt" id="alipayPid" name="alipayPid"></p>
+                            <div class="clear"></div>
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                    <li class="list-group-item con_title">其他资料信息</li>
+                    <div class="col-sm-12 col-lg-12 otherData">
+                        <div class="col-lg-3 col-sm-3 imgBox _img_box otherImgDiv">
+                            <a class="addPicBtn">
+                                <input type="file" class="upLoadImg" onchange="otherImg(this)" multiple="multiple">
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="clear"></div>
+
+                </ul>
             </div>
-            <div class="table-responsive">
-                <div id="lendingList_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer"><div class="top"><div class="clear"></div></div><div id="lendingList_processing" class="dataTables_processing panel panel-default" style="display: none;">处理中...</div><table id="lendingList" style="width: 100%;" class="table table-bordered table-striped table-hover bg_wt dataTable no-footer" role="grid" aria-describedby="lendingList_info">
-                    <thead style="border-bottom: 0;background-color: #fff;">
-                    <tr role="row"><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 79px;">订单编号</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 79px;">申请时间</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 44px;">渠道</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 79px;">申请金额</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 79px;">申请期限</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 62px;">期供款</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 80px;">客户姓名</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 98px;">身份证号码</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 116px;">资方放款金额</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 116px;">互动放款金额</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 80px;">资方状态</th><th class="text-center sorting_disabled" rowspan="1" colspan="1" style="width: 44px;">操作</th></tr>
-                    </thead>
-                <tbody><tr class="odd"><td valign="top" colspan="12" class="dataTables_empty">没有符合您搜索条件的信息</td></tr></tbody></table><div class="bottom"><div class="dataTables_info" id="lendingList_info" role="status" aria-live="polite">显示第 0 至 0 项结果，共 0 项</div><div class="dataTables_length" id="lendingList_length"><label> <select name="lendingList_length" aria-controls="lendingList" class="form-control input-sm"><option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select> </label></div><div class="dataTables_paginate paging_full_numbers" id="lendingList_paginate"><ul class="pagination"><li class="paginate_button first disabled" id="lendingList_first"><a href="javascript:void(0);" aria-controls="lendingList" data-dt-idx="0" tabindex="0">首页</a></li><li class="paginate_button previous disabled" id="lendingList_previous"><a href="javascript:void(0);" aria-controls="lendingList" data-dt-idx="1" tabindex="0">上页</a></li><li class="paginate_button next disabled" id="lendingList_next"><a href="javascript:void(0);" aria-controls="lendingList" data-dt-idx="2" tabindex="0">下页</a></li><li class="paginate_button last disabled" id="lendingList_last"><a href="javascript:void(0);" aria-controls="lendingList" data-dt-idx="3" tabindex="0">末页</a></li></ul></div><div class="clear"></div></div></div>
+            <input type="hidden" id="bizProvince" name="bizProvince">
+            <input type="hidden" id="bizCity" name="bizCity">
+            <input type="hidden" id="bizArea" name="bizArea">
+            <input type="hidden" id="bizProvinceCode" name="bizProvinceCode">
+            <input type="hidden" id="bizCityCode" name="bizCityCode">
+            <input type="hidden" id="bizAreaCode" name="bizAreaCode">
+            <input type="hidden" id="channelManagerName" name="channelManagerName">
+            <input type="hidden" id="longitude" name="longitude">
+            <input type="hidden" id="latitude" name="latitude">
+            <!--复审意见-->
+            <div class="findingsAudit wt_100" style="height: 100px;">
+                <button type="button" class="btn btn-primary nextStep" style="left: 50%" onclick="saveBiz(this)">提交</button>
             </div>
-            <!--正文内容end-->
         </div>
-    </div>
+    </form>
+</div>
+
 </body>
+<script src="js/jquery-2.1.1.min.js"></script>
+<script src="js/layer.js"></script>
+<script src="js/common.js"></script>
+<script type="text/javascript">
+    $(function () {
+        //    查询
+        var merchantName ,channelMaintenance,status;
+        _search();
+    })
+    $("#addBiz").click(function() {
+        $(".shanghulist").hide();
+        $("#saveForm").show();
+    });
+    // 点击修改按钮
+    $("#bizList tr td:last-child button:first-child").click(function(){
+        // console.log(this)
+        $(".shanghulist").hide();
+        $("#saveForm").show();
+    })
+    // 点击配置方案
+    $("#bizList tr td:last-child button:nth-child(2)").click(function(){
+        // layer.open({
+        //    type: 2,
+        //    title: '配置方案',
+        //    shadeClose: true,
+        //    shade: 0.8,
+        //    area: ['1150px', '670px'],
+        //    content: 'peizhizhuanan.html' //iframe的url
+        //  });
+
+    })
+    //页面点击进来默认页面
+
+
+
+    $("#btn-search").click(function () {
+
+        _search();
+
+
+
+    });
+    function  _search(_page) {
+        var _html="";
+        merchantName = $("#name").val();
+        channelMaintenance = $("#channelManagerId").val();
+        status = $("#status").val();
+        if(_page!=""){
+            var tmp={
+                "merchantName":merchantName,
+                "channelMaintenance":channelMaintenance,
+                "status":status,
+                "pageIndex":_page,
+                "pageSize":10
+
+            };
+        }else{
+            var tmp={
+                "merchantName":merchantName,
+                "channelMaintenance":channelMaintenance,
+                "status":status,
+                "pageIndex":0,
+                "pageSize":10
+
+            };
+        }
+
+
+        $.ajax({
+            type: 'POST',
+            url: 'http://localhost:8010/mechantCategory/select',
+            dataType:'JSON',
+            data:JSON.stringify(tmp),
+            contentType: "application/json;charset=utf-8",
+            success: function(res){
+                if(res.success){
+
+                    if(res.data.dataList==""){
+                        _html="<tr><td colspan='8'>您查找的数据不存在</td></tr>";
+                        $("#bizList tbody").html(_html);
+//                        $(".bottom").hide();
+
+                    }else{
+                        var _data = res.data;
+                        $(".bottom #bizList_info").html("当前是第"+_data.pageIndex+"页"+",共"+_data.totalPage+"页");
+                        var _list = _data.dataList;
+                        for(var i = 0;i<_list.length;i++){
+                            _html+="<tr>" +
+                                "<td>"+_list[i].merchantName+"</td>" +
+                                "<td>"+_list[i].merchantAddress+"</td>" +
+                                "<td>"+_list[i].maintenanceChannel+"</td>" +
+                                "<td>"+_list[i].merchantAddress+"</td>" +
+                                "<td>"+_list[i].startTime+"</td>" +
+                                "<td>"+_list[i].endTime+"</td>" +
+                                "<td>"+_list[i].statusName+"</td>" +
+                                "<td class=' td_align_left'>"+
+                                "<button type='button' class='btn btn-primary btn-sm' name='biz-modify'>修改</button>"+
+                                "&nbsp;&nbsp;<button type='button'  class='btn btn-primary btn-sm ' name='add-case'>配置专案</button>"+
+                                "&nbsp;&nbsp;<button type='button' class='btn btn-primary btn-sm ' name='add-shop'>配置门店</button>"+
+                                "&nbsp;&nbsp;<button type='button'  class='btn btn-primary btn-sm ' name='init-commodity'>初始化商品</button>&nbsp;&nbsp;"+
+                                "</td>" +
+                                "</tr>"
+                        }
+                        $("#bizList tbody").empty().append(_html);
+                        page(_data.totalNumber,_data.pageSize);
+                    }
+                }else{
+                    _html="<tr><td colspan='8'>"+res.errorMessage+"</td></tr>";
+                    $("#bizList tbody").html(_html);
+                }
+
+            }
+        });
+    }
+    //分页点击事件
+    $(".common_page").on("click","a",function(){
+        $(this).addClass("active");
+        $(this).siblings().removeClass("active");
+        var _index = parseInt($(this).attr("page"));
+        if(_index==1){
+            $(".prev_page").attr("disabled","disabled");
+        }else{
+            $(".prev_page").attr("page",_index-1);
+            $(".last_page").attr("page",_index+1);
+        }
+        _search(_index);
+
+    })
+
+</script>
 </html>
