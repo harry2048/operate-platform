@@ -43,7 +43,7 @@ public class SourceofinputController {
     //3.把从数据库中查询出的数据赋值给导出模板
     //4.对需要转化的数据进行转化
     //5.在浏览器生成一个文件
-    @GetMapping("exportExcel/master")
+    @PostMapping("exportExcel/master")
     public ResultVO exportExcel(HttpServletResponse resp, String orderNum, String merchant, String customerName,
                                 String idCode, Date incomingPartsTime,String incomingPartsProvince,
                                 String incomingPartsCity,String specificAddress) throws Exception{
