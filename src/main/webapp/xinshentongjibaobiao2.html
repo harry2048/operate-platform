@@ -105,7 +105,7 @@
             </div>
             <!--正文内容end-->
         </div>
-<script src="jedate/jedate.min.js"></script>
+<!--<script src="jedate/jedate.min.js"></script>-->
     <script src="js/jquery-2.1.1.min.js"></script>
     <script src="js/common.js"></script>
     <script>
@@ -151,7 +151,7 @@
 
             $.ajax({
                 type: 'POST',
-                url: 'http://localhost:8010/pikou/queryByPage',
+                url: 'http://localhost:8010/queryPage',
                 dataType: 'JSON',
                 data: JSON.stringify(tmp),
                 contentType: "application/json;charset=utf-8",
@@ -165,18 +165,28 @@
                         }
                         for(var i = 0;i<_list.length;i++){
                             _html+="<tr>"+
-                                "<td>"+_list[i].statusName+"</td>"+
-                                "<td>"+_list[i].approvalChannel+"</td>"+
-                                "<td>"+_list[i].isApprovalName+"</td>"+
-                                "<td>"+_list[i].loanContractNum+"</td>"+
+                                "<td>"+_list[i].scopeOfBusiness+"</td>"+
+                                "<td>"+_list[i].orderNum+"</td>"+
+                                "<td>"+_list[i].auditors+"</td>"+
+                                "<td>"+_list[i].status+"</td>"+
+                                "<td>"+_list[i].applyTime+"</td>"+
+                                "<td>"+_list[i].chuShenTime+"</td>"+
+                                "<td>"+_list[i].fuShenTime+"</td>"+
+                                "<td>"+_list[i].approvalTime+"</td>"+
+                                "<td>"+_list[i].channel+"</td>"+
+                                "<td>"+_list[i].storeName+"</td>"+
                                 "<td>"+_list[i].customerName+"</td>"+
                                 "<td>"+_list[i].idCode+"</td>"+
-                                "<td>"+_list[i].deductible+"</td>"+
-                                "<td>"+_list[i].reimbursementAccountOpeningBank+"</td>"+
-                                "<td>"+_list[i].paymentAccount+"</td>"+
-                                "<td>"+_list[i].deductionResults+"</td>"+
-                                "<td>"+_list[i].createName+"</td>"+
-                                "<td>"+_list[i].updateName+"</td>";
+                                "<td>"+_list[i].phone+"</td>"+
+                                "<td>"+_list[i].loanTime+"</td>"+
+                                "<td>"+_list[i].applicationAmount+"</td>"+
+                                "<td>"+_list[i].loanBalance+"</td>"+
+                                "<td>"+_list[i].periodicContributions+"</td>"+
+                                "<td>"+_list[i].applicationDeadline+"</td>"+
+                                "<td>"+_list[i].managemen+"</td>"+
+                                "<td>"+_list[i].overdueAmount+"</td>"+
+                                "<td>"+_list[i].overdueNum+"</td>";
+
                             _html+="<tr/>";
                         }
                         $("#lendingList tbody").html(_html);
