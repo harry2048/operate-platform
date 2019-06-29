@@ -17,9 +17,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by star on 2019/6/21.
+ * Creaetd by star on 2019/6/21.
  */
 @RestController
+@RequestMapping("daikuanchaxun/")
 public class LoansituationController {
 
     @Autowired
@@ -36,7 +37,7 @@ public class LoansituationController {
     /**
      * 分页
      */
-    @PostMapping("aa/query")
+    @PostMapping("queryPage")
     public ResultVO<AllRecords> queryPage(@RequestBody LoansituationSelectVo loansituationSelectVo){
 
         return loansituationService.queryPage(loansituationSelectVo);
@@ -91,6 +92,19 @@ public class LoansituationController {
         }
         return ResultVOBuilder.success(xiaLaVoList);
     }
+
+//    资方状态----下拉
+    @PostMapping("queryAll")
+    public ResultVO queryAll(){
+        return loansituationService.queryAll();
+    }
+
+    //    进件渠道---下拉
+    @PostMapping("queryAll2")
+    public ResultVO queryAll2(){
+        return loansituationService.queryAll2();
+    }
+
 
 
 

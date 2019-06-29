@@ -14,4 +14,9 @@ public interface LoansituationService {
     ResultVO<List<Loansituation>>  queryLoansituationById(Integer id);
 
     ResultVO<AllRecords> queryPage(LoansituationSelectVo loansituationSelectVo);
+
+    ResultVO queryAll();
+
+    ResultVO queryAll2();
+
 }
