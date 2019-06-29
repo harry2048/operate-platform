@@ -68,6 +68,12 @@ public class EarliersettlementController {
         return ResultVOBuilder.success(xiaLaVoList);
     }
 
+    //    资方状态----下拉
+    @PostMapping("queryAll")
+    public ResultVO queryAll(){
+        return earliersettlementService.queryAll();
+    }
+
     /**
      * 分页查询
      */
