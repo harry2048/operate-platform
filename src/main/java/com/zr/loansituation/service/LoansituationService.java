@@ -17,5 +17,6 @@ public interface LoansituationService {
 
     ResultVO queryAll();
 
+    ResultVO queryAll2();
 
 }

@@ -173,6 +173,21 @@
             }
         })
     })
+    $(function(){
+        $.ajax({
+            type: 'post',
+            url: 'http://localhost:8010/earliersettlement/queryAll',
+            dataType: 'JSON',
+            contentType: "application/json;charset=utf-8",
+            success: function (res) {
+                _list = res.data;
+                $.each(_list,function(index,ele){
+                    var optionTd = $("<option></option>").attr("value",ele.id).append(ele.capitalside)
+                    $("#fundSource").append(optionTd)
+                })
+            }
+        })
+    })
     function _search(_page) {
         var idCode,customerName,channelName,businessType,status,phone,managemen,pageIndex,pageSize;
         idCode = $("#idCardNo").val();
