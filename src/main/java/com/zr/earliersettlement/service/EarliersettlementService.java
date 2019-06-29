@@ -15,4 +15,5 @@ public interface EarliersettlementService {
     ResultVO<List<Earliersettlement>> queryDownByearliersettlementId(Integer id);
     ResultVO<AllRecords> queryPage(EarliersettlementSelectVo earliersettlementSelectVo);
     ResultVO exportExcel(HttpServletResponse resp, EarliersettlementSelectVo earliersettlementSelectVo)throws Exception;
+    ResultVO queryAll();
 }
