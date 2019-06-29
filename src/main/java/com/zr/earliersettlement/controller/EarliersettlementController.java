@@ -5,6 +5,7 @@ import com.zr.earliersettlement.pojo.Earliersettlement;
 import com.zr.earliersettlement.pojo.EarliersettlementSelectVo;
 import com.zr.earliersettlement.pojo.XiaLaVo;
 import com.zr.earliersettlement.service.EarliersettlementService;
+import com.zr.meiju.BusinessTypeEnum;
 import com.zr.meiju.StatusEnum;
 import com.zr.util.AllRecords;
 import com.zr.util.ResultVO;
@@ -33,6 +34,22 @@ public class EarliersettlementController {
     @GetMapping("queryDownByearliersettlementId")
     public ResultVO<List<Earliersettlement>> queryDownByearliersettlementId(@RequestParam("id")Integer id){
         return earliersettlementService.queryDownByearliersettlementId(id);
+    }
+
+    /**
+     * 业务类型的枚举
+     */
+    @GetMapping("businessType")
+    public ResultVO<List<XiaLaVo>> queryBusinessType(){
+
+        List<XiaLaVo> xiaLaVoList = new ArrayList<>();
+        for (int i = 0; i< BusinessTypeEnum.values().length; i++){
+            XiaLaVo xiaLaVo = new XiaLaVo();
+            xiaLaVo.setKey(i);
+            xiaLaVo.setValue(BusinessTypeEnum.getName(i));
+            xiaLaVoList.add(xiaLaVo);
+        }
+        return ResultVOBuilder.success(xiaLaVoList);
     }
 
     /**
