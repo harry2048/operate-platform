@@ -21,7 +21,7 @@ import java.util.List;
  */
 @RestController
 @CrossOrigin
-@RequestMapping("jiuyitu")
+@RequestMapping("jiuyitu/")
 public class JiuYiToBelentController {
     @Autowired
     private JiuYiToBelentService jiuYiToBelentService;
@@ -31,7 +31,7 @@ public class JiuYiToBelentController {
      * @param jiuYiToBelentSelectVo
      * @return
      */
-    @PostMapping("jiuYiToBelentCategory/select")
+    @PostMapping("queryByPage")
     public ResultVO<AllRecords> queryPage(@RequestBody JiuYiToBelentSelectVo jiuYiToBelentSelectVo){
         return jiuYiToBelentService.queryPage(jiuYiToBelentSelectVo);
     }
@@ -72,7 +72,7 @@ public class JiuYiToBelentController {
     /**
      * 资方下拉框
      */
-    @PostMapping("jiuYiToBelentCategory/selectChannel")
+    @PostMapping("selectChannel")
     public ResultVO<List<XiaLaVo>> queryChannelXiaLa(){
         List<XiaLaVo> xiaLaVoList = new ArrayList<>();
         for (int i = 0; i< ChannelEnum.values().length; i++){
@@ -86,7 +86,7 @@ public class JiuYiToBelentController {
     /**
      * 资方状态下拉框
      */
-    @PostMapping("jiuYiToBelentCategory/selectManagementStatus")
+    @PostMapping("selectManagementStatus")
     public ResultVO<List<XiaLaVo>> queryManagementStatusXiaLa(){
         List<XiaLaVo> xiaLaVoList = new ArrayList<>();
         for (int i = 0; i< ManagementStatusEnum.values().length; i++){

@@ -35,11 +35,9 @@ public class JiuYiToBelentServiceImpl implements JiuYiToBelentService {
         List<JiuYiToBelent> jiuYiToBelents = jiuYiToBelentMapper.queryPage(jiuYiToBelentSelectVo);
         for (JiuYiToBelent jiuYiToBelent : jiuYiToBelents) {
             if (jiuYiToBelent.getManagementStatus()!=null&&!StringUtils.isEmpty(jiuYiToBelent.getManagementStatus())){
-                if (jiuYiToBelent.getManagementStatus()==0){
-                    jiuYiToBelent.setManagementStatusName(ManagementStatusEnum.QINGXUANZE.getManagementStatusName());
-                }else if(jiuYiToBelent.getManagementStatus()==1){
+                if(jiuYiToBelent.getManagementStatus()==0){
                     jiuYiToBelent.setManagementStatusName(ManagementStatusEnum.YIFANGKUAN.getManagementStatusName());
-                }else if(jiuYiToBelent.getManagementStatus()==2){
+                }else if(jiuYiToBelent.getManagementStatus()==1){
                     jiuYiToBelent.setManagementStatusName(ManagementStatusEnum.YIJUJUE.getManagementStatusName());
                 }else {
                     jiuYiToBelent.setManagementStatusName(ManagementStatusEnum.DAKUANSHIBAI.getManagementStatusName());
