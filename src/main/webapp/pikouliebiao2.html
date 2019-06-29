@@ -179,7 +179,25 @@
                 _list = res.data;
                 $.each(_list,function(index,ele){
 
-                    var optionTd = $("<option></option>").attr("value",ele.isApprovalValue).append(ele.isApprovalName)
+                    var optionTd = $("<option></option>").attr("value",ele.value).append(ele.label)
+
+                    $("#deductStatus").append(optionTd)
+                })
+            }
+        })
+    })
+
+    $(function(){
+        $.ajax({
+            type: 'POST',
+            url: 'http://localhost:8010/pikou/isApprovalSpinner',
+            dataType: 'JSON',
+            contentType: "application/json;charset=utf-8",
+            success: function (res) {
+                _list = res.data;
+                $.each(_list,function(index,ele){
+
+                    var optionTd = $("<option></option>").attr("value",ele.value).append(ele.label)
 
                     $("#deductStatus").append(optionTd)
                 })

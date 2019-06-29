@@ -5,7 +5,7 @@ package com.zr.jiuyitobelent.enumall;
  * Created by 11936 on 2019/4/25.
  */
 public enum ManagementStatusEnum {
-    QINGXUANZE("请选择",0),YIFANGKUAN("已放款",1),YIJUJUE("已拒绝",2),DAKUANSHIBAI("打款失败",3);
+    YIFANGKUAN("已放款",0),YIJUJUE("已拒绝",1),DAKUANSHIBAI("打款失败",2);
 
     private String managementStatusName;
     private Integer managementStatusValue;
