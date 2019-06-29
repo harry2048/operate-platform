@@ -87,6 +87,7 @@
         </ol>
         <div id="loanDetail" class="col-lg-12 col-md-12 col-sm-12">
             <div class="col-lg-3 col-md-3 col-sm-3"><span class="wd_60">资方&nbsp;&nbsp;</span><select id="fundSource">
+                <option value="">请选择</option>
                 <!--<option value="91金融" selected="selected">91金融</option>-->
                 <!--<option value="91旺财">91旺财</option>-->
             </select></div>
@@ -180,15 +181,15 @@
 <script>
     $(function () {
         $.ajax({
-            type: 'POST',
-            url: 'http://localhost:8010/jiuyitu/selectChannel',
+            type: 'GET',
+            url: 'http://localhost:8010/jiuyitu/selectChannel1',
             dataType: 'JSON',
             contentType: "application/json;charset=utf-8",
             success: function (res) {
                 _list = res.data;
                 $.each(_list, function (index, ele) {
 
-                    var optionTd = $("<option></option>").attr("value", ele.lanbel).append(ele.label)
+                    var optionTd = $("<option></option>").attr("value", ele.capitalside).append(ele.capitalside);
 
                     $("#fundSource").append(optionTd)
                 })
@@ -214,15 +215,19 @@
     })
 
     function _search(_page) {
-        var channel, managementStatus, customerName, pageIndex, pageSize;
+        var channel, managementStatus, customerName,phone,merchant,pageIndex, pageSize;
         channel = $("#fundSource").val();
         managementStatus = $("#capitalStatus").val();
         customerName = $("#idName").val();
+        phone = $("#phoneNo").val();
+        merchant = $("#bcName").val();
         if (_page != "") {
             var tmp = {
                 "channel": channel,
                 "managementStatus": managementStatus,
                 "customerName": customerName,
+                "phone": phone,
+                "merchant": merchant,
                 "pageIndex": _page,
                 "pageSize": 1
             };
@@ -231,6 +236,8 @@
                 "channel": channel,
                 "managementStatus": managementStatus,
                 "customerName": customerName,
+                "phone": phone,
+                "merchant": merchant,
                 "pageIndex": 0,
                 "pageSize": 1
             };

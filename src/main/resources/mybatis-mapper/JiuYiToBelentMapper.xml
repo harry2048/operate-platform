@@ -3,7 +3,7 @@
 <mapper namespace="com.zr.jiuyitobelent.mapper.JiuYiToBelentMapper">
     <select id="queryPage" parameterType="com.zr.jiuyitobelent.model.JiuYiToBelentSelectVo" resultType="com.zr.jiuyitobelent.model.JiuYiToBelent">
         select j.id,j.applyTime,j.channel,j.amountOfApplication,j.applicationDeadline,j.periodicContributions,j.customerName,j.idCode,j.managementLoanAmount,j.managementStatus
-        FROM jiuyitobelent j
+        FROM jiuyitobelent j left join daifangkuan d on j.did=d.id
         WHERE 1=1
         <if test="customerName!=null and customerName!=''">
             and j.customerName=#{customerName}
@@ -13,13 +13,19 @@
         </if>
         <if test="managementStatus!=null">
             and j.managementStatus=#{managementStatus}
+        </if>
+        <if test="phone!=null and phone!=''">
+            and d.phone=#{phone}
+        </if>
+        <if test="merchant!=null and merchant!=''">
+            and d.merchant=#{merchant}
         </if>
         limit #{offset},#{pageSize}
     </select>
 
     <select id="queryByJiuYiToBelentSelectVo" parameterType="com.zr.jiuyitobelent.model.JiuYiToBelentSelectVo" resultType="com.zr.jiuyitobelent.model.JiuYiToBelent">
         select j.id,j.applyTime,j.channel,j.amountOfApplication,j.applicationDeadline,j.periodicContributions,j.customerName,j.idCode,j.managementLoanAmount,j.managementStatus
-        FROM jiuyitobelent j
+        FROM jiuyitobelent j left join daifangkuan d on j.did=d.id
         WHERE 1=1
         <if test="customerName!=null and customerName!=''">
             and j.customerName=#{customerName}
@@ -30,20 +36,33 @@
         <if test="managementStatus!=null">
             and j.managementStatus=#{managementStatus}
         </if>
+        <if test="phone!=null and phone!=''">
+            and d.phone=#{phone}
+        </if>
+        <if test="merchant!=null and merchant!=''">
+            and d.merchant=#{merchant}
+        </if>
     </select>
 
     <!--总条数-->
     <select id="queryCount" parameterType="com.zr.jiuyitobelent.model.JiuYiToBelentSelectVo" resultType="java.lang.Integer">
         select count(*)
-        FROM jiuyitobelent WHERE 1=1
+        FROM jiuyitobelent j left join daifangkuan d on j.did=d.id
+        WHERE 1=1
         <if test="customerName!=null and customerName!=''">
-            and customerName=#{customerName}
+            and j.customerName=#{customerName}
         </if>
         <if test="channel!=null and channel!=''">
-            and channel=#{channel}
+            and j.channel=#{channel}
         </if>
         <if test="managementStatus!=null">
-            and managementStatus=#{managementStatus}
+            and j.managementStatus=#{managementStatus}
+        </if>
+        <if test="phone!=null and phone!=''">
+            and d.phone=#{phone}
+        </if>
+        <if test="merchant!=null and merchant!=''">
+            and d.merchant=#{merchant}
         </if>
     </select>
 

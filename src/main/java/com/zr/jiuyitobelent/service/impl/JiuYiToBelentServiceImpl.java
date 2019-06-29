@@ -91,6 +91,13 @@ public class JiuYiToBelentServiceImpl implements JiuYiToBelentService {
         }
         return null;
     }
+
+    @Override
+    public ResultVO queryAll() {
+        List<Riskreserve_Capitalside> riskreserve_capitalsideList = jiuYiToBelentMapper.queryAll();
+        return ResultVOBuilder.success(riskreserve_capitalsideList);
+    }
+
     // 由于此方法不能通用, 所以单独写在这里
     private void writeDataToExcel(InputStream in, String sheetName,List<JiuYiToBelent> jiuYiToBelentList, ServletOutputStream out) throws Exception {
         //POi读取模板

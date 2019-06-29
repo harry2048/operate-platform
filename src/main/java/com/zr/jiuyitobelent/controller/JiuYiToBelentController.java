@@ -4,6 +4,7 @@ package com.zr.jiuyitobelent.controller;
 import com.zr.jiuyitobelent.enumall.ChannelEnum;
 import com.zr.jiuyitobelent.enumall.ManagementStatusEnum;
 import com.zr.jiuyitobelent.model.JiuYiToBelentSelectVo;
+import com.zr.jiuyitobelent.model.Riskreserve_Capitalside;
 import com.zr.jiuyitobelent.model.XiaLaVo;
 import com.zr.jiuyitobelent.service.JiuYiToBelentService;
 import com.zr.util.AllRecords;
@@ -69,11 +70,12 @@ public class JiuYiToBelentController {
 
 
 
-    /**
+  /*  *//**
      * 资方下拉框
-     */
+     *//*
     @PostMapping("selectChannel")
     public ResultVO<List<XiaLaVo>> queryChannelXiaLa(){
+
         List<XiaLaVo> xiaLaVoList = new ArrayList<>();
         for (int i = 0; i< ChannelEnum.values().length; i++){
             XiaLaVo xiaLaVo = new XiaLaVo();
@@ -82,7 +84,16 @@ public class JiuYiToBelentController {
             xiaLaVoList.add(xiaLaVo);
         }
         return ResultVOBuilder.success(xiaLaVoList);
+    }*/
+    /**
+     * 资方下拉框
+     */
+    @GetMapping("selectChannel1")
+    public ResultVO queryChannelXiaLa1(){
+
+        return jiuYiToBelentService.queryAll();
     }
+
     /**
      * 资方状态下拉框
      */
@@ -98,12 +109,14 @@ public class JiuYiToBelentController {
         return ResultVOBuilder.success(xiaLaVoList);
     }
     //导出
-    @GetMapping("/exportExcel/master")
-    public ResultVO exportExcel(HttpServletResponse resp, String channel, Integer managementStatus, String customerName) throws Exception{
+    @GetMapping("exportExcel/master")
+    public ResultVO exportExcel(HttpServletResponse resp, String channel, Integer managementStatus, String customerName,String phone,String merchant) throws Exception{
         JiuYiToBelentSelectVo jiuYiToBelentSelectVo = new JiuYiToBelentSelectVo();
         jiuYiToBelentSelectVo.setChannel(channel);
         jiuYiToBelentSelectVo.setManagementStatus(managementStatus);
         jiuYiToBelentSelectVo.setCustomerName(customerName);
+        jiuYiToBelentSelectVo.setPhone(phone);
+        jiuYiToBelentSelectVo.setMerchant(merchant);
         return jiuYiToBelentService.exportExcel(resp,jiuYiToBelentSelectVo);
     }
 }
