@@ -1,6 +1,7 @@
 package com.zr.lendinglist.service.impl;
 
 import com.zr.lendinglist.mapper.LendingListMapper;
+import com.zr.lendinglist.model.FundingClass;
 import com.zr.lendinglist.model.LendingListSelectVo;
 import com.zr.lendinglist.model.LendingList;
 import com.zr.lendinglist.service.LendingListService;
@@ -10,13 +11,10 @@ import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.util.StringUtils;
-import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletResponse;
 import java.io.InputStream;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -85,7 +83,7 @@ public class LendingListServiceImpl implements LendingListService {
         //给输出文件设置名称
         POIClass.toPackageOs(response, "已放款查询导出");
         //读取模板中的数据
-        InputStream in = ExportUtil.toPackageIn("daochu/已放款查询.xlsx");
+        InputStream in = ExportUtil.toPackageIn("templates/已放款查询.xlsx");
         //根据模板的数据、把查询出来的数据给摸版SHeet1组中的数据赋值、把excel输出到浏览器上
         writeDataToExcel(in, "Sheet1", lendingListList, out);
         if (in != null) {
@@ -94,6 +92,21 @@ public class LendingListServiceImpl implements LendingListService {
         }
         return null;
     }
+
+    @Override
+    public ResultVO queryAll() {
+        List<FundingClass> fundingClassList = lendingListMapper.queryAll();
+        return ResultVOBuilder.success(fundingClassList);
+    }
+
+
+//    @Override
+//    public ResultVo<List<LegalPersonResultVo>> ofCurrentUser() {
+//        List<LegalPersonResultVo> legalPersonResultVos = plantMapper.queryLegalPersons();
+//        return ResultBuildVo.success(legalPersonResultVos);
+//    }
+
+
     private void writeDataToExcel(InputStream in, String sheetName,
                                   List<LendingList> resultList, ServletOutputStream out) throws Exception {
         //POi读取模板
