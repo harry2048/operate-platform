@@ -36,7 +36,7 @@ public class LoansituationServiceImpl implements LoansituationService{
     }
 
    /**
-     * 分页
+     * 资方--分页
      */
     @Override
     public ResultVO<AllRecords> queryPage(LoansituationSelectVo loansituationSelectVo) {
@@ -54,6 +54,28 @@ public class LoansituationServiceImpl implements LoansituationService{
         allRecords.setDataList(loansituationList);
         return ResultVOBuilder.success(allRecords);
     }
+
+    /**
+     *进件渠道--分页
+     */
+    @Override
+    public ResultVO<AllRecords> queryPage2(LoansituationSelectVo loansituationSelectVo) {
+        //查询数据
+        List<Loansituation> loansituationList = loansituationMapper.queryPage2(loansituationSelectVo);
+
+        //查询数量
+        int count =  loansituationMapper.queryCount2(loansituationSelectVo);
+        //把当前页、每页大小、总页数、总条数、数据统一放入到AllRecords返回
+        AllRecords allRecords = new AllRecords();
+        allRecords.setPageIndex(loansituationSelectVo.getPageIndex());
+        allRecords.setPageSize(loansituationSelectVo.getPageSize());
+        allRecords.setTotalNumber(count);
+        allRecords.resetTotalNumber(count);
+        allRecords.setDataList(loansituationList);
+        return ResultVOBuilder.success(allRecords);
+    }
+
+
 
     @Override
     public ResultVO queryAll() {
