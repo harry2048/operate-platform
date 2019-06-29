@@ -2,6 +2,7 @@ package com.zr.earliersettlement.mapper;
 
 import com.zr.earliersettlement.pojo.Earliersettlement;
 import com.zr.earliersettlement.pojo.EarliersettlementSelectVo;
+import com.zr.loansituation.pojo.Riskreserve_Capitalside;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
@@ -18,4 +19,7 @@ public interface EarliersettlementMapper {
     List<Earliersettlement> queryPage(EarliersettlementSelectVo earliersettlementSelectVo);
     int queryCount(EarliersettlementSelectVo earliersettlementSelectVo);
     List<Earliersettlement> queryBySelectVo(EarliersettlementSelectVo earliersettlementSelectVo);
+
+    @Select("select * from riskreserve_capitalside")
+    List<Riskreserve_Capitalside> queryAll();
 }

@@ -84,7 +84,6 @@ public class LoansituationServiceImpl implements LoansituationService{
 
     }
 
-    @Override
     public ResultVO queryAll2() {
         List<Maintenancestaff> maintenancestaffList = loansituationMapper.queryAll2();
         return ResultVOBuilder.success(maintenancestaffList);
