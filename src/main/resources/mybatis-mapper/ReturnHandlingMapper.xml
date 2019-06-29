@@ -3,20 +3,23 @@
 <mapper namespace="com.zr.returnhandling.mapper.ReturnHandlingMapper">
     <select id="queryPage" parameterType="com.zr.returnhandling.model.ReturnHandlingSelectVo"
             resultType="com.zr.returnhandling.model.ReturnHandlingVo">
-        select rh.id,rh.merchant,rh.customerName,s.sendingStatusName,rh.refundAmount,
+        select rh.id,rh.merchant,rh.customerName,rh.refundAmount,
         DATE_FORMAT(rh.createTime, '%Y-%m-%d %H:%i:%S') createTime,
         DATE_FORMAT(rh.examineTime, '%Y-%m-%d %H:%i:%S') examineTime
+        ,s.sendingStatusName
         FROM returnhandling rh
         left join status s on rh.sendingStatus = s.id
-        <if test="merchant!=null and merchant!=''">
-            and merchant=#{merchant}
-        </if>
-        <if test="customerName!=null and customerName!=''">
-            and customerName=#{customerName}
-        </if>
-        <if test="sendingStatus!=null">
-            and rh.sendingStatus=#{sendingStatus}
-        </if>
+        <where>
+            <if test="merchant!=null and merchant!=''">
+                and merchant=#{merchant}
+            </if>
+            <if test="customerName!=null and customerName!=''">
+                and customerName=#{customerName}
+            </if>
+            <if test="sendingStatus!=null">
+                and sendingStatus=#{sendingStatus}
+            </if>
+        </where>
         limit #{offset},#{pageSize}
     </select>
 

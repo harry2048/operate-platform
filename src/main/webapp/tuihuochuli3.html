@@ -13,41 +13,47 @@
     <link href="css/jedate.css" rel="stylesheet">
 </head>
 <style>
-    #loanDetail{
+    #loanDetail {
         background-color: #fff;
         margin-bottom: 15px;
     }
-    #loanDetail p{
-        padding-left:0 ;
+
+    #loanDetail p {
+        padding-left: 0;
         padding-right: 0;
-        margin: 6px 0 ;
+        margin: 6px 0;
     }
-    #loanDetail .wd_60{
+
+    #loanDetail .wd_60 {
         display: inline-block;
         width: 102px;
         text-align: right;
         font-size: 12px;
         font-family: "微软雅黑";
     }
-    #loanDetail .c13 .wd_60{
+
+    #loanDetail .c13 .wd_60 {
         float: left;
         margin-top: 5px;
     }
-    #loanDetail .c13 input{
+
+    #loanDetail .c13 input {
         float: left;
         font-size: 12px;
         font-family: "微软雅黑";
     }
-    #loanDetail .col-lg-3 ,#loanDetail .c13{
-        margin:5px 0;
-        padding-left:5px;
+
+    #loanDetail .col-lg-3, #loanDetail .c13 {
+        margin: 5px 0;
+        padding-left: 5px;
         padding-right: 5px;
     }
 
-    #loanDetail select option{
+    #loanDetail select option {
         font-size: 12px;
         font-family: "微软雅黑";
     }
+
     .search_btn {
         font-size: 12px;
         background-color: #09C;
@@ -55,28 +61,31 @@
         margin-top: 3px;
         margin-bottom: 5px;
     }
-    .ta_r{
+
+    .ta_r {
         text-align: right;
     }
-    .mr_25{
+
+    .mr_25 {
         margin-right: 25px;
     }
-    .phoneStyle:hover{
+
+    .phoneStyle:hover {
         cursor: pointer;
         color: #09C;
     }
-    .phoneStyle{
+
+    .phoneStyle {
         cursor: pointer;
     }
-    .dataTables_scrollBody  #refundList tbody {
+
+    .dataTables_scrollBody #refundList tbody {
         /*height: 300px;*/
         /*overflow-y: auto;*/
     }
 </style>
 <body>
 <div class="content1" href="">
-
-
 
 
     <div class="hui"><img src="/hd/static/images/ajax-loader.gif"></div>
@@ -86,8 +95,12 @@
             <li class="active">退货处理</li>
         </ol>
         <div id="loanDetail" class="col-lg-12 col-md-12 col-sm-12">
-            <div class="col-lg-3 col-md-3 col-sm-3"><span class="wd_60">商户名称&nbsp;&nbsp;</span><input type="text" id="bizName"></div>
-            <div class="col-lg-3 col-md-3 col-sm-3"><span class="wd_60">客户名称&nbsp;&nbsp;</span><input type="text" id="containsCustName"></div>
+            <div class="col-lg-3 col-md-3 col-sm-3"><span class="wd_60">商户名称&nbsp;&nbsp;</span><input type="text"
+                                                                                                      id="bizName">
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-3"><span class="wd_60">客户名称&nbsp;&nbsp;</span><input type="text"
+                                                                                                      id="containsCustName">
+            </div>
             <div class="col-lg-3 col-md-3 col-sm-3"><span class="wd_60">退款状态&nbsp;&nbsp;</span><select id="refundState">
                 <option value="">请选择</option>
                 <option value="0">待提交</option>
@@ -111,31 +124,107 @@
             <div class="clear"></div>
         </div>
         <div class="table-responsive" style="overflow-y: auto;">
-            <div id="refundList_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer"><div class="top"><div class="clear"></div></div><div id="refundList_processing" class="dataTables_processing panel panel-default" style="display: none;">处理中...</div><div class="dataTables_scroll"><div class="dataTables_scrollHead" style="overflow: hidden; position: relative; border: 0px; width: 100%;"><div class="dataTables_scrollHeadInner" style="box-sizing: content-box; width: 1139px; padding-right: 0px;"><table style="width: 1139px; margin-left: 0px;" class="table table-bordered table-striped table-hover bg_wt dataTable no-footer" role="grid"><thead style="border-bottom: 0;background-color: #fff;">
-            <tr role="row"><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 171px;">商户名称</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 172px;">客户姓名</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 173px;">退款金额</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 173px;">申请日期</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 173px;">审核日期</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 173px;">审核状态</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 103px;">操作</th></tr>
-            </thead></table></div></div><div class="dataTables_scrollBody" style="position: relative; overflow: auto; width: 100%;"><table id="refundList" style="width: 100%;" class="table table-bordered table-striped table-hover bg_wt dataTable no-footer" role="grid" aria-describedby="refundList_info"><thead style="border-bottom: 0;background-color: #fff;">
-            <tr role="row" style="height: 0px;"><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 171px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;"><div class="dataTables_sizing" style="height:0;overflow:hidden;">商户名称</div></th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 172px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;"><div class="dataTables_sizing" style="height:0;overflow:hidden;">客户姓名</div></th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 173px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;"><div class="dataTables_sizing" style="height:0;overflow:hidden;">退款金额</div></th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 173px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;"><div class="dataTables_sizing" style="height:0;overflow:hidden;">申请日期</div></th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 173px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;"><div class="dataTables_sizing" style="height:0;overflow:hidden;">审核日期</div></th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 173px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;"><div class="dataTables_sizing" style="height:0;overflow:hidden;">审核状态</div></th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 103px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;"><div class="dataTables_sizing" style="height:0;overflow:hidden;">操作</div></th></tr>
-            </thead>
-                <tbody>
-                </tbody>
-            </table>
-            </div>
-                <div class="bottom">
-                    <div class="dataTables_info" id="bizList_info" role="status" aria-live="polite">
-
-                    </div>
-                    <div class="common_page"></div>
-
+            <div id="refundList_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer">
+                <div class="top">
                     <div class="clear"></div>
                 </div>
-                <!--<tbody><tr role="row" class="odd"><td><input type="checkbox" value="6536635612870476801" name="ids" class="ckb"></td><td>2019-05-22</td><td>6460777522599560193</td><td>秦文进</td><td>140931199412020039</td><td>1680</td><td>农业银行</td><td>6228481668120214070</td><td>2019-05-22 00:19:25.0</td><td>还款成功</td><td>微信支付还款成功</td><td><button type="button" data-id="6460777522599560193" class="btn btn-primary btn-sm mt_3" name="deduct-query">查询批扣结果</button></td></tr><tr role="row" class="even"><td><input type="checkbox" value="6536722134349120513" name="ids" class="ckb"></td><td>2019-05-22</td><td>6218698888606385153</td><td>袁小华</td><td>511121197704227204</td><td>2658.29</td><td>农业银行</td><td>6228480469623614374</td><td></td><td>生成清单</td><td></td><td><button type="button" data-id="6218698888606385153" class="btn btn-primary btn-sm mt_3" name="deduct-query">查询批扣结果</button><button type="button" data-id="6536722134349120513" data-loan-no="6218698888606385153" class="btn btn-primary btn-sm mt_3" name="public-deduct">对公还款</button></td></tr><tr role="row" class="odd"><td><input type="checkbox" value="6536722134508504065" name="ids" class="ckb"></td><td>2019-05-22</td><td>6220870104499880961</td><td>张大壮</td><td>320381199411087332</td><td>9605</td><td>农业银行</td><td>6228480405855885373</td><td></td><td>生成清单</td><td></td><td><button type="button" data-id="6220870104499880961" class="btn btn-primary btn-sm mt_3" name="deduct-query">查询批扣结果</button><button type="button" data-id="6536722134508504065" data-loan-no="6220870104499880961" class="btn btn-primary btn-sm mt_3" name="public-deduct">对公还款</button></td></tr><tr role="row" class="even"><td><input type="checkbox" value="6536722134579807233" name="ids" class="ckb"></td><td>2019-05-22</td><td>6222447517564404737</td><td>彭勇军</td><td>511323198502190878</td><td>1508.78</td><td>农业银行</td><td>6228480462785007214</td><td></td><td>生成清单</td><td></td><td><button type="button" data-id="6222447517564404737" class="btn btn-primary btn-sm mt_3" name="deduct-query">查询批扣结果</button><button type="button" data-id="6536722134579807233" data-loan-no="6222447517564404737" class="btn btn-primary btn-sm mt_3" name="public-deduct">对公还款</button></td></tr><tr role="row" class="odd"><td><input type="checkbox" value="6536722135246701569" name="ids" class="ckb"></td><td>2019-05-22</td><td>6235099307722146817</td><td>段兰亭</td><td>510121199511016089</td><td>2280.86</td><td>农业银行</td><td>6230520460001265978</td><td></td><td>生成清单</td><td></td><td><button type="button" data-id="6235099307722146817" class="btn btn-primary btn-sm mt_3" name="deduct-query">查询批扣结果</button><button type="button" data-id="6536722135246701569" data-loan-no="6235099307722146817" class="btn btn-primary btn-sm mt_3" name="public-deduct">对公还款</button></td></tr><tr role="row" class="even"><td><input type="checkbox" value="6536722135473193985" name="ids" class="ckb"></td><td>2019-05-22</td><td>6241093333441053697</td><td>陆洒洒</td><td>340321199112280826</td><td>12631.5</td><td>农业银行</td><td>6228480405226722974</td><td></td><td>生成清单</td><td></td><td><button type="button" data-id="6241093333441053697" class="btn btn-primary btn-sm mt_3" name="deduct-query">查询批扣结果</button><button type="button" data-id="6536722135473193985" data-loan-no="6241093333441053697" class="btn btn-primary btn-sm mt_3" name="public-deduct">对公还款</button></td></tr><tr role="row" class="odd"><td><input type="checkbox" value="6536722135930373121" name="ids" class="ckb"></td><td>2019-05-22</td><td>6241928700509553665</td><td>徐超民</td><td>340111199308278513</td><td>38186.5</td><td>农业银行</td><td>6228480669192349779</td><td></td><td>生成清单</td><td></td><td><button type="button" data-id="6241928700509553665" class="btn btn-primary btn-sm mt_3" name="deduct-query">查询批扣结果</button><button type="button" data-id="6536722135930373121" data-loan-no="6241928700509553665" class="btn btn-primary btn-sm mt_3" name="public-deduct">对公还款</button></td></tr><tr role="row" class="even"><td><input type="checkbox" value="6536722136219780097" name="ids" class="ckb"></td><td>2019-05-22</td><td>6242554182257083393</td><td>莫凡</td><td>34011119940629551X</td><td>18692.5</td><td>农业银行</td><td>6228480668089335677</td><td></td><td>生成清单</td><td></td><td><button type="button" data-id="6242554182257083393" class="btn btn-primary btn-sm mt_3" name="deduct-query">查询批扣结果</button><button type="button" data-id="6536722136219780097" data-loan-no="6242554182257083393" class="btn btn-primary btn-sm mt_3" name="public-deduct">对公还款</button></td></tr><tr role="row" class="odd"><td><input type="checkbox" value="6536722137620677633" name="ids" class="ckb"></td><td>2019-05-22</td><td>6245083276477727745</td><td>李雪</td><td>130282199212073320</td><td>21253.6</td><td>农业银行</td><td>6228480668918402672</td><td></td><td>生成清单</td><td></td><td><button type="button" data-id="6245083276477727745" class="btn btn-primary btn-sm mt_3" name="deduct-query">查询批扣结果</button><button type="button" data-id="6536722137620677633" data-loan-no="6245083276477727745" class="btn btn-primary btn-sm mt_3" name="public-deduct">对公还款</button></td></tr><tr role="row" class="even"><td><input type="checkbox" value="6536722138371458049" name="ids" class="ckb"></td><td>2019-05-22</td><td>6245891291762131969</td><td>汪立刚</td><td>420112197201043316</td><td>48031.6</td><td>农业银行</td><td>6228450058152705673</td><td></td><td>生成清单</td><td></td><td><button type="button" data-id="6245891291762131969" class="btn btn-primary btn-sm mt_3" name="deduct-query">查询批扣结果</button><button type="button" data-id="6536722138371458049" data-loan-no="6245891291762131969" class="btn btn-primary btn-sm mt_3" name="public-deduct">对公还款</button></td></tr></tbody></table><div class="bottom"><div class="dataTables_info" id="lendingList_info" role="status" aria-live="polite">显示第 1 - 10 条记录，共1,123 条</div><div class="dataTables_length" id="lendingList_length"><label> <select name="lendingList_length" aria-controls="lendingList" class="form-control input-sm"><option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select> </label></div><div class="dataTables_paginate paging_full_numbers" id="lendingList_paginate"><ul class="pagination"><li class="paginate_button first disabled" id="lendingList_first"><a href="javascript:void(0);" aria-controls="lendingList" data-dt-idx="0" tabindex="0">首页</a></li><li class="paginate_button previous disabled" id="lendingList_previous"><a href="javascript:void(0);" aria-controls="lendingList" data-dt-idx="1" tabindex="0">上页</a></li><li class="paginate_button active"><a href="javascript:void(0);" aria-controls="lendingList" data-dt-idx="2" tabindex="0">1</a></li><li class="paginate_button "><a href="javascript:void(0);" aria-controls="lendingList" data-dt-idx="3" tabindex="0">2</a></li><li class="paginate_button "><a href="javascript:void(0);" aria-controls="lendingList" data-dt-idx="4" tabindex="0">3</a></li><li class="paginate_button "><a href="javascript:void(0);" aria-controls="lendingList" data-dt-idx="5" tabindex="0">4</a></li><li class="paginate_button "><a href="javascript:void(0);" aria-controls="lendingList" data-dt-idx="6" tabindex="0">5</a></li><li class="paginate_button disabled" id="lendingList_ellipsis"><a href="javascript:void(0);" aria-controls="lendingList" data-dt-idx="7" tabindex="0">…</a></li><li class="paginate_button "><a href="javascript:void(0);" aria-controls="lendingList" data-dt-idx="8" tabindex="0">113</a></li><li class="paginate_button next" id="lendingList_next"><a href="javascript:void(0);" aria-controls="lendingList" data-dt-idx="9" tabindex="0">下页</a></li><li class="paginate_button last" id="lendingList_last"><a href="javascript:void(0);" aria-controls="lendingList" data-dt-idx="10" tabindex="0">末页</a></li></ul></div><div class="clear"></div></div></div>-->
-            </div>
+                <div id="refundList_processing" class="dataTables_processing panel panel-default"
+                     style="display: none;">处理中...
+                </div>
+                <div class="dataTables_scroll">
+                    <div class="dataTables_scrollHead"
+                         style="overflow: hidden; position: relative; border: 0px; width: 100%;">
+                        <div class="dataTables_scrollHeadInner"
+                             style="box-sizing: content-box; width: 1139px; padding-right: 0px;">
+                            <table style="width: 1139px; margin-left: 0px;"
+                                   class="table table-bordered table-striped table-hover bg_wt dataTable no-footer"
+                                   role="grid" id="refundList">
+                                <thead style="border-bottom: 0;background-color: #fff;">
+                                <tr role="row">
+                                    <th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1"
+                                        style="width: 171px;">商户名称
+                                    </th>
+                                    <th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1"
+                                        style="width: 172px;">客户姓名
+                                    </th>
+                                    <th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1"
+                                        style="width: 173px;">退款金额
+                                    </th>
+                                    <th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1"
+                                        style="width: 173px;">申请日期
+                                    </th>
+                                    <th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1"
+                                        style="width: 173px;">审核日期
+                                    </th>
+                                    <th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1"
+                                        style="width: 173px;">审核状态
+                                    </th>
+                                    <th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1"
+                                        style="width: 103px;">操作
+                                    </th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <!--<div class="dataTables_scrollBody" style="position: relative; overflow: auto; width: 100%;">
+                        <table id="refundList" style="width: 100%;"
+                               class="table table-bordered table-striped table-hover bg_wt dataTable no-footer"
+                               role="grid" aria-describedby="refundList_info">
+                            <thead style="border-bottom: 0;background-color: #fff;">
+                            <tr role="row" style="height: 0px;">
+                                <th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1"
+                                    style="width: 171px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;">
+                                    <div class="dataTables_sizing" style="height:0;overflow:hidden;">商户名称</div>
+                                </th>
+                                <th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1"
+                                    style="width: 172px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;">
+                                    <div class="dataTables_sizing" style="height:0;overflow:hidden;">客户姓名</div>
+                                </th>
+                                <th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1"
+                                    style="width: 173px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;">
+                                    <div class="dataTables_sizing" style="height:0;overflow:hidden;">退款金额</div>
+                                </th>
+                                <th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1"
+                                    style="width: 173px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;">
+                                    <div class="dataTables_sizing" style="height:0;overflow:hidden;">申请日期</div>
+                                </th>
+                                <th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1"
+                                    style="width: 173px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;">
+                                    <div class="dataTables_sizing" style="height:0;overflow:hidden;">审核日期</div>
+                                </th>
+                                <th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1"
+                                    style="width: 173px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;">
+                                    <div class="dataTables_sizing" style="height:0;overflow:hidden;">审核状态</div>
+                                </th>
+                                <th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1"
+                                    style="width: 103px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;">
+                                    <div class="dataTables_sizing" style="height:0;overflow:hidden;">操作</div>
+                                </th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>-->
+                    <div class="bottom">
+                        <div class="dataTables_info" id="bizList_info" role="status" aria-live="polite">
+
+                        </div>
+                        <div class="common_page"></div>
+
+                        <div class="clear"></div>
+                    </div>
+                    <!--<tbody><tr role="row" class="odd"><td><input type="checkbox" value="6536635612870476801" name="ids" class="ckb"></td><td>2019-05-22</td><td>6460777522599560193</td><td>秦文进</td><td>140931199412020039</td><td>1680</td><td>农业银行</td><td>6228481668120214070</td><td>2019-05-22 00:19:25.0</td><td>还款成功</td><td>微信支付还款成功</td><td><button type="button" data-id="6460777522599560193" class="btn btn-primary btn-sm mt_3" name="deduct-query">查询批扣结果</button></td></tr><tr role="row" class="even"><td><input type="checkbox" value="6536722134349120513" name="ids" class="ckb"></td><td>2019-05-22</td><td>6218698888606385153</td><td>袁小华</td><td>511121197704227204</td><td>2658.29</td><td>农业银行</td><td>6228480469623614374</td><td></td><td>生成清单</td><td></td><td><button type="button" data-id="6218698888606385153" class="btn btn-primary btn-sm mt_3" name="deduct-query">查询批扣结果</button><button type="button" data-id="6536722134349120513" data-loan-no="6218698888606385153" class="btn btn-primary btn-sm mt_3" name="public-deduct">对公还款</button></td></tr><tr role="row" class="odd"><td><input type="checkbox" value="6536722134508504065" name="ids" class="ckb"></td><td>2019-05-22</td><td>6220870104499880961</td><td>张大壮</td><td>320381199411087332</td><td>9605</td><td>农业银行</td><td>6228480405855885373</td><td></td><td>生成清单</td><td></td><td><button type="button" data-id="6220870104499880961" class="btn btn-primary btn-sm mt_3" name="deduct-query">查询批扣结果</button><button type="button" data-id="6536722134508504065" data-loan-no="6220870104499880961" class="btn btn-primary btn-sm mt_3" name="public-deduct">对公还款</button></td></tr><tr role="row" class="even"><td><input type="checkbox" value="6536722134579807233" name="ids" class="ckb"></td><td>2019-05-22</td><td>6222447517564404737</td><td>彭勇军</td><td>511323198502190878</td><td>1508.78</td><td>农业银行</td><td>6228480462785007214</td><td></td><td>生成清单</td><td></td><td><button type="button" data-id="6222447517564404737" class="btn btn-primary btn-sm mt_3" name="deduct-query">查询批扣结果</button><button type="button" data-id="6536722134579807233" data-loan-no="6222447517564404737" class="btn btn-primary btn-sm mt_3" name="public-deduct">对公还款</button></td></tr><tr role="row" class="odd"><td><input type="checkbox" value="6536722135246701569" name="ids" class="ckb"></td><td>2019-05-22</td><td>6235099307722146817</td><td>段兰亭</td><td>510121199511016089</td><td>2280.86</td><td>农业银行</td><td>6230520460001265978</td><td></td><td>生成清单</td><td></td><td><button type="button" data-id="6235099307722146817" class="btn btn-primary btn-sm mt_3" name="deduct-query">查询批扣结果</button><button type="button" data-id="6536722135246701569" data-loan-no="6235099307722146817" class="btn btn-primary btn-sm mt_3" name="public-deduct">对公还款</button></td></tr><tr role="row" class="even"><td><input type="checkbox" value="6536722135473193985" name="ids" class="ckb"></td><td>2019-05-22</td><td>6241093333441053697</td><td>陆洒洒</td><td>340321199112280826</td><td>12631.5</td><td>农业银行</td><td>6228480405226722974</td><td></td><td>生成清单</td><td></td><td><button type="button" data-id="6241093333441053697" class="btn btn-primary btn-sm mt_3" name="deduct-query">查询批扣结果</button><button type="button" data-id="6536722135473193985" data-loan-no="6241093333441053697" class="btn btn-primary btn-sm mt_3" name="public-deduct">对公还款</button></td></tr><tr role="row" class="odd"><td><input type="checkbox" value="6536722135930373121" name="ids" class="ckb"></td><td>2019-05-22</td><td>6241928700509553665</td><td>徐超民</td><td>340111199308278513</td><td>38186.5</td><td>农业银行</td><td>6228480669192349779</td><td></td><td>生成清单</td><td></td><td><button type="button" data-id="6241928700509553665" class="btn btn-primary btn-sm mt_3" name="deduct-query">查询批扣结果</button><button type="button" data-id="6536722135930373121" data-loan-no="6241928700509553665" class="btn btn-primary btn-sm mt_3" name="public-deduct">对公还款</button></td></tr><tr role="row" class="even"><td><input type="checkbox" value="6536722136219780097" name="ids" class="ckb"></td><td>2019-05-22</td><td>6242554182257083393</td><td>莫凡</td><td>34011119940629551X</td><td>18692.5</td><td>农业银行</td><td>6228480668089335677</td><td></td><td>生成清单</td><td></td><td><button type="button" data-id="6242554182257083393" class="btn btn-primary btn-sm mt_3" name="deduct-query">查询批扣结果</button><button type="button" data-id="6536722136219780097" data-loan-no="6242554182257083393" class="btn btn-primary btn-sm mt_3" name="public-deduct">对公还款</button></td></tr><tr role="row" class="odd"><td><input type="checkbox" value="6536722137620677633" name="ids" class="ckb"></td><td>2019-05-22</td><td>6245083276477727745</td><td>李雪</td><td>130282199212073320</td><td>21253.6</td><td>农业银行</td><td>6228480668918402672</td><td></td><td>生成清单</td><td></td><td><button type="button" data-id="6245083276477727745" class="btn btn-primary btn-sm mt_3" name="deduct-query">查询批扣结果</button><button type="button" data-id="6536722137620677633" data-loan-no="6245083276477727745" class="btn btn-primary btn-sm mt_3" name="public-deduct">对公还款</button></td></tr><tr role="row" class="even"><td><input type="checkbox" value="6536722138371458049" name="ids" class="ckb"></td><td>2019-05-22</td><td>6245891291762131969</td><td>汪立刚</td><td>420112197201043316</td><td>48031.6</td><td>农业银行</td><td>6228450058152705673</td><td></td><td>生成清单</td><td></td><td><button type="button" data-id="6245891291762131969" class="btn btn-primary btn-sm mt_3" name="deduct-query">查询批扣结果</button><button type="button" data-id="6536722138371458049" data-loan-no="6245891291762131969" class="btn btn-primary btn-sm mt_3" name="public-deduct">对公还款</button></td></tr></tbody></table><div class="bottom"><div class="dataTables_info" id="lendingList_info" role="status" aria-live="polite">显示第 1 - 10 条记录，共1,123 条</div><div class="dataTables_length" id="lendingList_length"><label> <select name="lendingList_length" aria-controls="lendingList" class="form-control input-sm"><option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select> </label></div><div class="dataTables_paginate paging_full_numbers" id="lendingList_paginate"><ul class="pagination"><li class="paginate_button first disabled" id="lendingList_first"><a href="javascript:void(0);" aria-controls="lendingList" data-dt-idx="0" tabindex="0">首页</a></li><li class="paginate_button previous disabled" id="lendingList_previous"><a href="javascript:void(0);" aria-controls="lendingList" data-dt-idx="1" tabindex="0">上页</a></li><li class="paginate_button active"><a href="javascript:void(0);" aria-controls="lendingList" data-dt-idx="2" tabindex="0">1</a></li><li class="paginate_button "><a href="javascript:void(0);" aria-controls="lendingList" data-dt-idx="3" tabindex="0">2</a></li><li class="paginate_button "><a href="javascript:void(0);" aria-controls="lendingList" data-dt-idx="4" tabindex="0">3</a></li><li class="paginate_button "><a href="javascript:void(0);" aria-controls="lendingList" data-dt-idx="5" tabindex="0">4</a></li><li class="paginate_button "><a href="javascript:void(0);" aria-controls="lendingList" data-dt-idx="6" tabindex="0">5</a></li><li class="paginate_button disabled" id="lendingList_ellipsis"><a href="javascript:void(0);" aria-controls="lendingList" data-dt-idx="7" tabindex="0">…</a></li><li class="paginate_button "><a href="javascript:void(0);" aria-controls="lendingList" data-dt-idx="8" tabindex="0">113</a></li><li class="paginate_button next" id="lendingList_next"><a href="javascript:void(0);" aria-controls="lendingList" data-dt-idx="9" tabindex="0">下页</a></li><li class="paginate_button last" id="lendingList_last"><a href="javascript:void(0);" aria-controls="lendingList" data-dt-idx="10" tabindex="0">末页</a></li></ul></div><div class="clear"></div></div></div>-->
+                </div>
             </div>
             <!--正文内容end-->
         </div>
     </div>
 
-    </div>
+</div>
 </body>
 
 <script src="js/jquery-2.1.1.min.js"></script>
@@ -143,7 +232,7 @@
 <script>
 
 
-    $(function(){
+    $(function () {
         $.ajax({
             type: 'POST',
             url: 'http://localhost:8010/returnHandling/getPullDownList',
@@ -151,9 +240,9 @@
             contentType: "application/json;charset=utf-8",
             success: function (res) {
                 _list = res.data;
-                $.each(_list,function(index,ele){
+                $.each(_list, function (index, ele) {
 
-                    var optionTd = $("<option></option>").attr("value",ele.isApprovalValue).append(ele.isApprovalName)
+                    var optionTd = $("<option></option>").attr("value", ele.isApprovalValue).append(ele.isApprovalName)
 
                     $("#deductStatus").append(optionTd)
                 })
@@ -162,21 +251,26 @@
     })
 
     function _search(_page) {
-        var merchant,pageIndex,pageSize;
-        merchant = $("#loanContNo").val();
+        var merchant, customerName, sendingStatusName, pageIndex, pageSize;
+        merchant = $("#bizName").val()
+        customerName = $("#containsCustName").val();
+        sendingStatusName = $("#refundState").val();
 
-        if(_page!=""){
-            var tmp={
-                "merchant":merchant,
-
-                "pageIndex":_page,
-                "pageSize":1
+        if (_page != "") {
+            var tmp = {
+                "merchant": merchant,
+                "customerName": customerName,
+                "sendingStatusName": sendingStatusName,
+                "pageIndex": _page,
+                "pageSize": 1
             };
-        }else{
-            var tmp={
-                "merchant":merchant,
-                "pageIndex":0,
-                "pageSize":1
+        } else {
+            var tmp = {
+                "merchant": merchant,
+                "customerName": customerName,
+                "sendingStatusName": sendingStatusName,
+                "pageIndex": 0,
+                "pageSize": 1
             };
         }
 
@@ -190,43 +284,44 @@
             success: function (res) {
                 _list = res.data.dataList;
                 var _html = "";
-                if(res.success){
-                    $("#bizList_info").html("当前是第"+res.data.pageIndex+"页，共"+res.data.totalPage+"页")
-                    if(_list.length>0){
-                        page(2,1);
+                if (res.success) {
+                    $("#bizList_info").html("当前是第" + res.data.pageIndex + "页，共" + res.data.totalPage + "页")
+                    if (_list.length > 0) {
+                        page(2, 1);
                     }
-                    for(var i = 0;i<_list.length;i++){
-                        _html+="<tr>"+
-                            "<td>"+_list[i].merchant+"</td>"+
-                            "<td>"+_list[i].customerName+"</td>"+
-                            "<td>"+_list[i].refundAmount+"</td>"+
-                            "<td>"+_list[i].sendingStatusName+"</td>"+
-                            "<td>"+_list[i].createTime+"</td>"+
-                            "<td>"+_list[i].examineTime+"</td>"+
-                            "<td>"+_list[i].channel+"</td>";
-                        _html+="<tr/>";
+                    for (var i = 0; i < _list.length; i++) {
+                        _html += "<tr>" +
+                            "<td>" + _list[i].merchant + "</td>" +
+                            "<td>" + _list[i].customerName + "</td>" +
+                            "<td>" + _list[i].refundAmount + "</td>" +
+                            "<td>" + _list[i].createTime + "</td>" +
+                            "<td>" + _list[i].examineTime + "</td>" +
+                            "<td>" + _list[i].sendingStatusName + "</td>" +
+                            "<td>" + _list[i].channel + "</td>";
+                        _html += "<tr/>";
                     }
                     $("#refundList tbody").html(_html);
 
-                }else{
+                } else {
                     console.log(res.errorMessage);
                 }
             }
         })
     }
-    _search()
+
+    _search();
 
     //分页点击事件
-    $(".common_page").on("click","a",function(){
+    $(".common_page").on("click", "a", function () {
         console.log($(this));
         $(this).addClass("active");
         $(this).siblings().removeClass("active");
         var _index = parseInt($(this).attr("page"));
-        if(_index==1){
-            $(".prev_page").attr("disabled","disabled");
-        }else{
-            $(".prev_page").attr("page",_index-1);
-            $(".last_page").attr("page",_index+1);
+        if (_index == 1) {
+            $(".prev_page").attr("disabled", "disabled");
+        } else {
+            $(".prev_page").attr("page", _index - 1);
+            $(".last_page").attr("page", _index + 1);
         }
         var _page = $(this).attr("page");
         _search(_page)
@@ -234,7 +329,7 @@
 
 
     //多条件查询点击事件
-    $("#btn-search").on("click",function(){
+    $("#btn-search").on("click", function () {
         _search()
     })
 </script>
