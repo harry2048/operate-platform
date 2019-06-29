@@ -133,7 +133,7 @@
             </div>
             <!--正文内容end-->
         </div>
-
+    </div>
 
     </div>
 </body>
@@ -146,7 +146,7 @@
     $(function(){
         $.ajax({
             type: 'POST',
-            url: 'http://localhost:8010/pikou/isApprovalSpinner',
+            url: 'http://localhost:8010/returnHandling/getPullDownList',
             dataType: 'JSON',
             contentType: "application/json;charset=utf-8",
             success: function (res) {
@@ -162,25 +162,19 @@
     })
 
     function _search(_page) {
-        var loanContractNum,customerName,idCode,paymentAccount,pageIndex,pageSize;
-        loanContractNum = $("#loanContNo").val();
-        customerName = $("#custName").val();
-        idCode = $("#idNo").val();
-        paymentAccount = $("#acctNo").val();
+        var merchant,pageIndex,pageSize;
+        merchant = $("#loanContNo").val();
+
         if(_page!=""){
             var tmp={
                 "merchant":merchant,
-                "sendingStatusName":sendingStatusName,
-                "customerName":customerName,
-                //"refundAmount":refundAmount,
+
                 "pageIndex":_page,
                 "pageSize":1
             };
         }else{
             var tmp={
                 "merchant":merchant,
-                "sendingStatusName":sendingStatusName,
-                "customerName":customerName,
                 "pageIndex":0,
                 "pageSize":1
             };
@@ -189,7 +183,7 @@
 
         $.ajax({
             type: 'POST',
-            url: 'http://localhost:8010/pikou/queryByPage',
+            url: 'http://localhost:8010/returnHandling/queryPage',
             dataType: 'JSON',
             data: JSON.stringify(tmp),
             contentType: "application/json;charset=utf-8",
@@ -209,11 +203,6 @@
                             "<td>"+_list[i].sendingStatusName+"</td>"+
                             "<td>"+_list[i].createTime+"</td>"+
                             "<td>"+_list[i].examineTime+"</td>"+
-                            "<td>"+_list[i].channel+"</td>"+
-                            "<td>"+_list[i].channel+"</td>"+
-                            "<td>"+_list[i].channel+"</td>"+
-                            "<td>"+_list[i].channel+"</td>"+
-                            "<td>"+_list[i].channel+"</td>"+
                             "<td>"+_list[i].channel+"</td>";
                         _html+="<tr/>";
                     }
