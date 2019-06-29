@@ -3,7 +3,7 @@
 <mapper namespace="com.zr.lendinglist.mapper.LendingListMapper">
     <select id="queryPage" parameterType="com.zr.lendinglist.model.LendingListSelectVo" resultType="com.zr.lendinglist.model.LendingList">
         select  le.id,le.fundingParty,le.merchant,le.customerName,le.idCode,le.applyTime,le.examineTime,le.lendingTime
-        FROM lendinglist le LEFT JOIN funding fd ON le.fundingParty = fd.id
+        FROM lendinglist le LEFT JOIN riskreserve_capitalside rc ON le.fundingParty = rc.id
         where 1=1
         <if test="fundingParty!=null and fundingParty!=''">
             and le.fundingParty=#{fundingParty}
