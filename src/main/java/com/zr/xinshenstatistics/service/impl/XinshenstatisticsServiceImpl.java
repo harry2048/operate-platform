@@ -2,6 +2,7 @@ package com.zr.xinshenstatistics.service.impl;
 
 
 import com.zr.xinshenstatistics.mapper.XinshenstatisticsMapper;
+import com.zr.xinshenstatistics.pojo.Funding;
 import com.zr.xinshenstatistics.pojo.Xinshenstatistics;
 import com.zr.xinshenstatistics.pojo.XinshenstatisticsVO;
 import com.zr.xinshenstatistics.service.XinshenstatisticsService;
@@ -83,11 +84,11 @@ public class XinshenstatisticsServiceImpl implements XinshenstatisticsService {
         if (id==null){
             return ResultBuildVo.error("查看时id不能为空！","500");
         }
-        Xinshenstatistics xinshenstatistics = xinshenstatisticsMapper.queryById(id);
-        if (xinshenstatistics==null){
+        Funding funding = xinshenstatisticsMapper.queryById(id);
+        if (funding==null){
             return ResultBuildVo.error("查看对象不存在！","500");
         }
-        return ResultBuildVo.success(xinshenstatistics);
+        return ResultBuildVo.success(funding);
     }
 
     // 由于此方法不能通用, 所以单独写在这里
