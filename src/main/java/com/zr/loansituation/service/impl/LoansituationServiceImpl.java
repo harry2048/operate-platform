@@ -3,6 +3,8 @@ package com.zr.loansituation.service.impl;
 import com.zr.loansituation.mapper.LoansituationMapper;
 import com.zr.loansituation.pojo.Loansituation;
 import com.zr.loansituation.pojo.LoansituationSelectVo;
+import com.zr.loansituation.pojo.Maintenancestaff;
+import com.zr.loansituation.pojo.Riskreserve_Capitalside;
 import com.zr.loansituation.service.LoansituationService;
 import com.zr.mechant.enumall.StatusEnum;
 import com.zr.util.AllRecords;
@@ -51,5 +53,18 @@ public class LoansituationServiceImpl implements LoansituationService{
         allRecords.resetTotalNumber(count);
         allRecords.setDataList(loansituationList);
         return ResultVOBuilder.success(allRecords);
+    }
+
+    @Override
+    public ResultVO queryAll() {
+        List<Riskreserve_Capitalside> riskreserve_capitalsideList = loansituationMapper.queryAll();
+        return ResultVOBuilder.success(riskreserve_capitalsideList);
+
+    }
+
+    @Override
+    public ResultVO queryAll2() {
+        List<Maintenancestaff> maintenancestaffList = loansituationMapper.queryAll2();
+        return ResultVOBuilder.success(maintenancestaffList);
     }
 }
