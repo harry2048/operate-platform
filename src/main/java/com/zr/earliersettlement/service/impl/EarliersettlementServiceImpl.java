@@ -4,6 +4,7 @@ import com.zr.earliersettlement.mapper.EarliersettlementMapper;
 import com.zr.earliersettlement.pojo.Earliersettlement;
 import com.zr.earliersettlement.pojo.EarliersettlementSelectVo;
 import com.zr.earliersettlement.service.EarliersettlementService;
+import com.zr.loansituation.pojo.Riskreserve_Capitalside;
 import com.zr.meiju.StatusEnum;
 import com.zr.util.*;
 import org.apache.poi.ss.usermodel.Row;
@@ -53,6 +54,12 @@ public class EarliersettlementServiceImpl implements EarliersettlementService{
         return ResultVOBuilder.success(allRecords);
     }
 
+    @Override
+    public ResultVO queryAll() {
+        List<Riskreserve_Capitalside> riskreserve_capitalsideList = earliersettlementMapper.queryAll();
+        return ResultVOBuilder.success(riskreserve_capitalsideList);
+
+    }
     /**
      *  //1.定义一个导出模板
      //2.从数据库中查询出将要导出的数据
@@ -86,6 +93,9 @@ public class EarliersettlementServiceImpl implements EarliersettlementService{
         }
         return null;
     }
+
+
+
     // 由于此方法不能通用, 所以单独写在这里
     private void writeDataToExcel(InputStream in, String sheetName,
                                   List<Earliersettlement> resultList, ServletOutputStream out) throws Exception {
