@@ -1,5 +1,6 @@
 package com.zr.jiuyitobelent.mapper;
 
+import com.zr.earliersettlement.pojo.Riskreserve_Capitalside;
 import com.zr.jiuyitobelent.model.*;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
