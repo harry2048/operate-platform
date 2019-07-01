@@ -106,308 +106,120 @@
             <!--正文内容end-->
         </div>
 <script src="jedate/jedate.min.js"></script>
-<script>
-    jeDate({
-        dateCell:"#applyDateStart1", //目标元素。由于jedate.js封装了一个轻量级的选择器，因此dateCell还允许你传入class、tag这种方式 '#id .class'
-        format:"YYYY-MM-DD", //日期格式
-        minDate:"1900-01-01", //最小日期
-        maxDate:"2099-12-31", //最大日期
-        isinitVal:false, //是否初始化时间
-        isTime:true, //是否开启时间选择
-        isClear:true, //是否显示清空
-        festival:false, //是否显示节日
-        zIndex:999,  //弹出层的层级高度
-        marks:null, //给日期做标注
-        choosefun:function(val) {},  //选中日期后的回调
-        clearfun:function(val) {},   //清除日期后的回调
-        okfun:function(val) {}       //点击确定后的回调
-    });
-    jeDate({
-        dateCell:"#applyDateStart2", //目标元素。由于jedate.js封装了一个轻量级的选择器，因此dateCell还允许你传入class、tag这种方式 '#id .class'
-        format:"YYYY-MM-DD", //日期格式
-        minDate:"1900-01-01", //最小日期
-        maxDate:"2099-12-31", //最大日期
-        isinitVal:false, //是否初始化时间
-        isTime:true, //是否开启时间选择
-        isClear:true, //是否显示清空
-        festival:false, //是否显示节日
-        zIndex:999,  //弹出层的层级高度
-        marks:null, //给日期做标注
-        choosefun:function(val) {},  //选中日期后的回调
-        clearfun:function(val) {},   //清除日期后的回调
-        okfun:function(val) {}       //点击确定后的回调
-    });
-    jeDate({
-        dateCell:"#applyDateStart3", //目标元素。由于jedate.js封装了一个轻量级的选择器，因此dateCell还允许你传入class、tag这种方式 '#id .class'
-        format:"YYYY-MM-DD", //日期格式
-        minDate:"1900-01-01", //最小日期
-        maxDate:"2099-12-31", //最大日期
-        isinitVal:false, //是否初始化时间
-        isTime:true, //是否开启时间选择
-        isClear:true, //是否显示清空
-        festival:false, //是否显示节日
-        zIndex:999,  //弹出层的层级高度
-        marks:null, //给日期做标注
-        choosefun:function(val) {},  //选中日期后的回调
-        clearfun:function(val) {},   //清除日期后的回调
-        okfun:function(val) {}       //点击确定后的回调
-    });
-    jeDate({
-        dateCell:"#applyDateStart4", //目标元素。由于jedate.js封装了一个轻量级的选择器，因此dateCell还允许你传入class、tag这种方式 '#id .class'
-        format:"YYYY-MM-DD", //日期格式
-        minDate:"1900-01-01", //最小日期
-        maxDate:"2099-12-31", //最大日期
-        isinitVal:false, //是否初始化时间
-        isTime:true, //是否开启时间选择
-        isClear:true, //是否显示清空
-        festival:false, //是否显示节日
-        zIndex:999,  //弹出层的层级高度
-        marks:null, //给日期做标注
-        choosefun:function(val) {},  //选中日期后的回调
-        clearfun:function(val) {},   //清除日期后的回调
-        okfun:function(val) {}       //点击确定后的回调
-    });
+    <script src="js/jquery-2.1.1.min.js"></script>
+    <script src="js/common.js"></script>
+    <script>
 
-</script>
+        function _search(_page) {
+            var bizName,allocExamineUserName,fundSource,sourceType,applyDateStart1,applyDateStart2,applyDateStart3,applyDateStart4,pageIndex,pageSize;
+            bizName = $("#bizName").val();
+            allocExamineUserName = $("#allocExamineUserName").val();
+            fundSource = $("#fundSource").val();
+            sourceType = $("#sourceType").val();
+            applyDateStart1 = $("#applyDateStart1").val();
+            applyDateStart2 = $("#applyDateStart2").val();
+            applyDateStart3 = $("#applyDateStart3").val();
+            applyDateStart4 = $("#applyDateStart4").val();
+            if(_page!=""){
+                var tmp={
+                    "bizName":bizName,
+                    "allocExamineUserName":allocExamineUserName,
+                    "fundSource":fundSource,
+                    "sourceType":sourceType,
+                    "applyDateStart1":applyDateStart1,
+                    "applyDateStart2":applyDateStart2,
+                    "applyDateStart3":applyDateStart3,
+                    "applyDateStart4":applyDateStart4,
+                    "pageIndex":_page,
+                    "pageSize":1
+                };
+            }else{
+                var tmp={
+                    "bizName":bizName,
+                    "allocExamineUserName":allocExamineUserName,
+                    "fundSource":fundSource,
+                    "sourceType":sourceType,
+                    "applyDateStart1":applyDateStart1,
+                    "applyDateStart2":applyDateStart2,
+                    "applyDateStart3":applyDateStart3,
+                    "applyDateStart4":applyDateStart4,
+                    "pageIndex":0,
+                    "pageSize":1
+                };
+            }
 
-<script>
-     $(function(){
 
-    	 var dt = $("#lendingList").dataTable({
-	         "sDom":'<"top"<"clear">>rt<"bottom"ilp<"clear">>', 
-	         bProcessing:true,
-	         pageLength: 10,
-	         searching: false, // 禁用dataTables自带的查询框
-	         ordering: false, // 禁用排序
-	         ajax: {
-	             type: "POST",
-	             url: "/hd/loan/getHDExaminationExportData",
-	             data:function(d) {
-	           	  d.bussinessCustomerName = $("#bizName").val();
-                  d.allocExamineUserName = $("#allocExamineUserName").val();
-                  d.fundSource = $("#fundSource").val();
-	           	  d.sourceType = $("#sourceType").val();
-	           	  d.importTimeStart = $("#applyDateStart1").val();
-                  d.importTimeEnd = $("#applyDateStart2").val();
-                  d.lendingDateStart = $("#applyDateStart3").val();
-                  d.lendingDateEnd = $("#applyDateStart4").val();
-	             }
-	         },
-	         columns: [
-                 {data: "sourceType",render:function(data,type,row){
-                        if(data == '1'){
-                            return "教育";
+            $.ajax({
+                type: 'POST',
+                url: 'http://localhost:8010/pikou/queryByPage',
+                dataType: 'JSON',
+                data: JSON.stringify(tmp),
+                contentType: "application/json;charset=utf-8",
+                success: function (res) {
+                    _list = res.data.dataList;
+                    var _html = "";
+                    if(res.success){
+                        $("#bizList_info").html("当前是第"+res.data.pageIndex+"页，共"+res.data.totalPage+"页")
+                        if(_list.length>0){
+                            page(2,1);
                         }
-                        if(data == '2'){
-                            return "租房";
+                        for(var i = 0;i<_list.length;i++){
+                            _html+="<tr>"+
+                                "<td>"+_list[i].statusName+"</td>"+
+                                "<td>"+_list[i].approvalChannel+"</td>"+
+                                "<td>"+_list[i].isApprovalName+"</td>"+
+                                "<td>"+_list[i].loanContractNum+"</td>"+
+                                "<td>"+_list[i].customerName+"</td>"+
+                                "<td>"+_list[i].idCode+"</td>"+
+                                "<td>"+_list[i].deductible+"</td>"+
+                                "<td>"+_list[i].reimbursementAccountOpeningBank+"</td>"+
+                                "<td>"+_list[i].paymentAccount+"</td>"+
+                                "<td>"+_list[i].deductionResults+"</td>"+
+                                "<td>"+_list[i].createName+"</td>"+
+                                "<td>"+_list[i].updateName+"</td>";
+                            _html+="<tr/>";
                         }
-                        return data;
-                  }},
-	             {data:"id"},
-	             {data:"allocExamineUserName"},
-	             {data:"status",render:function(data,type,row){
-                         if(0==data){
-                             return "待审批";
-                         }else if(-3000==data){
-                             return "订单取消";
-                         }else if(9000==data){
-                             return "订单完结";
-                         }else if(7000==data){
-                             return "已放款";
-                         }else if(5000==data){
-                             return "审批通过";
-                         }else if(6000==data){
-                             return "已支付";
-                         }else if(-1000==data){
-                             return "审批拒绝";
-                         }else if(2000==data){
-                             return "打回修改";
-                         }else if(1000==data){
-                             return "互动初审通过";
-                         }else if(4500==data){
-                             return "互动审批通过";
-                         }
-                         else if(8000==data){
-                             return "提前还款";
-                         }else if(7500==data){
-                             return "退货处理中";
-                         }else if(8500==data){
-                             return "退货成功";
-                         }else if(-7500==data){
-                             return "退货失败";
-                         }else if(-9000==data){
-                             return "未提交";
-                         }else if(9500==data){
-                             return "已退货";
-                         }
-                         return data;
-                     }},
-	             {data:"importTime"},
-	             {data:"fistExamineDate"},
-	             {data: "secondExamineDate"},
-                 {data: "examineTime"},
-                 {data: "bussinessCustomerName"},
-                 {data: "bussinessCustomerName"},
-                 {data: "idName"},
-	             {data: "idNo"},
-                 {data: "phoneNo"},
-                 {data: "lendingDate"},
-                 {data: "applyAmount"},
-                 {data: "balanceAmount"},
-                 {data: "monthCont"},
-                 {data: "applyDuration"},
-                 {data: "fundSource", render:function(data,type,row){
-                         if(1==data){
-                             return "北银";
-                         }else if(2==data){
-                             return "晋城";
-                         }else if(3==data){
-                             return "海尔";
-                         }else if(4==data){
-                             return "安信小贷";
-                         }else if(5==data){
-                             return "百度";
-                         }else if(6==data){
-                             return "闪银3c";
-                         }else if(7==data){
-                             return "海尔租房";
-                         }else if(11==data){
-                             return "贷鱼教育";
-                         }else if(13==data){
-                             return "沃付分期";
-                         }else if(14==data){
-                             return "91金融";
-                         }else if(100==data){
-                             return "Mini循环贷";
-                         }else if(15==data){
-                             return "湖北消费金融";
-                         }else if(16==data){
-                             return "91旺财";
-                         }else if(17==data){
-                             return "晋商教育";
-                         }else if(18==data){
-                             return "晋商租房";
-                         }else if(19==data){
-                             return "91旺财-租房";
-                         }
-                         return data;
-                     }},
-                 {data: "overDueAmt"},
-                 {data: "overDueDays"}
-	         ]
-	     });
+                        $("#lendingList tbody").html(_html);
 
-         $("#lendingList").on("click","button[name='overdure_phone']",function(e) {
-             var $current = $(e.currentTarget);
-             var loanContNo = $current.data("id");
-             var id=$current.data("id");
-             var teleNum=$current.data("phone");
-             call(id,teleNum);
-         });
-
-    	 $("#btn-search").click(function(e){
-             dt.api().draw();
-         });
-
-         //给行绑定双击事件
-         $('#lendingList tbody').on('dblclick', 'tr', function () {
-             var item = dt.api().row(this).data();
-             var applyId = item.loanNo;
-             var url = '/hd/lending/getRepayPlan/'+applyId;
-             layer.open({
-                 type: 2,
-                 area: ['1280px', '600px'],
-                 title: '贷款情况详情页面',
-                 shadeClose: true, //点击遮罩关闭
-                 content: url
-             });
-         });
-    });
-
-     function exportResult(){
-         layer.confirm("确定要导出结果到excel中吗？", {
-             btn: ['确认','取消'], //按钮
-             yes:function (index, layero) {
-                 var bussinessCustomerName = $("#bizName").val();
-                 var allocExamineUserName = $("#allocExamineUserName").val();
-                 var fundSource = $("#fundSource").val();
-                 var sourceType = $("#sourceType").val();
-                 var importTimeStart = $("#applyDateStart1").val();
-                 var importTimeEnd = $("#applyDateStart2").val();
-                 var lendingDateStart = $("#applyDateStart3").val();
-                 var lendingDateEnd = $("#applyDateStart4").val();
-
-                 var url="/hd/loan/hDExaminationExport/?bussinessCustomerName="+bussinessCustomerName+"&allocExamineUserName="+allocExamineUserName+"&fundSource="+fundSource+"&sourceType="+sourceType+"&importTimeStart="+importTimeStart+"&importTimeEnd="+importTimeEnd+"&lendingDateStart="+lendingDateStart+"&lendingDateEnd="+lendingDateEnd;
-                 window.open(url);
-                 layer.close(index);
-             },
-             cancel:function(index){
-                 //按钮【按钮二】的回调
-                 layer.close(index);
-             },
-         });
-     }
-
-     function call(id,teleNum){
-         var loginName = '';
-         var password = '';
-         var loginType = 'gateway';
-         var applyNo = id;
-         var creditId = '';
-         var url='/edb_bar/phoneBar/phonebar.html?loginName=' + loginName + '&password=' + password + '&loginType=' + loginType + '&teleNum=' + teleNum + '&aid=' + applyNo + '&cid=' + creditId;
-         layer.open({
-             type: 2,
-             area: ['500px', '250px'],
-             title: '软电话条',
-             shadeClose: true, //点击遮罩关闭
-             content: url
-         });
-     }
-</script>
-
-
-<script>
-    //分页方法
-    function page(n,s){
-        $("#pageNo").val(n);
-        $("#pageSize").val(s);
-        $("#searchForm").submit();
-        return false;
-    }
-
-
-</script>
-
-<script>
-    var time = 100000;
-    var interval; //调度器对象。
-    function run(){
-        interval = setInterval("fun()",time);
-    }
-    function fun(){
-        $(".hui").css("display","none");
-    }
-    $(function(){
-//        $("#lendingList").delegate('tr td button','click',function(){
-//            $(this).html("加载中...").attr("disabled","disabled");
-//            $(".hui").css("display","block");
-//            run();
-//        })
-    })
-</script>
-
-<script>
-    $(document).ready(function(e) {
-        var counter = 0;
-        if (window.history && window.history.pushState) {
-            $(window).on('popstate', function () {
-                window.history.pushState('forward', null, '#');
-                window.history.forward(1);
-            });
+                    }else{
+                        console.log(res.errorMessage);
+                    }
+                }
+            })
         }
-        window.history.pushState('forward', null, '#'); //在IE中必须得有这两行
-        window.history.forward(1);
-    });
-</script>
+        _search()
+
+        //分页点击事件
+        $(".common_page").on("click","a",function(){
+            console.log($(this));
+            $(this).addClass("active");
+            $(this).siblings().removeClass("active");
+            var _index = parseInt($(this).attr("page"));
+            if(_index==1){
+                $(".prev_page").attr("disabled","disabled");
+            }else{
+                $(".prev_page").attr("page",_index-1);
+                $(".last_page").attr("page",_index+1);
+            }
+            var _page = $(this).attr("page");
+            _search(_page)
+        })
+
+        //分页点击事件
+        $(".btn-search").on("click","a",function(){
+            console.log($(this));
+            $(this).addClass("active");
+            $(this).siblings().removeClass("active");
+            var _index = parseInt($(this).attr("page"));
+            if(_index==1){
+                $(".prev_page").attr("disabled","disabled");
+            }else{
+                $(".prev_page").attr("page",_index-1);
+                $(".last_page").attr("page",_index+1);
+            }
+            var _page = $(this).attr("page");
+            _search(_page)
+        })
+    </script>
 
 </div>

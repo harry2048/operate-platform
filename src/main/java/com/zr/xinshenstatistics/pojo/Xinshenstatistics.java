@@ -11,15 +11,16 @@ import java.util.Date;
 public class Xinshenstatistics {
 
     private Integer id;//
-    private String scopeOfBusiness;//'业务范围'
+    private String auditors;//'审核人员'
+    private String channel;//'渠道'
+    private Integer managemen;//'资方'
+    private Integer scopeOfBusiness;//'业务范围'
     private String orderNum;//'订单编号'
-    private String Auditors;//'审核人员'
     private Integer status;//'状态'
     private Date applyTime;//'申请时间'
     private Date chuShenTime;//'初审时间'
     private Date fuShenTime;//'复审时间'
     private Date approvalTime;//'审批历时'
-    private Integer channel;//'渠道'
     private String storeName;//'门店名称
     private String customerName;//'客户姓名'
     private String idCode;//'身份证号码'
@@ -29,7 +30,6 @@ public class Xinshenstatistics {
     private Double loanBalance;//'贷款余额'
     private Double periodicContributions;//'期供款'
     private Integer applicationDeadline;//'申请期限'
-    private String managemen;//'资方'
     private Double overdueAmount;//'逾期金额'
     private Integer overdueNum;//'逾期天数'
     private Date createTime;//'创建时间'

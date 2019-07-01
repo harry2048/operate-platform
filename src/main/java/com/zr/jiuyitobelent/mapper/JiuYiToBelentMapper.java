@@ -22,6 +22,9 @@ public interface JiuYiToBelentMapper {
     List<JiuYiToBelent> queryPage(JiuYiToBelentSelectVo jiuYiToBelentSelectVo);
 
     List<JiuYiToBelent> queryByJiuYiToBelentSelectVo(JiuYiToBelentSelectVo jiuYiToBelentSelectVo);
+
+    @Select("select * from riskreserve_capitalside")
+    List<Riskreserve_Capitalside> queryAll();
    /* //添加8张表
     @Insert("insert into mechant (merchantName,merchantLegalPerson,merchantAddress,merchantDesc,foreignPhone,phone,createTime,createName,updateTime,updateName) value (#{merchantName},#{merchantLegalPerson},#{merchantAddress},#{merchantDesc},#{foreignPhone},#{phone},#{createTime},#{createName},#{updateTime},#{updateName})")
     int addMechant(Mechant mechant);

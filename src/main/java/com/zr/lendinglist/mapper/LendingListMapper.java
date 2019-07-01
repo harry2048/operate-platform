@@ -1,5 +1,6 @@
 package com.zr.lendinglist.mapper;
 
+import com.zr.lendinglist.model.FundingClass;
 import com.zr.lendinglist.model.LendingList;
 import com.zr.lendinglist.model.LendingListSelectVo;
 import org.apache.ibatis.annotations.Mapper;
@@ -20,4 +21,7 @@ public interface LendingListMapper {
     int queryCount(LendingListSelectVo lendingListSelectVo);
 
     List<LendingList> queryBySelectVo(LendingListSelectVo lendingListSelectVo);
+
+    @Select("select * from riskreserve_capitalside")
+    List<FundingClass> queryAll();
 }

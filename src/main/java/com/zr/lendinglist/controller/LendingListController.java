@@ -1,6 +1,7 @@
 package com.zr.lendinglist.controller;
 
 
+import com.zr.lendinglist.model.FundingClass;
 import com.zr.lendinglist.model.LendingList;
 import com.zr.lendinglist.model.LendingListSelectVo;
 import com.zr.lendinglist.service.LendingListService;
@@ -47,6 +48,12 @@ public class LendingListController {
     }
 
 
+    @RequestMapping("queryAll")
+    public ResultVO queryAll(){
+        return lendingListService.queryAll();
+    }
+
+
     /**
      * 导出
      * @param resp
@@ -85,7 +92,7 @@ public class LendingListController {
         lendingListSelectVo.setManagementLoanAmount(managementLoanAmount);
         lendingListSelectVo.setDaiyuLoanAmount(daiyuLoanAmount);
         lendingListSelectVo.setLoanStatus(loanStatus);
-        lendingListSelectVo.setGraceperiod(graceperiod);
+        lendingListSelectVo.setGraceperiod(graceperiod);                         
         lendingListSelectVo.setApplyTime(applyTime);
         lendingListSelectVo.setExamineTime(examineTime);
         lendingListSelectVo.setLendingTime(lendingTime);

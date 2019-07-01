@@ -16,5 +16,5 @@ public interface XinshenstatisticsService {
 
     ResultVo exportExcel(HttpServletResponse resp, XinshenstatisticsVO xinshenstatisticsVO)throws Exception;
 
-    ResultVo queryById(Integer id);
+    ResultVo queryAll();
 }

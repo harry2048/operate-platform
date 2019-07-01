@@ -4,7 +4,6 @@ import com.querydsl.core.types.dsl.Expressions;
 import com.querydsl.core.types.dsl.BooleanExpression;
 import com.zr.daifangkuan.entity.DaiFangKuanEntity;
 import com.zr.daifangkuan.entity.DaiFangKuanSelectVo;
-import com.zr.daifangkuan.entity.QDaiFangKuanEntity;
 import com.zr.daifangkuan.mapper.DaiFangKuanMapper;
 import com.zr.daifangkuan.service.DaiFangKuanService;
 import com.zr.util.*;
@@ -42,14 +41,15 @@ public class DaiFangKuanServiceImpl implements DaiFangKuanService {
      */
     @Override
     public ResultVO exportDFK(HttpServletResponse response, DaiFangKuanSelectVo daiFangKuanSelectVo) {
+        daiFangKuanSelectVo.setStatus(DFKStatusEnum.getStatusValue(daiFangKuanSelectVo.getStatusName()));
         //从数据库中查询将要导出的数据
-        List<DaiFangKuanEntity> daiFangKuanEntityList = daiFangKuanMapper.findAllByStatusAndNameAndPhoneAndMerchant(DFKStatusEnum.getStatusValue(daiFangKuanSelectVo.getStatusName()),daiFangKuanSelectVo.getName(), daiFangKuanSelectVo.getPhone(), daiFangKuanSelectVo.getMerchant());
+        List<DaiFangKuanEntity> daiFangKuanEntityList = daiFangKuanMapper.findAll(daiFangKuanSelectVo);
         for(DaiFangKuanEntity daiFangKuanEntity : daiFangKuanEntityList){
             daiFangKuanEntity.setStatusName(DFKStatusEnum.getStatusName(daiFangKuanEntity.getStatus()));
         }
         //限制，默认只允许导出10000条
-        List<DaiFangKuanEntity> count = daiFangKuanMapper.findAll();
-        if(count.size() > 10000){
+        Integer count = daiFangKuanMapper.queryCount();
+        if(count > 10000){
             return ResultVOBuilder.error("500","导出数据已经超出上限");
         }
         //或取响应输出流
@@ -76,31 +76,15 @@ public class DaiFangKuanServiceImpl implements DaiFangKuanService {
     @Override
     public ResultVO<AllRecords> queryPage(DaiFangKuanSelectVo daiFangKuanSelectVo) {
         //查询数据
-        BooleanExpression booleanExpression = Expressions.asBoolean(true).isTrue();
-        if(!StringUtils.isEmpty(daiFangKuanSelectVo.getStatusName())){
-            booleanExpression = booleanExpression.and(QDaiFangKuanEntity.daiFangKuanEntity.status.eq(DFKStatusEnum.getStatusValue(daiFangKuanSelectVo.getName())));
-        }
-        if(!StringUtils.isEmpty(daiFangKuanSelectVo.getName())){
-            booleanExpression = booleanExpression.and(QDaiFangKuanEntity.daiFangKuanEntity.name.eq(daiFangKuanSelectVo.getName()));
-        }
-        if(daiFangKuanSelectVo.getPhone() != null){
-            booleanExpression = booleanExpression.and(QDaiFangKuanEntity.daiFangKuanEntity.phone.eq(daiFangKuanSelectVo.getPhone()));
-        }
-        if(!StringUtils.isEmpty(daiFangKuanSelectVo.getMerchant())){
-            booleanExpression = booleanExpression.and(QDaiFangKuanEntity.daiFangKuanEntity.name.eq(daiFangKuanSelectVo.getMerchant()));
-        }
-        Page<DaiFangKuanEntity> daiFangKuanEntityList = daiFangKuanMapper.findAll(booleanExpression,new PageRequest(daiFangKuanSelectVo.getOffset(),daiFangKuanSelectVo.getPageSize(),new Sort(Sort.Direction.DESC,"id")));
-        for(DaiFangKuanEntity daiFangKuanEntity : daiFangKuanEntityList){
-            daiFangKuanEntity.setStatusName(DFKStatusEnum.getStatusName(daiFangKuanEntity.getStatus()));
-        }
+        List<DaiFangKuanEntity> daiFangKuanEntityList = daiFangKuanMapper.findAll(daiFangKuanSelectVo);
         //查询数量
-        List<DaiFangKuanEntity> size = daiFangKuanMapper.findAll();
+        Integer count = daiFangKuanMapper.queryCount();
         AllRecords allRecords = new AllRecords();
         allRecords.setPageIndex(daiFangKuanSelectVo.getPageIndex());
         allRecords.setPageSize(daiFangKuanSelectVo.getPageSize());
-        allRecords.setTotalNumber(size.size());
-        allRecords.resetTotalNumber(size.size());
-        allRecords.setDataList(daiFangKuanEntityList.getContent());
+        allRecords.setTotalNumber(count);
+        allRecords.resetTotalNumber(count);
+        allRecords.setDataList(daiFangKuanEntityList);
         return ResultVOBuilder.success(allRecords);
     }
 
