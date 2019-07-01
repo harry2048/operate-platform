@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>贷款情况查询页面</title>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/base.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/layer.css" rel="stylesheet">
+    <link href="css/pagination.css" rel="stylesheet">
+    <link href="css/bootstrap-datetimepicker.css" rel="stylesheet">
+    <link href="css/jedate.css" rel="stylesheet">
+    <style>
+        #loanDetail{
+            background-color: #fff;
+            margin-bottom: 15px;
+        }
+        #loanDetail p{
+            padding-left:0 ;
+            padding-right: 0;
+            margin: 6px 0 ;
+        }
+        #loanDetail .wd_60{
+            display: inline-block;
+            width: 102px;
+            text-align: right;
+            font-size: 12px;
+            font-family: "微软雅黑";
+        }
+        #loanDetail .c13 .wd_60{
+            float: left;
+            margin-top: 5px;
+        }
+        #loanDetail .c13 input{
+            float: left;
+            font-size: 12px;
+            font-family: "微软雅黑";
+        }
+        #loanDetail .col-lg-3 ,#loanDetail .c13{
+            margin:5px 0;
+            padding-left:5px;
+            padding-right: 5px;
+        }
+
+        #loanDetail select option{
+            font-size: 12px;
+            font-family: "微软雅黑";
+        }
+        .search_btn {
+            font-size: 12px;
+            background-color: #09C;
+            padding: 5px 16px;
+            margin-top: 3px;
+            margin-bottom: 5px;
+        }
+        .ta_r{
+            text-align: right;
+        }
+        .mr_25{
+            margin-right: 25px;
+        }
+        .cardSelect{
+            border: 1px solid #ddd;
+            height: 25px;
+            width: 150px;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+<div class="content1" href="">
+    <div class="hui"><img src="images/ajax-loader.gif"></div>
+    <div class="content">
+        <!--面包屑导航start-->
+        <ol class="breadcrumb">
+            <li class="active">贷款情况查询</li>
+        </ol>
+        <div id="loanDetail" class="col-lg-12 col-md-12 col-sm-12">
+            <div class="col-lg-3 col-md-3 col-sm-3"><span class="wd_60">身份证号&nbsp;&nbsp;</span><input type="text" id="idNo"></div>
+            <div class="col-lg-3 col-md-3 col-sm-3"><span class="wd_60">姓名&nbsp;&nbsp;</span><input type="text" id="idName"></div>
+            <div class="col-lg-3 col-md-3 col-sm-3"><span class="wd_60">联系电话&nbsp;&nbsp;</span><input type="text" id="phoneNo"></div>
+            <div class="col-lg-3 col-md-3 col-sm-3"><span class="wd_60">商户&nbsp;&nbsp;</span><input type="text" id="bcName"></div>
+
+            <div class="col-lg-3 col-md-3 col-sm-3"><span class="wd_60">资方&nbsp;&nbsp;</span><select id="fundSource">
+
+            </select></div>
+
+            <div class="col-lg-3 col-md-3 col-sm-3"><span class="wd_60">贷鱼贷款状态&nbsp;&nbsp;</span><select id="hdStatus">
+            </select></div>
+
+            <div class="col-lg-3 col-md-3 col-sm-3"><span class="wd_60">推送状态&nbsp;&nbsp;</span><select id="pushStatus">
+            </select></div>
+
+            <div class="col-lg-3 col-md-3 col-sm-3"><span class="wd_60">进件渠道&nbsp;&nbsp;</span><select id="sourceType">
+            </select></div>
+
+            <div class="col-lg-3 col-md-3 col-sm-3 cl3"><span class="wd_60">进件时间(开始)&nbsp;&nbsp;</span><input type="text" id="applyDateStart1" placeholder="请选择时间" readonly=""></div>
+            <div class="col-lg-3 col-md-3 col-sm-3 c13"><span class="wd_60">进件时间(结束)&nbsp;&nbsp;</span><input type="text" id="applyDateStart2" placeholder="请选择时间" readonly=""></div>
+            <div class="col-lg-3 col-md-3 col-sm-3 c13"><span class="wd_60">信审日期(开始)&nbsp;&nbsp;</span><input type="text" id="applyDateStart3" value="2019-05-22 00:00:00" placeholder="请选择时间" readonly=""></div>
+            <div class="col-lg-3 col-md-3 col-sm-3 c13"><span class="wd_60">信审日期(结束)&nbsp;&nbsp;</span><input type="text" id="applyDateStart4" value="2019-05-22 23:59:59" placeholder="请选择时间" readonly=""></div>
+            <div class="col-lg-3 col-md-3 col-sm-3"><span class="wd_60">资方申请编号&nbsp;&nbsp;</span><input type="text" id="bobApplyCode"></div>
+            <div class="col-lg-3 col-md-3 col-sm-3"><span class="wd_60">签章状态&nbsp;&nbsp;</span><select id="siginStatus">
+
+            </select></div>
+
+            <div class="col-lg-6 col-md-6 col-sm-6"><button class="btn btn-primary btn-sm search_btn" type="button" id="btn-search">查询</button>&nbsp;&nbsp;
+
+
+                <div class="clear"></div>
+            </div>
+            <div class="table-responsive">
+
+                <div id="reviewList_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer"><div class="top"><div class="clear"></div></div><div id="reviewList_processing" class="dataTables_processing panel panel-default" style="display: none;">处理中...</div><div class="dataTables_scroll"><div class="dataTables_scrollHead" style="overflow: hidden; position: relative; border: 0px; width: 100%;"><div class="dataTables_scrollHeadInner" style="box-sizing: content-box; width: 1654px; padding-right: 0px;"><table  id="lendingList" style="width: 1654px; margin-left: 0px;" class="table table-bordered table-striped table-hover bg_wt dataTable no-footer" role="grid"><thead style="border-bottom: 0;background-color: #fff;">
+                <tr role="row"><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 111px;">商户</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 111px;">姓名</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 139px;">身份证</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 111px;">金额</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 111px;">进件时间</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 111px;">期限</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 111px;">审批时间</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 111px;">资方申请编号</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 111px;">贷鱼状态</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 111px;">电话</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 111px;">推送状态</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 111px;">签章状态</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 111px;">尚德合同推送状态</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 112px;">操作</th></tr>
+                    </thead></table></div></div><div class="dataTables_scrollBody" style="position: relative; overflow: auto; width: 100%;"><table id="reviewList" style="width: 100%;" class="table table-bordered table-striped table-hover bg_wt dataTable no-footer" role="grid" aria-describedby="reviewList_info">
+            <thead style="border-bottom: 0;background-color: #fff;">
+                <tr role="row" style="height: 0px;"><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 111px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;"><div class="dataTables_sizing" style="height:0;overflow:hidden;">商户</div></th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 111px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;"><div class="dataTables_sizing" style="height:0;overflow:hidden;">姓名</div></th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 139px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;"><div class="dataTables_sizing" style="height:0;overflow:hidden;">身份证</div></th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 111px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;"><div class="dataTables_sizing" style="height:0;overflow:hidden;">金额</div></th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 111px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;"><div class="dataTables_sizing" style="height:0;overflow:hidden;">进件时间</div></th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 111px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;"><div class="dataTables_sizing" style="height:0;overflow:hidden;">期限</div></th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 111px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;"><div class="dataTables_sizing" style="height:0;overflow:hidden;">审批时间</div></th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 111px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;"><div class="dataTables_sizing" style="height:0;overflow:hidden;">资方申请编号</div></th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 111px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;"><div class="dataTables_sizing" style="height:0;overflow:hidden;">贷鱼状态</div></th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 111px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;"><div class="dataTables_sizing" style="height:0;overflow:hidden;">电话</div></th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 111px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;"><div class="dataTables_sizing" style="height:0;overflow:hidden;">推送状态</div></th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 111px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;"><div class="dataTables_sizing" style="height:0;overflow:hidden;">签章状态</div></th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 111px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;"><div class="dataTables_sizing" style="height:0;overflow:hidden;">尚德合同推送状态</div></th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 112px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;"><div class="dataTables_sizing" style="height:0;overflow:hidden;">操作</div></th></tr>
+                </thead>
+                    <tbody>
+                </table>
+                </div>
+                    </tbody>
+                    <div class="bottom">
+                        <div class="dataTables_info" id="bizList_info" role="status" aria-live="polite">
+
+                        </div>
+                        <div class="common_page"></div>
+
+                        <div class="clear"></div>
+                    </div>
+                    <!--<tbody><tr role="row" class="odd"><td>易第优（北京）科技股份有限公司</td><td>刘涛</td><td>152722199704261543</td><td>20800.00</td><td>2019-05-22 17:21:24</td><td>18</td><td>2019-05-22 14:32:32</td><td></td><td>待审批</td><td>15849174065</td><td></td><td>未签章</td><td>未推送</td><td><button type="button" data-id="6536849061747622913" class="btn btn-primary btn-sm" name="cancelOrder">订单取消</button>&nbsp;&nbsp;&nbsp;&nbsp;</td></tr><tr role="row" class="even"><td>南昌市沃尔得英语培训学校</td><td>刘芮辰</td><td>342201199801120423</td><td>8000.00</td><td>2019-05-22 17:20:59</td><td>12</td><td>2019-05-22 17:28:14</td><td>13448502</td><td>贷鱼审批通过</td><td>18166049600</td><td>推送成功</td><td>未签章</td><td>未推送</td><td><button type="button" data-id="6536882744729797633" class="btn btn-primary btn-sm" name="cancelOrder">订单取消</button>&nbsp;&nbsp;&nbsp;&nbsp;<button type="button" data-id="6536882744729797633" data-source="17" data-cust-id="6536879295773343745" data-cust-name="刘芮辰" class="btn btn-primary btn-sm mt_3" name="modify_card">变更银行卡</button></td></tr><tr role="row" class="odd"><td>慧恩酒店设计（深圳）有限公司</td><td>温美欣</td><td>445381199511092122</td><td>19800.00</td><td>2019-05-22 17:08:25</td><td>24</td><td>2019-05-22 17:27:34</td><td></td><td>打回修改</td><td>13226734662</td><td></td><td>未签章</td><td>未推送</td><td><button type="button" data-id="6536890335788794881" class="btn btn-primary btn-sm" name="cancelOrder">订单取消</button>&nbsp;&nbsp;&nbsp;&nbsp;<button type="button" data-id="6536890335788794881" data-source="17" data-cust-id="6536884857783523329" data-cust-name="温美欣" class="btn btn-primary btn-sm mt_3" name="modify_card">变更银行卡</button></td></tr><tr role="row" class="even"><td>南昌市沃尔得英语培训学校</td><td>赵诗昱</td><td>362301199808090027</td><td>8000.00</td><td>2019-05-22 17:07:58</td><td>12</td><td>2019-05-22 17:12:26</td><td>13448191</td><td>审批通过</td><td>18970358829</td><td>推送成功</td><td>已签章</td><td>未推送</td><td><button type="button" data-id="6536883542730736641" class="btn btn-primary btn-sm" name="signButton">合同重新签订</button>&nbsp;&nbsp;&nbsp;&nbsp;<button type="button" data-id="6536883542730736641" data-source="17" data-cust-id="6536879457063449601" data-cust-name="赵诗昱" class="btn btn-primary btn-sm mt_3" name="modify_card">变更银行卡</button></td></tr><tr role="row" class="odd"><td>深圳市神州通联科技有限公司</td><td>张林岛</td><td>460027199410088532</td><td>21800.00</td><td>2019-05-22 17:01:54</td><td>24</td><td>2019-05-22 17:16:43</td><td>13448300</td><td>审批通过</td><td>13698914585</td><td>推送成功</td><td>未签章</td><td>未推送</td><td><button type="button" data-id="6536888696079123457" class="btn btn-primary btn-sm" name="cancelOrder">订单取消</button>&nbsp;&nbsp;&nbsp;&nbsp;<button type="button" data-id="6536888696079123457" data-source="17" data-cust-id="6536879785042535425" data-cust-name="张林岛" class="btn btn-primary btn-sm mt_3" name="modify_card">变更银行卡</button></td></tr><tr role="row" class="even"><td>广东明世在线教育科技有限公司</td><td>杨志</td><td>430723200009235017</td><td>10730.00</td><td>2019-05-22 17:00:32</td><td>12</td><td>2019-05-22 17:22:57</td><td></td><td>打回修改</td><td>15080656900</td><td></td><td>未签章</td><td>未推送</td><td><button type="button" data-id="6536888352874955777" class="btn btn-primary btn-sm" name="cancelOrder">订单取消</button>&nbsp;&nbsp;&nbsp;&nbsp;<button type="button" data-id="6536888352874955777" data-source="17" data-cust-id="6536883595632447489" data-cust-name="杨志" class="btn btn-primary btn-sm mt_3" name="modify_card">变更银行卡</button></td></tr><tr role="row" class="odd"><td>广东明世在线教育科技有限公司</td><td>陶旺</td><td>500233199907281398</td><td>4590.00</td><td>2019-05-22 16:39:10</td><td>12</td><td>2019-05-22 16:46:32</td><td>13447701</td><td>审批通过</td><td>17602363787</td><td>推送成功</td><td>未签章</td><td>未推送</td><td><button type="button" data-id="6536880449521714177" class="btn btn-primary btn-sm" name="cancelOrder">订单取消</button>&nbsp;&nbsp;&nbsp;&nbsp;<button type="button" data-id="6536880449521714177" data-source="17" data-cust-id="6536875632214027265" data-cust-name="陶旺" class="btn btn-primary btn-sm mt_3" name="modify_card">变更银行卡</button></td></tr><tr role="row" class="even"><td>成都沃尔德教育咨询有限公司-富力校区</td><td>谢思宇</td><td>21138119940928122X</td><td>26800.00</td><td>2019-05-22 16:38:13</td><td>24</td><td>2019-05-22 16:38:14</td><td></td><td>审批拒绝</td><td>18280175534</td><td></td><td>未签章</td><td>未推送</td><td><button type="button" data-id="6536882736414589953" class="btn btn-primary btn-sm" name="cancelOrder">订单取消</button>&nbsp;&nbsp;&nbsp;&nbsp;</td></tr><tr role="row" class="odd"><td>广东明世在线教育科技有限公司</td><td>李文婷</td><td>440882199207312329</td><td>4800.00</td><td>2019-05-22 16:30:36</td><td>12</td><td>2019-05-22 17:15:04</td><td>13447888</td><td>打回修改</td><td>13160880649</td><td>推送成功</td><td>已签章</td><td>未推送</td><td><button type="button" data-id="6536878147459089409" data-source="17" data-cust-id="6536874008269825025" data-cust-name="李文婷" class="btn btn-primary btn-sm mt_3" name="modify_card">变更银行卡</button></td></tr><tr role="row" class="even"><td>广州易唐科技有限公司</td><td>磨承鑫</td><td>452731199610045716</td><td>21800.00</td><td>2019-05-22 16:22:38</td><td>24</td><td>2019-05-22 16:30:49</td><td>13447347</td><td>已放款</td><td>17396714867</td><td>推送成功</td><td>已签章</td><td>未推送</td><td><button type="button" data-id="6536878811973157889" data-source="17" data-cust-id="6536868917736229889" data-cust-name="磨承鑫" class="btn btn-primary btn-sm mt_3" name="modify_card">变更银行卡</button></td></tr></tbody></table></div></div><div class="bottom"><div class="dataTables_info" id="reviewList_info" role="status" aria-live="polite">显示第 1 - 10 条记录，共46 条</div><div class="dataTables_length" id="reviewList_length"><label> <select name="reviewList_length" aria-controls="reviewList" class="form-control input-sm"><option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select> </label></div><div class="dataTables_paginate paging_full_numbers" id="reviewList_paginate"><ul class="pagination"><li class="paginate_button first disabled" id="reviewList_first"><a href="javascript:void(0);" aria-controls="reviewList" data-dt-idx="0" tabindex="0">首页</a></li><li class="paginate_button previous disabled" id="reviewList_previous"><a href="javascript:void(0);" aria-controls="reviewList" data-dt-idx="1" tabindex="0">上页</a></li><li class="paginate_button active"><a href="javascript:void(0);" aria-controls="reviewList" data-dt-idx="2" tabindex="0">1</a></li><li class="paginate_button "><a href="javascript:void(0);" aria-controls="reviewList" data-dt-idx="3" tabindex="0">2</a></li><li class="paginate_button "><a href="javascript:void(0);" aria-controls="reviewList" data-dt-idx="4" tabindex="0">3</a></li><li class="paginate_button "><a href="javascript:void(0);" aria-controls="reviewList" data-dt-idx="5" tabindex="0">4</a></li><li class="paginate_button "><a href="javascript:void(0);" aria-controls="reviewList" data-dt-idx="6" tabindex="0">5</a></li><li class="paginate_button next" id="reviewList_next"><a href="javascript:void(0);" aria-controls="reviewList" data-dt-idx="7" tabindex="0">下页</a></li><li class="paginate_button last" id="reviewList_last"><a href="javascript:void(0);" aria-controls="reviewList" data-dt-idx="8" tabindex="0">末页</a></li></ul></div><div class="clear"></div></div></div>-->
+
+                </div>
+                </div>
+            </div>
+        </div>
+        <!--正文内容end-->
+    </div>
+</div>
+</div>
+</body>
+
+<script src="js/jquery-2.1.1.min.js"></script>
+<script src="js/jedate.min.js"></script>
+<script src="js/common.js"></script>
+<script>
+    <!--下拉框~~~~~~贷鱼贷款状态-->
+    $(function(){
+        $.ajax({
+            type: 'POST',
+            url: 'http://localhost:8010/daikuanchaxun/enquiry/enquiryStatus2',
+            dataType: 'JSON',
+            contentType: "application/json;charset=utf-8",
+            success: function (res) {
+                _list = res.data;
+                $.each(_list,function(index,ele){
+
+                    var optionTd = $("<option></option>").attr("value",ele.value).append(ele.label)
+
+                    $("#hdStatus").append(optionTd)
+                })
+            }
+        })
+    })
+
+    <!--下拉框-----推送状态状态-->
+    $(function(){
+        $.ajax({
+            type: 'POST',
+            url: 'http://localhost:8010/daikuanchaxun/enquiry/enquiryStatus',
+            dataType: 'JSON',
+            contentType: "application/json;charset=utf-8",
+            success: function (res) {
+                _list = res.data;
+                $.each(_list,function(index,ele){
+
+                    var optionTd = $("<option></option>").attr("value",ele.value).append(ele.label)
+
+                    $("#pushStatus").append(optionTd)
+                })
+            }
+        })
+    })
+
+    <!--下拉框-----签章状态-->
+    $(function(){
+        $.ajax({
+            type: 'POST',
+            url: 'http://localhost:8010/daikuanchaxun/enquiry/enquiryStatus3',
+            dataType: 'JSON',
+            contentType: "application/json;charset=utf-8",
+            success: function (res) {
+                _list = res.data;
+                $.each(_list,function(index,ele){
+
+                    var optionTd = $("<option></option>").attr("value",ele.value).append(ele.label)
+
+                    $("#siginStatus").append(optionTd)
+                })
+            }
+        })
+    })
+
+</script>
+<script>
+        <!--资方下拉-->
+        $(function(){
+            $.ajax({
+                type: 'POST',
+                url: 'http://localhost:8010/daikuanchaxun/queryAll',
+                dataType: 'JSON',
+                contentType: "application/json;charset=utf-8",
+                success: function (res) {
+                    _list = res.data;
+                    $.each(_list,function(index,ele){
+
+                        var optionTd = $("<option></option>").attr("value",ele.id).append(ele.capitalside)
+
+                        $("#fundSource").append(optionTd)
+                    })
+                }
+            })
+        })
+
+        <!--进件渠道下拉-->
+        $(function(){
+            $.ajax({
+                type: 'POST',
+                url: 'http://localhost:8010/daikuanchaxun/queryAll2',
+                dataType: 'JSON',
+                contentType: "application/json;charset=utf-8",
+                success: function (res) {
+                    _list = res.data;
+                    $.each(_list,function(index,ele){
+
+                        var optionTd = $("<option></option>").attr("value",ele.id).append(ele.maintenanceStaff)
+
+                        $("#sourceType").append(optionTd)
+                    })
+                }
+            })
+        })
+
+
+
+
+    function _search(_page) {
+        var idCode,customerName,contactNumber,merchant,pageIndex,pageSize;
+        idCode = $("#idNo").val();
+        customerName = $("#idName").val();
+        contactNumber = $("#phoneNo").val();
+        merchant = $("#bcName").val();
+        if(_page!=""){
+            var tmp={
+                "idCode":idCode,
+                "customerName":customerName,
+                "contactNumber":contactNumber,
+                "merchant":merchant,
+                "pageIndex":_page,
+                "pageSize":1
+            };
+        }else{
+            var tmp={
+                "idCode":idCode,
+                "customerName":customerName,
+                "contactNumber":contactNumber,
+                "merchant":merchant,
+                "pageIndex":0,
+                "pageSize":1
+            };
+        }
+
+        $.ajax({
+            type: 'POST',
+            url: 'http://localhost:8010/daikuanchaxun/queryPage',
+            dataType: 'JSON',
+            data: JSON.stringify(tmp),
+            contentType: "application/json;charset=utf-8",
+            success: function (res) {
+
+                _list = res.data.dataList;
+                var _html = "";
+                if(res.success){
+                    $("#bizList_info").html("当前是第"+res.data.pageIndex+"页，共"+res.data.totalPage+"页")
+                    if(_list.length>0){
+                        page(2,1);
+                    }
+                    for(var i = 0;i<_list.length;i++){
+                        _html+="<tr>"+
+                            "<td>"+_list[i].merchant+"</td>"+
+                            "<td>"+_list[i].customerName+"</td>"+
+                            "<td>"+_list[i].idCode+"</td>"+
+                            "<td>"+_list[i].contactNumber+"</td>"+
+                            "<td>"+_list[i].management+"</td>"+
+                            "<td>"+_list[i].loanFishStatus+"</td>"+
+                            "<td>"+_list[i].pushStatus+"</td>"+
+                            "<td>"+_list[i].approvalTime+"</td>"+
+                            "<td>"+_list[i].incomingPartsTime+"</td>"+
+                            "<td>"+_list[i].incomingPartsChannel+"</td>"+
+                            "<td>"+_list[i].managementNum+"</td>"+
+                            "<td>"+_list[i].signatureStatus+"</td>"+
+                            "<td>"+_list[i].createName+"</td>"+
+                            "<td>"+_list[i].updateName+"</td>";
+                        _html+="<tr/>";
+                    }
+                    $("#reviewList tbody").html(_html);
+
+                }else{
+                    console.log(res.errorMessage);
+                }
+            }
+        })
+    }
+    _search()
+
+    //分页点击事件
+    $(".common_page").on("click","a",function(){
+        console.log($(this));
+        $(this).addClass("active");
+        $(this).siblings().removeClass("active");
+        var _index = parseInt($(this).attr("page"));
+        if(_index==1){
+            $(".prev_page").attr("disabled","disabled");
+        }else{
+            $(".prev_page").attr("page",_index-1);
+            $(".last_page").attr("page",_index+1);
+        }
+        var _page = $(this).attr("page");
+        _search(_page)
+    })
+
+    //分页点击事件
+    $(".btn-search").on("click","a",function(){
+        console.log($(this));
+        $(this).addClass("active");
+        $(this).siblings().removeClass("active");
+        var _index = parseInt($(this).attr("page"));
+        if(_index==1){
+            $(".prev_page").attr("disabled","disabled");
+        }else{
+            $(".prev_page").attr("page",_index-1);
+            $(".last_page").attr("page",_index+1);
+        }
+        var _page = $(this).attr("page");
+        _search(_page)
+    })
+
+
+    //多条件查询点击事件
+    $("#btn-search").on("click",function(){
+        _search()
+    })
+
+</script>
+
+</html>

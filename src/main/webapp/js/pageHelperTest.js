@@ -40,7 +40,7 @@ function build_nav_page(res){
 
 
     //构建页数并添加到ul中
-    var num = new Array(result.pageSize);
+    var num = new Array(result.totalPage);
     $.each(num,function(index,ele){
         var pageNum = index +1;
         var numLi = $("<li></li>").append($("<a></a>").append(pageNum))
