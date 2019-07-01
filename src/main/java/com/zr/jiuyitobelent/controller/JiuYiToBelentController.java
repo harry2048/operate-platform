@@ -23,6 +23,7 @@ import java.util.List;
 @CrossOrigin
 @RequestMapping("jiuyitu/")
 public class JiuYiToBelentController {
+    //
     @Autowired
     private JiuYiToBelentService jiuYiToBelentService;
 
