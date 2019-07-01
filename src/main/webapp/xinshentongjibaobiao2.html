@@ -80,7 +80,7 @@
                 <div class="col-lg-3 col-md-3 col-sm-3"><span class="wd_60">渠道&nbsp;&nbsp;</span><input type="text" id="bizName"></div>
                 <div class="col-lg-3 col-md-3 col-sm-3"><span class="wd_60">审核人员&nbsp;&nbsp;</span><input type="text" id="allocExamineUserName"></div>
                 <div class="col-lg-3 col-md-3 col-sm-3"><span class="wd_60">资方&nbsp;&nbsp;</span><select id="fundSource">
-                    <option value="">请选择</option>
+                    <!--<option value="">请选择</option>
                     <option value="1">北银</option>
                     <option value="14">91金融</option>
                     <option value="13">沃付分期</option>
@@ -96,12 +96,12 @@
                     <option value="15">湖北消费金融</option>
                     <option value="16">91旺财</option>
                     <option value="18">晋商租房</option>
-                    <option value="17">晋商教育</option>
+                    <option value="17">晋商教育</option>-->
                 </select></div>
                 <div class="col-lg-3 col-md-3 col-sm-3"><span class="wd_60">业务类型&nbsp;&nbsp;</span><select id="sourceType">
-                    <option value="">---请选择---</option>
+                    <!--<option value="">-&#45;&#45;请选择-&#45;&#45;</option>
                     <option value="1">教育</option>
-                    <option value="2">租房</option>
+                    <option value="2">租房</option>-->
                 </select></div>
                 <div class="col-lg-3 col-md-3 col-sm-3 cl3"><span class="wd_60">申请时间(开始)&nbsp;&nbsp;</span><input type="text" id="applyDateStart1" value="2019-05-20" placeholder="请选择时间" readonly=""></div>
                 <div class="col-lg-3 col-md-3 col-sm-3 c13"><span class="wd_60">申请时间(结束)&nbsp;&nbsp;</span><input type="text" id="applyDateStart2" value="2019-05-20" placeholder="请选择时间" readonly=""></div>
@@ -145,59 +145,64 @@
         <!--下拉框功能-->
         $(function(){
             $.ajax({
-                type: 'get',
-                url: 'http://localhost:8010/queryById',
+                type: 'GET',
+                url: 'http://localhost:8010/Xinshen/queryAll',
                 dataType: 'JSON',
                 contentType: "application/json;charset=utf-8",
                 success: function (res) {
                     _list = res.data;
                     $.each(_list,function(index,ele){
 
-                        var optionTd = $("<option></option>").attr("value",ele.isApprovalValue).append(ele.isApprovalName)
+                        var optionTd = $("<option></option>").attr("value",ele.id).append(ele.capitalside)
 
-                        $("#deductStatus").append(optionTd)
+                        $("#fundSource").append(optionTd)
+                    })
+                }
+            })
+        })
+        <!--下拉框功能-->
+        $(function(){
+            $.ajax({
+                type: 'GET',
+                url: 'http://localhost:8010/businessType',
+                dataType: 'JSON',
+                contentType: "application/json;charset=utf-8",
+                success: function (res) {
+                    _list = res.data;
+                    $.each(_list,function(index,ele){
+
+                        var optionTd = $("<option></option>").attr("value",ele.key).append(ele.value)
+
+                        $("#sourceType").append(optionTd)
                     })
                 }
             })
         })
 
 
-
         function _search(_page) {
-            var bizName,allocExamineUserName,fundSource,sourceType,applyDateStart1,applyDateStart2,applyDateStart3,applyDateStart4,pageIndex,pageSize;
-            bizName = $("#bizName").val();
-            allocExamineUserName = $("#allocExamineUserName").val();
-            fundSource = $("#fundSource").val();
-            sourceType = $("#sourceType").val();
-            applyDateStart1 = $("#applyDateStart1").val();
-            applyDateStart2 = $("#applyDateStart2").val();
-            applyDateStart3 = $("#applyDateStart3").val();
-            applyDateStart4 = $("#applyDateStart4").val();
+            var channel,auditors,managemen,scopeOfBusiness,pageIndex,pageSize;
+            channel = $("#bizName").val();
+            auditors = $("#allocExamineUserName").val();
+            managemen = $("#fundSource").val();
+            scopeOfBusiness = $("#sourceType").val();
             if(_page!=""){
                 var tmp={
-                    "bizName":bizName,
-                    "allocExamineUserName":allocExamineUserName,
-                    "fundSource":fundSource,
-                    "sourceType":sourceType,
-                    "applyDateStart1":applyDateStart1,
-                    "applyDateStart2":applyDateStart2,
-                    "applyDateStart3":applyDateStart3,
-                    "applyDateStart4":applyDateStart4,
+                    "channel":channel,
+                    "auditors":auditors,
+                    "managemen":managemen,
+                    "scopeOfBusiness":scopeOfBusiness,
                     "pageIndex":_page,
-                    "pageSize":1
+                    "pageSize":10
                 };
             }else{
                 var tmp={
-                    "bizName":bizName,
-                    "allocExamineUserName":allocExamineUserName,
-                    "fundSource":fundSource,
-                    "sourceType":sourceType,
-                    "applyDateStart1":applyDateStart1,
-                    "applyDateStart2":applyDateStart2,
-                    "applyDateStart3":applyDateStart3,
-                    "applyDateStart4":applyDateStart4,
+                    "channel":channel,
+                    "auditors":auditors,
+                    "managemen":managemen,
+                    "scopeOfBusiness":scopeOfBusiness,
                     "pageIndex":0,
-                    "pageSize":1
+                    "pageSize":10
                 };
             }
 
@@ -214,7 +219,7 @@
                     if(res.success){
                         $("#bizList_info").html("当前是第"+res.data.pageIndex+"页，共"+res.data.totalPage+"页")
                         if(_list.length>0){
-                            page(2,1);
+                            page(1,10);
                         }
                         for(var i = 0;i<_list.length;i++){
                             _html+="<tr>"+
@@ -268,26 +273,9 @@
             _search(_page)
         })
 
-        //分页点击事件
-        $(".btn-search").on("click","a",function(){
-            console.log($(this));
-            $(this).addClass("active");
-            $(this).siblings().removeClass("active");
-            var _index = parseInt($(this).attr("page"));
-            if(_index==1){
-                $(".prev_page").attr("disabled","disabled");
-            }else{
-                $(".prev_page").attr("page",_index-1);
-                $(".last_page").attr("page",_index+1);
-            }
-            var _page = $(this).attr("page");
-            _search(_page)
-        })
-
         //多条件查询点击事件
         $("#btn-search").on("click",function(){
             _search()
         })
     </script>
-
 </div>

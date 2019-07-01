@@ -1,7 +1,7 @@
 package com.zr.xinshenstatistics.mapper;
 
 
-import com.zr.xinshenstatistics.pojo.Funding;
+import com.zr.xinshenstatistics.pojo.Riskreserve_Capitalside;
 import com.zr.xinshenstatistics.pojo.Xinshenstatistics;
 import com.zr.xinshenstatistics.pojo.XinshenstatisticsVO;
 import org.apache.ibatis.annotations.Mapper;
@@ -18,6 +18,6 @@ public interface XinshenstatisticsMapper {
 
     int queryCount(XinshenstatisticsVO xinshenstatisticsVO);
     List<Xinshenstatistics> queryBySelectVo(XinshenstatisticsVO xinshenstatisticsVO);
-    @Select("select * from funding where id=#{id}")
-    Funding queryById(Integer id);
+    @Select("select * from riskreserve_capitalside")
+    List<Riskreserve_Capitalside> queryAll();
 }

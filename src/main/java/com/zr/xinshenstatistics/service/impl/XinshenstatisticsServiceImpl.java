@@ -1,8 +1,9 @@
 package com.zr.xinshenstatistics.service.impl;
 
 
+import antlr.collections.impl.LList;
 import com.zr.xinshenstatistics.mapper.XinshenstatisticsMapper;
-import com.zr.xinshenstatistics.pojo.Funding;
+import com.zr.xinshenstatistics.pojo.Riskreserve_Capitalside;
 import com.zr.xinshenstatistics.pojo.Xinshenstatistics;
 import com.zr.xinshenstatistics.pojo.XinshenstatisticsVO;
 import com.zr.xinshenstatistics.service.XinshenstatisticsService;
@@ -80,15 +81,13 @@ public class XinshenstatisticsServiceImpl implements XinshenstatisticsService {
     }
 
     @Override
-    public ResultVo queryById(Integer id) {
-        if (id==null){
-            return ResultBuildVo.error("查看时id不能为空！","500");
-        }
-        Funding funding = xinshenstatisticsMapper.queryById(id);
-        if (funding==null){
+    public ResultVo queryAll() {
+
+        List<Riskreserve_Capitalside> riskreserve_Capitalside = xinshenstatisticsMapper.queryAll();
+        if (riskreserve_Capitalside.size() == 0){
             return ResultBuildVo.error("查看对象不存在！","500");
         }
-        return ResultBuildVo.success(funding);
+        return ResultBuildVo.success(riskreserve_Capitalside);
     }
 
     // 由于此方法不能通用, 所以单独写在这里
@@ -133,5 +132,5 @@ public class XinshenstatisticsServiceImpl implements XinshenstatisticsService {
             row_column++;
         }
 
-    }
-}
+                }
+                }
