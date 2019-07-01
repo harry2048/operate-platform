@@ -28,11 +28,7 @@ public class ApprovalController {
     @Autowired
     private ApprovalService approvalService;
 
-    @PostMapping("findAll")
-    public List<Approval> findAll(){
 
-        return approvalService.findAll();
-    }
     //分页查询
     @PostMapping("queryByPage")
     public ResultVO<AllRecords> queryByPage(@RequestBody ApprovalSelectVo approvalSelectVo){

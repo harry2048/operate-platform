@@ -13,7 +13,7 @@ public class ReturnHandlingVo {
     //退款金额
     private Integer refundAmount;
 //    //审核状态
-//    private Integer sendingStatus;
+   private Integer sendingStatus;
     //审核状态名称
     private String sendingStatusName;
     //申请日期==生成日期
