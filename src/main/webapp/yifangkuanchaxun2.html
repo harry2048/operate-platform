@@ -1,0 +1,285 @@
+ <!DOCTYPE html>
+ <html>
+ <head>
+    <title>放款查询页面</title>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/base.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/layer.css" rel="stylesheet">
+    <link href="css/pagination.css" rel="stylesheet">
+    <link href="css/bootstrap-datetimepicker.css" rel="stylesheet">
+    <link href="css/jedate.css" rel="stylesheet">
+    <style>
+        #loanDetail{
+            background-color: #fff;
+            margin-bottom: 15px;
+        }
+        #loanDetail p{
+            padding-left:0 ;
+            padding-right: 0;
+            margin: 6px 0 ;
+        }
+        #loanDetail .wd_60{
+            display: inline-block;
+            width: 102px;
+            text-align: right;
+            font-size: 12px;
+            font-family: "微软雅黑";
+        }
+        #loanDetail .c13 .wd_60{
+            float: left;
+            margin-top: 5px;
+        }
+        #loanDetail .c13 input{
+            float: left;
+            font-size: 12px;
+            font-family: "微软雅黑";
+        }
+        #loanDetail .col-lg-3 ,#loanDetail .c13{
+            margin:5px 0;
+            padding-left:5px;
+            padding-right: 5px;
+        }
+
+        #loanDetail select option{
+            font-size: 12px;
+            font-family: "微软雅黑";
+        }
+        .search_btn {
+            font-size: 12px;
+            background-color: #09C;
+            padding: 5px 16px;
+            margin-top: 3px;
+            margin-bottom: 5px;
+        }
+        .ta_r{
+            text-align: right;
+        }
+        .mr_25{
+            margin-right: 25px;
+        }
+        .cardSelect{
+            border: 1px solid #ddd;
+            height: 25px;
+            width: 150px;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+<div class="content1" href="">
+    <!-- <div class="hui"><img src="images/ajax-loader.gif"></div> -->
+        <div class="content">
+            <!--面包屑导航start-->
+            <ol class="breadcrumb">
+                <li class="active">已放款列表查询</li>
+            </ol>
+            <div id="loanDetail" class="col-lg-12 col-md-12 col-sm-12">
+                <div class="col-lg-3 col-md-3 col-sm-3" style="padding-left:0px "><span class="wd_60" style="text-align:left;width:70px">身份证号&nbsp;&nbsp;</span><input type="text" id="idNo"></div>
+                <div class="col-lg-3 col-md-3 col-sm-3" style="padding-left:0px"><span class="wd_60" style="text-align:left;width:40px">姓名&nbsp;&nbsp;</span><input type="text" id="idName"></div>
+                <div class="col-lg-3 col-md-3 col-sm-3" style="padding-left:0px"><span class="wd_60" style="margin-left: 0px;margin-top: 5px">资方放款日期(开始)&nbsp;&nbsp;</span><input type="text" id="applyDateStart1" value="2019-05-22" placeholder="请选择时间" readonly=""></div>
+                <div class="col-lg-3 col-md-3 col-sm-3" style="padding-left:0px"><span class="wd_60" style="margin-left: 0px;margin-top: 5px">资方放款日期(结束)&nbsp;&nbsp;</span><input type="text" id="applyDateStart2" value="2019-05-22" placeholder="请选择时间" readonly=""></div>
+                <div class="col-lg-3 col-md-3 col-sm-3" style="padding-left:0px"><span class="wd_60" style="text-align:left;width:60px">资方&nbsp;&nbsp;</span>
+                    <select id="fundSource">
+                    </select></div>
+                <div class="col-lg-3 col-md-3 col-sm-3" style="padding-left:0px"><span class="wd_60" style="text-align:left;width:40px">商户&nbsp;&nbsp;</span><input type="text" id="bcName"></div>
+                <div class="col-lg-3 col-md-3 col-sm-3" style="padding-left:0px"><span class="wd_60" style="margin-left: 10px;margin-top: 5px">信审日期(开始)&nbsp;&nbsp;</span><input type="text" id="applyDateStart3" value="2019-05-22 00:00:00" placeholder="请选择时间" readonly=""></div>
+                <div class="col-lg-3 col-md-3 col-sm-3" style="padding-left:0px"><span class="wd_60" style="margin-left: 10px;margin-top: 5px">信审日期(结束)&nbsp;&nbsp;</span><input type="text" id="applyDateStart4" value="2019-05-22 23:59:59" placeholder="请选择时间" readonly=""></div>
+                <div style="margin-left: 5px">
+                    贷款状态&nbsp;&nbsp;
+                    <input type="checkbox" style="width: 15px; height: 15px; margin-left: 5px" name="rebateType" value="9000" checked="" class="ckb">订单完结&nbsp;&nbsp;
+                    <input type="checkbox" name="rebateType" style="width: 15px; height: 15px; margin-left: 5px" value="7000" checked="" class="ckb">已放款&nbsp;&nbsp;
+                    <input type="checkbox" name="rebateType" style="width: 15px; height: 15px; margin-left: 5px" value="8000" checked="" class="ckb">提前还款&nbsp;&nbsp;
+                    <input type="checkbox" name="rebateType" style="width: 15px; height: 15px; margin-left: 5px" value="9500" checked="" class="ckb">退货&nbsp;&nbsp;
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-3">
+
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-3 ta_r">
+                    <button class="btn btn-primary btn-sm search_btn" type="button" id="btn-search">查询</button>
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <button class="btn btn-primary btn-sm search_btn mr_25" type="button" id="btn-export" onclick="exportResult();">导出</button>
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div class="table-responsive">
+                <div id="lendingList_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer"><div class="top"><div class="clear"></div></div><div id="lendingList_processing" class="dataTables_processing panel panel-default" style="display: none;">处理中...</div><table id="lendingList" style="width: 100%;" class="table table-bordered table-striped table-condensed table-hover bg_wt dataTable no-footer" role="grid" aria-describedby="lendingList_info">
+                    <thead style="border-bottom: 0;background-color: #fff;">
+                    <tr role="row"><th class="text-center fs_13 sorting_disabled hidden" rowspan="1" colspan="1" style="width: 0px;">1</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 19px;">资金方</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 112px;">&nbsp;商&nbsp;&nbsp;户&nbsp;</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 27px;">客户姓名</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 112px;">身份证号码</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 64px;">申&nbsp;请&nbsp;时&nbsp;间</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 64px;">审核通过时间</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 28px;">放款日期</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 25px;">申请金额</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 25px;">申请期限</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 25px;">贴息方式</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 17px;">宽限期</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 31px;">期供款</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 39px;">资方放款金额</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 39px;">贷鱼放款金额</th><th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1" style="width: 24px;">贷款状态</th><th class="text-center sorting_disabled" rowspan="1" colspan="1" style="width: 93px;">操作</th></tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+                </div>
+                <div class="bottom">
+                    <div class="dataTables_info" id="bizList_info" role="status" aria-live="polite">
+
+                    </div>
+                    <div class="common_page"></div>
+
+                    <div class="clear"></div>
+                </div>
+                <!--<tbody><tr role="row" class="odd"><td class=" hidden">6536465422515962881</td><td>晋商教育</td><td>广东明世在线教育科技有限公司</td><td>余朝胜</td><td>512326197609261213</td><td>2019-05-22 08:26:53</td><td>2019-05-22 09:11:14</td><td>2019-05-22</td><td>5580</td><td>12</td><td>商户贴息</td><td>0</td><td>465</td><td>5580</td><td>5183.82</td><td>已放款</td><td><button type="button" data-id="6536465422515962881" class="btn btn-primary btn-sm mt_3" style="margin-bottom: 5px;padding:5px 16px;" name="public-deduct">提前结清</button><button type="button" data-id="6536465422515962881" data-source="17" data-cust-id="6536411061233277953" data-cust-name="余朝胜" class="btn btn-primary btn-sm mt_3" name="modify_card">变更银行卡</button></td></tr><tr role="row" class="even"><td class=" hidden">6536849876475446273</td><td>晋商教育</td><td>宁波鸿途教育科技有限公司</td><td>朱柳青</td><td>35072419850829152X</td><td>2019-05-22 14:51:24</td><td>2019-05-22 14:56:20</td><td>2019-05-22</td><td>22800</td><td>24</td><td>客户付息</td><td>6</td><td>1178</td><td>22800</td><td>22800</td><td>已放款</td><td><button type="button" data-id="6536849876475446273" class="btn btn-primary btn-sm mt_3" style="margin-bottom: 5px;padding:5px 16px;" name="public-deduct">提前结清</button><button type="button" data-id="6536849876475446273" data-source="17" data-cust-id="6536842257583785985" data-cust-name="朱柳青" class="btn btn-primary btn-sm mt_3" name="modify_card">变更银行卡</button></td></tr><tr role="row" class="odd"><td class=" hidden">6536799500194808833</td><td>晋商教育</td><td>广东明世在线教育科技有限公司</td><td>詹海华</td><td>441424199006064643</td><td>2019-05-22 13:45:28</td><td>2019-05-22 14:02:05</td><td>2019-05-22</td><td>9720</td><td>12</td><td>商户贴息</td><td>0</td><td>810</td><td>9720</td><td>9029.88</td><td>已放款</td><td><button type="button" data-id="6536799500194808833" class="btn btn-primary btn-sm mt_3" style="margin-bottom: 5px;padding:5px 16px;" name="public-deduct">提前结清</button><button type="button" data-id="6536799500194808833" data-source="17" data-cust-id="6536482315037639681" data-cust-name="詹海华" class="btn btn-primary btn-sm mt_3" name="modify_card">变更银行卡</button></td></tr><tr role="row" class="even"><td class=" hidden">6536872899037365249</td><td>晋商教育</td><td>广州易唐科技有限公司</td><td>袁金涛</td><td>420802199703270054</td><td>2019-05-22 15:59:08</td><td>2019-05-22 16:09:02</td><td>2019-05-22</td><td>21800</td><td>24</td><td>客户付息</td><td>6</td><td>1126.33</td><td>21800</td><td>21800</td><td>已放款</td><td><button type="button" data-id="6536872899037365249" class="btn btn-primary btn-sm mt_3" style="margin-bottom: 5px;padding:5px 16px;" name="public-deduct">提前结清</button><button type="button" data-id="6536872899037365249" data-source="17" data-cust-id="6536867316808740865" data-cust-name="袁金涛" class="btn btn-primary btn-sm mt_3" name="modify_card">变更银行卡</button></td></tr><tr role="row" class="odd"><td class=" hidden">6536873165535052801</td><td>晋商教育</td><td>阁瑞钛伦特软件（北京）有限公司</td><td>元宝宝</td><td>130582199311100810</td><td>2019-05-22 16:00:11</td><td>2019-05-22 16:09:34</td><td>2019-05-22</td><td>25800</td><td>24</td><td>客户付息</td><td>6</td><td>1333</td><td>25800</td><td>25800</td><td>已放款</td><td><button type="button" data-id="6536873165535052801" class="btn btn-primary btn-sm mt_3" style="margin-bottom: 5px;padding:5px 16px;" name="public-deduct">提前结清</button><button type="button" data-id="6536873165535052801" data-source="17" data-cust-id="6536867838274179073" data-cust-name="元宝宝" class="btn btn-primary btn-sm mt_3" name="modify_card">变更银行卡</button></td></tr><tr role="row" class="even"><td class=" hidden">6536805929789162497</td><td>晋商教育</td><td>广东明世在线教育科技有限公司</td><td>李宗恒</td><td>44162219950524257X</td><td>2019-05-22 11:33:01</td><td>2019-05-22 11:44:03</td><td>2019-05-22</td><td>6680</td><td>12</td><td>商户贴息</td><td>0</td><td>556.67</td><td>6680</td><td>6205.72</td><td>已放款</td><td><button type="button" data-id="6536805929789162497" class="btn btn-primary btn-sm mt_3" style="margin-bottom: 5px;padding:5px 16px;" name="public-deduct">提前结清</button><button type="button" data-id="6536805929789162497" data-source="17" data-cust-id="6536801914969681921" data-cust-name="李宗恒" class="btn btn-primary btn-sm mt_3" name="modify_card">变更银行卡</button></td></tr><tr role="row" class="odd"><td class=" hidden">6536878811973157889</td><td>晋商教育</td><td>广州易唐科技有限公司</td><td>磨承鑫</td><td>452731199610045716</td><td>2019-05-22 16:22:38</td><td>2019-05-22 16:30:49</td><td>2019-05-22</td><td>21800</td><td>24</td><td>客户付息</td><td>6</td><td>1126.33</td><td>21800</td><td>21800</td><td>已放款</td><td><button type="button" data-id="6536878811973157889" class="btn btn-primary btn-sm mt_3" style="margin-bottom: 5px;padding:5px 16px;" name="public-deduct">提前结清</button><button type="button" data-id="6536878811973157889" data-source="17" data-cust-id="6536868917736229889" data-cust-name="磨承鑫" class="btn btn-primary btn-sm mt_3" name="modify_card">变更银行卡</button></td></tr><tr role="row" class="even"><td class=" hidden">6536819922024006657</td><td>晋商教育</td><td>广东明世在线教育科技有限公司</td><td>戴美平</td><td>430304198212144283</td><td>2019-05-22 12:28:37</td><td>2019-05-22 12:37:31</td><td>2019-05-22</td><td>4725</td><td>12</td><td>商户贴息</td><td>0</td><td>393.75</td><td>4725</td><td>4389.52</td><td>已放款</td><td><button type="button" data-id="6536819922024006657" class="btn btn-primary btn-sm mt_3" style="margin-bottom: 5px;padding:5px 16px;" name="public-deduct">提前结清</button><button type="button" data-id="6536819922024006657" data-source="17" data-cust-id="6536788644366646273" data-cust-name="戴美平" class="btn btn-primary btn-sm mt_3" name="modify_card">变更银行卡</button></td></tr><tr role="row" class="odd"><td class=" hidden">6536820799631787009</td><td>晋商教育</td><td>广东明世在线教育科技有限公司</td><td>赖雪珍</td><td>350421199704060023</td><td>2019-05-22 12:32:06</td><td>2019-05-22 12:43:15</td><td>2019-05-22</td><td>7182</td><td>12</td><td>商户贴息</td><td>0</td><td>598.5</td><td>7182</td><td>6672.08</td><td>已放款</td><td><button type="button" data-id="6536820799631787009" class="btn btn-primary btn-sm mt_3" style="margin-bottom: 5px;padding:5px 16px;" name="public-deduct">提前结清</button><button type="button" data-id="6536820799631787009" data-source="17" data-cust-id="6536816162523802625" data-cust-name="赖雪珍" class="btn btn-primary btn-sm mt_3" name="modify_card">变更银行卡</button></td></tr><tr role="row" class="even"><td class=" hidden">6536851944110031873</td><td>晋商教育</td><td>广东明世在线教育科技有限公司</td><td>高可可</td><td>412727199408140726</td><td>2019-05-22 14:35:52</td><td>2019-05-22 14:43:20</td><td>2019-05-22</td><td>5850</td><td>12</td><td>商户贴息</td><td>0</td><td>487.5</td><td>5850</td><td>5434.65</td><td>已放款</td><td><button type="button" data-id="6536851944110031873" class="btn btn-primary btn-sm mt_3" style="margin-bottom: 5px;padding:5px 16px;" name="public-deduct">提前结清</button><button type="button" data-id="6536851944110031873" data-source="17" data-cust-id="6536848898314649601" data-cust-name="高可可" class="btn btn-primary btn-sm mt_3" name="modify_card">变更银行卡</button></td></tr></tbody></table><div class="bottom"><div class="dataTables_info" id="lendingList_info" role="status" aria-live="polite">显示第 1 - 10 条记录，共20 条</div><div class="dataTables_length" id="lendingList_length"><label> <select name="lendingList_length" aria-controls="lendingList" class="form-control input-sm"><option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select> </label></div><div class="dataTables_paginate paging_full_numbers" id="lendingList_paginate"><ul class="pagination"><li class="paginate_button first disabled" id="lendingList_first"><a href="javascript:void(0);" aria-controls="lendingList" data-dt-idx="0" tabindex="0">首页</a></li><li class="paginate_button previous disabled" id="lendingList_previous"><a href="javascript:void(0);" aria-controls="lendingList" data-dt-idx="1" tabindex="0">上页</a></li><li class="paginate_button active"><a href="javascript:void(0);" aria-controls="lendingList" data-dt-idx="2" tabindex="0">1</a></li><li class="paginate_button "><a href="javascript:void(0);" aria-controls="lendingList" data-dt-idx="3" tabindex="0">2</a></li><li class="paginate_button next" id="lendingList_next"><a href="javascript:void(0);" aria-controls="lendingList" data-dt-idx="4" tabindex="0">下页</a></li><li class="paginate_button last" id="lendingList_last"><a href="javascript:void(0);" aria-controls="lendingList" data-dt-idx="5" tabindex="0">末页</a></li></ul></div><div class="clear"></div></div></div>-->
+
+            <!--正文内容end-->
+                </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+ <script src="js/jquery-2.1.1.min.js"></script>
+ <script src="js/common.js"></script>
+ <script>
+
+     $(function(){
+         $.ajax({
+             type: 'POST',
+             url: 'http://localhost:8010/lending/queryAll',
+             dataType: 'JSON',
+             contentType: "application/json;charset=utf-8",
+             success: function (res) {
+                 _list = res.data;
+                 $.each(_list,function(index,ele){
+
+                     var optionTd = $("<option></option>").attr("value",ele.id).append(ele.capitalSide)
+
+                     $("#fundSource").append(optionTd)
+                 })
+             }
+         })
+     })
+//     $(function(){
+//         var pageIndex,pageSize;
+//         var tmp={
+//             "pageIndex":1,
+//             "pageSize":100
+//         };
+//         $.ajax({
+//             type: 'POST',
+//             url: 'http://localhost:8010/lending/queryAll',
+//             dataType: 'JSON',
+//             data: JSON.stringify(tmp),
+//             contentType: "application/json;charset=utf-8",
+//             success: function (res) {
+//                 _list = res.data;
+//                 $.each(_list,function(index,ele){
+//
+//                     var optionTd = $("<option></option>").attr("value",ele.id).append(ele.capitalSide)
+//
+//                     $("#fundSource").append(optionTd)
+//                 })
+//             }
+//         })
+//     })
+
+     function _search(_page) {
+         var idCode,customerName,fundingParty,merchant,pageIndex,pageSize;
+         fundingParty = $("#fundSource").val();
+         customerName = $("#idName").val();
+         idCode = $("#idNo").val();
+                 merchant = $("#bcName").val();
+             if(_page!=""){
+                 var tmp={
+                     "fundingParty":fundingParty,
+                     "customerName":customerName,
+                     "idCode":idCode,
+                 "merchant":merchant,
+                 "pageIndex":_page,
+                 "pageSize":1
+             };
+             var tmp={
+                 "fundingParty":fundingParty,
+                 "customerName":customerName,
+                 "idCode":idCode,
+                 "merchant":merchant,
+                 "pageIndex":0,
+                 "pageSize":1
+             };
+         }
+
+
+         $.ajax({
+             type: 'POST',
+             url: 'http://localhost:8010/lending/queryPage',
+             dataType: 'JSON',
+             data: JSON.stringify(tmp),
+             contentType: "application/json;charset=utf-8",
+             success: function (res) {
+                 _list = res.data.dataList;
+                 var _html = "";
+                 if(res.success){
+                     $("#bizList_info").html("当前是第"+res.data.pageIndex+"页，共"+res.data.totalPage+"页")
+                     if(_list.length>0){
+                         page(2,1);
+                     }
+                     for(var i = 0;i<_list.length;i++){
+                         _html+="<tr>"+
+                             "<td>"+_list[i].fundingParty+"</td>"+
+                             "<td>"+_list[i].merchant+"</td>"+
+                             "<td>"+_list[i].customerName+"</td>"+
+                             "<td>"+_list[i].idCode+"</td>"+
+                             "<td>"+_list[i].customerName+"</td>"+
+                             "<td>"+_list[i].applyTime+"</td>"+
+                             "<td>"+_list[i].examineTime+"</td>"+
+                             "<td>"+_list[i].lendingTime+"</td>"+
+                             "<td>"+_list[i].applyAmount+"</td>"+
+                             "<td>"+_list[i].applyTerm+"</td>"+
+                             "<td>"+_list[i].discountMode+"</td>"+
+                             "<td>"+_list[i].graceperiod+"</td>"+
+                             "<td>"+_list[i].periodicContributions+"</td>"+
+                             "<td>"+_list[i].managementLoanAmount+"</td>"+
+                             "<td>"+_list[i].daiyuLoanAmount+"</td>"+
+                             "<td>"+_list[i].loanStatus+"</td>";
+                         _html+="<tr/>";
+                     }
+                     $("#lendingList tbody").html(_html);
+
+                 }else{
+                     console.log(res.errorMessage);
+                 }
+             }
+         })
+     }
+     _search()
+
+     //分页点击事件
+     $(".common_page").on("click","a",function(){
+         console.log($(this));
+         $(this).addClass("active");
+         $(this).siblings().removeClass("active");
+         var _index = parseInt($(this).attr("page"));
+         if(_index==1){
+             $(".prev_page").attr("disabled","disabled");
+         }else{
+             $(".prev_page").attr("page",_index-1);
+             $(".last_page").attr("page",_index+1);
+         }
+         var _page = $(this).attr("page");
+         _search(_page)
+     })
+
+     //分页点击事件
+     $(".btn-search").on("click","a",function(){
+         console.log($(this));
+         $(this).addClass("active");
+         $(this).siblings().removeClass("active");
+         var _index = parseInt($(this).attr("page"));
+         if(_index==1){
+             $(".prev_page").attr("disabled","disabled");
+         }else{
+             $(".prev_page").attr("page",_index-1);
+             $(".last_page").attr("page",_index+1);
+         }
+         var _page = $(this).attr("page");
+         _search(_page)
+     })
+
+     //多条件查询点击事件
+     $("#btn-search").on("click",function(){
+         _search()
+     })
+ </script>
+</html>

@@ -2,46 +2,40 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.zr.xinshenstatistics.mapper.XinshenstatisticsMapper">
     <select id="queryPage" parameterType="com.zr.xinshenstatistics.pojo.XinshenstatisticsVO" resultType="com.zr.xinshenstatistics.pojo.Xinshenstatistics">
-        select *
-        FROM xinshenstatistics
+        select xx.id,xx.channel,xx.auditors,xx.managemen,xx.scopeOfBusiness
+        FROM xinshenstatistics xx LEFT JOIN  riskreserve_capitalside rc ON xx.managemen = rc.id
         where 1=1
         <if test="channel!=null and channel!=''">
-            and channel =#{channel}
+            and xx.channel =#{channel}
         </if>
-        <if test="Auditors!=null and Auditors!=''">
-            and Auditors =#{Auditors}
+        <if test="auditors!=null and auditors!=''">
+            and xx.auditors =#{auditors}
         </if>
         <if test="managemen!=null and managemen!=''">
-            and managemen =#{managemen}
+            and xx.managemen =#{managemen}
         </if>
         <if test="scopeOfBusiness!=null and scopeOfBusiness!=''">
-            and scopeOfBusiness =#{scopeOfBusiness}
-        </if>
-        <if test="startTime!=null and startTime!=''">
-            and applyTime >=#{startTime}
-        </if>
-        <if test="endTime!=null and endTime!=''">
-            and #{endTime} >=applyTime
-        </if>
-        <if test="loanTime!=null and loanTime!=''">
-            and loanTime =#{loanTime}
+            and xx.scopeOfBusiness =#{scopeOfBusiness}
         </if>
         limit #{offset},#{pageSize}
     </select>
 
     <!--总条数-->
     <select id="queryCount" parameterType="com.zr.xinshenstatistics.pojo.XinshenstatisticsVO" resultType="java.lang.Integer">
-        select count(id)
-    FROM xinshenstatistics
+        select count(xx.id)
+    FROM xinshenstatistics xx LEFT JOIN  riskreserve_capitalside rc ON xx.managemen = rc.id
         WHERE 1=1
-        <if test="customerName!=null and customerName!=''">
-            and customerName =#{customerName}
+        <if test="channel!=null and channel!=''">
+            and xx.channel =#{channel}
         </if>
-        <if test="createTime!=null and createTime!=''">
-            and createTime =#{createTime}
+        <if test="auditors!=null and auditors!=''">
+            and xx.auditors =#{auditors}
         </if>
-        <if test="updateTime!=null and updateTime!=''">
-            and updateTime =#{updateTime}
+        <if test="managemen!=null and managemen!=''">
+            and xx.managemen =#{managemen}
+        </if>
+        <if test="scopeOfBusiness!=null and scopeOfBusiness!=''">
+            and xx.scopeOfBusiness =#{scopeOfBusiness}
         </if>
     </select>
     <select id="queryBySelectVo" parameterType="com.zr.xinshenstatistics.pojo.XinshenstatisticsVO"
@@ -52,8 +46,8 @@
         <if test="channel!=null and channel!=''">
             and channel =#{channel}
         </if>
-        <if test="Auditors!=null and Auditors!=''">
-            and Auditors =#{Auditors}
+        <if test="auditors!=null and auditors!=''">
+            and auditors =#{auditors}
         </if>
         <if test="managemen!=null and managemen!=''">
             and managemen =#{managemen}
