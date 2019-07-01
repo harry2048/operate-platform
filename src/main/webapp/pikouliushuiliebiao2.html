@@ -313,12 +313,13 @@
         daiKouNum = $("#thdSeq").val();
         daiKuanHetongNum = $("#loanContNo").val();
         createTime = $("#applyDateStart2").val();
+        var pageSize = 2; // 每页记录数
         var tmp={
             "thdSeq":daiKouNum,
             "loanContNo":daiKuanHetongNum,
             "applyDateStart2":createTime,
             "pageIndex":pageIndex,
-            "pageSize":2
+            "pageSize":pageSize
         };
 
 
@@ -330,7 +331,6 @@
             contentType: "application/json;charset=utf-8",
             success: function (res) {
                 _list = res.data.dataList;
-                console.log(_list)
                 var _html = "";
                 if(res.success){
                     $("#bizList_info").html("当前是第"+res.data.pageIndex+"页，共"+res.data.totalPage+"页")
