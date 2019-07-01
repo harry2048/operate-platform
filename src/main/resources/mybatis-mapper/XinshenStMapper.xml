@@ -2,7 +2,33 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.zr.xinshenstatistics.mapper.XinshenstatisticsMapper">
     <select id="queryPage" parameterType="com.zr.xinshenstatistics.pojo.XinshenstatisticsVO" resultType="com.zr.xinshenstatistics.pojo.Xinshenstatistics">
-        select xx.id,xx.channel,xx.auditors,xx.managemen,xx.scopeOfBusiness
+        select /*xx.channel,xx.auditors,xx.managemen,xx.scopeOfBusiness*/
+        xx.id,
+        xx.scopeOfBusiness,
+        xx.orderNum,
+        xx.auditors,
+        xx.status,
+        xx.applyTime,
+        xx.chuShenTime,
+        xx.fuShenTime,
+        xx.approvalTime,
+        xx.channel,
+        xx.storeName,
+        xx.customerName,
+        xx.idCode,
+        xx.phone,
+        xx.loanTime,
+        xx.applicationAmount,
+        xx.loanBalance,
+        xx.periodicContributions,
+        xx.applicationDeadline,
+        xx.managemen,
+        xx.overdueAmount,
+        xx.overdueNum,
+        xx.createTime,
+        xx.createName,
+        xx.updateTime,
+        xx.updateName
         FROM xinshenstatistics xx LEFT JOIN  riskreserve_capitalside rc ON xx.managemen = rc.id
         where 1=1
         <if test="channel!=null and channel!=''">
