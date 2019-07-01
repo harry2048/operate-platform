@@ -81,11 +81,11 @@
             <li class="active">还款短信提示查询</li>
         </ol>
         <div id="loanDetail" class="col-lg-12 col-md-12 col-sm-12">
-            <div class="col-lg-12 col-md-12 col-sm-12"><span class="wd_60">日期&nbsp;&nbsp;</span><input type="text"
+            <div class="col-lg-12 col-md-12 col-sm-12"><span class="wd_60">日期&nbsp;&nbsp;</span><input type="date"
                                                                                                        id="applyDateStart2"
                                                                                                        value="2019-05-22"
                                                                                                        placeholder="请选择时间"
-                                                                                                       readonly="">
+                                                                                                       >
             </div>
 
             <div class="col-lg-3 col-md-3 col-sm-3"></div>
@@ -431,6 +431,12 @@ $(function(){
         }
         var _page = $(this).attr("page");
         _search(_page)
+    })
+
+    $("#btn-search").on("click", function () {
+        /*var _page = $(this).attr("page");
+        _search(_page)*/
+        _search();
     })
 </script>
 </html>
