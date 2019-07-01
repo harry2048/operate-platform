@@ -11,6 +11,24 @@ public enum ReturnHandlingEnum {
 
     private final String sendingStatusName;
     private final Integer sendingStatusValue;
+    // 通过值取名称
+    public static String getName(int sendingStatusValue) {
+        for (ReturnHandlingEnum c : ReturnHandlingEnum.values()) {
+            if (c.getSendingStatusValue() == sendingStatusValue) {
+                return c.sendingStatusName;
+            }
+        }
+        return null;
+    }
+    // 通过名称取值
+    public static Integer getValue(String statusName) {
+        for (ReturnHandlingEnum c : ReturnHandlingEnum.values()) {
+            if (c.getSendingStatusName().equals(statusName)) {
+                return c.getSendingStatusValue();
+            }
+        }
+        return null;
+    }
 
     ReturnHandlingEnum(String sendingStatusName, Integer sendingStatusValue)
     {
