@@ -3,7 +3,6 @@ package com.zr.approval.service.impl;
 import com.zr.approval.approvalEnum.IsApprovalEnum;
 import com.zr.approval.approvalEnum.StatusEnmu;
 import com.zr.approval.mapper.ApprovalByPageMapper;
-import com.zr.approval.mapper.ApprovalMapper;
 import com.zr.approval.pojo.Approval;
 import com.zr.approval.pojo.ApprovalSelectVo;
 import com.zr.approval.service.ApprovalService;
@@ -15,7 +14,6 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.util.StringUtils;
 
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletResponse;
@@ -31,18 +29,11 @@ import static java.lang.System.out;
 @Service
 public class ApprovalServiceImpl implements ApprovalService{
 
-    @Autowired
-        private ApprovalMapper approvalMapper;
 
     @Autowired
     private ApprovalByPageMapper approvalByPageMapper;
 
-    @Override
-    public List<Approval> findAll() {
 
-
-        return approvalMapper.findAll();
-    }
 //////////////////////////////分页查询//////////////////////////////////////////////////////
     @Override
     public ResultVO<AllRecords> queryByPage(ApprovalSelectVo approvalSelectVo) {
@@ -52,6 +43,7 @@ public class ApprovalServiceImpl implements ApprovalService{
         List<ApprovalSelectVo> approvalList = approvalByPageMapper.queryByPage(approvalSelectVo);
         //封装类进行数字和字符转换
         List<ApprovalSelectVo> approvalSelectVos = numberToString(approvalList);
+
         //带入分页信息
         AllRecords records=new AllRecords();
         records.setTotalNumber(count);
@@ -69,7 +61,7 @@ public class ApprovalServiceImpl implements ApprovalService{
         //根据id查询出数据库中的全部数据 并存入集合中
         List<ApprovalSelectVo> selectVoList=new ArrayList<>();
         for (ApprovalSelectVo app:approvalSelectVoList){
-            Approval byid = approvalMapper.findOne(app.getId());
+            Approval byid = approvalByPageMapper.findById(app.getId());
             ApprovalSelectVo approvalSelectVo=new ApprovalSelectVo();
             BeanUtils.copyProperties(byid,approvalSelectVo);
             selectVoList.add(approvalSelectVo);
@@ -147,29 +139,15 @@ public class ApprovalServiceImpl implements ApprovalService{
         }
     }
 
-
-
-
     //数字转换成字符类
     public List<ApprovalSelectVo> numberToString(List<ApprovalSelectVo> approvalList){
-        out.println("长度"+approvalList.size()+"状态："+approvalList.get(0).getStatus());
         //遍历集合 进行数值和字符转换
         for (ApprovalSelectVo ap:approvalList){
             if(ap.getStatus()!=null){
-                for(int j=0;j<=StatusEnmu.values().length;j++){
-                    if(ap.getStatus()==j){
-                        out.println("Status状态："+StatusEnmu.values()[j].getStatusName());
-                        ap.setStatusName(StatusEnmu.values()[j].getStatusName());
-                    }
-                }
+               ap.setStatusName(StatusEnmu.getstatusName(ap.getStatus()));
             }
             if(ap.getIsApproval()!=null){
-                for(int j = 0; j<= IsApprovalEnum.values().length; j++){
-                    if(ap.getIsApproval()==j){
-                        out.println("Status状态："+IsApprovalEnum.values()[j].getIsApprovalName());
-                        ap.setIsApprovalName(IsApprovalEnum.values()[j].getIsApprovalName());
-                    }
-                }
+               ap.setIsApprovalName(IsApprovalEnum.getisApprovalName(ap.getIsApproval()));
             }
         }
 
