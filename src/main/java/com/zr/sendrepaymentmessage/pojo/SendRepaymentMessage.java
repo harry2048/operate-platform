@@ -1,5 +1,6 @@
 package com.zr.sendrepaymentmessage.pojo;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 
 import java.util.Date;
@@ -17,9 +18,11 @@ public class SendRepaymentMessage {
 
     private Integer numberOfPeriods;
 
-    private String deductionDate;
+    @JsonFormat(pattern="yyyy-MM-dd",timezone="GMT+8")
+    private Date deductionDate;
 
-    private String deliveryTime;
+    @JsonFormat(pattern="yyyy-MM-dd",timezone="GMT+8")
+    private Date deliveryTime;
 
     private Integer sendingStatus;
 
