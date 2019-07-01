@@ -17,9 +17,9 @@ public class SendRepaymentMessage {
 
     private Integer numberOfPeriods;
 
-    private Date deductionDate;
+    private String deductionDate;
 
-    private Date deliveryTime;
+    private String deliveryTime;
 
     private Integer sendingStatus;
 

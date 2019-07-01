@@ -137,9 +137,9 @@
      })
 
      function _search(_page) {
-         var merchant,customerName,pageIndex,pageSize;
-         merchant = $("#idName").val();
-         customerName = $("#bcName").val();
+         var customerName,merchant,pageIndex,pageSize;
+         customerName = $("#idName").val();
+         merchant = $("#bcName").val();
          if(_page!=""){
              var tmp={
                  "merchant":merchant,
@@ -208,21 +208,7 @@
          _search(_page)
      })
 
-     //分页点击事件
-     $(".querySearch").on("click","a",function(){
-         console.log($(this));
-         $(this).addClass("active");
-         $(this).siblings().removeClass("active");
-         var _index = parseInt($(this).attr("page"));
-         if(_index==1){
-             $(".prev_page").attr("disabled","disabled");
-         }else{
-             $(".prev_page").attr("page",_index-1);
-             $(".last_page").attr("page",_index+1);
-         }
-         var _page = $(this).attr("page");
-         _search(_page)
-     })
+
      //多条件查询点击事件
      $("#btn-search").on("click",function(){
          _search()
