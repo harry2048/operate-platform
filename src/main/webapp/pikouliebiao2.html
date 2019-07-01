@@ -168,6 +168,7 @@
 </body>
 <script src="js/jquery-2.1.1.min.js"></script>
 <script src="js/common.js"></script>
+<script src="js/layer.js"></script>
 <script>
     <!--下拉框功能-->
     $(function(){
@@ -337,6 +338,24 @@
         _search();
 
     })
+
+
+    function exportBatchDeduct(){
+        layer.confirm("确定要导出批扣报表吗？", {
+            btn: ['确认','取消'], //按钮
+            yes:function (index, layero) {
+                var startTime = $("#applyDateStart").val();
+                var endTime = $("#applyDateStart1").val();
+                var url="http://localhost:8010/pikou/exprotExcel?id=1";//?startTime="+startTime+"&endTime="+endTime
+                window.open(url);
+                layer.close(index);
+            },
+            cancel:function(index){
+                //按钮【按钮二】的回调
+                layer.close(index);
+            },
+        });
+    }
 
 
 
