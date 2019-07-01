@@ -14,10 +14,11 @@ import java.util.List;
  */
 public interface ApprovalService {
 
-    List<Approval> findAll();
 
     ResultVO<AllRecords> queryByPage(ApprovalSelectVo pprovalSelectVo);
 
 
     ResultVO exportExcel(HttpServletResponse response, List<ApprovalSelectVo> approvalSelectVo)throws Exception;
+
+
 }

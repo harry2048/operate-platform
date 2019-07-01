@@ -63,6 +63,16 @@
     </select>
 
 
+    <select id="findById" parameterType="java.lang.Integer" resultType="com.zr.approval.pojo.Approval">
+      select *
+      FROM approval
+      WHERE id=#{id}
+
+    </select>
+
+
+
+
 </mapper>
 
 

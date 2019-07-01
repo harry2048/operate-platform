@@ -3,6 +3,7 @@ package com.zr.approval.mapper;
 import com.zr.approval.pojo.Approval;
 import com.zr.approval.pojo.ApprovalSelectVo;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -19,4 +20,5 @@ public interface ApprovalByPageMapper {
 
     Integer queryCount();
 
+    Approval findById(@Param("id") Integer id);
 }

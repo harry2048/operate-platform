@@ -99,7 +99,7 @@
             <div class="col-lg-3 col-md-3 col-sm-3 c13"><span class="wd_60">还款账号</span><input type="text" id="acctNo"></div>
             <div class="col-lg-3 col-md-3 col-sm-3"><span class="wd_60">生成日期&nbsp;&nbsp;</span><input type="text" id="applyDateStart2" value="2019-05-22" placeholder="请选择时间" readonly=""></div>
             <div class="col-lg-3 col-md-3 col-sm-3"><span class="wd_60">批扣状态&nbsp;&nbsp;</span><select id="paySts">
-                <option value="">---请选择---</option>
+               <!-- <option value="">-&#45;&#45;请选择-&#45;&#45;</option>
                 <option value="00">生成清单</option>
                 <option value="01">待再次发送</option>
                 <option value="02">扣款中</option>
@@ -111,7 +111,7 @@
 
                 <option value="601">微信预生成订单成功</option>
                 <option value="602">微信预生成订单失败</option>
-                <option value="603">微信支付失败</option>
+                <option value="603">微信支付失败</option>-->
             </select></div>
             <div class="col-lg-3 col-md-3 col-sm-3"><span class="wd_60">批扣渠道&nbsp;&nbsp;</span><select id="deductChannel">
                 <option value="">---请选择---</option>
@@ -176,6 +176,7 @@
             contentType: "application/json;charset=utf-8",
             success: function (res) {
                 _list = res.data;
+                console.log(_list)
                 $.each(_list,function(index,ele){
 
                     var optionTd = $("<option></option>").attr("value",ele.isApprovalValue).append(ele.isApprovalName)
@@ -184,6 +185,26 @@
                 })
             }
         })
+
+        $.ajax({
+            type: 'POST',
+            url: 'http://localhost:8010/pikou/statusSpinner',
+            dataType: 'JSON',
+            contentType: "application/json;charset=utf-8",
+            success: function (res) {
+                _list = res.data;
+                console.log(_list)
+                $.each(_list,function(index,ele){
+
+                    var optionTd = $("<option></option>").attr("value",ele.StatusValue).append(ele.statusName)
+
+                    $("#paySts").append(optionTd)
+                })
+            }
+        })
+
+
+
     })
 
     function _search(_page) {
@@ -192,6 +213,8 @@
         customerName = $("#custName").val();
         idCode = $("#idNo").val();
         paymentAccount = $("#acctNo").val();
+        //createTime=$("#applyDateStart2")
+
         if(_page!=""){
             var tmp={
                 "loanContractNum":loanContractNum,
@@ -199,6 +222,7 @@
                 "idCode":idCode,
                 "paymentAccount":paymentAccount,
                 "pageIndex":_page,
+               // "createTime":createTime,
                 "pageSize":1
             };
         }else{
@@ -207,6 +231,7 @@
                 "customerName":customerName,
                 "idCode":idCode,
                 "paymentAccount":paymentAccount,
+                "createTime":createTime,
                 "pageIndex":0,
                 "pageSize":1
             };
@@ -229,18 +254,18 @@
                     }
                     for(var i = 0;i<_list.length;i++){
                         _html+="<tr>"+
-                            "<td>"+_list[i].statusName+"</td>"+
-                            "<td>"+_list[i].approvalChannel+"</td>"+
-                            "<td>"+_list[i].isApprovalName+"</td>"+
+                            "<td>"+_list[i].id+"</td>"+
+                            "<td>"+_list[i].createTime+"</td>"+
                             "<td>"+_list[i].loanContractNum+"</td>"+
                             "<td>"+_list[i].customerName+"</td>"+
                             "<td>"+_list[i].idCode+"</td>"+
                             "<td>"+_list[i].deductible+"</td>"+
                             "<td>"+_list[i].reimbursementAccountOpeningBank+"</td>"+
                             "<td>"+_list[i].paymentAccount+"</td>"+
-                            "<td>"+_list[i].deductionResults+"</td>"+
+                            "<td>"+_list[i].updateTime+"</td>"+
                             "<td>"+_list[i].createName+"</td>"+
-                            "<td>"+_list[i].updateName+"</td>";
+                            "<td>"+_list[i].deductionResults+"</td>"
+
                         _html+="<tr/>";
                     }
                     $("#lendingList tbody").html(_html);
@@ -269,10 +294,20 @@
         _search(_page)
     })
 
-
-    //多条件查询点击事件
-    $("#btn-search").on("click",function(){
-        _search()
+    //分页点击事件
+    $(".btn-search").on("click","a",function(){
+        console.log($(this));
+        $(this).addClass("active");
+        $(this).siblings().removeClass("active");
+        var _index = parseInt($(this).attr("page"));
+        if(_index==1){
+            $(".prev_page").attr("disabled","disabled");
+        }else{
+            $(".prev_page").attr("page",_index-1);
+            $(".last_page").attr("page",_index+1);
+        }
+        var _page = $(this).attr("page");
+        _search(_page)
     })
 </script>
 </html>
