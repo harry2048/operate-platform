@@ -3,10 +3,12 @@ package com.zr.jiuyitobelent.service;
 
 
 import com.zr.jiuyitobelent.model.JiuYiToBelentSelectVo;
+import com.zr.jiuyitobelent.model.Riskreserve_Capitalside;
 import com.zr.util.AllRecords;
 import com.zr.util.ResultVO;
 
 import javax.servlet.http.HttpServletResponse;
+import java.util.List;
 
 
 /**
@@ -18,6 +20,8 @@ public interface JiuYiToBelentService {
     ResultVO<AllRecords> queryPage(JiuYiToBelentSelectVo jiuYiToBelentSelectVo);
 
     ResultVO exportExcel(HttpServletResponse resp, JiuYiToBelentSelectVo jiuYiToBelentSelectVo) throws Exception;
+
+    ResultVO queryAll();
 //    ResultVO addMechant(MechantAddVo mechantAddVo);
 //    ResultVO updateMechant(MechantUpdateVo mechantUpdateVo);
 }

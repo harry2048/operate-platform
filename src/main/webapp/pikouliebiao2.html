@@ -122,7 +122,8 @@
                 <!--<option value="">-&#45;&#45;请选择-&#45;&#45;</option>
                 <option value="0">可批扣</option>
                 <option value="1">不可批扣</option>-->
-            </select></div>
+            </select>
+            </div>
             <div class="col-lg-12 col-md-6 col-sm-6 ta_r">
                 <button class="btn btn-primary btn-sm search_btn" type="button" id="btn-search">查询</button>
                 &nbsp;&nbsp;&nbsp;&nbsp;
@@ -178,7 +179,25 @@
                 _list = res.data;
                 $.each(_list,function(index,ele){
 
-                    var optionTd = $("<option></option>").attr("value",ele.isApprovalValue).append(ele.isApprovalName)
+                    var optionTd = $("<option></option>").attr("value",ele.value).append(ele.label)
+
+                    $("#deductStatus").append(optionTd)
+                })
+            }
+        })
+    })
+
+    $(function(){
+        $.ajax({
+            type: 'POST',
+            url: 'http://localhost:8010/pikou/isApprovalSpinner',
+            dataType: 'JSON',
+            contentType: "application/json;charset=utf-8",
+            success: function (res) {
+                _list = res.data;
+                $.each(_list,function(index,ele){
+
+                    var optionTd = $("<option></option>").attr("value",ele.value).append(ele.label)
 
                     $("#deductStatus").append(optionTd)
                 })
@@ -274,5 +293,6 @@
     $("#btn-search").on("click",function(){
         _search()
     })
+
 </script>
 </html>
