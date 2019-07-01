@@ -116,7 +116,7 @@ public class SourceofinputServiceImpl implements SourceofinputService {
             // 给客户名称赋值
             POIClass.toCellValue(row, 3, obj.getCustomerName() + "");
             //给身份证号码赋值
-            POIClass.toCellValue(row, 4, obj.getIdCode() + "");
+            POIClass.toCellValue(row, 4, obj.getIdCode().toString() + "");
             //给进件时间赋值
             POIClass.toCellValue(row, 5, obj.getIncomingPartsTime() + "");
             //给进件省份赋值

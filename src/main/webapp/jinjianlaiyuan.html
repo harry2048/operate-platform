@@ -137,11 +137,13 @@
      })
 
      function _search(_page) {
-         var merchant,pageIndex,pageSize;
+         var merchant,customerName,pageIndex,pageSize;
          merchant = $("#idName").val();
+         customerName = $("#bcName").val();
          if(_page!=""){
              var tmp={
                  "merchant":merchant,
+                 "customerName":customerName,
                  "pageIndex":_page,
                  "pageSize":1
              };
@@ -156,7 +158,7 @@
 
          $.ajax({
              type: 'POST',
-             url: 'http://localhost:8010/pikou/queryByPage',
+             url: 'http://localhost:8010/sourceofinput/queryPage',
              dataType: 'JSON',
              data: JSON.stringify(tmp),
              contentType: "application/json;charset=utf-8",
@@ -170,9 +172,9 @@
                      }
                      for(var i = 0;i<_list.length;i++){
                          _html+="<tr>"+
+                             "<td>"+_list[i].orderNum+"</td>"+
                              "<td>"+_list[i].merchant+"</td>"+
                              "<td>"+_list[i].customerName+"</td>"+
-                             "<td>"+_list[i].orderNum+"</td>"+
                              "<td>"+_list[i].idCode+"</td>"+
                              "<td>"+_list[i].incomingPartsTime+"</td>"+
                              "<td>"+_list[i].incomingPartsProvince+"</td>"+
@@ -224,6 +226,10 @@
          }
          var _page = $(this).attr("page");
          _search(_page)
+     })
+     //多条件查询点击事件
+     $("#btn-search").on("click",function(){
+         _search()
      })
  </script>
  </html>
