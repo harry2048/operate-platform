@@ -20,6 +20,9 @@ public interface LoansituationMapper {
     List<Loansituation> queryPage(LoansituationSelectVo loansituationSelectVo);
     int queryCount(LoansituationSelectVo loansituationSelectVo);
 
+    List<Loansituation> queryPage2(LoansituationSelectVo loansituationSelectVo);
+    int queryCount2(LoansituationSelectVo loansituationSelectVo);
+
     @Select("select * from riskreserve_capitalside")
     List<Riskreserve_Capitalside> queryAll();
 

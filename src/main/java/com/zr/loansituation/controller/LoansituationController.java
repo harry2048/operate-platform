@@ -35,12 +35,20 @@ public class LoansituationController {
     }
 
     /**
-     * 分页
+     * 资方----分页
      */
     @PostMapping("queryPage")
     public ResultVO<AllRecords> queryPage(@RequestBody LoansituationSelectVo loansituationSelectVo){
 
         return loansituationService.queryPage(loansituationSelectVo);
+    }
+    /**
+     * 进件渠道----分页
+     */
+    @PostMapping("queryPage2")
+    public ResultVO<AllRecords> queryPage2(@RequestBody LoansituationSelectVo loansituationSelectVo){
+
+        return loansituationService.queryPage2(loansituationSelectVo);
     }
 
     @PostMapping("testPost")
