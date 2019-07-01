@@ -233,6 +233,7 @@
         customerName = $("#custName").val();
         idCode = $("#idNo").val();
         paymentAccount = $("#acctNo").val();
+        pageSize=$("")
         //createTime=$("#applyDateStart2")
 
         if(_page!=""){
@@ -244,6 +245,7 @@
                 "pageIndex":_page,
                // "createTime":createTime,
                 "pageSize":1
+
             };
         }else{
             var tmp={
@@ -284,7 +286,7 @@
                             "<td>"+_list[i].paymentAccount+"</td>"+
                             "<td>"+_list[i].updateTime+"</td>"+
                             "<td>"+_list[i].createName+"</td>"+
-                            "<td>"+_list[i].deductionResults+"</td>"
+                            "<td>"+_list[i].statusName+"</td>"
 
                         _html+="<tr/>";
                     }
@@ -329,6 +331,15 @@
         var _page = $(this).attr("page");
         _search(_page)
     })
+
+    //模糊查询点击事件
+    $(".btn-search").on("click",function(){
+        _search();
+
+    })
+
+
+
 
 </script>
 </html>
