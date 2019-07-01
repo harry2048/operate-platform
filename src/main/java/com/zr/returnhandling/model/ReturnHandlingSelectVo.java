@@ -11,7 +11,7 @@ public class ReturnHandlingSelectVo extends PageVo {
     private String customerName;
     //审核状态
     private Integer sendingStatus;
-    private Integer sendingStatusName;
+    private String  sendingStatusName;
     //申请日期==生成日期
     private String createTime;
     //处理日期==退货日期
