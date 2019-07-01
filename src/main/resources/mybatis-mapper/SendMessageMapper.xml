@@ -3,10 +3,12 @@
 <mapper namespace="com.zr.sendrepaymentmessage.mapper.SendMessageMapper">
     <select id="querySendMessagePage" parameterType="com.zr.sendrepaymentmessage.pojo.SendMessageSelectVo"
             resultType="com.zr.sendrepaymentmessage.pojo.SendRepaymentMessage">
-        select id,orderNum,name,idCode,phone,numberOfPeriods,deductionDate,deliveryTime,
+        select id,orderNum,name,idCode,phone,numberOfPeriods,
+        DATE_FORMAT(deductionDate, '%Y-%m-%d %H:%i:%S') deductionDate,
+        DATE_FORMAT(deliveryTime, '%Y-%m-%d %H:%i:%S') deliveryTime,
         sendingStatus from sendrepaymentmessage
         <where>
-            <if test="deliveryTime != null and deliveryTime != ''">
+            <if test="deliveryTime != null">
                 and deliveryTime=#{deliveryTime}
             </if>
         </where>
@@ -16,7 +18,7 @@
             resultType="java.lang.Integer">
         select count(id) from sendrepaymentmessage
         <where>
-            <if test="deliveryTime != null and deliveryTime != ''">
+            <if test="deliveryTime != null">
                 and deliveryTime=#{deliveryTime}
             </if>
         </where>
