@@ -5,14 +5,14 @@ spring:
     driver-class-name: com.mysql.jdbc.Driver
     url: jdbc:mysql://192.168.1.117:3306/operate_platform2?serverTimezone=GMT%2B8&allowMultiQueries=true&characterEncoding=UTF-8&useSSL=false
     username: root
-    password: 123456
+    password: root
   application:
     name: matadata
   jpa:
     show-sql: true
     hibernate:
       ddl-auto: none
-      naming.physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+#      naming.physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
 logging:
   level:
     com:
