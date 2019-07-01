@@ -10,6 +10,6 @@ import java.util.Date;
 public class SendMessageSelectVo extends PageVo {
 
     @JsonFormat(pattern="yyyy-MM-dd",timezone="GMT+8")
-    private String deliveryTime;
+    private Date deliveryTime;
 
 }
