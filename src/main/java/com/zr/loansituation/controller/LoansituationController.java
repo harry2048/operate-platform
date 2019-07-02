@@ -110,7 +110,7 @@ public class LoansituationController {
     //    进件渠道---下拉
     @PostMapping("queryAll2")
     public ResultVO queryAll2(){
-        return loansituationService.queryAll();
+        return loansituationService.queryAll2();
     }
 
 
