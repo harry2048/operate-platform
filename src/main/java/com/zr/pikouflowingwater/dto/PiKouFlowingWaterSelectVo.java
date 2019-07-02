@@ -18,6 +18,8 @@ public class PiKouFlowingWaterSelectVo extends PageVo{
 
     private Integer deductionStatus;//扣款状态
 
+
+
     public PiKouFlowingWaterSelectVo() {
     }
 

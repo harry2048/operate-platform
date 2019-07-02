@@ -30,7 +30,7 @@
                 and createTime = #{createTime}
             </if>
             <if test="deductionStatus!=null">
-                and #{deductionStatus} = deductionStatus
+                and deductionStatus = #{deductionStatus}
             </if>
         </where>
         limit #{offset},#{pageSize}
@@ -50,7 +50,7 @@
                 and createTime = #{createTime}
             </if>
             <if test="deductionStatus!=null">
-                and #{deductionStatus} = deductionStatus
+                and deductionStatus = #{deductionStatus}
             </if>
         </where>
     </select>

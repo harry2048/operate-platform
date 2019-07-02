@@ -1,7 +1,11 @@
 package com.zr.returnhandling.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.zr.util.PageVo;
 import lombok.Data;
+
+import java.util.Date;
+
 @Data
 public class ReturnHandlingSelectVo extends PageVo {
 
@@ -13,8 +17,12 @@ public class ReturnHandlingSelectVo extends PageVo {
     private Integer sendingStatus;
     private String  sendingStatusName;
     //申请日期==生成日期
-    private String createTime;
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone="GMT+8")
+    private Date  createTime;
     //处理日期==退货日期
-    private String updateTime;
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone="GMT+8")
+    private Date updateTime;
+
+    private Integer value;
 
 }

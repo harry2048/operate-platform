@@ -113,6 +113,7 @@
 <script src="js/jedate.min.js"></script>
 <script src="js/jquery-2.1.1.min.js"></script>
 <script src="js/common.js"></script>
+<script src="js/layer.js"></script>
 <script>
     jeDate({
         dateCell:"#applyDateStart", //目标元素。由于jedate.js封装了一个轻量级的选择器，因此dateCell还允许你传入class、tag这种方式 '#id .class'
@@ -193,7 +194,7 @@
                     }
                     for(var i = 0;i<_list.length;i++){
                         _html+="<tr>"+
-                            "<td>"+i+"</td>"+
+                            "<td>"+(i+1)+"</td>"+
                             "<td>"+_list[i].merchant+"</td>"+
                             "<td>"+_list[i].passAmount+"</td>"+
                             "<td>"+_list[i].shenPiNum+"</td>"+
@@ -263,28 +264,22 @@
         _search()
     })
     //导出点击点击事件
-    /*$("#btn-export").on("click",function(){
-     var merchant,startTime,endTime;
-     merchant = $("#bizName").val();
-     startTime = $("#applyDateStart").val();
-     endTime = $("#applyDateStart1").val();
-     var tmp= {
-     "merchant": merchant,
-     "startTime": startTime,
-     "endTime": endTime
-     }
-     $.ajax({
-     type: 'Get',
-     url: 'http://localhost:8010/credit/master',
-     contentType: "application/json;charset=utf-8",
-     success: function (res) {
-     if(res.success){
-     alert("导出成功")
-     }else{
-     alert(res.errorMessage)
-     }
+    function exportExcel(){
+        layer.confirm("确定要导出信审资方日报表吗？", {
+            btn: ['确认','取消'], //按钮
+            yes:function (index, layero) {
+                var merchant = $("#bizName").val();
+                var startTime = $("#applyDateStart").val();
+                var endTime = $("#applyDateStart1").val();
 
-     }
-     })
-     })*/
+                var url="http://localhost:8010/credit/master?merchant="+merchant+"&startTime="+startTime+"&endTime="+endTime;
+                window.open(url);
+                layer.close(index);
+            },
+            cancel:function(index){
+                //按钮【按钮二】的回调
+                layer.close(index);
+            },
+        });
+    }
 </script>

@@ -91,15 +91,15 @@
                 <div class="col-lg-3 col-md-3 col-sm-3"><span class="wd_60">合同号&nbsp;&nbsp;</span><input type="text" id="loanContNo"></div>
                 <div class="col-lg-3 col-md-3 col-sm-3"><span class="wd_60">交易日期&nbsp;&nbsp;</span><input type="text" id="applyDateStart2" value="2019-05-22" placeholder="请选择时间" readonly=""></div>
                 <div class="col-lg-3 col-md-3 col-sm-3"><span class="wd_60">批扣状态&nbsp;&nbsp;</span>
-                    <select id="paySts">
-                        <!--<option value="">-&#45;&#45;请选择-&#45;&#45;</option>
-                        <option value="00">待发送</option>
-                        <option value="02">扣款中</option>
-                        <option value="03">代扣成功</option>
-                        <option value="04">代扣失败</option>
-                        <option value="05">JD签约中</option>
-                        <option value="06">JD签约失败</option>
-                        <option value="07">JD签约成功</option>-->
+                    <select id="paySts" name="deductionStatus">
+                       <option value="">-&#45;&#45;请选择-&#45;&#45;</option>
+                        <!--<option value="00">待发送</option>
+                       <option value="02">扣款中</option>
+                       <option value="03">代扣成功</option>
+                       <option value="04">代扣失败</option>
+                       <option value="05">JD签约中</option>
+                       <option value="06">JD签约失败</option>
+                       <option value="07">JD签约成功</option>-->
                     </select></div>
                 <div class="col-lg-3 col-md-3 col-sm-3">
 
@@ -313,11 +313,14 @@
         daiKouNum = $("#thdSeq").val();
         daiKuanHetongNum = $("#loanContNo").val();
         createTime = $("#applyDateStart2").val();
+        deductionStatus = $("#paySts option:selected").attr("value")
+        // alert(deductionStatus)
         var pageSize = 2; // 每页记录数
         var tmp={
             "thdSeq":daiKouNum,
             "loanContNo":daiKuanHetongNum,
             "applyDateStart2":createTime,
+            "deductionStatus":deductionStatus,
             "pageIndex":pageIndex,
             "pageSize":pageSize
         };
@@ -333,7 +336,7 @@
                 _list = res.data.dataList;
                 var _html = "";
                 if(res.success){
-                    $("#bizList_info").html("当前是第"+res.data.pageIndex+"页，共"+res.data.totalPage+"页")
+                    $("#bizList_info").html("当前是第"+res.data.pageIndex+"页，共"+res.data.totalPage+"页,共"+res.data.totalNumber+"条记录")
                     if(_list.length>0){
                         // 分页条
                         build_nav_page(res)

@@ -102,21 +102,15 @@
                                                                                                       id="containsCustName">
             </div>
             <div class="col-lg-3 col-md-3 col-sm-3"><span class="wd_60">退款状态&nbsp;&nbsp;</span><select id="refundState">
-                <option value="">请选择</option>
-                <option value="0">待提交</option>
-                <option value="1" selected="">待审批</option>
-                <option value="2">待财务审核</option>
-                <option value="3">已拒绝</option>
-                <option value="4">财务通过</option>
-                <option value="5">财务拒绝</option>
+
             </select></div>
             <div class="col-lg-3 col-md-3 col-sm-3">
                 <span class="wd_60">生成日期&nbsp;&nbsp;</span>
-                <input type="text" id="refundDate" value="2019-05-22" placeholder="请选择时间" readonly="">
+                <input type="date" id="refundDate"  placeholder="请选择时间" >
             </div>
             <div class="col-lg-3 col-md-3 col-sm-3">
                 <span class="wd_60">退货日期&nbsp;&nbsp;</span>
-                <input type="text" id="handleDate" placeholder="请选择时间" readonly="">
+                <input type="date" id="handleDate" placeholder="请选择时间" >
             </div>
             <div class="col-lg-4 col-md-4 col-sm-4 col-lg-offset-3  col-md-offset-3 col-sm-offset-3 ta_r text-center">
                 <button class="btn btn-primary btn-sm search_btn" type="button" id="btn-search">查询</button>
@@ -169,46 +163,7 @@
                             </table>
                         </div>
                     </div>
-                    <!--<div class="dataTables_scrollBody" style="position: relative; overflow: auto; width: 100%;">
-                        <table id="refundList" style="width: 100%;"
-                               class="table table-bordered table-striped table-hover bg_wt dataTable no-footer"
-                               role="grid" aria-describedby="refundList_info">
-                            <thead style="border-bottom: 0;background-color: #fff;">
-                            <tr role="row" style="height: 0px;">
-                                <th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1"
-                                    style="width: 171px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;">
-                                    <div class="dataTables_sizing" style="height:0;overflow:hidden;">商户名称</div>
-                                </th>
-                                <th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1"
-                                    style="width: 172px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;">
-                                    <div class="dataTables_sizing" style="height:0;overflow:hidden;">客户姓名</div>
-                                </th>
-                                <th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1"
-                                    style="width: 173px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;">
-                                    <div class="dataTables_sizing" style="height:0;overflow:hidden;">退款金额</div>
-                                </th>
-                                <th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1"
-                                    style="width: 173px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;">
-                                    <div class="dataTables_sizing" style="height:0;overflow:hidden;">申请日期</div>
-                                </th>
-                                <th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1"
-                                    style="width: 173px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;">
-                                    <div class="dataTables_sizing" style="height:0;overflow:hidden;">审核日期</div>
-                                </th>
-                                <th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1"
-                                    style="width: 173px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;">
-                                    <div class="dataTables_sizing" style="height:0;overflow:hidden;">审核状态</div>
-                                </th>
-                                <th class="text-center fs_13 sorting_disabled" rowspan="1" colspan="1"
-                                    style="width: 103px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;">
-                                    <div class="dataTables_sizing" style="height:0;overflow:hidden;">操作</div>
-                                </th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            </tbody>
-                        </table>
-                    </div>-->
+
                     <div class="bottom">
                         <div class="dataTables_info" id="bizList_info" role="status" aria-live="polite">
 
@@ -242,25 +197,29 @@
                 _list = res.data;
                 $.each(_list, function (index, ele) {
 
-                    var optionTd = $("<option></option>").attr("value", ele.isApprovalValue).append(ele.isApprovalName)
+                    var optionTd = $("<option></option>").attr("value", ele.value).append(ele.label)
 
-                    $("#deductStatus").append(optionTd)
+                    $("#refundState").append(optionTd)
                 })
             }
         })
     })
 
     function _search(_page) {
-        var merchant, customerName, sendingStatusName, pageIndex, pageSize;
+        var merchant, customerName, sendingStatus,createTime,updateTime,examineTime, pageIndex, pageSize;
         merchant = $("#bizName").val()
         customerName = $("#containsCustName").val();
-        sendingStatusName = $("#refundState").val();
+        sendingStatus = $("#refundState").val()
+        createTime = $("#refundDate").val();
+        updateTime = $("#handleDate").val();
 
         if (_page != "") {
             var tmp = {
                 "merchant": merchant,
                 "customerName": customerName,
-                "sendingStatusName": sendingStatusName,
+                "sendingStatus": sendingStatus,
+                "createTime": createTime,
+                "updateTime": updateTime,
                 "pageIndex": _page,
                 "pageSize": 1
             };
@@ -268,8 +227,10 @@
             var tmp = {
                 "merchant": merchant,
                 "customerName": customerName,
-                "sendingStatusName": sendingStatusName,
-                "pageIndex": 0,
+                "sendingStatus": sendingStatus,
+                "createTime": createTime,
+                "updateTime": updateTime,
+                "pageIndex": _page,
                 "pageSize": 1
             };
         }
