@@ -80,5 +80,14 @@ public class MechantController {
         return pullDownList;
     }*/
 
+   @PostMapping("mechantCategory/queryById")
+    public ResultVO queryById(@RequestParam("id") Integer id){
+
+       return mechantService.queryMechantAll(id);
+   }
+
+
+
+
 }
 
