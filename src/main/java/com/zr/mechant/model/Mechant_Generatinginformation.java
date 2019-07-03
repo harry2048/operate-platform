@@ -15,7 +15,7 @@ public class Mechant_Generatinginformation {
     private String mailbox;
     private String province;
     private String jointLineNumber;
-    private String accountName;
+    private String lenderName;
     private  String lenderAddress;
     private  Integer lenderPhone;
     private  String  bankCity;
@@ -24,6 +24,7 @@ public class Mechant_Generatinginformation {
     private String createName;
     private Date updateTime;
     private String updateName;
+    private Integer mechantId;//外键
 
 
 }

@@ -1,8 +1,11 @@
 package com.zr.mechant.model;
 
+import lombok.Data;
+
 /**
  * Created by Administrator on 2019/6/3.
  */
+@Data
 public class Mechant_Configure {
     private Integer id;
     private  String landingAccount;
@@ -24,6 +27,7 @@ public class Mechant_Configure {
     private  Integer apartmentType;
     private Integer isAddHousingResources;
     private  Integer  mechanismType;
+    private Integer mechantId;//外键
 
 
 }

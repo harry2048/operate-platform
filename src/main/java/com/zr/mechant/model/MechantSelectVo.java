@@ -10,7 +10,9 @@ public class MechantSelectVo extends PageVo {
 
     private  String merchantName;//商户名称
     private Integer channelMaintenance;//维护渠道
+    private String merchantAddress;//商户地址
     private Integer status;//商户状态
+    private String statusName;
     //private 业务类型
 
 }

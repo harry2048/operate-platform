@@ -18,5 +18,6 @@ public class MechantInfo  {
     private Date endTime;
     private Integer status;
     private String statusName;
+    private Integer mechantId;//外键
 
 }
