@@ -32,6 +32,8 @@ public class ReturnHandlingServiceImpI implements ReturnHandlingService {
         List<ReturnHandlingVo> returnHandlingVoList = returnHandlingMapper.queryPage(returnHandlingSelectVo);
         for (ReturnHandlingVo Re : returnHandlingVoList) {
             if (Re.getSendingStatus()!=null&&!StringUtils.isEmpty(Re.getSendingStatus())){
+                Re.setSendingStatusName(ReturnHandlingEnum.getName(Re.getSendingStatus()));
+               /*
                 if (Re.getSendingStatus()==0){
                     Re.setSendingStatusName(ReturnHandlingEnum.DAITIJIAO.getSendingStatusName());
                 }else if(Re.getSendingStatus()==1){
@@ -46,7 +48,7 @@ public class ReturnHandlingServiceImpI implements ReturnHandlingService {
                     Re.setSendingStatusName(ReturnHandlingEnum.CAIWUJUJUE.getSendingStatusName());
                 }else{
 
-                }
+                }*/
             }
         }
 
