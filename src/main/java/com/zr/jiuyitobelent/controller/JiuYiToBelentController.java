@@ -1,7 +1,6 @@
 package com.zr.jiuyitobelent.controller;
 
 
-import com.zr.jiuyitobelent.enumall.ChannelEnum;
 import com.zr.jiuyitobelent.enumall.ManagementStatusEnum;
 import com.zr.jiuyitobelent.model.JiuYiToBelentSelectVo;
 import com.zr.jiuyitobelent.model.XiaLaVo;

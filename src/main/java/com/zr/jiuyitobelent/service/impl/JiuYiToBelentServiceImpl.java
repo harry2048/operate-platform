@@ -95,7 +95,7 @@ public class JiuYiToBelentServiceImpl implements JiuYiToBelentService {
 
     @Override
     public ResultVO queryAll() {
-        List<Riskreserve_Capitalside> riskreserve_capitalsideList = jiuYiToBelentMapper.queryAll();
+        List riskreserve_capitalsideList = jiuYiToBelentMapper.queryAll();
         return ResultVOBuilder.success(riskreserve_capitalsideList);
     }
 

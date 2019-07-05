@@ -20,16 +20,12 @@
 
 	<dependencies>
 		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-web</artifactId>
-		</dependency>
-		<dependency>
 			<groupId>org.mybatis.spring.boot</groupId>
 			<artifactId>mybatis-spring-boot-starter</artifactId>
 			<version>2.0.1</version>
 		</dependency>
 
-		<!--JSP相关包 -->
+			<!--JSP相关包 -->
 		<dependency>
 			<groupId>org.apache.tomcat.embed</groupId>
 			<artifactId>tomcat-embed-jasper</artifactId>
@@ -49,32 +45,8 @@
 			<version>2.2</version>
 			<scope>provided</scope>
 		</dependency>
+
 		<!--poi包-->
-		<dependency>
-			<groupId>org.apache.poi</groupId>
-			<artifactId>poi</artifactId>
-			<version>3.17</version>
-		</dependency>
-
-		<dependency>
-			<groupId>org.apache.poi</groupId>
-			<artifactId>poi-ooxml</artifactId>
-			<version>3.16-beta2</version>
-		</dependency>
-		<!-- jstl -->
-		<dependency>
-			<groupId>jstl</groupId>
-			<artifactId>jstl</artifactId>
-			<version>1.2</version>
-		</dependency>
-
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-aop</artifactId>
-		</dependency>
-
-
-		<!--poi包 -->
 		<dependency>
 			<groupId>org.apache.poi</groupId>
 			<artifactId>poi</artifactId>
@@ -97,11 +69,7 @@
 			<artifactId>mysql-connector-java</artifactId>
 			<scope>runtime</scope>
 		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>
-			<scope>test</scope>
-		</dependency>
+
 		<!--JPA相关包-->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -126,23 +94,7 @@
 			<artifactId>querydsl-jpa</artifactId>
 			<version>${querydsl.version}</version>
 		</dependency>
-		<!--poi包 -->
-		<dependency>
-			<groupId>org.apache.poi</groupId>
-			<artifactId>poi</artifactId>
-			<version>3.17</version>
-		</dependency>
 
-		<dependency>
-			<groupId>org.apache.poi</groupId>
-			<artifactId>poi-ooxml</artifactId>
-			<version>3.16-beta2</version>
-		</dependency>
-
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-web</artifactId>
-		</dependency>
 
 
 		<!-- 结束-->
@@ -157,40 +109,23 @@
 			<artifactId>spring-boot-starter-aop</artifactId>
 		</dependency>
 
-		<dependency>
-			<groupId>org.mybatis.spring.boot</groupId>
-			<artifactId>mybatis-spring-boot-starter</artifactId>
-			<version>2.0.1</version>
-		</dependency>
-
-		<dependency>
-			<groupId>mysql</groupId>
-			<artifactId>mysql-connector-java</artifactId>
-			<scope>runtime</scope>
-		</dependency>
-
 		<!--JSP相关包 -->
 		<dependency>
 			<groupId>org.apache.tomcat.embed</groupId>
 			<artifactId>tomcat-embed-jasper</artifactId>
 		</dependency>
 	<dependency>
-		<groupId>org.apache.poi</groupId>
-		<artifactId>poi</artifactId>
-		<version>3.17</version>
-	</dependency>
-	<dependency>
-		<groupId>org.apache.poi</groupId>
-		<artifactId>poi-ooxml</artifactId>
-		<version>3.16-beta2</version>
-	</dependency>
-	<dependency>
 		<groupId>org.projectlombok</groupId>
 		<artifactId>lombok</artifactId>
 		<optional>true</optional>
 	</dependency>
 
-
+		<!-- ftpclient -->
+		<dependency>
+			<groupId>commons-net</groupId>
+			<artifactId>commons-net</artifactId>
+			<version>3.3</version>
+		</dependency>
 </dependencies>
 
 <build>
