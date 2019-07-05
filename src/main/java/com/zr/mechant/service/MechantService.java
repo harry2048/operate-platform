@@ -18,6 +18,8 @@ public interface MechantService {
     ResultVO<AllRecords> queryPage(MechantSelectVo mechantSelectVo);
     ResultVO addMechant(MechantAddVo mechantAddVo);
     ResultVO updateMechant(MechantUpdateVo mechantUpdateVo);
+    ResultVO queryMechantAll(Integer id);
+
 }
 
 

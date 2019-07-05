@@ -33,6 +33,54 @@
         </if>
     </select>
 
+    <!--批量添加-->
+    <insert id="addMp" parameterType="java.util.List">
+        insert into mechant_Pic (startTime,endTime) VALUES
+        <foreach collection="list" item="item" open="(" separator="),(" close=")">
+            #{item.startTime},#{item.endTime}
+        </foreach>
+    </insert>
+    <insert id="addMo" parameterType="java.util.List">
+        insert into mechant_Other (pic) VALUES
+        <foreach collection="list" item="item" open="(" separator="),(" close=")">
+            #{item.pic}
+        </foreach>
+    </insert>
+
+    <insert id="addMs" parameterType="java.util.List">
+        insert into mechant_speedprogress (management,remark,status,code) VALUES
+        <foreach collection="list" item="item" open="(" separator="),(" close=")">
+            #{item.management},#{item.remark},#{item.status},#{item.code}
+        </foreach>
+    </insert>
+
+    <!--批量修改-->
+
+    <update id="updatePicList" parameterType="com.zr.mechant.model.Mechant_Pic">
+        <foreach collection="list" item="item" separator=";">
+            UPDATE  mechant_Pic SET startTime=#{item.startTime},endTime=#{item.endTime} WHERE id =#{item.id}
+        </foreach>
+    </update>
+
+    <update id="updateOtherList" parameterType="com.zr.mechant.model.Mechant_Other">
+        <foreach collection="list" item="item" separator=";">
+            UPDATE  mechant_Other SET pic=#{item.pic} WHERE id =#{item.id}
+        </foreach>
+    </update>
+
+    <update id="updateSpeedProgressList" parameterType="com.zr.mechant.model.Mechant_SpeedProgress">
+        <foreach collection="list" item="item" separator=";">
+            UPDATE  mechant_speedprogress SET management=#{item.management},remark=#{item.remark},status=#{item.status},code=#{item.code} WHERE id =#{item.id}
+        </foreach>
+    </update>
+
+
+
+
+
+
+
+
 </mapper>
 
 

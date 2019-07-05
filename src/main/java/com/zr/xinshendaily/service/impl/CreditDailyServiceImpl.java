@@ -71,7 +71,7 @@ public class CreditDailyServiceImpl implements CreditDailyService{
         //给输出文件设置名称
         POIClass.toPackageOs(resp, "资方日报表");
         //读取模板中的数据
-        InputStream in = ExportUtil.toPackageIn("资方日报表.xlsx");
+        InputStream in = ExportUtil.toPackageIn("templates/资方日报表.xlsx");
         //根据模板的数据、把查询出来的数据给摸版SHeet1组中的数据赋值、把excel输出到浏览器上
         writeDataToExcel(in, "Sheet1", xinshendailyList, out);
         if (in != null) {

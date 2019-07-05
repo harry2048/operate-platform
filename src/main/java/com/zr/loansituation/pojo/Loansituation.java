@@ -3,6 +3,8 @@ package com.zr.loansituation.pojo;
 import lombok.Data;
 import org.springframework.cglib.core.TinyBitSet;
 
+import java.util.Date;
+
 /**
  * Created by star on 2019/6/21.
  */
@@ -19,11 +21,11 @@ public class Loansituation {
 
     private Double amount;      //金额
 
-    private Data incomingPartsTime; //进件时间
+    private Date incomingPartsTime; //进件时间
 
     private  Integer term;  //期限
 
-    private Data approvalTime;  //审批时间
+    private Date approvalTime;  //审批时间
 
     private String managementNum;   //资方申请编号
 
@@ -42,13 +44,13 @@ public class Loansituation {
 
     private Integer signatureStatus;    //签章状态
 
-    private  Data createTime;   //创建时间
+    private  Date createTime;   //创建时间
 
-    private  Data letterTrialTime;  //信审日期
+    private  Date letterTrialTime;  //信审日期
 
     private  String createName;
 
-    private Data updateTime;
+    private Date updateTime;
 
     private String updateName;
 
