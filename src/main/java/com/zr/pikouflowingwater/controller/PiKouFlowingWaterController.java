@@ -6,6 +6,15 @@ import com.zr.util.ResultVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+/**
+ * @author gengwei
+ * @date 2019-07-05 13:03
+ * @param
+ * @return
+ * @throws
+ * @since
+ * @description:
+*/
 @RestController
 @RequestMapping("/pikouflowingwater")
 public class PiKouFlowingWaterController {
@@ -14,10 +23,14 @@ public class PiKouFlowingWaterController {
     private PiKouFlowingWaterService piKouFlowingWaterService;
 
     /**
-     * 条件分页查询
-     * @param piKouFlowingWaterSelectVo
+     * @author gengwei
+     * @date 2019-07-05 13:03
+     * @param
      * @return
-     */
+     * @throws
+     * @since
+     * @description: 分页带条件查询
+    */
     @PostMapping("/queryBySelect")
     public ResultVO queryPage(@RequestBody PiKouFlowingWaterSelectVo piKouFlowingWaterSelectVo) {
         return piKouFlowingWaterService.queryPage(piKouFlowingWaterSelectVo);
