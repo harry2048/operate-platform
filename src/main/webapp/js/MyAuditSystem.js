@@ -20,8 +20,9 @@ $(document).ready(function() {
             data: []//ajax请求的数据
         };
         pager = $.extend(pager, opt);
-        var URLHTTP="http://182.92.6.16:8688/hd-merchant-approve/userInfo/hdCreditReports"
-        
+        /*var URLHTTP="http://182.92.6.16:8688/hd-merchant-approve/userInfo/hdCreditReports"*/
+        var URLHTTP="http://localhost:8080/hd-merchant-approve/userInfo/hdCreditReports"
+
         $.ajax({
             type: "post",
             url: URLHTTP+"/getUserContactsInfo?pageSize=5&pageNo=1&userId=26564",
