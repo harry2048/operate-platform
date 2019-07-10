@@ -4,14 +4,14 @@
     <title>逾期查询页面</title>
     <meta http-equiv="content-type" content="text/html;charset=utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!--<link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/base.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
     <link href="css/layer.css" rel="stylesheet">
     <link href="css/pagination.css" rel="stylesheet">
     <link href="css/bootstrap-datetimepicker.css" rel="stylesheet">
     <link href="css/jedate.css" rel="stylesheet">
-    <link href="css/AuditSystem.css" rel="stylesheet">
+    <link href="css/AuditSystem.css" rel="stylesheet">-->
 	
 
     <style>
@@ -238,14 +238,28 @@
                   <tr role="row"><th class="sorting_asc" tabindex="0" aria-controls="managerList" rowspan="1" colspan="1" aria-sort="ascending" aria-label="进件时间: 以降序排列此列" style="width: 105px;">进件时间</th><th class="sorting" tabindex="0" aria-controls="managerList" rowspan="1" colspan="1" aria-label="客户姓名: 以升序排列此列" style="width: 58px;">客户姓名</th><th class="sorting" tabindex="0" aria-controls="managerList" rowspan="1" colspan="1" aria-label="渠道名称: 以升序排列此列" style="width: 168px;">渠道名称</th><th class="sorting" tabindex="0" aria-controls="managerList" rowspan="1" colspan="1" aria-label="货款类型: 以升序排列此列" style="width: 58px;">货款类型</th><th class="sorting" tabindex="0" aria-controls="managerList" rowspan="1" colspan="1" aria-label="资金方: 以升序排列此列" style="width: 45px;">资金方</th><th class="sorting" tabindex="0" aria-controls="managerList" rowspan="1" colspan="1" aria-label="推送状态: 以升序排列此列" style="width: 58px;">推送状态</th><th class="sorting" tabindex="0" aria-controls="managerList" rowspan="1" colspan="1" aria-label="历史审核人: 以升序排列此列" style="width: 72px;">历史审核人</th><th class="sorting" tabindex="0" aria-controls="managerList" rowspan="1" colspan="1" aria-label="累计用时: 以升序排列此列" style="width: 59px;">累计用时</th><th class="sorting" tabindex="0" aria-controls="managerList" rowspan="1" colspan="1" aria-label="操作: 以升序排列此列" style="width: 100px;">操作</th></tr>
                   </thead>
                   <tbody class="tTableBody">
-                  <tr role="row" class="odd"><td class="sorting_1">2019-05-25 10:07:28</td><td>郭淑芳</td><td>广东明世在线教育科技有限公司</td><td>教育贷</td><td>晋商教育</td><td></td><td>zhangrongxin</td><td>10分钟42秒</td><td><button type="button" data-id="6537686126979712001" class="btn btn-primary btn-sm" name="receiveOrderBtn" disabled="">领单</button>&nbsp;&nbsp;&nbsp;&nbsp;<button type="button" data-id="6537686126979712001" class="btn btn-primary btn-sm" name="resetBtn">重置</button></td></tr></tbody>
+                      <tr role="row" class="odd">
+                          <td class="sorting_1">2019-05-25 10:07:28</td>
+                          <td>郭淑芳</td>
+                          <td>广东明世在线教育科技有限公司</td>
+                          <td>教育贷</td>
+                          <td>晋商教育</td>
+                          <td></td>
+                          <td>zhangrongxin</td>
+                          <td>10分钟42秒</td>
+                          <td>
+                              <button type="button" data-id="6537686126979712001" class="btn btn-primary btn-sm" name="receiveOrderBtn" disabled="">领单</button>&nbsp;&nbsp;&nbsp;&nbsp;
+                              <button type="button" data-id="6537686126979712001" class="btn btn-primary btn-sm" name="resetBtn">重置</button>
+                          </td>
+                      </tr>
+                  </tbody>
               </table><div class="bottom"><div class="dataTables_info" id="managerList_info" role="status" aria-live="polite">显示第 1 至 1 项结果，共 1 项</div><div class="dataTables_length" id="managerList_length"><label>显示 <select name="managerList_length" aria-controls="managerList" class="form-control input-sm"><option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select> 项结果</label></div><div class="dataTables_paginate paging_simple_numbers" id="managerList_paginate"><ul class="pagination"><li class="paginate_button previous disabled" id="managerList_previous"><a href="javascript:void(0);" aria-controls="managerList" data-dt-idx="0" tabindex="0">上页</a></li><li class="paginate_button active"><a href="javascript:void(0);" aria-controls="managerList" data-dt-idx="1" tabindex="0">1</a></li><li class="paginate_button next disabled" id="managerList_next"><a href="javascript:void(0);" aria-controls="managerList" data-dt-idx="2" tabindex="0">下页</a></li></ul></div><div class="clear"></div></div></div>
           </div>
       </div>
 	</div>
 <script src="js/jquery-2.1.1.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
-<script src="js/icheck.min.js"></script>
+<!--<script src="js/icheck.min.js"></script>
 <script src="js/layer.js"></script>
 <script src="js/dragZoom-1.0.js"></script>
 <script src="js/imgController.js"></script>
@@ -257,16 +271,55 @@
 <script src="js/sockjs.min.js"></script>
 
 <script src="js/jedate.min.js"></script>
-<script src="js/AuditSystem.js"></script>
+<script src="js/AuditSystem.js"></script>|
 <script src="js/MyAuditSystem.js"></script>
 <script src="js/CaseMyAuditSystem.js"></script>
-<script src="js/html5shiv.js"></script>
+<script src="js/html5shiv.js"></script>-->
 <script>
 var dt;
 function refresh(){
     dt.api(dt.api().page()).draw(false);
+
+
 }
-$(function(){
+
+/*$(function () {
+    // 加载待审批列表
+    $.ajax({
+        url:"http://localhost:8010/daishenpi",
+        dataType:'json',//服务器返回json格式数据
+        type:'GET',//HTTP请求类型
+        success:function(res){
+            if(res.success){
+                var _list = res.data;
+                for(var i = 0;i<_list.length;i++){
+                    var _li = "<tr>";
+                    _li+="<td>"+_list[i].jinjiandate+"</td>"+
+                        "<td>"+_list[i].name+"</td>"+
+                        "<td>"+_list[i].qudaoName+"</td>"+
+                        "<td>"+_list[i].daikuanType+"</td>"+
+                        "<td>"+_list[i].zijinfang+"</td>"+
+                        "<td>"+_list[i].statusName+"</td>"+
+                        "<td>"+_list[i].shenhePerson+"</td>"+
+                        "<td>"+_list[i].leijiYongshi+"</td>"+
+                        "<td><button type='button' onclick='managerApproveClick(&quot;6537686126979712001&quot;)' class='btn btn-primary btn-sm'>详情</button></td>"
+                    ;
+                    _li+="</tr>";
+                    $(".tTableBody").append(_li);
+                }
+
+            }else{
+                $(".msg").show().text("获取失败！原因"+_res.errorMessage);
+                setTimeout(function(){
+                    $(".msg").hide("slow")
+                },2000)
+            }
+        }
+    });
+
+})*/
+/*$(function(){
+
    dt = $("#managerList").dataTable({
         "sDom":'<"top"<"clear">>rt<"bottom"ilp<"clear">>',
        language: {
@@ -464,14 +517,14 @@ $(function(){
             }
         });
     })
-});
+});*/
 </script>
 
 <script>
 
 
 
-jeDate({
+/*jeDate({
     dateCell:"#applyDateStart1", //目标元素。由于jedate.js封装了一个轻量级的选择器，因此dateCell还允许你传入class、tag这种方式 '#id .class'
     format:"YYYY-MM-DD hh:mm:ss", //日期格式
     minDate:"1900-01-01 00:00:00", //最小日期
@@ -500,7 +553,7 @@ jeDate({
     choosefun:function(val) {},  //选中日期后的回调
     clearfun:function(val) {},   //清除日期后的回调
     okfun:function(val) {}       //点击确定后的回调
-});
+});*/
 </script>
 
 </div>

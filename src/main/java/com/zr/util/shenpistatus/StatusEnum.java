@@ -12,8 +12,8 @@ public enum StatusEnum {
     ZUOFEI("作废",5)
     ;
 
-    private final String statusName;
-    private final Integer statusValue;
+    private String statusName;
+    private Integer statusValue;
     // 通过值取名称
     public static String getName(int relationsWithMeValue) {
         for (StatusEnum c : StatusEnum.values()) {
